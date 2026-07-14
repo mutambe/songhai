@@ -3,11 +3,12 @@ import { getSession } from '@/lib/session'
 import { createBlogSsoToken } from '@/lib/sso'
 
 const MAIN_SITE_URL = process.env.NEXT_PUBLIC_MAIN_SITE_URL || 'https://songhai.cc'
+const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'
 
-export async function GET(request: Request) {
+export async function GET() {
   const session = await getSession()
   if (!session || session.role !== 'admin') {
-    return NextResponse.redirect(new URL('/portal', request.url))
+    return NextResponse.redirect(`${PORTAL_URL}/portal`)
   }
 
   const token = createBlogSsoToken({
