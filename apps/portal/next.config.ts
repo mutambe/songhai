@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
+      {
+        // O visualizador interno (/portal/dashboards/[id]) mostra estes
+        // ficheiros num iframe do próprio site — o DENY geral acima
+        // bloquearia isso. SAMEORIGIN continua a impedir que sites de
+        // terceiros os incorporem.
+        source: "/dashboards/:path*",
+        headers: [{ key: "X-Frame-Options", value: "SAMEORIGIN" }],
+      },
+      {
+        source: "/previews/:path*",
+        headers: [{ key: "X-Frame-Options", value: "SAMEORIGIN" }],
+      },
     ];
   },
 };

@@ -25,14 +25,20 @@ export function DashboardViewer({ dashboard }: { dashboard: Dashboard }) {
 
   return (
     <div className="mt-6">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="font-serif text-2xl font-semibold text-foreground">{dashboard.name}</h1>
-          {dashboard.description && (
-            <p className="mt-1 text-sm text-ink-soft">{dashboard.description}</p>
-          )}
-        </div>
-        <div className="flex items-center gap-2">
+      <div className="mb-4">
+        <h1 className="font-serif text-2xl font-semibold text-foreground">{dashboard.name}</h1>
+        {dashboard.description && (
+          <p className="mt-1 text-sm text-ink-soft">{dashboard.description}</p>
+        )}
+      </div>
+
+      {/* A barra de ações fica dentro do elemento que entra em ecrã inteiro,
+          para o botão de sair continuar visível enquanto maximizado. */}
+      <div
+        ref={containerRef}
+        className="flex h-[75vh] flex-col overflow-hidden rounded-2xl border border-line bg-paper"
+      >
+        <div className="flex items-center justify-end gap-2 border-b border-line bg-paper px-4 py-2.5">
           <button
             type="button"
             onClick={toggleFullscreen}
@@ -51,13 +57,7 @@ export function DashboardViewer({ dashboard }: { dashboard: Dashboard }) {
             Abrir numa aba
           </a>
         </div>
-      </div>
-
-      <div
-        ref={containerRef}
-        className="h-[75vh] overflow-hidden rounded-2xl border border-line bg-paper"
-      >
-        <iframe src={dashboard.href} title={dashboard.name} className="h-full w-full" />
+        <iframe src={dashboard.href} title={dashboard.name} className="w-full flex-1" />
       </div>
     </div>
   )
