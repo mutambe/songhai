@@ -88,6 +88,11 @@ export async function listInternalSystems() {
   return data.internalSystems
 }
 
+export async function getInternalSystemById(id: string) {
+  const data = await readStore()
+  return data.internalSystems.find((s) => s.id === id) ?? null
+}
+
 export async function addInternalSystem(input: {
   name: string
   description: string

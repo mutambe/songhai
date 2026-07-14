@@ -2,21 +2,21 @@ import { notFound } from 'next/navigation'
 import { PortalShell } from '@/components/portal-shell'
 import { BackToHub } from '@/components/back-to-hub'
 import { EmbedViewer } from '@/components/embed-viewer'
-import { getDashboardById } from '@/lib/systems-store'
+import { getInternalSystemById } from '@/lib/systems-store'
 import { requirePermission } from '@/lib/session'
 
-export default async function DashboardViewerPage({
+export default async function SystemViewerPage({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const [{ session, pendingCount }, dashboard] = await Promise.all([
-    requirePermission('canViewDashboards'),
-    getDashboardById(id),
+  const [{ session, pendingCount }, system] = await Promise.all([
+    requirePermission('canViewSystems'),
+    getInternalSystemById(id),
   ])
 
-  if (!dashboard) notFound()
+  if (!system) notFound()
 
   return (
     <PortalShell
@@ -25,7 +25,7 @@ export default async function DashboardViewerPage({
       pendingCount={pendingCount}
     >
       <BackToHub />
-      <EmbedViewer title={dashboard.name} description={dashboard.description} href={dashboard.href} />
+      <EmbedViewer title={system.name} description={system.description} href={system.href} />
     </PortalShell>
   )
 }

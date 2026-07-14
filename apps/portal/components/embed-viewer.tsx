@@ -2,9 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { ExternalLink, Maximize2, Minimize2 } from 'lucide-react'
-import type { Dashboard } from '@/lib/systems-store'
 
-export function DashboardViewer({ dashboard }: { dashboard: Dashboard }) {
+export function EmbedViewer({
+  title,
+  description,
+  href,
+}: {
+  title: string
+  description?: string
+  href: string
+}) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
 
@@ -26,10 +33,8 @@ export function DashboardViewer({ dashboard }: { dashboard: Dashboard }) {
   return (
     <div className="mt-6">
       <div className="mb-4">
-        <h1 className="font-serif text-2xl font-semibold text-foreground">{dashboard.name}</h1>
-        {dashboard.description && (
-          <p className="mt-1 text-sm text-ink-soft">{dashboard.description}</p>
-        )}
+        <h1 className="font-serif text-2xl font-semibold text-foreground">{title}</h1>
+        {description && <p className="mt-1 text-sm text-ink-soft">{description}</p>}
       </div>
 
       {/* A barra de ações fica dentro do elemento que entra em ecrã inteiro,
@@ -48,7 +53,7 @@ export function DashboardViewer({ dashboard }: { dashboard: Dashboard }) {
             {isFullscreen ? 'Sair de ecrã inteiro' : 'Maximizar'}
           </button>
           <a
-            href={dashboard.href}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm text-ink-soft transition-colors hover:border-ink/30 hover:text-foreground"
@@ -57,8 +62,12 @@ export function DashboardViewer({ dashboard }: { dashboard: Dashboard }) {
             Abrir numa aba
           </a>
         </div>
-        <iframe src={dashboard.href} title={dashboard.name} className="w-full flex-1" />
+        <iframe src={href} title={title} className="w-full flex-1" />
       </div>
+      <p className="mt-2 text-xs text-ink-soft">
+        Se o conteúdo não aparecer aqui, esta ferramenta pode bloquear a incorporação por
+        segurança própria — nesse caso, usa "Abrir numa aba".
+      </p>
     </div>
   )
 }
