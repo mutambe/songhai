@@ -45,11 +45,14 @@ Quando quiseres reativar o 2FA, é mexer em `app/api/auth/login/route.ts` e
 
 ## 2. Construir e publicar as imagens
 
-Docker Swarm **não constrói imagens no deploy** — têm de existir antes.
+Importante: **o Portainer/Swarm não constrói as imagens a partir do
+Dockerfile quando publicas a stack** — a imagem já tem de existir (localmente
+no nó, ou num registo) antes de fazeres deploy/update da stack. Isto aplica-se
+mesmo publicando a stack via "Git Repository" no Portainer.
 
-### Opção A — construir diretamente na VPS (mais simples para começar)
+### Opção A — construir por SSH na VPS (mais simples para começar, um nó só)
 
-Numa VPS de um nó só, não precisas de nenhum registo — a imagem só precisa
+Numa VPS de um nó só não precisas de nenhum registo — a imagem só precisa
 de existir localmente nesse nó:
 
 ```bash
@@ -63,33 +66,34 @@ docker build -t songhai-portal:latest ./apps/portal
 Depois de teres o repositório no GitHub, cria um workflow que corre
 `docker build` + `docker push` para `ghcr.io/<o-teu-user>/songhai-site` e
 `.../songhai-portal` a cada push em `main`. Nesse caso, muda `SITE_IMAGE` e
-`PORTAL_IMAGE` no `.env` da VPS para apontarem para essas imagens, e troca
-`docker build` por `docker pull` antes do deploy.
+`PORTAL_IMAGE` para essas imagens (ver passo 3) — o Portainer só precisa de
+fazer *pull*, não *build*.
 
-## 3. Configurar as variáveis de ambiente na VPS
+## 3. Publicar a stack no Portainer
 
-```bash
-cd /caminho/para/o/monorepo
-cp .env.example .env
-nano .env   # preenche os valores reais (segredos, domínios, SMTP)
-```
+1. **Stacks → Add stack**
+2. Nome da stack: `songhai` (ou o que preferires)
+3. Método de publicação:
+   - **Git Repository** (recomendado, já que vais ter isto no GitHub) —
+     cola o URL do repositório, o branch (`main`), e o caminho
+     `docker-stack.yml` na raiz. Podes ativar "GitOps updates" para o
+     Portainer voltar a publicar sozinho quando fizeres push ao
+     `docker-stack.yml` — mas isto **não reconstrói as imagens**, só relê
+     o ficheiro da stack (ver passo 6).
+   - ou **Web editor** — cola diretamente o conteúdo de `docker-stack.yml`.
+4. Em **Environment variables**, adiciona cada variável do `.env.example`
+   (raiz do monorepo) com o valor real — `SITE_IMAGE`, `PORTAL_IMAGE`,
+   `SITE_PUBLIC_URL`, `PORTAL_PUBLIC_URL`, `WHATSAPP_PHONE`, `AUTH_SECRET`,
+   `BLOG_ADMIN_SECRET`, `SSO_SHARED_SECRET`, `SMTP_*`, `MAIL_FROM`,
+   `CONTACT_NOTIFY_EMAIL`. O Portainer tem um botão para colar tudo de
+   uma vez no formato `.env` — usa isso e cola o `.env.example` já
+   preenchido.
+5. **Deploy the stack**
 
-O ficheiro `.env` **nunca** deve ir para o git (já está no `.gitignore`).
+Confirma em **Stacks → songhai** que os dois serviços (`songhai_site`,
+`songhai_portal`) ficam com réplicas a correr (verde).
 
-Se preferires gerir isto pelo Portainer em vez de um ficheiro `.env` na
-VPS: ao publicar a stack, cola o conteúdo do `.env.example` (preenchido)
-no campo "Environment variables" do Portainer — funciona da mesma forma.
-
-## 4. Publicar a stack
-
-```bash
-docker stack deploy -c docker-stack.yml songhai
-```
-
-Confirma no Portainer (ou `docker service ls`) que os dois serviços
-(`songhai_site`, `songhai_portal`) ficam com réplicas a correr.
-
-## 5. Primeira verificação
+## 4. Primeira verificação
 
 - `https://songhai.cc` — site principal deve carregar, com certificado válido
 - `https://songhai.cc/contacto` — testa o formulário; confirma que chega o
@@ -99,7 +103,7 @@ Confirma no Portainer (ou `docker service ls`) que os dois serviços
 - No Portal, cria o primeiro utilizador admin e usa o cartão **Blog** no hub
   para confirmar que o SSO para `/admin/blog` funciona
 
-## 6. Dados persistentes
+## 5. Dados persistentes
 
 Os volumes nomeados (`site_data`, `portal_data`,
 `portal_public_dashboards`, `portal_public_previews`) guardam:
@@ -112,12 +116,26 @@ Os volumes nomeados (`site_data`, `portal_data`,
 Fazer cópia de segurança destes volumes regularmente (ex.:
 `docker run --rm -v portal_data:/data -v $(pwd):/backup alpine tar czf /backup/portal_data.tar.gz /data`).
 
-## 7. Atualizar depois de mudanças no código
+## 6. Atualizar depois de mudanças no código
 
+O Swarm só substitui um serviço quando a *imagem* muda — voltar a publicar a
+mesma stack com a mesma tag (`:latest`) não é suficiente por si só.
+
+**Por SSH na VPS:**
 ```bash
 git pull
 docker build -t songhai-site:latest ./apps/site      # se mudou o site
 docker build -t songhai-portal:latest ./apps/portal  # se mudou o portal
-docker service update --force songhai_site
+docker service update --force songhai_site      # força o redeploy com a nova imagem
 docker service update --force songhai_portal
 ```
+
+**Pelo Portainer:** depois de reconstruíres a imagem (passo acima, ou via
+CI/CD), vai a **Services**, escolhe `songhai_site` ou `songhai_portal`, e
+usa **Update → Force update** para o forçar a puxar a imagem nova com a
+mesma tag.
+
+Dica: se usares tags únicas por build (ex. o SHA do commit, via GitHub
+Actions) em vez de sempre `:latest`, o Portainer/Swarm deteta a mudança de
+imagem sozinho ao publicares a stack de novo — não precisas do "force
+update" manual.
