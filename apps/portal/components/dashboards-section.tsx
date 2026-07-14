@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { BarChart3, Code2, ExternalLink, ImagePlus, Pencil, Plus, Trash2 } from 'lucide-react'
+import Link from 'next/link'
+import { BarChart3, Code2, Eye, ImagePlus, Pencil, Plus, Trash2 } from 'lucide-react'
 import { Modal } from '@/components/modal'
 import type { Dashboard, DashboardType } from '@/lib/systems-store'
 
@@ -175,7 +176,7 @@ export function DashboardsSection({
                 key={dashboard.id}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-paper shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_20px_60px_-15px_rgba(0,0,0,0.6)] transition-all hover:border-mint/40 hover:shadow-xl hover:shadow-black/20"
               >
-                <a href={dashboard.href} target="_blank" rel="noopener noreferrer" className="flex flex-1 flex-col">
+                <Link href={`/portal/dashboards/${dashboard.id}`} className="flex flex-1 flex-col">
                   {dashboard.previewImage ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -189,7 +190,7 @@ export function DashboardsSection({
                       <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-mint/10 text-mint">
                         <Icon className="h-5 w-5" />
                       </span>
-                      <ExternalLink className="h-4 w-4 text-line transition-colors group-hover:text-mint" />
+                      <Eye className="h-4 w-4 text-line transition-colors group-hover:text-mint" />
                     </div>
                     <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
                       {dashboard.name}
@@ -201,7 +202,7 @@ export function DashboardsSection({
                       {dashboard.type === 'powerbi' ? 'PowerBI' : 'HTML'}
                     </span>
                   </div>
-                </a>
+                </Link>
                 <div className="flex items-center gap-2 border-t border-line px-6 pb-6 pt-4">
                   <button
                     type="button"

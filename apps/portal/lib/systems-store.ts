@@ -145,6 +145,11 @@ export async function listDashboards() {
   return data.dashboards
 }
 
+export async function getDashboardById(id: string) {
+  const data = await readStore()
+  return data.dashboards.find((d) => d.id === id) ?? null
+}
+
 export async function addDashboard(input: {
   name: string
   description: string
