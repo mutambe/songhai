@@ -47,27 +47,28 @@ Quando quiseres reativar o 2FA, é mexer em `app/api/auth/login/route.ts` e
 
 Importante: **o Portainer/Swarm não constrói as imagens a partir do
 Dockerfile quando publicas a stack** — a imagem já tem de existir (localmente
-no nó, ou num registo) antes de fazeres deploy/update da stack. Isto aplica-se
-mesmo publicando a stack via "Git Repository" no Portainer.
+no nó, ou num registo) antes de fazeres deploy/update da stack.
 
-### Opção A — construir por SSH na VPS (mais simples para começar, um nó só)
+**O cluster tem mais do que um nó** (confirmado — vmi2968866, vmi2974672),
+por isso construir só por SSH num nó não chega: o Swarm pode agendar o
+serviço noutro nó que não tem a imagem, e a tarefa fica "rejected". Por
+isso este repositório já vem com **GitHub Actions + GitHub Container
+Registry (GHCR)** configurado (`.github/workflows/docker-build.yml`):
+a cada push em `main` que mude `apps/site` ou `apps/portal`, as imagens são
+construídas e publicadas automaticamente em
+`ghcr.io/mutambe/songhai-site` e `ghcr.io/mutambe/songhai-portal` — **qualquer
+nó do Swarm consegue fazer pull sozinho**, sem build manual.
 
-Numa VPS de um nó só não precisas de nenhum registo — a imagem só precisa
-de existir localmente nesse nó:
-
-```bash
-# Na VPS, dentro da pasta do monorepo (depois de git clone / git pull)
-docker build -t songhai-site:latest ./apps/site
-docker build -t songhai-portal:latest ./apps/portal
-```
-
-### Opção B — GitHub Actions + GitHub Container Registry (quando quiseres CI/CD)
-
-Depois de teres o repositório no GitHub, cria um workflow que corre
-`docker build` + `docker push` para `ghcr.io/<o-teu-user>/songhai-site` e
-`.../songhai-portal` a cada push em `main`. Nesse caso, muda `SITE_IMAGE` e
-`PORTAL_IMAGE` para essas imagens (ver passo 3) — o Portainer só precisa de
-fazer *pull*, não *build*.
+Depois do primeiro push com este workflow:
+1. Confirma em **github.com/mutambe/songhai → Actions** que o workflow
+   correu com sucesso
+2. Vai a **github.com/mutambe → Packages**, abre `songhai-site` e
+   `songhai-portal`, e em **Package settings → Change visibility** torna-os
+   **públicos** (assim os nós do Swarm fazem *pull* sem precisar de
+   autenticação nenhuma; se preferires manter privados, cada nó tem de
+   fazer `docker login ghcr.io` com um token com permissão `read:packages`)
+3. `SITE_IMAGE`/`PORTAL_IMAGE` já apontam para o GHCR no `.env.example` —
+   usa esses valores nas variáveis de ambiente da stack (passo 3)
 
 ## 3. Publicar a stack no Portainer
 
@@ -118,24 +119,24 @@ Fazer cópia de segurança destes volumes regularmente (ex.:
 
 ## 6. Atualizar depois de mudanças no código
 
-O Swarm só substitui um serviço quando a *imagem* muda — voltar a publicar a
-mesma stack com a mesma tag (`:latest`) não é suficiente por si só.
+Com o GitHub Actions configurado, um `git push` para `main` já reconstrói e
+publica as imagens novas no GHCR sozinho (vê em **Actions** no GitHub se
+correu). O Swarm, no entanto, só substitui um serviço quando a *imagem*
+muda — publicar a stack de novo com a mesma tag `:latest` não força
+automaticamente o *pull* da versão nova.
 
-**Por SSH na VPS:**
+**Pelo Portainer** (mais simples, já que usas a tag `:latest`): vai a
+**Services**, escolhe `songhai_site` ou `songhai_portal`, e usa
+**Update → Force update** — isto faz o nó puxar a imagem `:latest` mais
+recente do GHCR.
+
+**Por SSH na VPS** (alternativa):
 ```bash
-git pull
-docker build -t songhai-site:latest ./apps/site      # se mudou o site
-docker build -t songhai-portal:latest ./apps/portal  # se mudou o portal
-docker service update --force songhai_site      # força o redeploy com a nova imagem
-docker service update --force songhai_portal
+docker service update --force --image ghcr.io/mutambe/songhai-site:latest songhai_site
+docker service update --force --image ghcr.io/mutambe/songhai-portal:latest songhai_portal
 ```
 
-**Pelo Portainer:** depois de reconstruíres a imagem (passo acima, ou via
-CI/CD), vai a **Services**, escolhe `songhai_site` ou `songhai_portal`, e
-usa **Update → Force update** para o forçar a puxar a imagem nova com a
-mesma tag.
-
-Dica: se usares tags únicas por build (ex. o SHA do commit, via GitHub
-Actions) em vez de sempre `:latest`, o Portainer/Swarm deteta a mudança de
-imagem sozinho ao publicares a stack de novo — não precisas do "force
-update" manual.
+Dica: cada build no GHCR também fica com uma tag única (o SHA do commit) —
+se preferires um controlo mais preciso do que está em produção, usa essa
+tag em vez de `:latest` no `SITE_IMAGE`/`PORTAL_IMAGE` da stack; nesse caso
+o Swarm deteta a mudança de imagem sozinho, sem precisar de "force update".
