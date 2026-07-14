@@ -3,9 +3,10 @@ import { ContactForm } from '@/components/contact-form'
 import { Reveal } from '@/components/motion/reveal'
 
 export const metadata: Metadata = {
-  title: 'Contactar SONGHAI | Agência de IA em Moçambique',
+  title: 'Contactar — Agência de IA em Maputo',
   description:
-    'Entre em contacto connosco para um diagnóstico gratuito de automação de IA. Resposta garantida em 24 horas.',
+    'Entre em contacto com a SONGHAI, agência de IA e automação em Maputo, Moçambique, para um diagnóstico gratuito. Resposta garantida em 24 horas.',
+  alternates: { canonical: '/contacto' },
 }
 
 export default function ContactPage() {

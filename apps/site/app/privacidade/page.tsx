@@ -3,8 +3,9 @@ import Link from 'next/link'
 import { Reveal } from '@/components/motion/reveal'
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidade | SONGHAI',
+  title: 'Política de Privacidade',
   description: 'Política de privacidade e proteção de dados da SONGHAI',
+  alternates: { canonical: '/privacidade' },
 }
 
 export default function PrivacyPage() {

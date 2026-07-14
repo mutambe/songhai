@@ -6,9 +6,10 @@ import { Newsletter } from '@/components/blog/newsletter'
 import { listPosts } from '@/lib/blog-store'
 
 export const metadata: Metadata = {
-  title: 'Blog — SONGHAI | IA e Automação em Moçambique',
+  title: 'Blog — IA e Automação em Maputo, Moçambique',
   description:
-    'Artigos práticos sobre agentes de IA, automação de processos e casos de uso reais em Moçambique.',
+    'Artigos práticos sobre agentes de IA, automação de processos e casos de uso reais de empresas em Maputo e em Moçambique.',
+  alternates: { canonical: '/blog' },
 }
 
 export const dynamic = 'force-dynamic'
