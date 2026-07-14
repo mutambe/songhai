@@ -13,6 +13,13 @@ if (process.env.NODE_ENV !== 'production') {
   globalForDb.portalDb = db
 }
 
+// TEM de ser a primeira pragma. "next build" avalia módulos em vários
+// workers/processos em paralelo, cada um com a sua própria ligação a este
+// mesmo ficheiro — incluindo a chamada seguinte (journal_mode = WAL), que
+// já precisa de um lock exclusivo momentâneo. Sem isto definido primeiro,
+// um worker que encontre a base de dados bloqueada por outro falha logo
+// com SQLITE_BUSY em vez de esperar a sua vez.
+db.pragma('busy_timeout = 5000')
 db.pragma('journal_mode = WAL')
 
 db.exec(`
@@ -35,8 +42,18 @@ db.exec(`
 
 function ensureColumn(table: string, column: string, definition: string) {
   const columns = db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[]
-  if (!columns.some((c) => c.name === column)) {
+  if (columns.some((c) => c.name === column)) return
+
+  try {
     db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`)
+  } catch (err) {
+    // Next.js "next build" avalia várias rotas em paralelo (vários workers),
+    // e cada uma importa este módulo — numa base de dados nova, dois workers
+    // podem tentar adicionar a mesma coluna ao mesmo tempo. Ignorar apenas
+    // este erro específico é seguro: o resultado final é o mesmo.
+    if (!(err instanceof Error) || !/duplicate column name/i.test(err.message)) {
+      throw err
+    }
   }
 }
 
