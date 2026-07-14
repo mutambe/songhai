@@ -1,12 +1,11 @@
 version: "3.9"
 
 # Stack Docker Swarm para o site principal e o Portal interno da Songhai,
-# atrás de um Traefik já existente na VPS.
+# atrás do Traefik já existente na VPS (rede "traefik_public", resolver
+# "letsencrypt" — confirmado a partir do stack.yml real do Traefik).
 #
 # AJUSTA antes do primeiro deploy:
-#   - o nome da rede externa do Traefik (traefik-public, abaixo)
-#   - o nome do resolver de certificados TLS (letsencrypt, abaixo)
-#   - os domínios (Host(`...`)) para os teus reais
+#   - os domínios (Host(`...`)) para os teus reais, se mudarem
 #   - as imagens (site/portal) para onde as construíres/publicares
 #
 # Variáveis de ambiente (${...}) vêm de um ficheiro .env ao lado deste
@@ -14,7 +13,7 @@ version: "3.9"
 # Portainer ao publicar a stack. Ver .env.example em cada app.
 
 networks:
-  traefik-public:
+  traefik_public:
     external: true
 
 volumes:
@@ -27,7 +26,7 @@ services:
   site:
     image: ${SITE_IMAGE:-songhai-site:latest}
     networks:
-      - traefik-public
+      - traefik_public
     volumes:
       - site_data:/app/data
     environment:
@@ -48,7 +47,7 @@ services:
         condition: on-failure
       labels:
         - traefik.enable=true
-        - traefik.docker.network=traefik-public
+        - traefik.docker.network=traefik_public
         - traefik.http.routers.songhai-site.rule=Host(`songhai.cc`) || Host(`www.songhai.cc`)
         - traefik.http.routers.songhai-site.entrypoints=websecure
         - traefik.http.routers.songhai-site.tls.certresolver=letsencrypt
@@ -57,7 +56,7 @@ services:
   portal:
     image: ${PORTAL_IMAGE:-songhai-portal:latest}
     networks:
-      - traefik-public
+      - traefik_public
     volumes:
       - portal_data:/app/data
       - portal_public_dashboards:/app/public/dashboards
@@ -79,7 +78,7 @@ services:
         condition: on-failure
       labels:
         - traefik.enable=true
-        - traefik.docker.network=traefik-public
+        - traefik.docker.network=traefik_public
         - traefik.http.routers.songhai-portal.rule=Host(`portal.songhai.cc`)
         - traefik.http.routers.songhai-portal.entrypoints=websecure
         - traefik.http.routers.songhai-portal.tls.certresolver=letsencrypt

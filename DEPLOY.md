@@ -16,15 +16,15 @@ Aponta estes registos para o IP da VPS:
 - `portal.songhai.cc` → Portal interno (ou o subdomínio que preferires — muda
   também em `docker-stack.yml`)
 
-### Rede do Traefik
-Confirma o nome da rede overlay que o teu Traefik já usa (normalmente
-`traefik-public` ou `proxy`). Se for diferente, ajusta em `docker-stack.yml`
-(`networks:` no topo e a label `traefik.docker.network` em cada serviço).
+### Rede do Traefik e certificados TLS
+Já confirmado a partir do stack.yml real do Traefik — `docker-stack.yml`
+usa a rede `traefik_public` (externa) e o resolver `letsencrypt`. Não
+precisas de mexer nisto, a menos que mudes a configuração do Traefik.
 
-### Resolver de certificados TLS
-Confirma o nome do `certresolver` já configurado no teu Traefik (ex.:
-`letsencrypt`). Ajusta as labels `traefik.http.routers.*.tls.certresolver`
-em `docker-stack.yml` se for diferente.
+Nota: o teu Traefik já redireciona todo o tráfego de HTTP (porta 80) para
+HTTPS automaticamente (`entryPoints.web.http.redirections`) — por isso os
+serviços abaixo só definem routers em `websecure`, não precisam de um
+router extra para o redirecionamento.
 
 ### Segredos
 Gera valores **novos** para produção (nunca reaproveitar os de desenvolvimento):
