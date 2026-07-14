@@ -1,0 +1,86 @@
+version: "3.9"
+
+# Stack Docker Swarm para o site principal e o Portal interno da Songhai,
+# atrás de um Traefik já existente na VPS.
+#
+# AJUSTA antes do primeiro deploy:
+#   - o nome da rede externa do Traefik (traefik-public, abaixo)
+#   - o nome do resolver de certificados TLS (letsencrypt, abaixo)
+#   - os domínios (Host(`...`)) para os teus reais
+#   - as imagens (site/portal) para onde as construíres/publicares
+#
+# Variáveis de ambiente (${...}) vêm de um ficheiro .env ao lado deste
+# stack.yml (nunca comitado) ou das variáveis de ambiente definidas no
+# Portainer ao publicar a stack. Ver .env.example em cada app.
+
+networks:
+  traefik-public:
+    external: true
+
+volumes:
+  site_data:
+  portal_data:
+  portal_public_dashboards:
+  portal_public_previews:
+
+services:
+  site:
+    image: ${SITE_IMAGE:-songhai-site:latest}
+    networks:
+      - traefik-public
+    volumes:
+      - site_data:/app/data
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_PORTAL_URL: ${PORTAL_PUBLIC_URL}
+      NEXT_PUBLIC_WHATSAPP_PHONE: ${WHATSAPP_PHONE:-258848986002}
+      BLOG_ADMIN_SECRET: ${BLOG_ADMIN_SECRET}
+      SSO_SHARED_SECRET: ${SSO_SHARED_SECRET}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      MAIL_FROM: ${MAIL_FROM}
+      CONTACT_NOTIFY_EMAIL: ${CONTACT_NOTIFY_EMAIL}
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.http.routers.songhai-site.rule=Host(`songhai.cc`) || Host(`www.songhai.cc`)
+        - traefik.http.routers.songhai-site.entrypoints=websecure
+        - traefik.http.routers.songhai-site.tls.certresolver=letsencrypt
+        - traefik.http.services.songhai-site.loadbalancer.server.port=3000
+
+  portal:
+    image: ${PORTAL_IMAGE:-songhai-portal:latest}
+    networks:
+      - traefik-public
+    volumes:
+      - portal_data:/app/data
+      - portal_public_dashboards:/app/public/dashboards
+      - portal_public_previews:/app/public/previews
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_SITE_ORIGIN: ${SITE_PUBLIC_URL}
+      NEXT_PUBLIC_MAIN_SITE_URL: ${SITE_PUBLIC_URL}
+      AUTH_SECRET: ${AUTH_SECRET}
+      SSO_SHARED_SECRET: ${SSO_SHARED_SECRET}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      MAIL_FROM: ${MAIL_FROM}
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.http.routers.songhai-portal.rule=Host(`portal.songhai.cc`)
+        - traefik.http.routers.songhai-portal.entrypoints=websecure
+        - traefik.http.routers.songhai-portal.tls.certresolver=letsencrypt
+        - traefik.http.services.songhai-portal.loadbalancer.server.port=3000

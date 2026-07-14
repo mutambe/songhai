@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+build/
+
+# env — nunca comitar segredos
+.env
+.env.local
+.env*.local
+
+# dados de runtime (SQLite, uploads, dados pessoais)
+apps/portal/data/*.db
+apps/portal/data/*.db-journal
+apps/portal/data/*.db-wal
+apps/portal/data/*.db-shm
+apps/portal/data/*.json
+apps/portal/public/dashboards/*
+apps/portal/public/previews/*
+!apps/portal/public/dashboards/.gitkeep
+!apps/portal/public/previews/.gitkeep
+apps/site/data/subscribers.json
+
+# misc
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Claude Code — config local da máquina, não partilhar
+.claude/settings.local.json
+
+# Histórico de permissões de sessão do Claude Code — pode conter segredos de teste
+.claude/
