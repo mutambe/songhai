@@ -40,3 +40,10 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/songhai-${{ matrix.app }}:latest
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/songhai-${{ matrix.app }}:${{ github.sha }}
+          # Só o site usa NEXT_PUBLIC_* em componentes de cliente — o Portal
+          # ignora estes build-args (não tem ARG correspondente no seu
+          # Dockerfile). São valores públicos (URLs, número de WhatsApp),
+          # não segredos.
+          build-args: |
+            NEXT_PUBLIC_PORTAL_URL=https://portal.songhai.cc
+            NEXT_PUBLIC_WHATSAPP_PHONE=258848986002
