@@ -51,16 +51,6 @@ export function ConnectedDiagram() {
         preserveAspectRatio="xMidYMid meet"
         aria-hidden="true"
       >
-        <defs>
-          <filter id="connected-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
         {/* concentric rings */}
         {[1, 2, 3, 4].map((i) => (
           <circle
@@ -86,13 +76,12 @@ export function ConnectedDiagram() {
               y1="500"
               x2={x}
               y2={y}
-              stroke="rgba(200,155,60,0.55)"
-              strokeWidth="2"
-              filter="url(#connected-glow)"
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: i * 0.08 }}
+              stroke="rgba(200,155,60,0.32)"
+              strokeWidth="1.25"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: i * 0.06, ease: 'easeOut' }}
             />
           )
         })}
