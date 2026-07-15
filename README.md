@@ -23,7 +23,13 @@ ver comentários em cada `.env.example`. `SSO_SHARED_SECRET` tem de ser
 
 Ver [DEPLOY.md](DEPLOY.md) — Docker Swarm + Traefik + Portainer.
 
-## Arquitetura
+## Documentação completa
+
+Ver [DOCUMENTATION.md](DOCUMENTATION.md) — arquitetura, funcionalidades de
+cada app, integração SSO, referência de variáveis de ambiente, decisões de
+segurança e limitações conhecidas.
+
+## Arquitetura (resumo)
 
 - `apps/site` gere o blog público via um ficheiro de dados
   (`apps/site/data/posts.json`) e um painel de administração protegido por
