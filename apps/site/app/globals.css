@@ -35,6 +35,8 @@
   --color-gold: var(--gold);
   --color-teal: var(--teal);
   --color-line: var(--line);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -57,22 +59,25 @@
   --teal: #0f5c4c;
   --line: #e7e0cf;
   --radius: 1rem;
+
+  /* Painel de contraste (rodapé, secção "problema", CTA final) —
+     propositadamente escuro em ambos os temas, não acompanha o toggle. */
+  --panel: #0d212c;
+  --panel-foreground: #fbf9f4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --sand: #0f1412;
-    --paper: #1a1f1d;
-    --paper-muted: #252b28;
-    --ink: #e8ebe8;
-    --ink-soft: #b0b8b3;
-    --indigo-deep: #d4e6f1;
-    --indigo: #a8d5ee;
-    --gold: #d4b066;
-    --teal: #5dd9c1;
-    --line: #2d3530;
-  }
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --sand: #0f1412;
+  --paper: #1a1f1d;
+  --paper-muted: #252b28;
+  --ink: #e8ebe8;
+  --ink-soft: #b0b8b3;
+  --indigo-deep: #d4e6f1;
+  --indigo: #a8d5ee;
+  --gold: #d4b066;
+  --teal: #5dd9c1;
+  --line: #2d3530;
 }
 
 @layer base {

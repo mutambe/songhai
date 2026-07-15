@@ -15,7 +15,7 @@ const TASKS = [
 
 export function Problem() {
   return (
-    <section id="problema" className="bg-primary text-primary-foreground">
+    <section id="problema" className="bg-panel text-panel-foreground">
       <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <Reveal>
           <p className="mb-4 text-sm font-medium uppercase tracking-wider text-gold">
@@ -31,18 +31,18 @@ export function Problem() {
           {TASKS.map((task) => (
             <RevealItem
               key={task}
-              className="flex items-center gap-4 rounded-2xl border border-primary-foreground/10 bg-primary-foreground/[0.04] px-5 py-4"
+              className="flex items-center gap-4 rounded-2xl border border-panel-foreground/10 bg-panel-foreground/[0.04] px-5 py-4"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/15">
                 <X className="h-4 w-4 text-gold" />
               </span>
-              <span className="text-primary-foreground/85">{task}</span>
+              <span className="text-panel-foreground/85">{task}</span>
             </RevealItem>
           ))}
         </RevealGroup>
 
         <Reveal delay={0.1}>
-          <p className="mt-12 max-w-2xl text-pretty font-serif text-xl italic leading-relaxed text-primary-foreground/80">
+          <p className="mt-12 max-w-2xl text-pretty font-serif text-xl italic leading-relaxed text-panel-foreground/80">
             Cada hora gasta em tarefas manuais é uma hora que não é dedicada a
             crescer o seu negócio.
           </p>

@@ -18,11 +18,11 @@ const COMPANY = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-panel text-panel-foreground">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-4 lg:px-8">
         <div className="space-y-4">
-          <Logo className="text-primary-foreground" />
-          <p className="max-w-xs text-sm leading-relaxed text-primary-foreground/70">
+          <Logo className="text-panel-foreground" />
+          <p className="max-w-xs text-sm leading-relaxed text-panel-foreground/70">
             Poupe tempo. Automatize processos. Cresça mais rápido.
           </p>
         </div>
@@ -31,12 +31,12 @@ export function SiteFooter() {
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
             Serviços
           </h3>
-          <ul className="space-y-3 text-sm text-primary-foreground/70">
+          <ul className="space-y-3 text-sm text-panel-foreground/70">
             {SERVICES.map((s) => (
               <li key={s}>
                 <Link
                   href="/#solucoes"
-                  className="transition-colors hover:text-primary-foreground"
+                  className="transition-colors hover:text-panel-foreground"
                 >
                   {s}
                 </Link>
@@ -49,12 +49,12 @@ export function SiteFooter() {
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
             Empresa
           </h3>
-          <ul className="space-y-3 text-sm text-primary-foreground/70">
+          <ul className="space-y-3 text-sm text-panel-foreground/70">
             {COMPANY.map((c) => (
               <li key={c.href}>
                 <Link
                   href={c.href}
-                  className="transition-colors hover:text-primary-foreground"
+                  className="transition-colors hover:text-panel-foreground"
                 >
                   {c.label}
                 </Link>
@@ -67,11 +67,11 @@ export function SiteFooter() {
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
             Legal
           </h3>
-          <ul className="space-y-3 text-sm text-primary-foreground/70">
+          <ul className="space-y-3 text-sm text-panel-foreground/70">
             <li>
               <Link
                 href="/contacto"
-                className="transition-colors hover:text-primary-foreground"
+                className="transition-colors hover:text-panel-foreground"
               >
                 Contactar
               </Link>
@@ -79,7 +79,7 @@ export function SiteFooter() {
             <li>
               <Link
                 href="/privacidade"
-                className="transition-colors hover:text-primary-foreground"
+                className="transition-colors hover:text-panel-foreground"
               >
                 Política de Privacidade
               </Link>
@@ -87,7 +87,7 @@ export function SiteFooter() {
             <li>
               <a
                 href="#"
-                className="transition-colors hover:text-primary-foreground"
+                className="transition-colors hover:text-panel-foreground"
               >
                 Termos de Serviço
               </a>
@@ -96,8 +96,8 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-sm text-primary-foreground/60 sm:flex-row lg:px-8">
+      <div className="border-t border-panel-foreground/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-sm text-panel-foreground/60 sm:flex-row lg:px-8">
           <p>© {new Date().getFullYear()} SONGHAI. Todos os direitos reservados.</p>
           <p>Desenvolvido pela Songhai</p>
         </div>

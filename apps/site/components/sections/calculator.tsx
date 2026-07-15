@@ -125,16 +125,16 @@ export function Calculator() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-between rounded-3xl bg-primary p-6 text-primary-foreground sm:p-8 lg:col-span-2">
+            <div className="flex flex-col justify-between rounded-3xl bg-panel p-6 text-panel-foreground sm:p-8 lg:col-span-2">
               <div className="space-y-6">
                 <div>
-                  <p className="text-sm text-primary-foreground/70">
+                  <p className="text-sm text-panel-foreground/70">
                     Horas recuperadas por mês
                   </p>
                   <AnimatedNumber value={hoursMonth} suffix="h" />
                 </div>
                 <div>
-                  <p className="text-sm text-primary-foreground/70">
+                  <p className="text-sm text-panel-foreground/70">
                     Valor estimado recuperado por mês
                   </p>
                   <AnimatedNumber value={valueMonth} suffix=" MZN" />
@@ -146,7 +146,7 @@ export function Calculator() {
                   Quero estes resultados — Agendar 30min grátis
                   <ArrowRight className="h-4 w-4" />
                 </PillButton>
-                <p className="mt-3 text-center text-xs text-primary-foreground/50">
+                <p className="mt-3 text-center text-xs text-panel-foreground/50">
                   Estimativa baseada em ~70% de tempo recuperável.
                 </p>
               </div>

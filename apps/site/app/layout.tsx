@@ -71,9 +71,14 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: '#f7f3ec',
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbf9f4' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f1412' },
+  ],
 }
+
+const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('songhai-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -112,6 +117,10 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable} bg-background`}
     >
       <head>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

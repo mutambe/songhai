@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { LogIn, Menu, X } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { PillButton } from '@/components/pill-button'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { cn } from '@/lib/utils'
 
 const NAV = [
@@ -53,6 +54,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-5 md:flex">
+          <ThemeToggle />
           <a
             href={PORTAL_URL}
             className="inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-foreground"
@@ -63,15 +65,18 @@ export function SiteHeader() {
           <PillButton href="/contacto">Falar connosco</PillButton>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-foreground md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-foreground"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {open && (

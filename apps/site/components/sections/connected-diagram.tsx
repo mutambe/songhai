@@ -34,14 +34,14 @@ const RADIUS = 340
 
 export function ConnectedDiagram() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-xl overflow-hidden rounded-[2rem] bg-[#0a0e13] p-6 sm:p-10">
+    <div className="relative mx-auto aspect-square w-full max-w-xl overflow-hidden rounded-[2rem] border border-line bg-paper-muted p-6 sm:p-10">
       {/* ambient glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(60% 60% at 50% 50%, rgba(200,155,60,0.18), transparent 70%)',
+            'radial-gradient(60% 60% at 50% 50%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 70%)',
         }}
       />
 
@@ -59,7 +59,8 @@ export function ConnectedDiagram() {
             cy="500"
             r={90 + i * 70}
             fill="none"
-            stroke="rgba(200,155,60,0.08)"
+            stroke="var(--ink-soft)"
+            strokeOpacity={0.15}
             strokeWidth="1"
           />
         ))}
@@ -76,8 +77,9 @@ export function ConnectedDiagram() {
               y1="500"
               x2={x}
               y2={y}
-              stroke="rgba(200,155,60,0.32)"
-              strokeWidth="1.25"
+              stroke="var(--gold)"
+              strokeOpacity={0.6}
+              strokeWidth="1.5"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -102,7 +104,8 @@ export function ConnectedDiagram() {
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="rgba(93,217,193,0.2)"
+              stroke="var(--teal)"
+              strokeOpacity={0.25}
               strokeWidth="1"
               strokeDasharray="4 6"
             />
@@ -118,7 +121,7 @@ export function ConnectedDiagram() {
             <motion.circle
               key={`pulse-${node.label}`}
               r={6}
-              fill="#5dd9c1"
+              fill="var(--teal)"
               initial={{ cx: x, cy: y, opacity: 0 }}
               animate={{ cx: [x, 500], cy: [y, 500], opacity: [0, 1, 0] }}
               transition={{
@@ -145,8 +148,8 @@ export function ConnectedDiagram() {
               cx={x}
               cy={y}
               r={size}
-              fill="rgba(200,155,60,0.5)"
-              opacity={0.3 + (i % 5) * 0.1}
+              fill="var(--ink-soft)"
+              opacity={0.2 + (i % 5) * 0.05}
             />
           )
         })}
@@ -173,13 +176,16 @@ export function ConnectedDiagram() {
               <motion.div
                 animate={{ scale: [1, 1.08, 1] }}
                 transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.1 }}
-                className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 bg-[#111820] sm:h-16 sm:w-16"
-                style={{ boxShadow: '0 0 18px rgba(200,155,60,0.35)' }}
+                className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 bg-panel sm:h-16 sm:w-16"
+                style={{
+                  boxShadow:
+                    '0 0 18px color-mix(in srgb, var(--gold) 35%, transparent)',
+                }}
               >
                 <Icon className="h-5 w-5 text-gold sm:h-6 sm:w-6" />
               </motion.div>
             </div>
-            <span className="text-[11px] font-medium text-white/80 sm:text-xs">
+            <span className="text-[11px] font-medium text-foreground/80 sm:text-xs">
               {node.label}
             </span>
           </motion.div>
@@ -189,8 +195,11 @@ export function ConnectedDiagram() {
       {/* center logo */}
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
         <div
-          className="relative flex h-24 w-24 items-center justify-center rounded-full bg-white ring-2 ring-[rgba(200,155,60,0.85)] sm:h-28 sm:w-28"
-          style={{ boxShadow: '0 0 40px rgba(200,155,60,0.45)' }}
+          className="relative flex h-24 w-24 items-center justify-center rounded-full bg-white ring-2 ring-gold/85 sm:h-28 sm:w-28"
+          style={{
+            boxShadow:
+              '0 0 40px color-mix(in srgb, var(--gold) 45%, transparent)',
+          }}
         >
           <Image
             src="/songhai-logo.png"
