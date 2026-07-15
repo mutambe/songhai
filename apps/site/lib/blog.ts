@@ -4,21 +4,27 @@ export type BlogCategory =
   | 'Casos de uso'
   | 'Guias'
 
+export type BlogStatus = 'draft' | 'published'
+
 export type BlogPost = {
   slug: string
   title: string
   excerpt: string
   category: BlogCategory
-  date: string
+  tags: string[]
+  status: BlogStatus
+  /** Data/hora ISO. Um post "published" com publishedAt no futuro fica agendado. */
+  publishedAt: string
   readingTime: string
   author: string
   gradient: string
+  coverImage?: string
   featured?: boolean
   updatedBy?: string
   updatedAt?: string
   content: {
     lead: string
-    sections: { heading: string; paragraphs: string[] }[]
+    sections: { heading: string; body: string }[]
     quote?: string
     callout?: { title: string; body: string }
   }
@@ -46,4 +52,8 @@ export function formatDate(date: string) {
     month: 'long',
     year: 'numeric',
   })
+}
+
+export function isPubliclyVisible(post: Pick<BlogPost, 'status' | 'publishedAt'>) {
+  return post.status === 'published' && new Date(post.publishedAt).getTime() <= Date.now()
 }

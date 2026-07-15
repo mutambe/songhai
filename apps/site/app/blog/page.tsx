@@ -3,7 +3,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { BlogList } from '@/components/blog/blog-list'
 import { Newsletter } from '@/components/blog/newsletter'
-import { listPosts } from '@/lib/blog-store'
+import { listPublishedPosts } from '@/lib/blog-store'
 
 export const metadata: Metadata = {
   title: 'Blog — IA e Automação em Maputo, Moçambique',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic'
 
 export default async function BlogPage() {
-  const posts = await listPosts()
+  const posts = await listPublishedPosts()
 
   return (
     <>

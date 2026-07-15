@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { Pencil, Plus, Star, Trash2, X } from 'lucide-react'
-import { CATEGORIES, formatDate, slugify, type BlogCategory, type BlogPost } from '@/lib/blog'
+import { CATEGORIES, formatDate, slugify, type BlogCategory, type BlogPost, type BlogStatus } from '@/lib/blog'
+import { RichTextEditor } from '@/components/admin/rich-text-editor'
 
 const GRADIENT_PRESETS = [
   { label: 'Navy → Teal', value: 'from-[#122733] via-[#1b3a4b] to-[#2f6e62]' },
@@ -12,17 +13,20 @@ const GRADIENT_PRESETS = [
   { label: 'Teal → Dourado', value: 'from-[#2f6e62] via-[#c89b3c] to-[#1b3a4b]' },
 ]
 
-type SectionDraft = { heading: string; paragraphsText: string }
+type SectionDraft = { heading: string; body: string }
 
 type Draft = {
   slug: string
   title: string
   excerpt: string
   category: BlogCategory
-  date: string
+  tags: string
+  status: BlogStatus
+  publishedAt: string
   readingTime: string
   author: string
   gradient: string
+  coverImage: string
   featured: boolean
   lead: string
   sections: SectionDraft[]
@@ -31,19 +35,32 @@ type Draft = {
   calloutBody: string
 }
 
+function toDatetimeLocal(iso: string): string {
+  const d = new Date(iso)
+  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
+  return local.toISOString().slice(0, 16)
+}
+
+function fromDatetimeLocal(value: string): string {
+  return new Date(value).toISOString()
+}
+
 function emptyDraft(): Draft {
   return {
     slug: '',
     title: '',
     excerpt: '',
     category: CATEGORIES[0],
-    date: new Date().toISOString().slice(0, 10),
+    tags: '',
+    status: 'draft',
+    publishedAt: toDatetimeLocal(new Date().toISOString()),
     readingTime: '5 min',
     author: 'Equipa Songhai',
     gradient: GRADIENT_PRESETS[0].value,
+    coverImage: '',
     featured: false,
     lead: '',
-    sections: [{ heading: '', paragraphsText: '' }],
+    sections: [{ heading: '', body: '' }],
     quote: '',
     calloutTitle: '',
     calloutBody: '',
@@ -56,16 +73,16 @@ function postToDraft(post: BlogPost): Draft {
     title: post.title,
     excerpt: post.excerpt,
     category: post.category,
-    date: post.date,
+    tags: (post.tags || []).join(', '),
+    status: post.status,
+    publishedAt: toDatetimeLocal(post.publishedAt),
     readingTime: post.readingTime,
     author: post.author,
     gradient: post.gradient,
+    coverImage: post.coverImage || '',
     featured: !!post.featured,
     lead: post.content.lead,
-    sections: post.content.sections.map((s) => ({
-      heading: s.heading,
-      paragraphsText: s.paragraphs.join('\n'),
-    })),
+    sections: post.content.sections.map((s) => ({ heading: s.heading, body: s.body })),
     quote: post.content.quote || '',
     calloutTitle: post.content.callout?.title || '',
     calloutBody: post.content.callout?.body || '',
@@ -77,22 +94,22 @@ function draftToPayload(draft: Draft) {
     title: draft.title.trim(),
     excerpt: draft.excerpt.trim(),
     category: draft.category,
-    date: draft.date,
+    tags: draft.tags
+      .split(',')
+      .map((t) => t.trim())
+      .filter(Boolean),
+    status: draft.status,
+    publishedAt: fromDatetimeLocal(draft.publishedAt),
     readingTime: draft.readingTime.trim(),
     author: draft.author.trim(),
     gradient: draft.gradient.trim(),
+    ...(draft.coverImage.trim() ? { coverImage: draft.coverImage.trim() } : {}),
     featured: draft.featured,
     content: {
       lead: draft.lead.trim(),
       sections: draft.sections
-        .filter((s) => s.heading.trim() || s.paragraphsText.trim())
-        .map((s) => ({
-          heading: s.heading.trim(),
-          paragraphs: s.paragraphsText
-            .split('\n')
-            .map((p) => p.trim())
-            .filter(Boolean),
-        })),
+        .filter((s) => s.heading.trim() || s.body.trim())
+        .map((s) => ({ heading: s.heading.trim(), body: s.body })),
       ...(draft.quote.trim() ? { quote: draft.quote.trim() } : {}),
       ...(draft.calloutTitle.trim() && draft.calloutBody.trim()
         ? { callout: { title: draft.calloutTitle.trim(), body: draft.calloutBody.trim() } }
@@ -208,46 +225,62 @@ export function BlogAdminPanel({ initialPosts }: { initialPosts: BlogPost[] }) {
       )}
 
       <div className="space-y-3">
-        {posts.map((post) => (
-          <div
-            key={post.slug}
-            className="flex flex-col gap-3 rounded-2xl border border-line bg-paper p-5 sm:flex-row sm:items-center sm:justify-between"
-          >
-            <div>
-              <div className="flex items-center gap-2">
-                <p className="font-serif text-lg font-semibold text-foreground">{post.title}</p>
-                {post.featured && <Star className="h-4 w-4 fill-gold text-gold" />}
-              </div>
-              <p className="mt-1 text-sm text-ink-soft">
-                {post.category} · {formatDate(post.date)} · /blog/{post.slug}
-              </p>
-              {post.updatedBy && (
-                <p className="mt-1 text-xs text-ink-soft">
-                  Última edição por {post.updatedBy}
-                  {post.updatedAt && ` em ${new Date(post.updatedAt).toLocaleString('pt-PT')}`}
+        {posts.map((post) => {
+          const scheduled = post.status === 'published' && new Date(post.publishedAt) > new Date()
+          return (
+            <div
+              key={post.slug}
+              className="flex flex-col gap-3 rounded-2xl border border-line bg-paper p-5 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <div className="flex items-center gap-2">
+                  <p className="font-serif text-lg font-semibold text-foreground">{post.title}</p>
+                  {post.featured && <Star className="h-4 w-4 fill-gold text-gold" />}
+                  {post.status === 'draft' && (
+                    <span className="rounded-full bg-paper-muted px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider text-ink-soft">
+                      Rascunho
+                    </span>
+                  )}
+                  {scheduled && (
+                    <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider text-gold">
+                      Agendado
+                    </span>
+                  )}
+                </div>
+                <p className="mt-1 text-sm text-ink-soft">
+                  {post.category} · {formatDate(post.publishedAt)} · /blog/{post.slug}
                 </p>
-              )}
+                {post.tags?.length > 0 && (
+                  <p className="mt-1 text-xs text-ink-soft">{post.tags.join(', ')}</p>
+                )}
+                {post.updatedBy && (
+                  <p className="mt-1 text-xs text-ink-soft">
+                    Última edição por {post.updatedBy}
+                    {post.updatedAt && ` em ${new Date(post.updatedAt).toLocaleString('pt-PT')}`}
+                  </p>
+                )}
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => startEdit(post)}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm text-ink-soft transition-colors hover:border-ink/30 hover:text-foreground"
+                >
+                  <Pencil className="h-3.5 w-3.5" />
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDelete(post)}
+                  className="inline-flex items-center justify-center rounded-full border border-line p-2 text-ink-soft transition-colors hover:border-red-400/40 hover:text-red-500"
+                  aria-label="Apagar"
+                >
+                  <Trash2 className="h-3.5 w-3.5" />
+                </button>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => startEdit(post)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm text-ink-soft transition-colors hover:border-ink/30 hover:text-foreground"
-              >
-                <Pencil className="h-3.5 w-3.5" />
-                Editar
-              </button>
-              <button
-                type="button"
-                onClick={() => handleDelete(post)}
-                className="inline-flex items-center justify-center rounded-full border border-line p-2 text-ink-soft transition-colors hover:border-red-400/40 hover:text-red-500"
-                aria-label="Apagar"
-              >
-                <Trash2 className="h-3.5 w-3.5" />
-              </button>
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
@@ -270,6 +303,8 @@ function BlogEditor({
   onCancel: () => void
   onSave: () => void
 }) {
+  const [uploadingCover, setUploadingCover] = useState(false)
+
   const update = <K extends keyof Draft>(key: K, value: Draft[K]) =>
     onChange({ ...draft, [key]: value })
 
@@ -278,14 +313,29 @@ function BlogEditor({
     update('sections', sections)
   }
 
-  const addSection = () =>
-    update('sections', [...draft.sections, { heading: '', paragraphsText: '' }])
+  const addSection = () => update('sections', [...draft.sections, { heading: '', body: '' }])
 
   const removeSection = (index: number) =>
     update(
       'sections',
       draft.sections.filter((_, i) => i !== index),
     )
+
+  const uploadCoverImage = async (file: File) => {
+    setUploadingCover(true)
+    try {
+      const formData = new FormData()
+      formData.set('image', file)
+      const res = await fetch('/api/admin/blog/upload-image', { method: 'POST', body: formData })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error || 'Não foi possível enviar a imagem.')
+      update('coverImage', json.url)
+    } catch (err) {
+      window.alert(err instanceof Error ? err.message : 'Não foi possível enviar a imagem.')
+    } finally {
+      setUploadingCover(false)
+    }
+  }
 
   return (
     <div className="rounded-3xl border border-line bg-paper p-6 sm:p-8">
@@ -350,15 +400,41 @@ function BlogEditor({
               ))}
             </select>
           </Field>
-          <Field label="Data">
+          <Field label="Tags (separadas por vírgula)">
             <input
-              type="date"
-              value={draft.date}
-              onChange={(e) => update('date', e.target.value)}
+              value={draft.tags}
+              onChange={(e) => update('tags', e.target.value)}
+              placeholder="IA, WhatsApp, Automação"
               className={inputClass}
             />
           </Field>
         </div>
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Field label="Estado">
+            <select
+              value={draft.status}
+              onChange={(e) => update('status', e.target.value as BlogStatus)}
+              className={inputClass}
+            >
+              <option value="draft">Rascunho</option>
+              <option value="published">Publicado</option>
+            </select>
+          </Field>
+          <Field label="Data de publicação">
+            <input
+              type="datetime-local"
+              value={draft.publishedAt}
+              onChange={(e) => update('publishedAt', e.target.value)}
+              className={inputClass}
+            />
+          </Field>
+        </div>
+        {draft.status === 'published' && new Date(fromDatetimeLocal(draft.publishedAt)) > new Date() && (
+          <p className="-mt-3 text-xs text-gold">
+            Data no futuro — o artigo fica agendado e só aparece no site nessa data/hora.
+          </p>
+        )}
 
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label="Tempo de leitura">
@@ -378,7 +454,40 @@ function BlogEditor({
           </Field>
         </div>
 
-        <Field label="Cor de capa">
+        <Field label="Imagem de capa (opcional — sem imagem, usa a cor abaixo)">
+          {draft.coverImage && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={draft.coverImage}
+              alt=""
+              className="mb-2 aspect-video w-full rounded-lg object-cover"
+            />
+          )}
+          <div className="flex items-center gap-2">
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              disabled={uploadingCover}
+              onChange={(e) => {
+                const file = e.target.files?.[0]
+                if (file) uploadCoverImage(file)
+                e.target.value = ''
+              }}
+              className="w-full rounded-lg border border-line bg-sand px-4 py-3 text-sm text-foreground outline-none file:mr-3 file:rounded-full file:border-0 file:bg-mint/15 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-mint transition-colors focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-teal"
+            />
+            {draft.coverImage && (
+              <button
+                type="button"
+                onClick={() => update('coverImage', '')}
+                className="shrink-0 text-xs text-ink-soft hover:text-red-500"
+              >
+                Remover
+              </button>
+            )}
+          </div>
+        </Field>
+
+        <Field label="Cor de capa (usada quando não há imagem)">
           <select
             value={draft.gradient}
             onChange={(e) => update('gradient', e.target.value)}
@@ -436,12 +545,9 @@ function BlogEditor({
                   placeholder="Título da secção"
                   className={`${inputClass} mb-2`}
                 />
-                <textarea
-                  value={section.paragraphsText}
-                  onChange={(e) => updateSection(i, { paragraphsText: e.target.value })}
-                  placeholder="Um parágrafo por linha"
-                  rows={4}
-                  className={inputClass}
+                <RichTextEditor
+                  value={section.body}
+                  onChange={(html) => updateSection(i, { body: html })}
                 />
               </div>
             ))}

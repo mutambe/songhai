@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Clock } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
+import { ArrowRight, Clock, X } from 'lucide-react'
 import { motion } from 'framer-motion'
 import {
   CATEGORIES,
@@ -15,7 +16,17 @@ import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 type Filter = 'Todos' | BlogCategory
 
 export function BlogList({ initialPosts }: { initialPosts: BlogPost[] }) {
+  return (
+    <Suspense>
+      <BlogListInner initialPosts={initialPosts} />
+    </Suspense>
+  )
+}
+
+function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
   const [filter, setFilter] = useState<Filter>('Todos')
+  const searchParams = useSearchParams()
+  const activeTag = searchParams.get('tag')
 
   if (initialPosts.length === 0) {
     return (
@@ -25,13 +36,43 @@ export function BlogList({ initialPosts }: { initialPosts: BlogPost[] }) {
     )
   }
 
-  const featured = initialPosts.find((p) => p.featured) ?? initialPosts[0]
-  const rest = initialPosts.filter((p) => p.slug !== featured.slug)
+  const byTag = activeTag
+    ? initialPosts.filter((p) => p.tags?.includes(activeTag))
+    : initialPosts
+
+  if (activeTag && byTag.length === 0) {
+    return (
+      <div className="mx-auto max-w-7xl px-5 pb-24 text-center lg:px-8">
+        <p className="text-ink-soft">Nenhum artigo com a tag "{activeTag}".</p>
+        <Link href="/blog" className="mt-3 inline-block text-sm text-teal hover:underline">
+          Ver todos os artigos
+        </Link>
+      </div>
+    )
+  }
+
+  const featured = byTag.find((p) => p.featured) ?? byTag[0]
+  const rest = byTag.filter((p) => p.slug !== featured.slug)
   const filtered =
     filter === 'Todos' ? rest : rest.filter((p) => p.category === filter)
 
   return (
     <div className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
+      {activeTag && (
+        <div className="mb-6 flex items-center gap-2 text-sm text-ink-soft">
+          <span>
+            A filtrar por tag: <span className="font-medium text-foreground">#{activeTag}</span>
+          </span>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs hover:border-ink/30 hover:text-foreground"
+          >
+            <X className="h-3 w-3" />
+            Limpar
+          </Link>
+        </div>
+      )}
+
       {/* Featured */}
       <Reveal>
         <Link
@@ -39,7 +80,8 @@ export function BlogList({ initialPosts }: { initialPosts: BlogPost[] }) {
           className="group grid overflow-hidden rounded-3xl border border-line bg-paper lg:grid-cols-2"
         >
           <div
-            className={`relative min-h-56 bg-gradient-to-br ${featured.gradient} p-8`}
+            className={`relative min-h-56 bg-gradient-to-br ${featured.gradient} bg-cover bg-center p-8`}
+            style={featured.coverImage ? { backgroundImage: `url(${featured.coverImage})` } : undefined}
           >
             <span className="inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
               {featured.category}
@@ -56,7 +98,7 @@ export function BlogList({ initialPosts }: { initialPosts: BlogPost[] }) {
               {featured.excerpt}
             </p>
             <div className="mt-5 flex items-center gap-4 text-sm text-ink-soft">
-              <span>{formatDate(featured.date)}</span>
+              <span>{formatDate(featured.publishedAt)}</span>
               <span className="inline-flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" />
                 {featured.readingTime}
@@ -102,7 +144,8 @@ export function BlogList({ initialPosts }: { initialPosts: BlogPost[] }) {
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-shadow hover:shadow-xl hover:shadow-ink/5"
               >
                 <div
-                  className={`relative h-40 bg-gradient-to-br ${post.gradient} p-5`}
+                  className={`relative h-40 bg-gradient-to-br ${post.gradient} bg-cover bg-center p-5`}
+                  style={post.coverImage ? { backgroundImage: `url(${post.coverImage})` } : undefined}
                 >
                   <span className="inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
                     {post.category}
@@ -116,7 +159,7 @@ export function BlogList({ initialPosts }: { initialPosts: BlogPost[] }) {
                     {post.excerpt}
                   </p>
                   <div className="mt-4 flex items-center gap-3 text-xs text-ink-soft">
-                    <span>{formatDate(post.date)}</span>
+                    <span>{formatDate(post.publishedAt)}</span>
                     <span className="inline-flex items-center gap-1">
                       <Clock className="h-3 w-3" />
                       {post.readingTime}

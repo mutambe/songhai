@@ -16,3 +16,7 @@ node_modules
 
 # Dados pessoais de visitantes (subscritores da newsletter) — nunca comitar.
 /data/subscribers.json
+
+# Imagens enviadas via upload no painel do blog — conteúdo de runtime, não
+# código-fonte; persistem no volume Docker, não precisam de estar no git.
+/data/blog-images/

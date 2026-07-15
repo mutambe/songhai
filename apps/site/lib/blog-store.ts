@@ -1,7 +1,7 @@
 import 'server-only'
 import { promises as fs } from 'fs'
 import path from 'path'
-import { slugify, type BlogPost } from '@/lib/blog'
+import { isPubliclyVisible, slugify, type BlogPost } from '@/lib/blog'
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'posts.json')
 
@@ -14,14 +14,29 @@ async function writeStore(posts: BlogPost[]) {
   await fs.writeFile(DATA_FILE, JSON.stringify(posts, null, 2), 'utf-8')
 }
 
+/** Todos os posts (admin) — inclui rascunhos e agendados. */
 export async function listPosts(): Promise<BlogPost[]> {
   const posts = await readStore()
-  return [...posts].sort((a, b) => (a.date < b.date ? 1 : -1))
+  return [...posts].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
 }
 
+/** Só posts realmente publicados (site público). */
+export async function listPublishedPosts(): Promise<BlogPost[]> {
+  const posts = await listPosts()
+  return posts.filter(isPubliclyVisible)
+}
+
+/** Post por slug (admin) — inclui rascunhos e agendados. */
 export async function getPost(slug: string): Promise<BlogPost | null> {
   const posts = await readStore()
   return posts.find((p) => p.slug === slug) ?? null
+}
+
+/** Post por slug, só se estiver publicamente visível (site público). */
+export async function getPublishedPost(slug: string): Promise<BlogPost | null> {
+  const post = await getPost(slug)
+  if (!post || !isPubliclyVisible(post)) return null
+  return post
 }
 
 export async function createPost(

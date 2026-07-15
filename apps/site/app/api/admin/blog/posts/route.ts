@@ -11,7 +11,9 @@ function validatePost(body: unknown): body is Omit<BlogPost, 'slug'> & { slug?: 
     p.title.trim().length > 0 &&
     typeof p.excerpt === 'string' &&
     typeof p.category === 'string' &&
-    typeof p.date === 'string' &&
+    Array.isArray(p.tags) &&
+    (p.status === 'draft' || p.status === 'published') &&
+    typeof p.publishedAt === 'string' &&
     typeof p.readingTime === 'string' &&
     typeof p.author === 'string' &&
     typeof p.gradient === 'string' &&

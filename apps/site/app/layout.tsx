@@ -41,6 +41,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'SONGHAI' }],
   alternates: {
     canonical: '/',
+    types: { 'application/rss+xml': '/feed.xml' },
   },
   robots: {
     index: true,

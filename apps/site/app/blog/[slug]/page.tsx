@@ -6,7 +6,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PillButton } from '@/components/pill-button'
 import { formatDate } from '@/lib/blog'
-import { getPost } from '@/lib/blog-store'
+import { getPublishedPost } from '@/lib/blog-store'
 
 export const dynamic = 'force-dynamic'
 
@@ -16,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = await getPublishedPost(slug)
   if (!post) return { title: 'Artigo não encontrado' }
   return {
     title: post.title,
@@ -26,7 +26,8 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       type: 'article',
-      publishedTime: post.date,
+      publishedTime: post.publishedAt,
+      images: post.coverImage ? [{ url: post.coverImage }] : undefined,
     },
   }
 }
@@ -37,7 +38,7 @@ export default async function ArticlePage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = await getPost(slug)
+  const post = await getPublishedPost(slug)
   if (!post) notFound()
 
   return (
@@ -63,7 +64,7 @@ export default async function ArticlePage({
             <div className="mt-5 flex items-center gap-4 text-sm text-ink-soft">
               <span>{post.author}</span>
               <span aria-hidden="true">·</span>
-              <span>{formatDate(post.date)}</span>
+              <span>{formatDate(post.publishedAt)}</span>
               <span className="inline-flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" />
                 {post.readingTime}
@@ -71,9 +72,16 @@ export default async function ArticlePage({
             </div>
           </div>
 
-          <div
-            className={`mt-8 h-52 rounded-3xl bg-gradient-to-br ${post.gradient}`}
-          />
+          {post.coverImage ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={post.coverImage}
+              alt=""
+              className="mt-8 h-52 w-full rounded-3xl object-cover sm:h-72"
+            />
+          ) : (
+            <div className={`mt-8 h-52 rounded-3xl bg-gradient-to-br ${post.gradient} sm:h-72`} />
+          )}
 
           <div className="mt-10">
             <p className="text-pretty font-serif text-xl leading-relaxed text-foreground">
@@ -85,14 +93,11 @@ export default async function ArticlePage({
                 <h2 className="font-serif text-2xl font-semibold text-foreground">
                   {section.heading}
                 </h2>
-                {section.paragraphs.map((p, i) => (
-                  <p
-                    key={i}
-                    className="mt-4 text-pretty font-serif text-lg leading-relaxed text-ink-soft"
-                  >
-                    {p}
-                  </p>
-                ))}
+                <div
+                  className="prose prose-lg mt-4 max-w-none font-serif leading-relaxed text-ink-soft prose-headings:font-serif prose-headings:text-foreground prose-a:text-teal prose-strong:text-foreground prose-img:rounded-2xl"
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{ __html: section.body }}
+                />
               </section>
             ))}
 
@@ -112,6 +117,20 @@ export default async function ArticlePage({
                 <p className="mt-2 leading-relaxed text-ink-soft">
                   {post.content.callout.body}
                 </p>
+              </div>
+            )}
+
+            {post.tags?.length > 0 && (
+              <div className="mt-10 flex flex-wrap gap-2 border-t border-line pt-6">
+                {post.tags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/blog?tag=${encodeURIComponent(tag)}`}
+                    className="rounded-full bg-paper-muted px-3 py-1 text-xs font-medium text-ink-soft transition-colors hover:text-teal"
+                  >
+                    #{tag}
+                  </Link>
+                ))}
               </div>
             )}
           </div>

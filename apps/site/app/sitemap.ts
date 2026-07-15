@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next'
-import { listPosts } from '@/lib/blog-store'
+import { listPublishedPosts } from '@/lib/blog-store'
 
 const SITE_URL = 'https://songhai.cc'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await listPosts()
+  const posts = await listPublishedPosts()
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: new Date(), priority: 1 },
@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const postPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedAt || post.date),
+    lastModified: new Date(post.updatedAt || post.publishedAt),
     priority: 0.6,
   }))
 
