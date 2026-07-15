@@ -29,6 +29,12 @@ Ver [DOCUMENTATION.md](DOCUMENTATION.md) — arquitetura, funcionalidades de
 cada app, integração SSO, referência de variáveis de ambiente, decisões de
 segurança e limitações conhecidas.
 
+## Guia de utilização
+
+Ver [docs/GUIA_DE_UTILIZACAO.md](docs/GUIA_DE_UTILIZACAO.md) — guia prático
+com imagens: como aceder ao site, ao Portal e ao painel do blog, e como usar
+cada funcionalidade.
+
 ## Arquitetura (resumo)
 
 - `apps/site` gere o blog público via um ficheiro de dados
