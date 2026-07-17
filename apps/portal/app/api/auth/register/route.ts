@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server'
-import { createUser, findUserByEmail } from '@/lib/auth-store'
-
-const ALLOWED_DOMAIN = '@songhai.cc'
+import { ALLOWED_EMAIL_DOMAIN, createUser, findUserByEmail } from '@/lib/auth-store'
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null)
@@ -13,9 +11,9 @@ export async function POST(request: Request) {
   if (!name || !email || !password) {
     return NextResponse.json({ error: 'Preencha todos os campos obrigatórios.' }, { status: 400 })
   }
-  if (!email.endsWith(ALLOWED_DOMAIN)) {
+  if (!email.endsWith(ALLOWED_EMAIL_DOMAIN)) {
     return NextResponse.json(
-      { error: `O registo está limitado a e-mails ${ALLOWED_DOMAIN}.` },
+      { error: `O registo está limitado a e-mails ${ALLOWED_EMAIL_DOMAIN}.` },
       { status: 400 },
     )
   }

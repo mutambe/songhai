@@ -6,6 +6,9 @@ import { hashEmailCode } from '@/lib/two-factor'
 export type { UserRole }
 export type UserStatus = 'pending' | 'approved' | 'rejected'
 
+// Registo e criação direta pelo admin ficam limitados a este domínio.
+export const ALLOWED_EMAIL_DOMAIN = '@songhai.cc'
+
 export type Permissions = {
   canViewMetrics: boolean
   canViewSystems: boolean
@@ -23,6 +26,7 @@ export type User = {
   mustChangePassword: boolean
   totpEnabled: boolean
   email2faEnabled: boolean
+  twoFactorExempt: boolean
   lastLoginAt: string | null
   permissions: Permissions
 }
@@ -38,6 +42,7 @@ type UserRow = {
   must_change_password: number
   totp_enabled: number
   email_2fa_enabled: number
+  two_factor_exempt: number
   last_login_at: string | null
   can_view_metrics: number
   can_view_systems: number
@@ -56,6 +61,7 @@ function rowToUser(row: UserRow): User {
     mustChangePassword: !!row.must_change_password,
     totpEnabled: !!row.totp_enabled,
     email2faEnabled: !!row.email_2fa_enabled,
+    twoFactorExempt: !!row.two_factor_exempt,
     lastLoginAt: row.last_login_at,
     permissions: {
       canViewMetrics: !!row.can_view_metrics,
@@ -120,6 +126,26 @@ export function createUser(input: { name: string; email: string; password: strin
   return findUserById(id)!
 }
 
+// Criada diretamente por um admin (ao contrário de createUser, que vem do
+// autorregisto e fica "pending"): entra já "approved", com uma senha
+// temporária que tem de ser trocada no primeiro login.
+export function createUserByAdmin(input: { name: string; email: string; role: UserRole }): {
+  user: User
+  tempPassword: string
+} {
+  const id = crypto.randomUUID()
+  const tempPassword = generateTempPassword()
+  const passwordHash = hashPassword(tempPassword)
+  const createdAt = new Date().toISOString()
+
+  db.prepare(
+    `INSERT INTO users (id, name, email, password_hash, role, status, created_at, must_change_password)
+     VALUES (?, ?, ?, ?, ?, 'approved', ?, 1)`,
+  ).run(id, input.name, input.email.toLowerCase(), passwordHash, input.role, createdAt)
+
+  return { user: findUserById(id)!, tempPassword }
+}
+
 export function listAllUsers(): User[] {
   const rows = db.prepare('SELECT * FROM users ORDER BY created_at DESC').all() as UserRow[]
   return rows.map(rowToUser)
@@ -162,6 +188,17 @@ export function setUserPermissions(id: string, permissions: Permissions): User |
       permissions.canViewDashboards ? 1 : 0,
       id,
     )
+  if (result.changes === 0) return null
+  return findUserById(id)
+}
+
+// A "conta raiz" fica isenta da obrigatoriedade de 2FA no login — ver
+// resolveNextAuthStep. Qualquer admin pode atribuir isto a si próprio ou a
+// outra conta pelo painel de utilizadores.
+export function setTwoFactorExempt(id: string, exempt: boolean): User | null {
+  const result = db
+    .prepare('UPDATE users SET two_factor_exempt = ? WHERE id = ?')
+    .run(exempt ? 1 : 0, id)
   if (result.changes === 0) return null
   return findUserById(id)
 }
@@ -281,4 +318,25 @@ export function consumePasswordResetToken(token: string): string | null {
 
   if (new Date(row.expires_at) < new Date()) return null
   return row.user_id
+}
+
+export type TwoFactorMethod = 'totp' | 'email'
+
+export type NextAuthStep =
+  | { step: 'ok' }
+  | { step: '2fa-enroll' }
+  | { step: '2fa-verify'; methods: TwoFactorMethod[] }
+
+// Decide o que falta a um utilizador (já com a senha certa) para entrar na
+// sessão: contas isentas ("raiz") passam direto; as restantes têm de ter
+// pelo menos um método de 2FA configurado e verificado a cada login.
+export function resolveNextAuthStep(user: User): NextAuthStep {
+  if (user.twoFactorExempt) return { step: 'ok' }
+
+  const methods: TwoFactorMethod[] = []
+  if (user.totpEnabled) methods.push('totp')
+  if (user.email2faEnabled) methods.push('email')
+
+  if (methods.length === 0) return { step: '2fa-enroll' }
+  return { step: '2fa-verify', methods }
 }

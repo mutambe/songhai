@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { findUserByEmail, verifyPassword, updateLastLogin } from '@/lib/auth-store'
+import { findUserByEmail, verifyPassword, updateLastLogin, resolveNextAuthStep } from '@/lib/auth-store'
 import { signPreAuthToken } from '@/lib/session-core'
 import { createSessionCookie } from '@/lib/session'
 import { isRateLimited, registerFailedAttempt, clearAttempts } from '@/lib/rate-limit'
@@ -45,7 +45,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ step: 'password-change', token })
   }
 
-  // 2FA está temporariamente desativado — por configurar mais tarde.
+  const next = resolveNextAuthStep(user)
+  if (next.step === '2fa-enroll') {
+    const token = await signPreAuthToken({ sub: user.id, step: '2fa-enroll' })
+    return NextResponse.json({ step: '2fa-enroll', token })
+  }
+  if (next.step === '2fa-verify') {
+    const token = await signPreAuthToken({ sub: user.id, step: '2fa-verify' })
+    return NextResponse.json({ step: '2fa-verify', token, methods: next.methods })
+  }
+
   updateLastLogin(user.id)
   await createSessionCookie({ sub: user.id, name: user.name, email: user.email, role: user.role })
   return NextResponse.json({ ok: true })

@@ -38,10 +38,18 @@ Usa isto para `AUTH_SECRET`, `BLOG_ADMIN_SECRET` e `SSO_SHARED_SECRET`.
 é o que permite entrar no painel do blog a partir do Portal.
 
 ### 2FA no Portal
-Está desativado de propósito (login vai direto para a sessão, sem pedir
-código). Não precisas de configurar nenhuma app autenticadora para entrar.
-Quando quiseres reativar o 2FA, é mexer em `app/api/auth/login/route.ts` e
-`app/api/auth/force-change-password/route.ts` no `apps/portal`.
+O 2FA é obrigatório no login para todas as contas, exceto as marcadas como
+"conta raiz" no painel de **Utilizadores** (checkbox "Conta raiz — não
+exigir 2FA no login" em cada utilizador aprovado). No primeiro login sem
+2FA configurado, a pessoa é levada a escolher entre aplicação autenticadora
+(TOTP) ou código por e-mail antes de entrar no Portal.
+
+**Cuidado no primeiro deploy desta funcionalidade:** todas as contas
+começam sem isenção (`two_factor_exempt = 0`). Depois de publicar a stack,
+**sem fazer logout**, entra no Portal com a sessão atual e vai a
+Utilizadores → marca a tua própria conta como "conta raiz" — caso
+contrário, no próximo login vais cair na configuração obrigatória de 2FA
+como qualquer outra conta.
 
 ## 2. Construir e publicar as imagens
 

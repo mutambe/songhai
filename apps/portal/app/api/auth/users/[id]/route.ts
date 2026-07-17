@@ -4,6 +4,7 @@ import {
   countAdmins,
   deleteUser,
   findUserById,
+  setTwoFactorExempt,
   setUserPermissions,
   setUserRole,
 } from '@/lib/auth-store'
@@ -53,6 +54,10 @@ export async function PATCH(
     })
   }
 
+  if (body?.twoFactorExempt !== undefined) {
+    setTwoFactorExempt(id, !!body.twoFactorExempt)
+  }
+
   const updated = findUserById(id)!
   return NextResponse.json({
     user: {
@@ -64,6 +69,7 @@ export async function PATCH(
       createdAt: updated.createdAt,
       lastLoginAt: updated.lastLoginAt,
       permissions: updated.permissions,
+      twoFactorExempt: updated.twoFactorExempt,
     },
   })
 }

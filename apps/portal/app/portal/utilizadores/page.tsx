@@ -15,6 +15,7 @@ export default async function UtilizadoresPage() {
     createdAt: u.createdAt,
     lastLoginAt: u.lastLoginAt,
     permissions: u.permissions,
+    twoFactorExempt: u.twoFactorExempt,
   }))
   const pendingCount = countPendingUsers()
 
