@@ -32,11 +32,29 @@ const FAQS = [
   },
 ]
 
+const FAQ_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+}
+
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
     <section id="faq" className="scroll-mt-20">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_STRUCTURED_DATA) }}
+      />
       <div className="mx-auto max-w-3xl px-5 py-20 lg:px-8 lg:py-28">
         <Reveal className="text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">

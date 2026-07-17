@@ -23,18 +23,21 @@ const SITE_URL = 'https://songhai.cc'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'SONGHAI — Agência de IA e Automação em Maputo, Moçambique',
+    default: 'SONGHAI — Agência de IA e Automação em Moçambique',
     template: '%s | SONGHAI',
   },
   description:
-    'Agência de inteligência artificial e automação de processos em Maputo, Moçambique. Agentes de IA, automação e consultoria para empresas moçambicanas poupar tempo e crescer mais rápido. Diagnóstico gratuito.',
+    'Agência de inteligência artificial e automação de processos com sede em Maputo, a atender empresas em todo o Moçambique — Maputo, Matola, Beira, Nampula, Chimoio e mais. Agentes de IA, automação e consultoria remota para poupar tempo e crescer mais rápido. Diagnóstico gratuito.',
   keywords: [
     'Inteligência Artificial Moçambique',
     'IA Maputo',
-    'Automação de processos Maputo',
+    'IA Beira',
+    'IA Nampula',
+    'Automação de processos Moçambique',
     'Agentes de IA Moçambique',
     'Consultoria de IA Moçambique',
     'Automação de empresas Maputo',
+    'Automação de empresas Beira',
     'Chatbot WhatsApp Moçambique',
     'Transformação digital Moçambique',
   ],
@@ -52,9 +55,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'SONGHAI — Agência de IA e Automação em Maputo, Moçambique',
+    title: 'SONGHAI — Agência de IA e Automação em Moçambique',
     description:
-      'Poupe tempo, automatize processos e cresça mais rápido com IA — uma agência local, em Maputo, que entende a realidade das empresas moçambicanas.',
+      'Poupe tempo, automatize processos e cresça mais rápido com IA — uma agência moçambicana, com sede em Maputo, a atender empresas em todo o país.',
     url: SITE_URL,
     siteName: 'SONGHAI',
     locale: 'pt_MZ',
@@ -63,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'SONGHAI — Agência de IA e Automação em Maputo, Moçambique',
+    title: 'SONGHAI — Agência de IA e Automação em Moçambique',
     description:
-      'Poupe tempo, automatize processos e cresça mais rápido com IA — uma agência local, em Maputo.',
+      'Poupe tempo, automatize processos e cresça mais rápido com IA — uma agência moçambicana a atender empresas em todo o país.',
     images: ['/songhai-logo.png'],
   },
 }
