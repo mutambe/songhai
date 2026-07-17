@@ -44,6 +44,13 @@ services:
       CONTACT_NOTIFY_EMAIL: ${CONTACT_NOTIFY_EMAIL}
     deploy:
       replicas: 1
+      # `site_data` é um volume "local", não partilhado entre nós do Swarm —
+      # mesmo problema documentado no serviço `portal` acima. Fixa sempre em
+      # vmi2968866, confirmado por `docker service ps songhai_site
+      # --no-trunc` como o nó a correr atualmente.
+      placement:
+        constraints:
+          - node.hostname == vmi2968866
       restart_policy:
         condition: on-failure
       labels:
