@@ -76,6 +76,16 @@ services:
       MAIL_FROM: ${MAIL_FROM}
     deploy:
       replicas: 1
+      # `portal_data` é um volume nomeado com o driver "local" — só existe no
+      # nó onde o container corre, não é partilhado entre nós do Swarm. Sem
+      # esta constraint, o Swarm pode reagendar o serviço para outro nó (já
+      # aconteceu entre vmi2968866 e vmi2974672) e o container arranca com
+      # uma cópia da base de dados SQLite vazia/desatualizada nesse nó —
+      # contas e senhas "desaparecem". Confirmado por `docker service ps
+      # songhai_portal --no-trunc` que os dados reais estão em vmi2974672.
+      placement:
+        constraints:
+          - node.hostname == vmi2974672
       restart_policy:
         condition: on-failure
       labels:
