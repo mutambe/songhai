@@ -54,6 +54,9 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  verification: {
+    google: 'a4y4nusuhpOp1-12RUtDILwExsKRdUrJ-StDTDtFhk4',
+  },
   openGraph: {
     title: 'SONGHAI — Agência de IA e Automação em Moçambique',
     description:
