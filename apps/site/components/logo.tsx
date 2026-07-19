@@ -19,13 +19,13 @@ export function Logo({
       aria-label="SONGHAI — página inicial"
     >
       {withMark && (
-        <span className="relative inline-flex h-8 shrink-0 items-center justify-center">
+        <span className="relative inline-flex h-8 shrink-0 items-center justify-center [aspect-ratio:512/380]">
           <Image
             src="/songhai-mark-light.png"
             alt="Logótipo SONGHAI"
             width={512}
             height={380}
-            className="logo-mark-light relative h-8 w-auto object-contain"
+            className="logo-mark-light absolute inset-0 h-full w-full object-contain"
             priority
           />
           <Image
@@ -33,7 +33,7 @@ export function Logo({
             alt="Logótipo SONGHAI"
             width={512}
             height={380}
-            className="logo-mark-dark absolute inset-0 hidden h-8 w-auto object-contain"
+            className="logo-mark-dark absolute inset-0 hidden h-full w-full object-contain"
             priority
           />
         </span>
