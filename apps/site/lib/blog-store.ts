@@ -2,6 +2,17 @@ import 'server-only'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { isPubliclyVisible, slugify, type BlogPost } from '@/lib/blog'
+import { sanitizeArticleHtml } from '@/lib/sanitize'
+
+function sanitizeContent(content: BlogPost['content']): BlogPost['content'] {
+  return {
+    ...content,
+    sections: content.sections.map((section) => ({
+      ...section,
+      body: sanitizeArticleHtml(section.body),
+    })),
+  }
+}
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'posts.json')
 
@@ -52,6 +63,7 @@ export async function createPost(
   const post: BlogPost = {
     ...input,
     slug,
+    content: sanitizeContent(input.content),
     updatedBy: editorName,
     updatedAt: new Date().toISOString(),
   }
@@ -74,7 +86,11 @@ export async function updatePost(
   const post = posts.find((p) => p.slug === slug)
   if (!post) return null
 
-  Object.assign(post, input, { updatedBy: editorName, updatedAt: new Date().toISOString() })
+  Object.assign(post, input, {
+    content: input.content ? sanitizeContent(input.content) : post.content,
+    updatedBy: editorName,
+    updatedAt: new Date().toISOString(),
+  })
   if (input.featured) {
     posts.forEach((p) => {
       if (p.slug !== slug) p.featured = false

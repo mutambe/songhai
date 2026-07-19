@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fbf9f4' },
+    { media: '(prefers-color-scheme: light)', color: '#f5efe0' },
     { media: '(prefers-color-scheme: dark)', color: '#0f1412' },
   ],
 }
@@ -121,6 +121,7 @@ export default function RootLayout({
     <html
       lang="pt-MZ"
       className={`${inter.variable} ${fraunces.variable} bg-background`}
+      suppressHydrationWarning
     >
       <head>
         <script
@@ -130,7 +131,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
         />
       </head>
       <body className="font-sans antialiased">

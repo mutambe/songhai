@@ -7,28 +7,32 @@ import { Reveal } from '@/components/motion/reveal'
 
 const FAQS = [
   {
-    q: 'O que é um agente de IA?',
-    a: 'É um assistente digital que compreende linguagem natural e realiza tarefas por si — responder a clientes, qualificar leads ou agendar reuniões — de forma autónoma e no tom da sua marca.',
+    q: 'Quanto custa um agente de IA?',
+    a: 'Depende da complexidade. Agente simples (WhatsApp de perguntas/respostas): 5.000 MZN/mês. Agente avançado (com integrações, CRM, pagamentos): 8.000-15.000 MZN/mês. Enviamos proposta personalizada após auditoria.',
   },
   {
-    q: 'Qual a diferença entre automação e IA?',
-    a: 'A automação segue regras fixas para tarefas repetitivas. A IA interpreta contexto e linguagem para tomar decisões. Na prática, combinamos as duas: a IA decide e a automação executa.',
+    q: 'Quanto tempo demora até estar live?',
+    a: 'Desde diagnóstico até agente operacional: 30 dias. Diagnóstico é semana 1. Depois 3 semanas de desenvolvimento, integração e testes.',
   },
   {
-    q: 'Preciso de uma equipa técnica para começar?',
-    a: 'Não. A Songhai trata de toda a parte técnica e forma a sua equipa para usar as soluções. Você foca-se no negócio, nós na tecnologia.',
+    q: 'Preciso de equipa técnica?',
+    a: 'Não. Você explica seus processos. Nós fazemos toda a parte técnica — design, desenvolvimento, integração. Você só precisa de uma pessoa para gerir (ela aprende connosco).',
   },
   {
-    q: 'Quanto tempo demora a implementação?',
-    a: 'Depende do projeto, mas as primeiras automações costumam entrar em funcionamento em poucas semanas. Começamos sempre por soluções de impacto rápido.',
+    q: 'E se mudar de ideia ou não gostar?',
+    a: 'Cada cliente tem 30 dias de teste. Se não vir valor, cancelamos sem penalidade. Não queremos clientes infelizes.',
   },
   {
-    q: 'A IA vai substituir a minha equipa?',
-    a: 'Não. O objetivo é libertar a sua equipa das tarefas manuais e repetitivas, para que dedique tempo ao que exige julgamento humano e gera mais valor.',
+    q: 'Como funciona o suporte?',
+    a: 'Suporte 24/7 incluído. Problemas técnicos: resposta em menos de 4 horas. Otimizações: revisão mensal.',
   },
   {
-    q: 'Qual é o investimento?',
-    a: 'Varia com o âmbito. Começamos com um diagnóstico gratuito para estimar o retorno antes de qualquer compromisso. Temos também planos de AI Partner fracionado a partir de 8h/mês.',
+    q: 'Vocês também fazem integração com o meu ERP/CRM?',
+    a: 'Sim. Integramos com HubSpot, Salesforce, QuickBooks, Xero, ERPs locais — tudo. Pode levar tempo extra (com custo adicional), mas é possível.',
+  },
+  {
+    q: 'Qual é a melhor forma de contactar?',
+    a: 'WhatsApp é mais rápido: +258 84 898 6002. Email: info@songhai.cc. Ou agende um diagnóstico no website.',
   },
 ]
 
@@ -53,7 +57,7 @@ export function Faq() {
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_STRUCTURED_DATA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_STRUCTURED_DATA).replace(/</g, '\\u003c') }}
       />
       <div className="mx-auto max-w-3xl px-5 py-20 lg:px-8 lg:py-28">
         <Reveal className="text-center">

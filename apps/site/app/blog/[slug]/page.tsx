@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { PillButton } from '@/components/pill-button'
 import { formatDate } from '@/lib/blog'
 import { getPublishedPost } from '@/lib/blog-store'
+import { PostIllustration } from '@/components/blog/post-icon'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,6 +30,12 @@ export async function generateMetadata({
       publishedTime: post.publishedAt,
       images: post.coverImage ? [{ url: post.coverImage }] : undefined,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.coverImage ? [post.coverImage] : undefined,
+    },
   }
 }
 
@@ -41,8 +48,38 @@ export default async function ArticlePage({
   const post = await getPublishedPost(slug)
   if (!post) notFound()
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.coverImage ? [post.coverImage] : undefined,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    author: { '@type': 'Organization', name: post.author },
+    publisher: {
+      '@type': 'Organization',
+      name: 'SONGHAI',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://songhai.cc/songhai-logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://songhai.cc/blog/${slug}`,
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        // Escapar "<" evita que um título/excerto com "</script>" feche o bloco
+        // mais cedo e permita injetar HTML/script a seguir.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }}
+      />
       <SiteHeader />
       <main>
         <article className="mx-auto max-w-3xl px-5 py-14 lg:px-8">
@@ -76,11 +113,18 @@ export default async function ArticlePage({
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={post.coverImage}
-              alt=""
+              alt={`Ilustração do artigo: ${post.title}`}
               className="mt-8 h-52 w-full rounded-3xl object-cover sm:h-72"
             />
           ) : (
-            <div className={`mt-8 h-52 rounded-3xl bg-gradient-to-br ${post.gradient} sm:h-72`} />
+            <div
+              className={`relative mt-8 h-52 overflow-hidden rounded-3xl bg-gradient-to-br ${post.gradient} sm:h-72`}
+            >
+              <PostIllustration
+                icon={post.icon}
+                className="pointer-events-none absolute -bottom-10 -right-10 h-56 w-56 text-paper/25 sm:h-72 sm:w-72"
+              />
+            </div>
           )}
 
           <div className="mt-10">

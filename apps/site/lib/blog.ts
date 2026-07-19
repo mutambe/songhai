@@ -19,6 +19,8 @@ export type BlogPost = {
   author: string
   gradient: string
   coverImage?: string
+  /** Nome de um ícone em components/blog/post-icon.tsx, usado como ilustração do artigo. */
+  icon?: string
   featured?: boolean
   updatedBy?: string
   updatedAt?: string
