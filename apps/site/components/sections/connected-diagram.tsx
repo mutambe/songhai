@@ -172,17 +172,18 @@ export function ConnectedDiagram() {
             transition={{ delay: i * 0.08, duration: 0.6, type: 'spring', stiffness: 90 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-gold/25 blur-lg" />
+              <div className="absolute inset-0 rounded-full bg-sky-400/25 blur-lg" />
               <motion.div
                 animate={{ scale: [1, 1.08, 1] }}
                 transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.1 }}
-                className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 bg-panel sm:h-16 sm:w-16"
+                className="relative flex h-14 w-14 items-center justify-center rounded-full border border-sky-400/70 sm:h-16 sm:w-16"
                 style={{
-                  boxShadow:
-                    '0 0 18px color-mix(in srgb, var(--gold) 35%, transparent)',
+                  background:
+                    'radial-gradient(circle at 35% 30%, #1e3a8a 0%, #0b1230 75%)',
+                  boxShadow: '0 0 18px rgba(56, 189, 248, 0.45)',
                 }}
               >
-                <Icon className="h-5 w-5 text-gold sm:h-6 sm:w-6" />
+                <Icon className="h-5 w-5 text-sky-300 sm:h-6 sm:w-6" />
               </motion.div>
             </div>
             <span className="text-[11px] font-medium text-foreground/80 sm:text-xs">
