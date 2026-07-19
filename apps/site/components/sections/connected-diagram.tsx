@@ -34,7 +34,7 @@ const RADIUS = 340
 
 export function ConnectedDiagram() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-xl overflow-hidden rounded-[2rem] border border-line bg-paper-muted p-6 sm:p-10">
+    <div className="relative mx-auto aspect-square w-full max-w-xl overflow-hidden rounded-[2rem] border border-[#2d3530] bg-[#252b28] p-6 sm:p-10">
       {/* ambient glow */}
       <div
         aria-hidden="true"
@@ -59,7 +59,7 @@ export function ConnectedDiagram() {
             cy="500"
             r={90 + i * 70}
             fill="none"
-            stroke="var(--ink-soft)"
+            stroke="#b0b8b3"
             strokeOpacity={0.15}
             strokeWidth="1"
           />
@@ -148,7 +148,7 @@ export function ConnectedDiagram() {
               cx={x}
               cy={y}
               r={size}
-              fill="var(--ink-soft)"
+              fill="#b0b8b3"
               opacity={0.2 + (i % 5) * 0.05}
             />
           )
