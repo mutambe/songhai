@@ -41,7 +41,7 @@ export function ConnectedDiagram() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(60% 60% at 50% 50%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 70%)',
+            'radial-gradient(60% 60% at 50% 50%, color-mix(in srgb, #38bdf8 18%, transparent), transparent 70%)',
         }}
       />
 
@@ -77,7 +77,7 @@ export function ConnectedDiagram() {
               y1="500"
               x2={x}
               y2={y}
-              stroke="var(--gold)"
+              stroke="#38bdf8"
               strokeOpacity={0.6}
               strokeWidth="1.5"
               initial={{ opacity: 0 }}
@@ -104,7 +104,7 @@ export function ConnectedDiagram() {
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="var(--teal)"
+              stroke="#38bdf8"
               strokeOpacity={0.25}
               strokeWidth="1"
               strokeDasharray="4 6"
@@ -121,7 +121,7 @@ export function ConnectedDiagram() {
             <motion.circle
               key={`pulse-${node.label}`}
               r={6}
-              fill="var(--teal)"
+              fill="#7dd3fc"
               initial={{ cx: x, cy: y, opacity: 0 }}
               animate={{ cx: [x, 500], cy: [y, 500], opacity: [0, 1, 0] }}
               transition={{
