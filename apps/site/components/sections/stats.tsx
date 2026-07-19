@@ -5,13 +5,24 @@ import { RevealGroup, RevealItem } from '@/components/motion/reveal'
 
 const STATS = [
   {
-    value: 70,
+    value: 98,
     suffix: '%',
-    label: 'Tempo recuperado em 90 dias ou investimento de volta',
+    label: 'Taxa de abertura de mensagens WhatsApp (vs. 20% em email)',
   },
-  { value: 50, suffix: '+', label: 'Automações implementadas' },
-  { text: 'MZ', label: 'Agência local, equipa em Maputo' },
-  { text: '24/7', label: 'Agentes de IA sempre disponíveis' },
+  {
+    value: 60,
+    suffix: '%',
+    label: 'Redução do volume de suporte inbound com automação',
+  },
+  {
+    text: '2s',
+    label: 'Tempo de resposta de um agente IA (vs. 4h em média humana)',
+  },
+  {
+    value: 28,
+    suffix: '%',
+    label: 'Taxa de conversão com qualificação automática de leads',
+  },
 ]
 
 export function Stats() {
@@ -32,6 +43,9 @@ export function Stats() {
             </span>
             <span className="mt-3 max-w-[16rem] text-sm leading-relaxed text-ink-soft">
               {stat.label}
+            </span>
+            <span className="mt-1 text-xs text-ink-soft/60">
+              Fonte: benchmark de indústria
             </span>
           </RevealItem>
         ))}

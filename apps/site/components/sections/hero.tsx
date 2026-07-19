@@ -31,22 +31,13 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-4xl px-5 pb-20 pt-20 text-center sm:pt-28 lg:px-8">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-paper/70 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-teal backdrop-blur-sm [@media(prefers-reduced-motion:reduce)]:animate-none"
-        >
-          Menos tarefas. Mais crescimento
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.05 }}
           className="text-balance font-serif text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl [@media(prefers-reduced-motion:reduce)]:animate-none"
         >
-          Recupere até{' '}
+          Recupere{' '}
           <span className="relative inline-block">
             <motion.span
               aria-hidden="true"
@@ -55,9 +46,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-x-[-4px] bottom-1 -z-10 h-[0.55em] origin-left rounded-sm bg-gold/55 [@media(prefers-reduced-motion:reduce)]:animate-none"
             />
-            70% do tempo
+            15-20 horas/mês
           </span>{' '}
-          da sua equipa com IA e automação
+          com IA
         </motion.h1>
 
         <motion.p
@@ -66,22 +57,31 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-ink-soft [@media(prefers-reduced-motion:reduce)]:animate-none"
         >
-          Criamos agentes de IA, automatizamos processos e devolvemos horas à sua
-          equipa — para decisões que fazem a diferença.
+          A sua equipa gasta tempo em tarefas que IA resolve em minutos. Nós
+          automatizamos. Você cresce.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.22 }}
+          className="mx-auto mt-4 max-w-2xl text-pretty text-sm font-medium uppercase tracking-wide text-teal [@media(prefers-reduced-motion:reduce)]:animate-none"
+        >
+          Agência local em Maputo · Preços em MZN · Suporte 24/7 · Implementação em 30 dias
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row [@media(prefers-reduced-motion:reduce)]:animate-none"
         >
-          <PillButton href="/#calculadora" variant="gold">
-            Diagnóstico gratuito — Ver quanto posso poupar
+          <PillButton href="/diagnostico" variant="gold">
+            Agende seu diagnóstico grátis
             <ArrowRight className="h-4 w-4" />
           </PillButton>
-          <PillButton href="/#problema" variant="outline-gold">
-            Descobrir mais
+          <PillButton href="/#metodo" variant="outline-gold">
+            Ver como funciona
             <ArrowDown className="h-4 w-4" />
           </PillButton>
         </motion.div>
@@ -92,7 +92,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="mt-5 text-sm text-ink-soft/80"
         >
-          Sem compromisso · 100% gratuito
+          30 min · 0 compromisso · relatório PDF
         </motion.p>
       </div>
     </section>

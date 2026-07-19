@@ -41,8 +41,9 @@ export function Transformation() {
                 Ligamos tudo — e o seu negócio passa a funcionar em conjunto
               </h2>
               <p className="mt-4 text-pretty text-lg leading-relaxed text-ink-soft">
-                WhatsApp, e-mail, CRM e bases de dados deixam de ser ilhas. A IA
-                da Songhai funciona como o centro que conecta os seus sistemas.
+                WhatsApp, e-mail, CRM e bases de dados deixam de ser ilhas. A
+                Songhai integra as melhores IAs do mercado num único centro
+                que conecta os seus sistemas.
               </p>
             </Reveal>
 

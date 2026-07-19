@@ -12,6 +12,7 @@ const NAV = [
   { label: 'Serviços', href: '/#solucoes' },
   { label: 'Setores', href: '/#setores' },
   { label: 'Método', href: '/#metodo' },
+  { label: 'Preços', href: '/precos' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/#faq' },
 ]

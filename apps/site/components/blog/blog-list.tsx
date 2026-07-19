@@ -12,6 +12,7 @@ import {
   type BlogPost,
 } from '@/lib/blog'
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
+import { PostIllustration } from '@/components/blog/post-icon'
 
 type Filter = 'Todos' | BlogCategory
 
@@ -80,10 +81,16 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
           className="group grid overflow-hidden rounded-3xl border border-line bg-paper lg:grid-cols-2"
         >
           <div
-            className={`relative min-h-56 bg-gradient-to-br ${featured.gradient} bg-cover bg-center p-8`}
+            className={`relative min-h-56 overflow-hidden bg-gradient-to-br ${featured.gradient} bg-cover bg-center p-8`}
             style={featured.coverImage ? { backgroundImage: `url(${featured.coverImage})` } : undefined}
           >
-            <span className="inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
+            {!featured.coverImage && (
+              <PostIllustration
+                icon={featured.icon}
+                className="pointer-events-none absolute -bottom-6 -right-6 h-40 w-40 text-paper/25"
+              />
+            )}
+            <span className="relative inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
               {featured.category}
             </span>
           </div>
@@ -144,10 +151,16 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-shadow hover:shadow-xl hover:shadow-ink/5"
               >
                 <div
-                  className={`relative h-40 bg-gradient-to-br ${post.gradient} bg-cover bg-center p-5`}
+                  className={`relative h-40 overflow-hidden bg-gradient-to-br ${post.gradient} bg-cover bg-center p-5`}
                   style={post.coverImage ? { backgroundImage: `url(${post.coverImage})` } : undefined}
                 >
-                  <span className="inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
+                  {!post.coverImage && (
+                    <PostIllustration
+                      icon={post.icon}
+                      className="pointer-events-none absolute -bottom-4 -right-4 h-24 w-24 text-paper/25"
+                    />
+                  )}
+                  <span className="relative inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
                     {post.category}
                   </span>
                 </div>

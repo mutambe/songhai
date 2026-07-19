@@ -1,167 +1,200 @@
 [
   {
-    "slug": "agentes-de-ia-whatsapp-empresas-mocambique",
-    "title": "Agentes de IA no WhatsApp: como as empresas moçambicanas atendem 24/7",
-    "excerpt": "Um agente de IA no WhatsApp responde, qualifica leads e agenda reuniões sem intervenção humana. Veja como implementar sem perder o toque pessoal.",
-    "category": "Agentes de IA",
-    "readingTime": "6 min",
+    "slug": "automacao-vs-ia-qual-usar-quando",
+    "title": "Automação vs. IA: qual usar quando? Guia prático para Moçambique",
+    "excerpt": "Confuso entre automação e IA? Este guia prático mostra qual usar quando — e quanto custa em Moçambique.",
+    "category": "Guias",
+    "readingTime": "7 min",
     "author": "Equipa Songhai",
-    "gradient": "from-[#122733] via-[#1b3a4b] to-[#2f6e62]",
+    "gradient": "from-[#c89b3c] via-[#1b3a4b] to-[#122733]",
+    "icon": "git-compare",
+    "coverImage": "https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "featured": true,
     "content": {
-      "lead": "O WhatsApp é o canal onde os seus clientes já estão. Um agente de IA transforma essa caixa de entrada num sistema de atendimento que nunca dorme — respondendo em segundos, qualificando oportunidades e passando ao humano apenas o que importa.",
+      "lead": "IA é para problemas complexos. Automação é para tarefas repetitivas. Usar IA quando bastava automação significa pagar mais pelo mesmo resultado — e é um erro comum em empresas em Maputo e no resto de Moçambique.",
       "sections": [
         {
-          "heading": "Porque o WhatsApp é o canal certo",
-          "body": "<p>Em Moçambique, a maioria das conversas comerciais acontece no WhatsApp. O problema não é a falta de mensagens — é a falta de tempo para responder a todas com a mesma qualidade e rapidez.</p><p>Um agente de IA lê o contexto da conversa, responde em português de Moçambique e mantém o tom da sua marca, mesmo às 2 da manhã de um domingo.</p>"
+          "heading": "O que é automação",
+          "body": "<p>Automação é um conjunto de regras simples que executa tarefas repetitivas: \"se o email chegar com o assunto X, reencaminha para o departamento Y.\" Não há inteligência envolvida, apenas condição e ação.</p><p>É previsível, rápida de configurar e mais barata — ideal para tarefas como copiar dados de um formulário para uma folha de cálculo ou de um email para o CRM.</p>"
         },
         {
-          "heading": "O que o agente faz na prática",
-          "body": "<p>Responde a perguntas frequentes sobre preços, horários e serviços. Recolhe os dados do cliente e qualifica o interesse antes de envolver a sua equipa.</p><p>Quando a conversa precisa de um humano, o agente entrega o histórico completo — a sua equipa continua exatamente de onde a IA parou.</p>"
-        }
-      ],
-      "quote": "Não se trata de substituir pessoas. Trata-se de garantir que nenhuma oportunidade fica sem resposta.",
-      "callout": {
-        "title": "Comece pequeno",
-        "body": "Implemente o agente primeiro nas 10 perguntas mais frequentes. Meça o tempo poupado antes de expandir."
-      }
-    },
-    "tags": [],
-    "status": "published",
-    "publishedAt": "2026-06-28T00:00:00.000Z"
-  },
-  {
-    "slug": "automacao-vs-ia-qual-a-diferenca",
-    "title": "Automação vs. IA: qual a diferença e quando usar cada uma",
-    "excerpt": "Nem tudo precisa de inteligência artificial. Explicamos quando basta uma automação simples e quando a IA faz toda a diferença.",
-    "category": "Guias",
-    "readingTime": "5 min",
-    "author": "Equipa Songhai",
-    "gradient": "from-[#1b3a4b] via-[#2f6e62] to-[#c89b3c]",
-    "content": {
-      "lead": "Automação e IA são ferramentas diferentes para problemas diferentes. Perceber a distinção poupa-lhe dinheiro e evita soluções complicadas para problemas simples.",
-      "sections": [
-        {
-          "heading": "Automação: regras claras",
-          "body": "<p>A automação segue regras fixas: \"quando isto acontecer, faz aquilo\". É perfeita para tarefas repetitivas e previsíveis, como copiar dados entre sistemas ou enviar um e-mail de confirmação.</p>"
+          "heading": "O que é IA",
+          "body": "<p>Um agente de IA entende contexto e toma decisões. Recebe uma pergunta de um cliente em português, interpreta o que está a ser pedido e responde de forma natural, no tom da marca.</p><p>É mais cara e demora mais a configurar do que uma automação simples, mas trata exceções e melhora com o uso.</p>"
         },
         {
-          "heading": "IA: contexto e linguagem",
-          "body": "<p>A IA entra quando é preciso interpretar linguagem, tomar decisões com contexto ou lidar com situações que não seguem um guião. Responder a um cliente com uma pergunta invulgar é trabalho de IA.</p><p>Na maioria dos projetos, a solução ideal combina as duas: a IA interpreta e decide, a automação executa.</p>"
+          "heading": "Comparação lado a lado",
+          "body": "<div class=\"overflow-x-auto\"><table><thead><tr><th>Critério</th><th>Automação</th><th>IA</th></tr></thead><tbody><tr><td>Configuração</td><td>Regras simples (se isto, então aquilo)</td><td>Treino e prompts</td></tr><tr><td>Tempo de setup</td><td>3-5 dias</td><td>2-3 semanas</td></tr><tr><td>Aprende com o uso?</td><td>Não</td><td>Sim</td></tr><tr><td>Trata exceções?</td><td>Não</td><td>Sim</td></tr><tr><td>Linguagem natural?</td><td>Não</td><td>Sim</td></tr><tr><td>Quando usar</td><td>Tarefas repetitivas e previsíveis</td><td>Tarefas que exigem decisão ou contexto</td></tr></tbody></table></div>"
+        },
+        {
+          "heading": "Como decidir",
+          "body": "<p>Use automação se a tarefa é totalmente previsível, não exige julgamento e uma margem de erro de cerca de 10% é aceitável.</p><p>Use IA se a tarefa envolve comunicação com pessoas, decisão com múltiplas variáveis ou exige elevada precisão.</p><p>Na prática, muitos processos combinam as duas: a automação move os dados, a IA interpreta e decide.</p>"
         }
       ],
       "callout": {
         "title": "Regra prática",
-        "body": "Se a tarefa segue sempre os mesmos passos, use automação. Se exige interpretar texto ou decidir, use IA."
+        "body": "Se a tarefa segue sempre os mesmos passos, comece por automação. Só avance para IA quando precisar de interpretar linguagem ou lidar com exceções."
       }
     },
     "tags": [],
     "status": "published",
-    "publishedAt": "2026-06-15T00:00:00.000Z"
+    "publishedAt": "2026-07-19T00:00:00.000Z"
   },
   {
-    "slug": "reduzir-tempo-relatorios-com-ia",
-    "title": "Como uma clínica reduziu em 60% o tempo gasto em relatórios",
-    "excerpt": "Um caso real de auditoria de processos e automação num contexto de saúde em Maputo.",
-    "category": "Casos de uso",
-    "readingTime": "4 min",
-    "author": "Equipa Songhai",
-    "gradient": "from-[#2f6e62] via-[#1b3a4b] to-[#122733]",
-    "content": {
-      "lead": "Uma clínica em Maputo gastava horas por semana a compilar relatórios manualmente. Mostramos como uma auditoria de processos revelou onde a IA podia intervir.",
-      "sections": [
-        {
-          "heading": "O ponto de partida",
-          "body": "<p>A equipa administrativa copiava dados de vários sistemas para folhas de cálculo e depois formatava relatórios à mão — um trabalho lento e propenso a erros.</p>"
-        },
-        {
-          "heading": "A intervenção",
-          "body": "<p>Mapeámos o fluxo, automatizámos a recolha de dados e usámos IA para gerar os resumos escritos. O que demorava horas passou a demorar minutos.</p>"
-        }
-      ],
-      "quote": "Recuperámos tempo que agora é dedicado aos pacientes, não a folhas de cálculo."
-    },
-    "tags": [],
-    "status": "published",
-    "publishedAt": "2026-05-30T00:00:00.000Z"
-  },
-  {
-    "slug": "formacao-em-ia-para-equipas",
-    "title": "Formação em IA: como preparar a sua equipa para trabalhar com agentes",
-    "excerpt": "A tecnologia só gera valor quando as pessoas sabem usá-la. Um guia para formar a sua equipa.",
+    "slug": "custo-real-ia-pme-mocambique",
+    "title": "Custo real de IA para PME moçambicanas, sem surpresas",
+    "excerpt": "Quanto custa um agente de IA? Guia transparente com preços, ROI e exemplos ilustrativos em contexto moçambicano.",
     "category": "Guias",
-    "readingTime": "5 min",
-    "author": "Equipa Songhai",
-    "gradient": "from-[#122733] via-[#2f6e62] to-[#1b3a4b]",
-    "content": {
-      "lead": "Implementar IA sem formar a equipa é como comprar um carro sem ensinar ninguém a conduzir. A formação é o que transforma ferramentas em resultados.",
-      "sections": [
-        {
-          "heading": "Começar pelo porquê",
-          "body": "<p>Antes de ensinar a usar, explicamos o que a IA faz e o que não faz. Desmistificar reduz o receio e aumenta a adesão.</p>"
-        },
-        {
-          "heading": "Prática guiada",
-          "body": "<p>A formação da Songhai é baseada nos processos reais da sua empresa — não em exemplos genéricos. A equipa aprende com as suas próprias tarefas.</p>"
-        }
-      ]
-    },
-    "tags": [],
-    "status": "published",
-    "publishedAt": "2026-05-18T00:00:00.000Z"
-  },
-  {
-    "slug": "automacao-de-processos-por-onde-comecar",
-    "title": "Automação de processos: por onde começar sem complicar",
-    "excerpt": "Cinco passos simples para identificar e automatizar as tarefas que mais consomem o tempo da sua equipa.",
-    "category": "Automação",
     "readingTime": "6 min",
     "author": "Equipa Songhai",
-    "gradient": "from-[#1b3a4b] via-[#122733] to-[#2f6e62]",
+    "gradient": "from-[#122733] via-[#c89b3c] to-[#2f6e62]",
+    "icon": "wallet",
+    "coverImage": "https://images.pexels.com/photos/7580753/pexels-photo-7580753.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "content": {
-      "lead": "Automatizar não significa transformar tudo de uma vez. Os melhores resultados vêm de começar pelas tarefas certas.",
+      "lead": "\"Quanto vai custar isto?\" é a primeira pergunta que qualquer empresa em Maputo faz antes de contactar uma agência. Muitas agências respondem \"contacte-nos para orçamento\". Preferimos ser transparentes desde já.",
       "sections": [
         {
-          "heading": "Identifique o repetitivo",
-          "body": "<p>Liste as tarefas que a sua equipa faz várias vezes por dia da mesma forma. São essas as primeiras candidatas à automação.</p>"
+          "heading": "Estrutura de preço",
+          "body": "<p>Setup único: 2.000-5.000 MZN, conforme a complexidade das integrações.</p><p>Agente simples (WhatsApp, perguntas e respostas): 5.000-8.000 MZN/mês.</p><p>Agente médio ou avançado (com integrações de CRM, faturação e inventário): 8.000-15.000 MZN/mês.</p><p>Suporte 24/7 está incluído em todos os planos.</p>"
         },
         {
-          "heading": "Meça antes e depois",
-          "body": "<p>Registe quanto tempo cada tarefa consome hoje. Só assim consegue provar o retorno da automação.</p>"
+          "heading": "Como calcular o retorno",
+          "body": "<p>Multiplique as horas mensais que a sua equipa gasta numa tarefa pelo custo-hora dessa pessoa. Se esse valor for superior ao custo mensal do agente, o investimento compensa.</p><p><em>Exemplo ilustrativo:</em> uma equipa gasta 40h/mês em tarefas manuais, a um custo-hora de 300 MZN — um benefício de 12.000 MZN. Um agente médio custa cerca de 8.000 MZN/mês, o que resulta num ganho líquido de 4.000 MZN/mês e retorno em cerca de 2 meses. Este é apenas um exemplo de cálculo, não um resultado garantido.</p>"
+        },
+        {
+          "heading": "O que não está incluído",
+          "body": "<p>Consultoria estratégica fora do âmbito acordado, alterações acima de duas por mês, e desenvolvimento de código à medida não fazem parte do plano base — mas podem ser orçamentados à parte.</p>"
         }
       ],
       "callout": {
-        "title": "Dica",
-        "body": "Automatize primeiro uma tarefa com impacto visível. O sucesso rápido convence a equipa a avançar."
+        "title": "Sem penalidade se não resultar",
+        "body": "Se não vir retorno nos primeiros meses, pode cancelar sem penalidade. Alterações simples são gratuitas até duas por mês."
       }
     },
     "tags": [],
     "status": "published",
-    "publishedAt": "2026-05-05T00:00:00.000Z"
+    "publishedAt": "2026-07-18T00:00:00.000Z"
   },
   {
-    "slug": "ai-partner-fracionado-o-que-e",
-    "title": "AI Partner fracionado: acesso a especialistas sem contratar em full-time",
-    "excerpt": "O que é o modelo de AI Partner fracionado e porque faz sentido para PME que querem avançar com IA de forma sustentável.",
-    "category": "Casos de uso",
-    "readingTime": "5 min",
+    "slug": "agencias-globais-mocambique-falham",
+    "title": "Porquê agências globais não entendem Moçambique",
+    "excerpt": "Agências de IA globais prometem muito mas falham em Moçambique. Veja porquê — e a alternativa local.",
+    "category": "Guias",
+    "readingTime": "7 min",
     "author": "Equipa Songhai",
-    "gradient": "from-[#2f6e62] via-[#c89b3c] to-[#1b3a4b]",
+    "gradient": "from-[#1b3a4b] via-[#122733] to-[#c89b3c]",
+    "icon": "map-pin",
+    "coverImage": "https://images.pexels.com/photos/30188151/pexels-photo-30188151.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "content": {
-      "lead": "Contratar um especialista de IA a tempo inteiro é caro e nem sempre necessário. O modelo fracionado dá-lhe acesso à experiência sem o custo fixo.",
+      "lead": "É uma história comum em Moçambique: uma empresa contrata uma agência internacional, paga milhares de dólares, e meses depois o projeto está parado — o agente não entende o português de Moçambique, a integração com os sistemas locais vira um caos e o suporte demora dias a responder.",
       "sections": [
         {
-          "heading": "Como funciona",
-          "body": "<p>Escolhe um plano de horas mensais — 8h, 20h ou 40h — e a Songhai torna-se parte da sua equipa, com foco contínuo nos seus processos.</p>"
+          "heading": "A língua não é só \"português\"",
+          "body": "<p>Uma agência internacional que \"fala português\" normalmente fala um português genérico — não o português de Moçambique, com o seu próprio tom e expressões. Um agente que soa estranho a um cliente em Maputo gera desconfiança em vez de confiança.</p><p>A nossa abordagem: agentes treinados no português de Moçambique, com o tom e as expressões que os seus clientes realmente usam.</p>"
         },
         {
-          "heading": "Para quem é",
-          "body": "<p>Ideal para PME e startups que querem evoluir com IA de forma constante, sem o peso de uma contratação permanente.</p>"
+          "heading": "A infraestrutura local é diferente",
+          "body": "<p>Muitas PME em Moçambique ainda usam Excel para tudo, têm sistemas legados difíceis de manter e lidam com conectividade inconsistente. Uma agência global costuma desistir se não conseguir uma integração \"perfeita\" com ferramentas mainstream.</p><p>A nossa abordagem: trabalhamos com o que a empresa já tem — Excel, sistema legado ou outro — em vez de exigir que a empresa se adapte à ferramenta.</p>"
+        },
+        {
+          "heading": "Preço em dólares, não em meticais",
+          "body": "<p>Um orçamento em dólares soa razoável até ser convertido para meticais — e muitas vezes ultrapassa todo o orçamento de TI de uma PME pequena, inviabilizando o projeto antes de começar.</p><p>A nossa abordagem: preços definidos em MZN desde o início, para caber no orçamento real de uma empresa moçambicana.</p>"
+        },
+        {
+          "heading": "Suporte fora de horas e fora de português",
+          "body": "<p>Suporte \"24/7 global\" muitas vezes significa uma equipa offshore, em fuso horário diferente, que responde em inglês a um pedido urgente enviado em português. Um problema às 9h da manhã pode só ter resposta à noite.</p><p>A nossa abordagem: equipa em Maputo, suporte em português, resposta em poucas horas.</p>"
         }
-      ]
+      ],
+      "quote": "Não é que as agências globais sejam más — é que não foram feitas para Moçambique.",
+      "callout": {
+        "title": "O resultado",
+        "body": "Implementações genéricas, pensadas para outros mercados, tendem a ter uma taxa de sucesso muito mais baixa em Moçambique do que soluções desenhadas de raiz para a realidade local."
+      }
     },
     "tags": [],
     "status": "published",
-    "publishedAt": "2026-04-22T00:00:00.000Z"
+    "publishedAt": "2026-07-17T00:00:00.000Z"
+  },
+  {
+    "slug": "metodo-maie-implementar-ia-negocio",
+    "title": "Método MAIE: como implementamos IA sem quebrar o seu negócio",
+    "excerpt": "Método estruturado para implementar IA: Mapear, Automatizar, Integrar, Escalar — sem disrupção.",
+    "category": "Casos de uso",
+    "readingTime": "8 min",
+    "author": "Equipa Songhai",
+    "gradient": "from-[#2f6e62] via-[#122733] to-[#1b3a4b]",
+    "icon": "route",
+    "coverImage": "https://images.pexels.com/photos/37894920/pexels-photo-37894920.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "content": {
+      "lead": "\"E se quebrar tudo o que está a funcionar?\" É o receio mais comum de quem pensa em implementar IA. O Método MAIE existe exatamente para evitar isso: um processo em quatro fases, cada uma isolada da seguinte.",
+      "sections": [
+        {
+          "heading": "Mapear (semana 1)",
+          "body": "<p>Entrevistamos o gerente e a equipa para perceber onde o tempo é gasto e que ferramentas já usam. O resultado é um relatório com os processos identificados, oportunidades priorizadas por impacto e uma estimativa de tempo e dinheiro recuperável.</p><p>Custo: incluído no diagnóstico gratuito. Disrupção: zero — ninguém muda nada nesta fase.</p>"
+        },
+        {
+          "heading": "Automatizar (semana 2-3)",
+          "body": "<p>Desenhamos o agente à medida do negócio — que perguntas faz, que tom usa, que sistemas acede — e construímo-lo em ambiente de testes, sem afetar a operação real.</p><p>Disrupção: zero. Está tudo em ambiente de testes até estar pronto.</p>"
+        },
+        {
+          "heading": "Integrar (semana 3-4)",
+          "body": "<p>Ligamos o agente ao WhatsApp Business, ao calendário, ao CRM e aos sistemas de faturação já usados pela empresa. Começamos com uma percentagem pequena do tráfego real antes de avançar para a totalidade.</p><p>Disrupção: mínima — a transição é gradual, não instantânea.</p>"
+        },
+        {
+          "heading": "Escalar (semana 5 em diante)",
+          "body": "<p>Com o agente em produção, acompanhamos o desempenho com métricas, ajustamos mensalmente e expandimos para novos processos conforme o negócio cresce. A equipa vai ganhando autonomia para gerir o sistema.</p>"
+        }
+      ],
+      "callout": {
+        "title": "Porque o método reduz risco",
+        "body": "Cada fase depende da anterior e só avança quando está validada. Isso significa resultados visíveis já no primeiro mês, em vez de um investimento de longo prazo sem garantias."
+      }
+    },
+    "tags": [],
+    "status": "published",
+    "publishedAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "slug": "5-tarefas-clinicas-perdem-tempo-ia",
+    "title": "5 tarefas que clínicas em Maputo perdem tempo — que IA resolve em minutos",
+    "excerpt": "Clínicas em Maputo gastam centenas de horas em tarefas manuais. Veja quais pode eliminar com IA.",
+    "category": "Casos de uso",
+    "readingTime": "6 min",
+    "author": "Equipa Songhai",
+    "gradient": "from-[#c89b3c] via-[#2f6e62] to-[#122733]",
+    "icon": "stethoscope",
+    "coverImage": "https://images.pexels.com/photos/7108396/pexels-photo-7108396.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "content": {
+      "lead": "Quanto tempo a sua equipa gasta em emails e chamadas que não agregam valor? Em clínicas em Maputo, a estimativa típica do setor é entre 60 e 100 horas por mês — o equivalente a uma pessoa a tempo inteiro dedicada só a confirmações de consulta.",
+      "sections": [
+        {
+          "heading": "Confirmação de consultas (15-20h/mês)",
+          "body": "<p>O paciente marca consulta. A clínica precisa confirmar 24 horas antes — normalmente por chamada ou email. Se liga, ninguém atende no consultório. Se envia email, muitos pacientes não leem. O resultado são consultórios vazios e receita perdida.</p><p>Um agente de IA envia a confirmação automaticamente pelo WhatsApp do paciente — canal com taxa de abertura muito mais alta do que o email. O paciente responde \"sim\" ou \"não\" e o sistema atualiza a agenda sozinho.</p>"
+        },
+        {
+          "heading": "Perguntas repetidas (20-30h/mês)",
+          "body": "<p>\"Qual é o vosso horário?\", \"Aceitam seguro?\", \"Qual é a taxa da consulta?\" — as mesmas perguntas chegam dezenas de vezes por mês, e cada uma é respondida manualmente.</p><p>Um agente treinado nas respostas mais comuns responde em segundos, sem esperar que alguém da equipa esteja livre.</p>"
+        },
+        {
+          "heading": "Agendamento manual (25-35h/mês)",
+          "body": "<p>Marcar uma consulta por chamada envolve ouvir a disponibilidade do paciente, verificar a agenda, confirmar o horário e enviar confirmação — tudo manualmente. Se a confirmação não chega, o paciente nem sabe que foi marcado.</p><p>Um agente integrado com o calendário da clínica faz todo o processo em conversa, com a agenda atualizada em tempo real.</p>"
+        },
+        {
+          "heading": "Seguimento de faltas (10-15h/mês)",
+          "body": "<p>Quando um paciente falta, raramente alguém liga a perguntar porquê — e o paciente muitas vezes vai para outra clínica. Um agente contacta automaticamente após a falta, pergunta se está tudo bem e propõe remarcar.</p>"
+        },
+        {
+          "heading": "Relatórios diários e mensais (8-12h/mês)",
+          "body": "<p>Compilar quantos pacientes vieram, quanto faturou e quantas faltas houve significa juntar dados de vários sistemas à mão. Um agente acede aos sistemas da clínica e gera o relatório automaticamente, pronto ao início da manhã.</p>"
+        }
+      ],
+      "quote": "Se recuperasse estas horas todos os meses, o que a sua equipa faria com elas?",
+      "callout": {
+        "title": "Tempo total estimado",
+        "body": "Somadas, estas cinco tarefas representam entre 78 e 112 horas por mês — mais de uma pessoa a tempo inteiro dedicada só a trabalho repetitivo. Estimativa baseada em padrões típicos do setor, não num caso específico."
+      }
+    },
+    "tags": [],
+    "status": "published",
+    "publishedAt": "2026-07-15T00:00:00.000Z"
   }
 ]

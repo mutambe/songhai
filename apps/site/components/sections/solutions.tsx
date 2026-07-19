@@ -95,7 +95,7 @@ const SOLUTIONS = [
   {
     n: '06',
     icon: GraduationCap,
-    title: 'Formação em IA',
+    title: 'Treinamento em IA',
     tag: 'Capacitação',
     desc: 'Preparamos a sua equipa para trabalhar com IA a partir dos seus processos reais, não de exemplos genéricos.',
     metric: 'Equipa autónoma',
@@ -104,7 +104,7 @@ const SOLUTIONS = [
       'Sessões práticas baseadas nos casos reais da sua empresa',
       'Materiais e guias adaptados às ferramentas que já usam',
       'Boas práticas de segurança e uso responsável de IA',
-      'Acompanhamento pós-formação para tirar dúvidas',
+      'Acompanhamento pós-treinamento para tirar dúvidas',
     ],
   },
   {
@@ -134,7 +134,7 @@ const SOLUTIONS = [
       'Implementação de ERP/SaaS (OpenProject, Odoo, ERPNext, ou soluções custom)',
       'Customização e migração de dados dos sistemas legados',
       'Integração com automações de IA nos processos-chave (RH, financeiro, vendas)',
-      'Formação da equipa e suporte contínuo na plataforma',
+      'Treinamento da equipa e suporte contínuo na plataforma',
       'Dashboard e relatórios automatizados com insights de IA',
     ],
   },

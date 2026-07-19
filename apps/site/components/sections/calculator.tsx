@@ -142,7 +142,7 @@ export function Calculator() {
               </div>
 
               <div className="mt-8">
-                <PillButton href="/contacto" variant="gold" className="w-full">
+                <PillButton href="/diagnostico" variant="gold" className="w-full">
                   Quero estes resultados — Agendar 30min grátis
                   <ArrowRight className="h-4 w-4" />
                 </PillButton>

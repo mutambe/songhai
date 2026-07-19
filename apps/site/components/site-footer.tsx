@@ -6,12 +6,13 @@ const SERVICES = [
   'Agentes de IA de Voz',
   'Automação de Processos',
   'Consultoria de IA',
-  'Formação em IA',
+  'Treinamento em IA',
 ]
 
 const COMPANY = [
   { label: 'Método Songhai', href: '/#metodo' },
   { label: 'Setores', href: '/#setores' },
+  { label: 'Preços', href: '/precos' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/#faq' },
 ]
