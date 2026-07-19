@@ -195,19 +195,23 @@ export function ConnectedDiagram() {
       {/* center logo */}
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
         <div
-          className="relative flex h-24 w-24 items-center justify-center rounded-full bg-white ring-2 ring-gold/85 sm:h-28 sm:w-28"
+          className="relative flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-full ring-2 ring-sky-400/80 sm:h-28 sm:w-28"
           style={{
-            boxShadow:
-              '0 0 40px color-mix(in srgb, var(--gold) 45%, transparent)',
+            background:
+              'radial-gradient(circle at 35% 30%, #1e3a8a 0%, #0b1230 75%)',
+            boxShadow: '0 0 40px rgba(56, 189, 248, 0.55)',
           }}
         >
           <Image
-            src="/songhai-logo.png"
+            src="/songhai-mark.png"
             alt="SONGHAI"
-            width={112}
-            height={112}
-            className="h-24 w-24 rounded-full object-cover sm:h-28 sm:w-28"
+            width={512}
+            height={380}
+            className="h-9 w-12 object-contain sm:h-11 sm:w-14"
           />
+          <span className="text-[10px] font-bold uppercase tracking-wider text-gold sm:text-xs">
+            Songhai
+          </span>
         </div>
       </div>
     </div>
