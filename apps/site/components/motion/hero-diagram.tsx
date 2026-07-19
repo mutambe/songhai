@@ -20,15 +20,15 @@ export function HeroDiagram() {
     >
       <svg
         viewBox="0 0 1000 800"
-        className="absolute inset-0 h-full w-full opacity-20"
+        className="hero-fx-svg absolute inset-0 h-full w-full opacity-40"
         preserveAspectRatio="xMidYMid slice"
       >
         {/* Grid of connection points */}
         <defs>
           <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#c89b3c" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="#2f6e62" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#c89b3c" stopOpacity="0.3" />
+            <stop offset="0%" style={{ stopColor: 'var(--gold)', stopOpacity: 0.55 }} />
+            <stop offset="50%" style={{ stopColor: 'var(--teal)', stopOpacity: 0.4 }} />
+            <stop offset="100%" style={{ stopColor: 'var(--gold)', stopOpacity: 0.55 }} />
           </linearGradient>
           <linearGradient
             id="flowGradient2"
@@ -37,9 +37,9 @@ export function HeroDiagram() {
             x2="0%"
             y2="0%"
           >
-            <stop offset="0%" stopColor="#2f6e62" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="#c89b3c" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#2f6e62" stopOpacity="0.3" />
+            <stop offset="0%" style={{ stopColor: 'var(--teal)', stopOpacity: 0.55 }} />
+            <stop offset="50%" style={{ stopColor: 'var(--gold)', stopOpacity: 0.4 }} />
+            <stop offset="100%" style={{ stopColor: 'var(--teal)', stopOpacity: 0.55 }} />
           </linearGradient>
         </defs>
 
@@ -71,25 +71,25 @@ export function HeroDiagram() {
         />
 
         {/* Connection nodes */}
-        <circle cx="150" cy="100" r="6" fill="#c89b3c" opacity="0.4" />
-        <circle cx="400" cy="250" r="6" fill="#2f6e62" opacity="0.4" />
-        <circle cx="750" cy="400" r="6" fill="#c89b3c" opacity="0.4" />
-        <circle cx="600" cy="600" r="6" fill="#2f6e62" opacity="0.4" />
+        <circle cx="150" cy="100" r="6" style={{ fill: 'var(--gold)' }} opacity="0.65" />
+        <circle cx="400" cy="250" r="6" style={{ fill: 'var(--teal)' }} opacity="0.65" />
+        <circle cx="750" cy="400" r="6" style={{ fill: 'var(--gold)' }} opacity="0.65" />
+        <circle cx="600" cy="600" r="6" style={{ fill: 'var(--teal)' }} opacity="0.65" />
 
         {/* Subtle secondary paths */}
         <path
           d="M 250 180 L 350 300"
-          stroke="#c89b3c"
+          style={{ stroke: 'var(--gold)' }}
           strokeWidth="1.5"
-          opacity="0.15"
+          opacity="0.3"
           fill="none"
           strokeDasharray="5,5"
         />
         <path
           d="M 700 350 L 850 500"
-          stroke="#2f6e62"
+          style={{ stroke: 'var(--teal)' }}
           strokeWidth="1.5"
-          opacity="0.15"
+          opacity="0.3"
           fill="none"
           strokeDasharray="5,5"
         />

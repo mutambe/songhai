@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactElement } from 'react'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { Bot, Workflow, Server, LayoutGrid } from 'lucide-react'
 import { Reveal } from '@/components/motion/reveal'
@@ -11,6 +11,26 @@ type Tool = {
   variant?: string
   /** brand color used for the monogram fallback */
   color?: string
+  /** ícone é um traço monocromático branco — inverte para escuro no modo claro */
+  invertOnLight?: boolean
+  /** ícone renderizado inline em vez de carregado via CDN (para cor de marca fixa) */
+  render?: () => ReactElement
+}
+
+function GeminiIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover/chip:scale-110"
+    >
+      <path
+        fill="#3186FF"
+        fillRule="evenodd"
+        d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"
+      />
+    </svg>
+  )
 }
 
 type Category = {
@@ -28,9 +48,12 @@ const CATEGORIES: Category[] = [
     description: 'Modelos e agentes que pensam, escrevem e decidem.',
     icon: Bot,
     tools: [
-      { name: 'OpenAI', slug: 'openai' },
+      { name: 'OpenAI', slug: 'openai', invertOnLight: true },
       { name: 'Anthropic / Claude', slug: 'claude' },
-      { name: 'Google AI', slug: 'gemini-google', variant: 'color' },
+      { name: 'Gemini', render: GeminiIcon },
+      { name: 'DeepSeek', slug: 'deepseek' },
+      { name: 'Qwen', slug: 'qwen', invertOnLight: true },
+      { name: 'Mistral', slug: 'mistral' },
     ],
   },
   {
@@ -40,6 +63,7 @@ const CATEGORIES: Category[] = [
     tools: [
       { name: 'n8n', slug: 'n8n' },
       { name: 'Make', slug: 'make' },
+      { name: 'Node-RED', slug: 'node-red' },
     ],
   },
   {
@@ -51,7 +75,7 @@ const CATEGORIES: Category[] = [
       { name: 'Portainer', slug: 'portainer' },
       { name: 'Supabase', slug: 'supabase' },
       { name: 'PostgreSQL', slug: 'postgresql' },
-      { name: 'Vercel', slug: 'vercel' },
+      { name: 'Coolify', slug: 'coolify' },
     ],
   },
   {
@@ -64,7 +88,7 @@ const CATEGORIES: Category[] = [
       { name: 'OrangeHRM', color: '#f68b1f' },
       { name: 'Wiki.js', color: '#1976d2' },
       { name: 'Paperless-ngx', slug: 'paperless-ngx' },
-      { name: 'Stripe', slug: 'stripe' },
+      { name: 'ERPNext', slug: 'erpnext' },
     ],
   },
 ]
@@ -84,6 +108,10 @@ function Monogram({ name, color }: { name: string; color?: string }) {
 function ToolIcon({ tool }: { tool: Tool }) {
   const [failed, setFailed] = useState(false)
 
+  if (tool.render) {
+    return tool.render()
+  }
+
   if (!tool.slug || failed) {
     return <Monogram name={tool.name} color={tool.color} />
   }
@@ -97,7 +125,9 @@ function ToolIcon({ tool }: { tool: Tool }) {
       height={20}
       loading="lazy"
       onError={() => setFailed(true)}
-      className="h-5 w-5 shrink-0 object-contain transition-transform duration-200 group-hover/chip:scale-110"
+      className={`h-5 w-5 shrink-0 object-contain transition-transform duration-200 group-hover/chip:scale-110 ${
+        tool.invertOnLight ? 'tool-icon-invert' : ''
+      }`}
     />
   )
 }

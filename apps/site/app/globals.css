@@ -47,17 +47,17 @@
 
 :root {
   color-scheme: light;
-  --sand: #fbf9f4;
+  --sand: #f5efe0;
   --paper: #ffffff;
-  --paper-muted: #f3ede0;
-  --ink: #17201d;
-  --ink-soft: #40483f;
+  --paper-muted: #ece1c7;
+  --ink: #121814;
+  --ink-soft: #353d32;
   --indigo-deep: #0d212c;
   --indigo: #153148;
-  --gold: #d19a2a;
+  --gold: #bd8420;
   --gold-dark: #a63c07;
-  --teal: #0f5c4c;
-  --line: #e7e0cf;
+  --teal: #0c4c3f;
+  --line: #d9cba1;
   --radius: 1rem;
 
   /* Painel de contraste (rodapé, secção "problema", CTA final) —
@@ -78,6 +78,28 @@ html[data-theme='dark'] {
   --gold: #d4b066;
   --teal: #5dd9c1;
   --line: #2d3530;
+}
+
+html[data-theme='dark'] .hero-fx-svg {
+  opacity: 0.6;
+}
+
+/* Ícones de marca só disponíveis em traço branco (ex.: OpenAI, Qwen) —
+   invisíveis sobre fundo claro. Invertidos para escuro no tema claro. */
+.tool-icon-invert {
+  filter: invert(1);
+}
+html[data-theme='dark'] .tool-icon-invert {
+  filter: none;
+}
+
+/* Logótipo: versão com contorno claro para o tema claro, versão lisa
+   (já perfeita) para o tema escuro. */
+html[data-theme='dark'] .logo-mark-light {
+  display: none;
+}
+html[data-theme='dark'] .logo-mark-dark {
+  display: block;
 }
 
 @layer base {

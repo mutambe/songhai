@@ -11,7 +11,7 @@ function applyTheme(theme: 'light' | 'dark') {
   localStorage.setItem(STORAGE_KEY, theme)
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute('content', theme === 'dark' ? '#0f1412' : '#fbf9f4')
+    ?.setAttribute('content', theme === 'dark' ? '#0f1412' : '#f5efe0')
 }
 
 export function ThemeToggle({ className }: { className?: string }) {

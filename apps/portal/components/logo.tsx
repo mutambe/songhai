@@ -20,7 +20,7 @@ export function Logo({
       )}
       aria-label="Portal SONGHAI — início"
     >
-      <span className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center">
+      <span className="relative inline-flex h-8 shrink-0 items-center justify-center">
         {glow && (
           <span
             aria-hidden="true"
@@ -28,11 +28,11 @@ export function Logo({
           />
         )}
         <Image
-          src="/songhai-logo.png"
+          src="/songhai-mark.png"
           alt="Logótipo SONGHAI"
-          width={36}
-          height={36}
-          className="relative h-9 w-9 rounded-full object-cover"
+          width={512}
+          height={380}
+          className="relative h-8 w-auto object-contain"
           priority
         />
       </span>

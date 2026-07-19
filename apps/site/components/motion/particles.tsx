@@ -12,7 +12,10 @@ type Particle = {
   twinkle: number
 }
 
-const COLORS = ['#c89b3c', '#2f6e62', '#1b3a4b']
+const LIGHT_COLORS = ['#c89b3c', '#2f6e62', '#1b3a4b']
+// Cores mais claras no escuro — as do modo claro (ex.: o azul-marinho)
+// ficam quase invisíveis sobre um fundo quase preto.
+const DARK_COLORS = ['#d4b066', '#5dd9c1', '#a8d5ee']
 
 export function Particles({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -32,6 +35,7 @@ export function Particles({ className }: { className?: string }) {
     let height = 0
     let particles: Particle[] = []
     let raf = 0
+    let isDark = document.documentElement.getAttribute('data-theme') === 'dark'
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
 
     const build = () => {
@@ -45,13 +49,14 @@ export function Particles({ className }: { className?: string }) {
       canvas.style.height = `${height}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
+      const colors = isDark ? DARK_COLORS : LIGHT_COLORS
       const count = Math.min(Math.floor((width * height) / 11000), 90)
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 2 + 0.8,
+        size: Math.random() * 2.4 + 1,
         speed: Math.random() * 0.35 + 0.12,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        color: colors[Math.floor(Math.random() * colors.length)],
         phase: Math.random() * Math.PI * 2,
         twinkle: Math.random() * 0.02 + 0.008,
       }))
@@ -59,6 +64,8 @@ export function Particles({ className }: { className?: string }) {
 
     const render = () => {
       ctx.clearRect(0, 0, width, height)
+      const alphaBase = isDark ? 0.45 : 0.35
+      const alphaAmp = isDark ? 0.5 : 0.45
       for (const p of particles) {
         p.y -= p.speed
         p.phase += p.twinkle
@@ -66,7 +73,7 @@ export function Particles({ className }: { className?: string }) {
           p.y = height + 4
           p.x = Math.random() * width
         }
-        const alpha = 0.22 + Math.abs(Math.sin(p.phase)) * 0.33
+        const alpha = alphaBase + Math.abs(Math.sin(p.phase)) * alphaAmp
         ctx.globalAlpha = alpha
         ctx.fillStyle = p.color
         ctx.beginPath()
@@ -82,9 +89,20 @@ export function Particles({ className }: { className?: string }) {
 
     const onResize = () => build()
     window.addEventListener('resize', onResize)
+
+    const observer = new MutationObserver(() => {
+      const nowDark = document.documentElement.getAttribute('data-theme') === 'dark'
+      if (nowDark !== isDark) {
+        isDark = nowDark
+        build()
+      }
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', onResize)
+      observer.disconnect()
     }
   }, [])
 
