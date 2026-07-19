@@ -56,6 +56,7 @@ export function UserManagementSection({
   const [error, setError] = useState('')
   const [tempPassword, setTempPassword] = useState<{ email: string; password: string } | null>(null)
   const [createOpen, setCreateOpen] = useState(false)
+  const [resetSentTo, setResetSentTo] = useState<string | null>(null)
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -142,7 +143,7 @@ export function UserManagementSection({
       const res = await fetch(`/api/auth/users/${user.id}/reset-password`, { method: 'POST' })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Não foi possível repor a senha.')
-      setTempPassword({ email: user.email, password: json.tempPassword })
+      setResetSentTo(user.email)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Não foi possível repor a senha.')
     } finally {
@@ -358,6 +359,19 @@ export function UserManagementSection({
               </button>
             </div>
           </div>
+        )}
+      </Modal>
+
+      <Modal
+        open={!!resetSentTo}
+        onClose={() => setResetSentTo(null)}
+        title="Link de reposição enviado"
+      >
+        {resetSentTo && (
+          <p className="text-sm leading-relaxed text-ink-soft">
+            Foi enviado um e-mail para <span className="text-foreground">{resetSentTo}</span> com um
+            link para definir uma nova senha, válido por 1 hora.
+          </p>
         )}
       </Modal>
     </div>

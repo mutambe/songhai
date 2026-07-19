@@ -46,6 +46,17 @@ async function writeStore(data: StoreData) {
   await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8')
 }
 
+/** Só aceita http(s) — impede guardar "javascript:"/"data:" como link de um sistema. */
+export function validateHref(href: string): string | null {
+  try {
+    const url = new URL(href)
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return null
+    return url.toString()
+  } catch {
+    return null
+  }
+}
+
 export function slugify(name: string) {
   return name
     .toLowerCase()

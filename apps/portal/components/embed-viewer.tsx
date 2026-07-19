@@ -62,7 +62,18 @@ export function EmbedViewer({
             Abrir numa aba
           </a>
         </div>
-        <iframe src={href} title={title} className="w-full flex-1" />
+        <iframe
+          src={href}
+          title={title}
+          className="w-full flex-1"
+          // Ficheiros HTML carregados no painel (/dashboards/*.html) correm no
+          // mesmo domínio do Portal — sandbox sem "allow-same-origin" impede
+          // que esse conteúdo leia cookies/localStorage do Portal, mesmo que
+          // uma conta de admin seja comprometida. Embeds externos (ex.:
+          // PowerBI) precisam do próprio contexto de origem para funcionar,
+          // por isso ficam sem sandbox.
+          sandbox={href.startsWith('/') ? 'allow-scripts allow-popups' : undefined}
+        />
       </div>
       <p className="mt-2 text-xs text-ink-soft">
         Se o conteúdo não aparecer aqui, esta ferramenta pode bloquear a incorporação por

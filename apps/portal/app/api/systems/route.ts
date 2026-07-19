@@ -5,6 +5,7 @@ import {
   listInternalSystems,
   savePreviewImage,
   slugify,
+  validateHref,
 } from '@/lib/systems-store'
 import { getSession, hasPermission } from '@/lib/session'
 
@@ -45,6 +46,11 @@ export async function POST(request: Request) {
     )
   }
 
+  const validHref = validateHref(href.trim())
+  if (!validHref) {
+    return NextResponse.json({ error: 'Link inválido.' }, { status: 400 })
+  }
+
   const trimmedName = name.trim()
   let previewImage: string | undefined
 
@@ -62,7 +68,7 @@ export async function POST(request: Request) {
   const system = await addInternalSystem({
     name: trimmedName,
     description: typeof description === 'string' ? description.trim() : '',
-    href: href.trim(),
+    href: validHref,
     previewImage,
   })
 

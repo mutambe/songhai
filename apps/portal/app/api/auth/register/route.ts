@@ -1,7 +1,18 @@
 import { NextResponse } from 'next/server'
 import { ALLOWED_EMAIL_DOMAIN, createUser, findUserByEmail } from '@/lib/auth-store'
+import { isRateLimited, registerFailedAttempt } from '@/lib/rate-limit'
 
 export async function POST(request: Request) {
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  const limitKey = `register:${ip}`
+  if (isRateLimited(limitKey)) {
+    return NextResponse.json(
+      { error: 'Demasiadas tentativas. Tente novamente dentro de alguns minutos.' },
+      { status: 429 },
+    )
+  }
+  registerFailedAttempt(limitKey)
+
   const body = await request.json().catch(() => null)
 
   const name = typeof body?.name === 'string' ? body.name.trim() : ''

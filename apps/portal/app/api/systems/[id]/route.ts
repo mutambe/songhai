@@ -5,6 +5,7 @@ import {
   savePreviewImage,
   slugify,
   updateInternalSystem,
+  validateHref,
 } from '@/lib/systems-store'
 import { getSession } from '@/lib/session'
 
@@ -39,6 +40,11 @@ export async function PATCH(
     )
   }
 
+  const validHref = validateHref(href.trim())
+  if (!validHref) {
+    return NextResponse.json({ error: 'Link inválido.' }, { status: 400 })
+  }
+
   const trimmedName = name.trim()
   let previewImage: string | undefined
 
@@ -56,7 +62,7 @@ export async function PATCH(
   const system = await updateInternalSystem(id, {
     name: trimmedName,
     description: typeof description === 'string' ? description.trim() : '',
-    href: href.trim(),
+    href: validHref,
     previewImage,
   })
 
