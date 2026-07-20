@@ -12,7 +12,7 @@ export function AnalyticsBeacon() {
     fetch(`${PORTAL_URL}/api/track`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ path: pathname }),
+      body: JSON.stringify({ path: pathname, referrer: document.referrer }),
       keepalive: true,
     }).catch(() => {})
   }, [pathname])
