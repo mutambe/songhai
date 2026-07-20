@@ -8,6 +8,8 @@ type Summary = {
   visitors: number
   homeViews: number
   topPaths: { path: string; count: number }[]
+  referrers: { label: string; count: number }[]
+  devices: { label: string; count: number }[]
 }
 
 type DailyPoint = { date: string; pageviews: number; visitors: number }
@@ -234,6 +236,38 @@ export function MetricsPanel() {
           </ul>
         </div>
       )}
+      {hasData && data.last30.referrers.length > 0 && (
+        <div className="mt-5 rounded-2xl border border-line bg-paper p-6">
+          <p className="text-sm font-medium text-foreground">
+            Origem do tráfego (30 dias)
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {data.last30.referrers.map(({ label, count }) => (
+              <li key={label} className="flex items-center justify-between text-sm">
+                <span className="text-ink-soft">{label}</span>
+                <span className="font-medium text-foreground">{fmt(count)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {hasData && data.last30.devices.length > 0 && (
+        <div className="mt-5 rounded-2xl border border-line bg-paper p-6">
+          <p className="text-sm font-medium text-foreground">
+            Dispositivo (30 dias)
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {data.last30.devices.map(({ label, count }) => (
+              <li key={label} className="flex items-center justify-between text-sm">
+                <span className="text-ink-soft">{label}</span>
+                <span className="font-medium text-foreground">{fmt(count)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
     </section>
   )
 }
