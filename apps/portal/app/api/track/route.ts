@@ -32,9 +32,10 @@ export async function POST(request: Request) {
 
   const body = await request.json().catch(() => null)
   const path = typeof body?.path === 'string' && body.path ? body.path.slice(0, 200) : '/'
+  const referrer = typeof body?.referrer === 'string' && body.referrer ? body.referrer.slice(0, 300) : undefined
   const userAgent = request.headers.get('user-agent') || 'unknown'
 
-  await recordPageview({ path, ip, userAgent })
+  await recordPageview({ path, ip, userAgent, referrer })
 
   return NextResponse.json({ ok: true }, { headers: CORS_HEADERS })
 }
