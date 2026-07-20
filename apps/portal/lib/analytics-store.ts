@@ -103,6 +103,47 @@ export async function getSummary(days: number) {
   }
 }
 
+export async function getDailySeries(days: number) {
+  const store = await readStore()
+  const series: { date: string; pageviews: number; visitors: number }[] = []
+
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date()
+    d.setDate(d.getDate() - i)
+    const key = d.toISOString().slice(0, 10)
+    const day = store[key]
+    series.push({
+      date: key,
+      pageviews: day?.pageviews ?? 0,
+      visitors: day?.visitorHashes.length ?? 0,
+    })
+  }
+
+  return series
+}
+
+export async function getBlogStats(days: number) {
+  const store = await readStore()
+  const cutoff = new Date()
+  cutoff.setDate(cutoff.getDate() - (days - 1))
+  cutoff.setHours(0, 0, 0, 0)
+
+  const postTotals: Record<string, number> = {}
+
+  for (const [dateStr, day] of Object.entries(store)) {
+    if (new Date(dateStr) < cutoff) continue
+    for (const [p, count] of Object.entries(day.paths)) {
+      if (p.startsWith('/blog/')) {
+        postTotals[p] = (postTotals[p] ?? 0) + count
+      }
+    }
+  }
+
+  return Object.entries(postTotals)
+    .sort((a, b) => b[1] - a[1])
+    .map(([path, count]) => ({ path, count }))
+}
+
 export async function hasAnyData() {
   const store = await readStore()
   return Object.keys(store).length > 0
