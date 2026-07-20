@@ -186,7 +186,7 @@ export function ConnectedDiagram() {
                 <Icon className="h-5 w-5 text-sky-300 sm:h-6 sm:w-6" />
               </motion.div>
             </div>
-            <span className="text-[11px] font-medium text-foreground/80 sm:text-xs">
+            <span className="text-[11px] font-medium text-white/80 sm:text-xs">
               {node.label}
             </span>
           </motion.div>
