@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Activity, Eye, Home, Users } from 'lucide-react'
+import { Activity, AlertTriangle, Eye, Home, Users } from 'lucide-react'
 
 type Summary = {
   pageviews: number
@@ -71,6 +71,24 @@ function DailyChart({ data }: { data: DailyPoint[] }) {
   )
 }
 
+function detectAnomaly(daily: DailyPoint[]) {
+  if (daily.length < 9) return null
+  const latest = daily[daily.length - 2]
+  const baseline = daily.slice(daily.length - 9, daily.length - 2)
+  const baselineAvg = baseline.reduce((sum, d) => sum + d.pageviews, 0) / baseline.length
+
+  if (baselineAvg < 3) return null
+
+  const diff = (latest.pageviews - baselineAvg) / baselineAvg
+  if (diff >= 0.5) {
+    return { date: latest.date, value: latest.pageviews, baseline: baselineAvg, direction: 'up' as const, percent: Math.round(diff * 100) }
+  }
+  if (diff <= -0.5) {
+    return { date: latest.date, value: latest.pageviews, baseline: baselineAvg, direction: 'down' as const, percent: Math.round(diff * 100) }
+  }
+  return null
+}
+
 export function MetricsPanel() {
   const [data, setData] = useState<AnalyticsResponse | null>(null)
   const [loading, setLoading] = useState(true)
@@ -96,6 +114,7 @@ export function MetricsPanel() {
 
   const fmt = (n: number) => n.toLocaleString('pt-PT')
   const hasData = data && data.configured && !data.empty
+  const anomaly = hasData ? detectAnomaly(data.daily) : null
 
   return (
     <section>
@@ -116,6 +135,28 @@ export function MetricsPanel() {
             Ainda sem dados. Assim que o site principal começar a enviar visitas para{' '}
             <code className="rounded bg-paper-muted px-1.5 py-0.5 text-xs">/api/track</code>, as
             métricas aparecem aqui automaticamente.
+          </p>
+        </div>
+      )}
+
+      {hasData && anomaly && (
+        <div
+          className={`mt-5 rounded-2xl border p-6 ${
+            anomaly.direction === 'up' ? 'border-amber-900/40 bg-amber-950/20' : 'border-red-900/40 bg-red-950/20'
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <AlertTriangle
+              className={`h-4 w-4 ${anomaly.direction === 'up' ? 'text-amber-400' : 'text-red-400'}`}
+            />
+            <p className={`text-sm font-medium ${anomaly.direction === 'up' ? 'text-amber-300' : 'text-red-300'}`}>
+              Tráfego anómalo em {anomaly.date}
+            </p>
+          </div>
+          <p className="mt-2 text-sm text-ink-soft">
+            {fmt(anomaly.value)} páginas vistas, {Math.abs(anomaly.percent)}%{' '}
+            {anomaly.direction === 'up' ? 'acima' : 'abaixo'} da média dos 7 dias anteriores (~
+            {fmt(Math.round(anomaly.baseline))}).
           </p>
         </div>
       )}
