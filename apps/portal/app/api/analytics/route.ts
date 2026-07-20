@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getSummary, hasAnyData } from '@/lib/analytics-store'
+import { getSummary, getDailySeries, getBlogStats, hasAnyData } from '@/lib/analytics-store'
 import { getSession, hasPermission } from '@/lib/session'
 
 export async function GET() {
@@ -13,12 +13,19 @@ export async function GET() {
     return NextResponse.json({ configured: true, empty: true })
   }
 
-  const [last7, last30] = await Promise.all([getSummary(7), getSummary(30)])
+  const [last7, last30, daily, blogStats] = await Promise.all([
+    getSummary(7),
+    getSummary(30),
+    getDailySeries(30),
+    getBlogStats(30),
+  ])
 
   return NextResponse.json({
     configured: true,
     empty: false,
     last7,
     last30,
+    daily,
+    blogStats,
   })
 }
