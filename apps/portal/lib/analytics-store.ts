@@ -8,6 +8,8 @@ type DayStats = {
   pageviews: number
   visitorHashes: string[]
   paths: Record<string, number>
+  referrers: Record<string, number>
+  devices: Record<string, number>
 }
 
 type Store = Record<string, DayStats>
@@ -49,16 +51,56 @@ function todayKey() {
   return new Date().toISOString().slice(0, 10)
 }
 
-export function recordPageview(input: { path: string; ip: string; userAgent: string }) {
+const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || process.env.NEXT_PUBLIC_MAIN_SITE_URL || 'https://songhai.cc'
+
+function classifyReferrer(referrer: string | undefined): string {
+  if (!referrer) return 'Direto'
+  try {
+    const host = new URL(referrer).hostname.replace(/^www\./, '')
+    let siteHost = 'songhai.cc'
+    try {
+      siteHost = new URL(SITE_ORIGIN).hostname.replace(/^www\./, '')
+    } catch {}
+    if (host === siteHost) return 'Direto'
+    if (host.includes('google.')) return 'Google'
+    if (
+      ['facebook.', 'instagram.', 'twitter.', 'x.com', 'linkedin.', 'tiktok.', 'whatsapp.', 't.co'].some((s) =>
+        host.includes(s),
+      )
+    ) {
+      return 'Redes sociais'
+    }
+    return 'Outro'
+  } catch {
+    return 'Direto'
+  }
+}
+
+function classifyDevice(userAgent: string): string {
+  const ua = userAgent.toLowerCase()
+  if (/ipad|tablet/.test(ua)) return 'Tablet'
+  if (/mobile|android|iphone/.test(ua)) return 'Telemóvel'
+  return 'Computador'
+}
+
+export function recordPageview(input: { path: string; ip: string; userAgent: string; referrer?: string }) {
   return serialize(async () => {
     const date = todayKey()
     const store = await readStore()
     if (!store[date]) {
-      store[date] = { pageviews: 0, visitorHashes: [], paths: {} }
+      store[date] = { pageviews: 0, visitorHashes: [], paths: {}, referrers: {}, devices: {} }
     }
     const day = store[date]
+    if (!day.referrers) day.referrers = {}
+    if (!day.devices) day.devices = {}
     day.pageviews += 1
     day.paths[input.path] = (day.paths[input.path] ?? 0) + 1
+
+    const referrerLabel = classifyReferrer(input.referrer)
+    day.referrers[referrerLabel] = (day.referrers[referrerLabel] ?? 0) + 1
+
+    const deviceLabel = classifyDevice(input.userAgent)
+    day.devices[deviceLabel] = (day.devices[deviceLabel] ?? 0) + 1
 
     const hash = hashVisitor(input.ip, input.userAgent, date)
     if (!day.visitorHashes.includes(hash)) {
@@ -79,6 +121,8 @@ export async function getSummary(days: number) {
   let homeViews = 0
   const visitorSet = new Set<string>()
   const pathTotals: Record<string, number> = {}
+  const referrerTotals: Record<string, number> = {}
+  const deviceTotals: Record<string, number> = {}
 
   for (const [dateStr, day] of Object.entries(store)) {
     if (new Date(dateStr) < cutoff) continue
@@ -88,6 +132,12 @@ export async function getSummary(days: number) {
     for (const [p, count] of Object.entries(day.paths)) {
       pathTotals[p] = (pathTotals[p] ?? 0) + count
     }
+    for (const [r, count] of Object.entries(day.referrers ?? {})) {
+      referrerTotals[r] = (referrerTotals[r] ?? 0) + count
+    }
+    for (const [d, count] of Object.entries(day.devices ?? {})) {
+      deviceTotals[d] = (deviceTotals[d] ?? 0) + count
+    }
   }
 
   const topPaths = Object.entries(pathTotals)
@@ -95,11 +145,21 @@ export async function getSummary(days: number) {
     .slice(0, 5)
     .map(([path, count]) => ({ path, count }))
 
+  const referrers = Object.entries(referrerTotals)
+    .sort((a, b) => b[1] - a[1])
+    .map(([label, count]) => ({ label, count }))
+
+  const devices = Object.entries(deviceTotals)
+    .sort((a, b) => b[1] - a[1])
+    .map(([label, count]) => ({ label, count }))
+
   return {
     pageviews,
     visitors: visitorSet.size,
     homeViews,
     topPaths,
+    referrers,
+    devices,
   }
 }
 
