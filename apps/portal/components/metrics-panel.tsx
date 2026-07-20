@@ -10,9 +10,19 @@ type Summary = {
   topPaths: { path: string; count: number }[]
 }
 
+type DailyPoint = { date: string; pageviews: number; visitors: number }
+type BlogStat = { path: string; count: number }
+
 type AnalyticsResponse =
   | { configured: true; empty: true }
-  | { configured: true; empty: false; last7: Summary; last30: Summary }
+  | {
+      configured: true
+      empty: false
+      last7: Summary
+      last30: Summary
+      daily: DailyPoint[]
+      blogStats: BlogStat[]
+    }
 
 function StatTile({
   icon: Icon,
@@ -35,6 +45,29 @@ function StatTile({
         {loading ? '—' : value}
       </p>
     </div>
+  )
+}
+
+function DailyChart({ data }: { data: DailyPoint[] }) {
+  const max = Math.max(1, ...data.map((d) => d.pageviews))
+  const width = 600
+  const height = 120
+  const barGap = 2
+  const barWidth = data.length > 0 ? width / data.length - barGap : 0
+
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="mt-4 h-32 w-full" preserveAspectRatio="none">
+      {data.map((d, i) => {
+        const barHeight = (d.pageviews / max) * (height - 16)
+        const x = i * (barWidth + barGap)
+        const y = height - barHeight
+        return (
+          <rect key={d.date} x={x} y={y} width={barWidth} height={barHeight} rx={1.5} className="fill-mint/70">
+            <title>{`${d.date}: ${d.pageviews} visita${d.pageviews === 1 ? '' : 's'}`}</title>
+          </rect>
+        )
+      })}
+    </svg>
   )
 }
 
@@ -116,6 +149,19 @@ export function MetricsPanel() {
         </div>
       )}
 
+      {hasData && data.daily.length > 0 && (
+        <div className="mt-5 rounded-2xl border border-line bg-paper p-6">
+          <p className="text-sm font-medium text-foreground">
+            Evolução de páginas vistas (30 dias)
+          </p>
+          <DailyChart data={data.daily} />
+          <div className="mt-2 flex justify-between text-xs text-ink-soft">
+            <span>{data.daily[0]?.date}</span>
+            <span>{data.daily[data.daily.length - 1]?.date}</span>
+          </div>
+        </div>
+      )}
+
       {hasData && data.last30.topPaths.length > 0 && (
         <div className="mt-5 rounded-2xl border border-line bg-paper p-6">
           <p className="text-sm font-medium text-foreground">
@@ -125,6 +171,22 @@ export function MetricsPanel() {
             {data.last30.topPaths.map(({ path, count }) => (
               <li key={path} className="flex items-center justify-between text-sm">
                 <span className="text-ink-soft">{path}</span>
+                <span className="font-medium text-foreground">{fmt(count)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {hasData && data.blogStats.length > 0 && (
+        <div className="mt-5 rounded-2xl border border-line bg-paper p-6">
+          <p className="text-sm font-medium text-foreground">
+            Artigos do blog mais vistos (30 dias)
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {data.blogStats.map(({ path, count }) => (
+              <li key={path} className="flex items-center justify-between text-sm">
+                <span className="text-ink-soft">{path.replace('/blog/', '')}</span>
                 <span className="font-medium text-foreground">{fmt(count)}</span>
               </li>
             ))}
