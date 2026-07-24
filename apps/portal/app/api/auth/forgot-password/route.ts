@@ -19,20 +19,11 @@ export async function POST(request: Request) {
   if (user && user.status === 'approved') {
     const token = createPasswordResetToken(user.id)
     const resetUrl = `${PORTAL_URL}/repor-senha?token=${token}`
-    console.log(`[recuperar-senha] Pedido para ${email} — a enviar e-mail.`)
     await sendMail({
       to: email,
       subject: 'Repor a sua senha — Portal Songhai',
       text: `Olá ${user.name},\n\nPediu para repor a sua senha no Portal Songhai. Use o link abaixo (válido por 1 hora):\n\n${resetUrl}\n\nSe não foi você a pedir isto, ignore este e-mail.`,
-    }).then(() => {
-      console.log(`[recuperar-senha] E-mail enviado com sucesso para ${email}.`)
-    }).catch((err) => console.error(`[recuperar-senha] Falha ao enviar e-mail para ${email}:`, err))
-  } else {
-    console.log(
-      `[recuperar-senha] Pedido para ${email} ignorado — ${
-        !user ? 'nenhuma conta com este e-mail' : `conta existe mas status é "${user.status}" (não "approved")`
-      }.`,
-    )
+    }).catch((err) => console.error(`[recuperar-senha] Falha ao enviar e-mail para o utilizador ${user.id}:`, err))
   }
 
   // Resposta idêntica quer o e-mail exista ou não, para não revelar contas registadas.
