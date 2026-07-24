@@ -67,7 +67,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.22 }}
           className="mx-auto mt-4 max-w-2xl text-pretty text-sm font-medium uppercase tracking-wide text-teal [@media(prefers-reduced-motion:reduce)]:animate-none"
         >
-          Agência local em Maputo · Preços em MZN · Suporte 24/7 · Implementação em 30 dias
+          Agência local em Maputo · Preços em MZN · Suporte incluído em todos os planos · Implementação em 30 dias
         </motion.p>
 
         <motion.div
@@ -77,7 +77,7 @@ export function Hero() {
           className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row [@media(prefers-reduced-motion:reduce)]:animate-none"
         >
           <PillButton href="/diagnostico" variant="gold">
-            Agende seu diagnóstico grátis
+            Diagnóstico gratuito de 30 minutos
             <ArrowRight className="h-4 w-4" />
           </PillButton>
           <PillButton href="/#metodo" variant="outline-gold">

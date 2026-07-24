@@ -34,7 +34,7 @@ export function FinalCta() {
                 variant="gold"
               >
                 <ArrowRight className="h-4 w-4" />
-                Iniciar Diagnóstico
+                Diagnóstico gratuito de 30 minutos
               </PillButton>
             </div>
           </div>

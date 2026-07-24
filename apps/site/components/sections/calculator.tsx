@@ -18,6 +18,16 @@ const TASKS = [
 const EFFICIENCY = 0.7 // 70% do tempo recuperável
 const HOURLY_VALUE = 214.42 // MZN por hora (estimativa)
 
+const PLAN_TIERS = [
+  { name: 'Agente Simples', cost: 5500, maxHours: 40 },
+  { name: 'Agente Médio', cost: 9000, maxHours: 80 },
+  { name: 'Agente Avançado', cost: 13500, maxHours: Infinity },
+]
+
+function recommendedPlan(hoursMonth: number) {
+  return PLAN_TIERS.find((p) => hoursMonth <= p.maxHours) ?? PLAN_TIERS[PLAN_TIERS.length - 1]
+}
+
 function AnimatedNumber({ value, suffix = '' }: { value: number; suffix?: string }) {
   return (
     <motion.span
@@ -37,14 +47,16 @@ export function Calculator() {
   const [selected, setSelected] = useState<string[]>(['email', 'leads', 'data'])
   const [team, setTeam] = useState(3)
 
-  const { hoursMonth, valueMonth } = useMemo(() => {
+  const { hoursMonth, valueMonth, plan, roi } = useMemo(() => {
     const weekly = TASKS.filter((t) => selected.includes(t.id)).reduce(
       (sum, t) => sum + t.hours,
       0,
     )
     const hoursMonth = Math.round(weekly * 4 * team * EFFICIENCY)
     const valueMonth = Math.round(hoursMonth * HOURLY_VALUE)
-    return { hoursMonth, valueMonth }
+    const plan = recommendedPlan(hoursMonth)
+    const roi = hoursMonth > 0 ? Math.round(((valueMonth - plan.cost) / plan.cost) * 100) : 0
+    return { hoursMonth, valueMonth, plan, roi }
   }, [selected, team])
 
   const toggle = (id: string) =>
@@ -139,6 +151,16 @@ export function Calculator() {
                   </p>
                   <AnimatedNumber value={valueMonth} suffix=" MZN" />
                 </div>
+                {hoursMonth > 0 && (
+                  <div className="rounded-2xl border border-panel-foreground/15 bg-panel-foreground/5 p-4">
+                    <p className="text-sm text-panel-foreground/70">
+                      Plano recomendado: {plan.name} ({plan.cost.toLocaleString('pt-PT')} MZN/mês)
+                    </p>
+                    <p className="mt-1 font-serif text-2xl font-semibold text-gold">
+                      ROI: {roi >= 0 ? '+' : ''}{roi}% no primeiro mês
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div className="mt-8">
@@ -147,7 +169,7 @@ export function Calculator() {
                   <ArrowRight className="h-4 w-4" />
                 </PillButton>
                 <p className="mt-3 text-center text-xs text-panel-foreground/50">
-                  Estimativa baseada em ~70% de tempo recuperável.
+                  Estimativa baseada em ~70% de tempo recuperável. Plano e ROI indicativos, confirmados no diagnóstico.
                 </p>
               </div>
             </div>

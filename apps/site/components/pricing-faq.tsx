@@ -7,7 +7,7 @@ import { Plus } from 'lucide-react'
 const FAQS = [
   {
     q: 'Posso começar só com um teste de 1 mês?',
-    a: 'Sim. Piloto de 1 mês: setup grátis, primeiro mês com 50% de desconto. Se funcionar para si, continua no preço regular. Se não, cancelamos.',
+    a: 'Sim. Piloto de 1 mês: setup grátis, primeiro mês com 50% de desconto. Se funcionar para si, continua no preço regular. Se não, cancelamos. E se, no primeiro trimestre, não poupar pelo menos 10 horas/mês, devolvemos a diferença em crédito.',
   },
   {
     q: 'E se quiser cancelar depois?',
@@ -18,15 +18,15 @@ const FAQS = [
     a: 'Sim, de três formas: 10% de desconto pagando 6 meses antecipados, ou 15% pagando 12 meses; 20% no segundo agente e 30% no terceiro; e condições especiais para equipas com 50+ pessoas, negociadas caso a caso.',
   },
   {
-    q: 'Como funciona o suporte 24/7?',
-    a: 'Em horário laboral (seg-sex, 9h-17h), respondemos em menos de 2 horas. Fora desse horário e aos fins de semana, respondemos em menos de 4 horas. Para urgências, WhatsApp +258 84 898 6002 a qualquer hora.',
+    q: 'Como funciona o suporte?',
+    a: 'Varia por plano: Simples é em horário laboral (seg-sex, 9h-17h); Médio tem resposta prioritária em menos de 2 horas em horário laboral; Avançado tem resposta VIP em menos de 1 hora em horário laboral, com cobertura 24/7 para incidentes críticos. Para urgências, WhatsApp +258 84 898 6002.',
   },
   {
     q: 'Posso aumentar ou diminuir o plano depois?',
     a: 'Sim, sem penalidade. Pode começar com o plano Simples e mudar para o Médio ou Avançado mais tarde — paga só a diferença.',
   },
   {
-    q: 'O que está incluído no suporte 24/7?',
+    q: 'O que está incluído no suporte?',
     a: 'Resolução de problemas técnicos, ajustes básicos (como o texto de resposta do agente) e dúvidas sobre como usar o sistema. Não inclui desenvolvimento à medida, consultoria estratégica, ou integração com um sistema novo — esses são vendidos como add-on.',
   },
   {

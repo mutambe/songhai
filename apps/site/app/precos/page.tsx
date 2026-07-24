@@ -21,6 +21,7 @@ type Plan = {
   included: string[]
   notIncluded: string[]
   cta: string
+  href: string
   variant: 'outline' | 'gold' | 'dark'
   highlight?: boolean
 }
@@ -35,7 +36,7 @@ const PLANS: Plan[] = [
     included: [
       'Agente de IA customizado',
       'Integração WhatsApp + Google Calendar',
-      'Suporte 24/7 (email/WhatsApp)',
+      'Suporte em horário laboral (email/WhatsApp)',
       'Treinamento da equipa (2 horas)',
       'Ajustes mensais (até 2)',
     ],
@@ -44,7 +45,8 @@ const PLANS: Plan[] = [
       'Desenvolvimento à medida (só configuração)',
       'Consultoria estratégica',
     ],
-    cta: 'Começar com agente simples',
+    cta: 'Começar agora',
+    href: '/diagnostico',
     variant: 'outline',
   },
   {
@@ -59,13 +61,14 @@ const PLANS: Plan[] = [
       'Qualificação automática de leads',
       'Relatórios diários/semanais',
       'Ajustes mensais (até 4)',
-      'Suporte prioritário (<2h em horário laboral)',
+      'Suporte prioritário — resposta <2h em horário laboral',
     ],
     notIncluded: [
       'Integrações com sistemas legados (caso a caso)',
       'Desenvolvimento à medida',
     ],
-    cta: 'Começar com agente médio',
+    cta: 'Começar com o mais popular 🔥',
+    href: '/diagnostico',
     variant: 'gold',
     highlight: true,
   },
@@ -81,7 +84,7 @@ const PLANS: Plan[] = [
       'Processamento de pagamentos (ex: M-Pesa)',
       'Dashboard de analytics em tempo real',
       'Ajustes mensais ilimitados',
-      'Suporte VIP (<1h, WhatsApp prioritário)',
+      'Suporte VIP — resposta <1h em horário laboral, 24/7 para incidentes críticos',
       'Reunião mensal de otimização',
     ],
     notIncluded: [
@@ -89,7 +92,26 @@ const PLANS: Plan[] = [
       'Consultoria estratégica (vendida à parte)',
     ],
     cta: 'Começar com agente avançado',
+    href: '/diagnostico',
     variant: 'dark',
+  },
+  {
+    name: 'Enterprise',
+    price: 'Sob consulta',
+    setup: 'Proposta à medida',
+    idealFor:
+      'Grandes empresas e grupos com múltiplas unidades, requisitos de segurança específicos ou volumes acima do plano Avançado.',
+    included: [
+      'Tudo do plano Avançado',
+      'Múltiplas unidades/filiais numa só conta',
+      'SLA e requisitos de segurança à medida',
+      'Gestor de conta dedicado',
+      'Preço por volume, negociado caso a caso',
+    ],
+    notIncluded: [],
+    cta: 'Falar com equipa comercial',
+    href: '/contacto',
+    variant: 'outline',
   },
 ]
 
@@ -104,7 +126,7 @@ const COMPARISON_ROWS: [string, string, string, string][] = [
   ['Relatórios', 'Básico', 'Personalizados', 'Dashboard em tempo real'],
   ['Integração POS/ERP', '—', '—', '✓'],
   ['Processamento de pagamentos', '—', '—', '✓'],
-  ['Suporte', '24/7', '24/7 prioritário', '24/7 VIP'],
+  ['Suporte', 'Horário laboral', 'Prioritário <2h', 'VIP <1h + 24/7 crítico'],
   ['Ajustes/mês', '2', '4', 'Ilimitados'],
   ['Reunião de otimização', '—', '—', 'Mensal'],
 ]
@@ -139,7 +161,7 @@ export default function PrecosPage() {
         </section>
 
         <section className="px-5 pb-20 lg:px-8">
-          <RevealGroup className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3">
+          <RevealGroup className="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PLANS.map((plan) => (
               <RevealItem key={plan.name}>
                 <div
@@ -181,7 +203,7 @@ export default function PrecosPage() {
                   </ul>
 
                   <div className="mt-6">
-                    <PillButton href="/diagnostico" variant={plan.variant} className="w-full">
+                    <PillButton href={plan.href} variant={plan.variant} className="w-full">
                       {plan.cta}
                     </PillButton>
                   </div>
@@ -189,6 +211,16 @@ export default function PrecosPage() {
               </RevealItem>
             ))}
           </RevealGroup>
+
+          <Reveal delay={0.15} className="mx-auto mt-10 max-w-3xl">
+            <div className="rounded-2xl border border-teal/30 bg-teal/5 px-6 py-5 text-center">
+              <p className="text-sm leading-relaxed text-foreground">
+                <span className="font-semibold">Garantia de resultado:</span> se
+                não poupar pelo menos 10 horas/mês no primeiro trimestre,
+                devolvemos a diferença em crédito.
+              </p>
+            </div>
+          </Reveal>
         </section>
 
         <section className="bg-paper">
