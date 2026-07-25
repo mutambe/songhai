@@ -29,7 +29,7 @@ type Plan = {
 const PLANS: Plan[] = [
   {
     name: 'Agente Simples',
-    price: '5.000-6.000 MZN/mês',
+    price: 'A partir de 5.000 MZN/mês',
     setup: 'Setup: 2.000 MZN (único)',
     idealFor:
       'Pequenas empresas (5-20 pessoas) que querem responder perguntas comuns e confirmações automáticas.',
@@ -51,8 +51,8 @@ const PLANS: Plan[] = [
   },
   {
     name: 'Agente Médio',
-    price: '8.000-10.000 MZN/mês',
-    setup: 'Setup: 3.000-4.000 MZN (único)',
+    price: 'A partir de 8.000 MZN/mês',
+    setup: 'Setup: a partir de 3.000 MZN (único)',
     idealFor:
       'PME médias (20-50 pessoas) que precisam de qualificação de leads e integração com CRM.',
     included: [
@@ -74,8 +74,8 @@ const PLANS: Plan[] = [
   },
   {
     name: 'Agente Avançado',
-    price: '12.000-15.000 MZN/mês',
-    setup: 'Setup: 4.000-5.000 MZN (único)',
+    price: 'A partir de 12.000 MZN/mês',
+    setup: 'Setup: a partir de 4.000 MZN (único)',
     idealFor:
       'Grandes PME (50+ pessoas) e e-commerce com volume alto, com múltiplas integrações.',
     included: [
@@ -116,8 +116,8 @@ const PLANS: Plan[] = [
 ]
 
 const COMPARISON_ROWS: [string, string, string, string][] = [
-  ['Preço/mês', '5.000-6.000 MZN', '8.000-10.000 MZN', '12.000-15.000 MZN'],
-  ['Setup', '2.000 MZN', '3.000-4.000 MZN', '4.000-5.000 MZN'],
+  ['Preço/mês', 'A partir de 5.000 MZN', 'A partir de 8.000 MZN', 'A partir de 12.000 MZN'],
+  ['Setup', '2.000 MZN', 'A partir de 3.000 MZN', 'A partir de 4.000 MZN'],
   ['Agente de IA customizado', '✓', '✓', '✓'],
   ['WhatsApp integrado', '✓', '✓', '✓'],
   ['Calendário', '✓', '✓', '✓'],
@@ -132,7 +132,7 @@ const COMPARISON_ROWS: [string, string, string, string][] = [
 ]
 
 const ADDONS = [
-  { name: 'Integração CRM (nova)', price: '1.000-2.000 MZN', desc: 'Ligar HubSpot, Salesforce, etc.' },
+  { name: 'Integração com CRM adicional', price: '1.000-2.000 MZN', desc: 'Ligar um CRM diferente do incluído no plano, ou adicionar CRM ao plano Simples (HubSpot, Salesforce, etc.)' },
   { name: 'Integração ERP', price: '2.000-5.000 MZN', desc: 'Ligar sistema legado (mais complexo)' },
   { name: 'Relatório personalizado', price: '500 MZN', desc: 'Relatório novo, sob medida' },
   { name: 'Agente adicional', price: '40% do plano base', desc: '2º agente (ex: suporte + vendas)' },
@@ -212,7 +212,15 @@ export default function PrecosPage() {
             ))}
           </RevealGroup>
 
-          <Reveal delay={0.15} className="mx-auto mt-10 max-w-3xl">
+          <Reveal delay={0.15} className="mx-auto mt-6 max-w-3xl text-center">
+            <p className="text-sm text-ink-soft">
+              O valor final dentro de cada plano depende do volume e das
+              integrações necessárias — confirmado no diagnóstico gratuito,
+              antes de qualquer compromisso.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.2} className="mx-auto mt-6 max-w-3xl">
             <div className="rounded-2xl border border-teal/30 bg-teal/5 px-6 py-5 text-center">
               <p className="text-sm leading-relaxed text-foreground">
                 <span className="font-semibold">Garantia de resultado:</span> se

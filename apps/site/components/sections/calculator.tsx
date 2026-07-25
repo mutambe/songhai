@@ -47,7 +47,7 @@ export function Calculator() {
   const [selected, setSelected] = useState<string[]>(['email', 'leads', 'data'])
   const [team, setTeam] = useState(3)
 
-  const { hoursMonth, valueMonth, plan, roi } = useMemo(() => {
+  const { weekly, hoursMonth, valueMonth, plan, roi } = useMemo(() => {
     const weekly = TASKS.filter((t) => selected.includes(t.id)).reduce(
       (sum, t) => sum + t.hours,
       0,
@@ -56,7 +56,7 @@ export function Calculator() {
     const valueMonth = Math.round(hoursMonth * HOURLY_VALUE)
     const plan = recommendedPlan(hoursMonth)
     const roi = hoursMonth > 0 ? Math.round(((valueMonth - plan.cost) / plan.cost) * 100) : 0
-    return { hoursMonth, valueMonth, plan, roi }
+    return { weekly, hoursMonth, valueMonth, plan, roi }
   }, [selected, team])
 
   const toggle = (id: string) =>
@@ -169,7 +169,9 @@ export function Calculator() {
                   <ArrowRight className="h-4 w-4" />
                 </PillButton>
                 <p className="mt-3 text-center text-xs text-panel-foreground/50">
-                  Estimativa baseada em ~70% de tempo recuperável. Plano e ROI indicativos, confirmados no diagnóstico.
+                  {weekly > 0
+                    ? `Baseado em ${weekly}h/semana por pessoa nas tarefas selecionadas, das quais 70% são recuperáveis com automação. Plano e ROI indicativos, confirmados no diagnóstico.`
+                    : 'Estimativa baseada em ~70% de tempo recuperável. Plano e ROI indicativos, confirmados no diagnóstico.'}
                 </p>
               </div>
             </div>

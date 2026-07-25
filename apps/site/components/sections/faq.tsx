@@ -12,7 +12,7 @@ const FAQS = [
   },
   {
     q: 'Quanto custa um agente de IA?',
-    a: 'Agente simples: 5.000-6.000 MZN/mês. Agente médio (com CRM): 8.000-10.000 MZN/mês. Agente avançado (integrações múltiplas, pagamentos): 12.000-15.000 MZN/mês. Todos com setup único e piloto de 1 mês com 50% de desconto. Veja o detalhe em Preços.',
+    a: 'Agente simples: a partir de 5.000 MZN/mês. Agente médio (com CRM): a partir de 8.000 MZN/mês. Agente avançado (integrações múltiplas, pagamentos): a partir de 12.000 MZN/mês. O valor final depende do volume e das integrações — confirmado no diagnóstico gratuito. Todos com setup único e piloto de 1 mês com 50% de desconto. Veja o detalhe em Preços.',
   },
   {
     q: 'Preciso de equipa técnica?',
