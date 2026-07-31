@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Activity, AlertTriangle, Eye, Home, Users } from 'lucide-react'
+import { Activity, AlertTriangle, Eye, Home, MousePointerClick, Percent, Target, Users } from 'lucide-react'
 
 type Summary = {
   pageviews: number
@@ -24,6 +24,8 @@ type AnalyticsResponse =
       last30: Summary
       daily: DailyPoint[]
       blogStats: BlogStat[]
+      leads: number
+      campaigns: { label: string; count: number }[]
     }
 
 function StatTile({
@@ -189,6 +191,24 @@ export function MetricsPanel() {
             value={hasData ? fmt(data.last30.homeViews) : ''}
             loading={loading}
           />
+          <StatTile
+            icon={MousePointerClick}
+            label="Cliques no CTA de diagnóstico (30 dias)"
+            value={hasData ? fmt(data.last30.topPaths.find((p) => p.path === '/diagnostico')?.count || 0) : ''}
+            loading={loading}
+          />
+          <StatTile
+            icon={Target}
+            label="Leads gerados (30 dias)"
+            value={hasData ? fmt(data.leads) : ''}
+            loading={loading}
+          />
+          <StatTile
+            icon={Percent}
+            label="Taxa de conversão (visitante → lead)"
+            value={hasData ? (data.last30.visitors > 0 ? `${((data.leads / data.last30.visitors) * 100).toFixed(1)}%` : '-') : ''}
+            loading={loading}
+          />
         </div>
       )}
 
@@ -259,6 +279,22 @@ export function MetricsPanel() {
           </p>
           <ul className="mt-4 space-y-2.5">
             {data.last30.devices.map(({ label, count }) => (
+              <li key={label} className="flex items-center justify-between text-sm">
+                <span className="text-ink-soft">{label}</span>
+                <span className="font-medium text-foreground">{fmt(count)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {hasData && data.campaigns.length > 0 && (
+        <div className="mt-5 rounded-2xl border border-line bg-paper p-6">
+          <p className="text-sm font-medium text-foreground">
+            Origem por campanha (30 dias)
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {data.campaigns.map(({ label, count }) => (
               <li key={label} className="flex items-center justify-between text-sm">
                 <span className="text-ink-soft">{label}</span>
                 <span className="font-medium text-foreground">{fmt(count)}</span>
