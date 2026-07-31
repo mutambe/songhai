@@ -84,6 +84,12 @@ export function DiagnosticoForm() {
       if (!res.ok) throw new Error(json.error || 'Erro ao enviar pedido')
 
       setSubmitted(true)
+      fetch(`${process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'}/api/track`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: '/diagnostico', event: 'lead' }),
+        keepalive: true,
+      }).catch(() => {})
       setFormData({
         name: '',
         email: '',
