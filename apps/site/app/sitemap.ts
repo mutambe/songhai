@@ -6,16 +6,20 @@ const SITE_URL = 'https://songhai.cc'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await listPublishedPosts()
 
+  // Sem lastModified: estas páginas não têm uma data de alteração real por
+  // trás (ao contrário dos posts do blog, que têm publishedAt/updatedAt).
+  // Gerar `new Date()` aqui fingia uma data de "última modificação" igual à
+  // hora do build em todas as páginas, um sinal enganoso para o Google.
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${SITE_URL}/diagnostico`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE_URL}/precos`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE_URL}/setores/agricola`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE_URL}/setores/comercio`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE_URL}/setores/servicos`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE_URL}/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.8 },
-    { url: `${SITE_URL}/contacto`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE_URL}/privacidade`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: SITE_URL, changeFrequency: 'weekly', priority: 1 },
+    { url: `${SITE_URL}/diagnostico`, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${SITE_URL}/precos`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/setores/agricola`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/setores/comercio`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/setores/servicos`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/blog`, changeFrequency: 'daily', priority: 0.8 },
+    { url: `${SITE_URL}/contacto`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/privacidade`, changeFrequency: 'yearly', priority: 0.3 },
   ]
 
   const postPages: MetadataRoute.Sitemap = posts.map((post) => ({

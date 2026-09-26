@@ -56,10 +56,31 @@ services:
       labels:
         - traefik.enable=true
         - traefik.docker.network=traefik_public
-        - traefik.http.routers.songhai-site.rule=Host(`songhai.cc`) || Host(`www.songhai.cc`)
+
+        # Normaliza qualquer pedido (http:// e/ou www.) para o host
+        # canónico https://songhai.cc — evita conteúdo duplicado (www vs
+        # apex) e elimina o 404 que http://songhai.cc devolvia por não ter
+        # nenhum router na entrypoint "web".
+        - traefik.http.middlewares.songhai-normalize.redirectregex.regex=^https?://(?:www\.)?songhai\.cc(/.*)?$$
+        - traefik.http.middlewares.songhai-normalize.redirectregex.replacement=https://songhai.cc$${1}
+        - traefik.http.middlewares.songhai-normalize.redirectregex.permanent=true
+
+        # Router HTTPS canónico — serve o site em songhai.cc (sem www)
+        - traefik.http.routers.songhai-site.rule=Host(`songhai.cc`)
         - traefik.http.routers.songhai-site.entrypoints=websecure
         - traefik.http.routers.songhai-site.tls.certresolver=letsencrypt
         - traefik.http.services.songhai-site.loadbalancer.server.port=3000
+
+        # Router HTTPS para www.songhai.cc — só redireciona para o apex
+        - traefik.http.routers.songhai-site-www.rule=Host(`www.songhai.cc`)
+        - traefik.http.routers.songhai-site-www.entrypoints=websecure
+        - traefik.http.routers.songhai-site-www.tls.certresolver=letsencrypt
+        - traefik.http.routers.songhai-site-www.middlewares=songhai-normalize
+
+        # Router HTTP (porta 80) para os dois hosts — redireciona para https apex
+        - traefik.http.routers.songhai-site-http.rule=Host(`songhai.cc`) || Host(`www.songhai.cc`)
+        - traefik.http.routers.songhai-site-http.entrypoints=web
+        - traefik.http.routers.songhai-site-http.middlewares=songhai-normalize
 
   portal:
     image: ${PORTAL_IMAGE:-songhai-portal:latest}

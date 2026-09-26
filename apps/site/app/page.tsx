@@ -9,7 +9,7 @@ import { Transformation } from '@/components/sections/transformation'
 import { Method } from '@/components/sections/method'
 import { Calculator } from '@/components/sections/calculator'
 import { Sectors } from '@/components/sections/sectors'
-import { Testimonials } from '@/components/sections/testimonials'
+import { Clients } from '@/components/sections/clients'
 import { Faq } from '@/components/sections/faq'
 import { FinalCta } from '@/components/sections/final-cta'
 
@@ -27,7 +27,7 @@ export default function HomePage() {
         <Method />
         <Calculator />
         <Sectors />
-        <Testimonials />
+        <Clients />
         <Faq />
         <FinalCta />
       </main>

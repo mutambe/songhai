@@ -21,10 +21,14 @@ Já confirmado a partir do stack.yml real do Traefik — `docker-stack.yml`
 usa a rede `traefik_public` (externa) e o resolver `letsencrypt`. Não
 precisas de mexer nisto, a menos que mudes a configuração do Traefik.
 
-Nota: o teu Traefik já redireciona todo o tráfego de HTTP (porta 80) para
-HTTPS automaticamente (`entryPoints.web.http.redirections`) — por isso os
-serviços abaixo só definem routers em `websecure`, não precisam de um
-router extra para o redirecionamento.
+Nota: apesar de o Traefik global ter `entryPoints.web.http.redirections`
+configurado, na prática isso não estava a apanhar os hosts deste serviço —
+`http://songhai.cc/` devolvia 404 em vez de redirecionar, porque não havia
+nenhum router deste stack na entrypoint `web`. Por isso o serviço `site` em
+`docker-stack.yml` define explicitamente routers próprios para `web` (HTTP)
+e para `www.songhai.cc`, com um middleware `redirectregex` que normaliza
+tudo para `https://songhai.cc` — não depender só da config global do
+Traefik para este domínio.
 
 ### Segredos
 Gera valores **novos** para produção (nunca reaproveitar os de desenvolvimento):

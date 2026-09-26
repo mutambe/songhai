@@ -7,11 +7,16 @@ import { DiagnosticoForm } from '@/components/diagnostico-form'
 import { DiagnosticoFaq } from '@/components/diagnostico-faq'
 import { PillButton } from '@/components/pill-button'
 
+const TITLE = 'Diagnóstico Grátis — Quanto Você Perde em Tarefas Manuais?'
+const DESCRIPTION =
+  'Análise gratuita de 30 minutos aos processos da sua empresa, com relatório em PDF e proposta personalizada. Sem custo, sem compromisso.'
+
 export const metadata: Metadata = {
-  title: 'Diagnóstico Grátis — Quanto Você Perde em Tarefas Manuais?',
-  description:
-    'Análise gratuita de 30 minutos aos processos da sua empresa, com relatório em PDF e proposta personalizada. Sem custo, sem compromisso.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: '/diagnostico' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/diagnostico' },
+  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION },
 }
 
 const BENEFITS = [

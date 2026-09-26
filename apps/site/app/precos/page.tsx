@@ -6,11 +6,16 @@ import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 import { PillButton } from '@/components/pill-button'
 import { PricingFaq } from '@/components/pricing-faq'
 
+const TITLE = 'Preços — Agentes de IA e Automação em MZN'
+const DESCRIPTION =
+  'Preços transparentes em MZN para agentes de IA e automação, sem contactar-nos para orçamento. Três planos, sem surpresas.'
+
 export const metadata: Metadata = {
-  title: 'Preços — Agentes de IA e Automação em MZN',
-  description:
-    'Preços transparentes em MZN para agentes de IA e automação, sem contactar-nos para orçamento. Três planos, sem surpresas.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: '/precos' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/precos' },
+  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION },
 }
 
 type Plan = {
