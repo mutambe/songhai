@@ -36,11 +36,13 @@ const body = await request.json().catch(() => null)
   const referrer = typeof body?.referrer === 'string' && body.referrer ? body.referrer.slice(0, 300) : undefined
   const userAgent = request.headers.get('user-agent') || 'unknown'
 
-await recordPageview({ path, ip, userAgent, referrer })
-
 const event = typeof body?.event === 'string' && body.event ? body.event.slice(0, 50) : undefined
+  // Um evento (clique, lead...) nao e uma nova pagina vista - contar os dois
+  // inflacionava as visitas a /diagnostico sempre que chegava um lead.
   if (event) {
     await recordEvent(event)
+  } else {
+    await recordPageview({ path, ip, userAgent, referrer })
   }
 
 const utmSource = typeof body?.utmSource === 'string' && body.utmSource ? body.utmSource.slice(0, 100) : undefined

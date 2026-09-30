@@ -30,6 +30,9 @@ return NextResponse.json({
   daily,
   blogStats,
   leads: eventSummary.events.lead || 0,
+  whatsappClicks: eventSummary.events.whatsapp_click || 0,
+  calculatorUses: eventSummary.events.calculator_use || 0,
+  diagnosticoStarts: eventSummary.events.diagnostico_start || 0,
   campaigns: eventSummary.campaigns,
 })
 }

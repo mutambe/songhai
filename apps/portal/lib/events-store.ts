@@ -41,7 +41,7 @@ return new Date().toISOString().slice(0, 10)
 
 // Lista branca de eventos aceites - evita que um pedido malicioso encha o
 // ficheiro com nomes de eventos arbitrarios.
-const ALLOWED_EVENTS = new Set(['lead'])
+const ALLOWED_EVENTS = new Set(['lead', 'whatsapp_click', 'calculator_use', 'diagnostico_start'])
 
 export function recordEvent(name: string): Promise<void> {
 return serialize(async () => {

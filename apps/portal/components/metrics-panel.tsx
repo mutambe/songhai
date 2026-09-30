@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Activity, AlertTriangle, Eye, Home, MousePointerClick, Percent, Target, Users } from 'lucide-react'
+import { Activity, AlertTriangle, Calculator, ClipboardList, Eye, Home, MessageCircle, MousePointerClick, Percent, Target, Users } from 'lucide-react'
 
 type Summary = {
   pageviews: number
@@ -25,6 +25,9 @@ type AnalyticsResponse =
       daily: DailyPoint[]
       blogStats: BlogStat[]
       leads: number
+      whatsappClicks: number
+      calculatorUses: number
+      diagnosticoStarts: number
       campaigns: { label: string; count: number }[]
     }
 
@@ -195,6 +198,24 @@ export function MetricsPanel() {
             icon={MousePointerClick}
             label="Cliques no CTA de diagnóstico (30 dias)"
             value={hasData ? fmt(data.last30.topPaths.find((p) => p.path === '/diagnostico')?.count || 0) : ''}
+            loading={loading}
+          />
+          <StatTile
+            icon={ClipboardList}
+            label="Formulários de diagnóstico iniciados (30 dias)"
+            value={hasData ? fmt(data.diagnosticoStarts) : ''}
+            loading={loading}
+          />
+          <StatTile
+            icon={MessageCircle}
+            label="Cliques no WhatsApp (30 dias)"
+            value={hasData ? fmt(data.whatsappClicks) : ''}
+            loading={loading}
+          />
+          <StatTile
+            icon={Calculator}
+            label="Utilizações da calculadora (30 dias)"
+            value={hasData ? fmt(data.calculatorUses) : ''}
             loading={loading}
           />
           <StatTile
