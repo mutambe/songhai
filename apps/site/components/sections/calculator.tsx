@@ -1,10 +1,12 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { Check, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Reveal } from '@/components/motion/reveal'
 import { PillButton } from '@/components/pill-button'
+import { formatMZN, formatNumber, recommendedPlan, setupLabel } from '@/lib/plans'
+import { trackEvent } from '@/lib/track'
 
 const TASKS = [
   { id: 'email', label: 'Responder e-mails e mensagens', hours: 6 },
@@ -15,18 +17,11 @@ const TASKS = [
   { id: 'invoices', label: 'Processar faturas', hours: 4 },
 ]
 
-const EFFICIENCY = 0.7 // 70% do tempo recuperável
-const HOURLY_VALUE = 214.42 // MZN por hora (estimativa)
-
-const PLAN_TIERS = [
-  { name: 'Agente Simples', cost: 5500, maxHours: 40 },
-  { name: 'Agente Médio', cost: 9000, maxHours: 80 },
-  { name: 'Agente Avançado', cost: 13500, maxHours: Infinity },
-]
-
-function recommendedPlan(hoursMonth: number) {
-  return PLAN_TIERS.find((p) => hoursMonth <= p.maxHours) ?? PLAN_TIERS[PLAN_TIERS.length - 1]
-}
+// Estimativa conservadora: metade do tempo nestas tarefas é recuperável.
+const EFFICIENCY = 0.5
+// Horas de trabalho por mês de uma pessoa a tempo inteiro
+const WORK_HOURS_MONTH = 176
+const WEEKS_PER_MONTH = 4.33
 
 function AnimatedNumber({ value, suffix = '' }: { value: number; suffix?: string }) {
   return (
@@ -37,32 +32,44 @@ function AnimatedNumber({ value, suffix = '' }: { value: number; suffix?: string
       transition={{ duration: 0.35 }}
       className="font-serif text-4xl font-semibold text-gold sm:text-5xl"
     >
-      {value.toLocaleString('pt-PT')}
+      {formatNumber(value)}
       {suffix}
     </motion.span>
   )
 }
 
 export function Calculator() {
-  const [selected, setSelected] = useState<string[]>(['email', 'leads', 'data'])
+  const [selected, setSelected] = useState<string[]>(['email', 'leads'])
   const [team, setTeam] = useState(3)
+  const [salary, setSalary] = useState(25000)
+  const used = useRef(false)
 
-  const { weekly, hoursMonth, valueMonth, plan, roi } = useMemo(() => {
+  const { weekly, hoursMonth, valueMonth, plan, netMonth, paybackWeeks } = useMemo(() => {
     const weekly = TASKS.filter((t) => selected.includes(t.id)).reduce(
       (sum, t) => sum + t.hours,
       0,
     )
-    const hoursMonth = Math.round(weekly * 4 * team * EFFICIENCY)
-    const valueMonth = Math.round(hoursMonth * HOURLY_VALUE)
+    const hoursMonth = Math.round(weekly * WEEKS_PER_MONTH * team * EFFICIENCY)
+    const valueMonth = Math.round(hoursMonth * (salary / WORK_HOURS_MONTH))
     const plan = recommendedPlan(hoursMonth)
-    const roi = hoursMonth > 0 ? Math.round(((valueMonth - plan.cost) / plan.cost) * 100) : 0
-    return { weekly, hoursMonth, valueMonth, plan, roi }
-  }, [selected, team])
+    const netMonth = valueMonth - plan.monthly
+    // Semanas até a poupança líquida pagar o setup
+    const paybackWeeks = netMonth > 0 ? Math.max(1, Math.ceil(plan.setup / (netMonth / WEEKS_PER_MONTH))) : null
+    return { weekly, hoursMonth, valueMonth, plan, netMonth, paybackWeeks }
+  }, [selected, team, salary])
 
-  const toggle = (id: string) =>
+  const markUsed = () => {
+    if (used.current) return
+    used.current = true
+    trackEvent('calculator_use')
+  }
+
+  const toggle = (id: string) => {
+    markUsed()
     setSelected((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     )
+  }
 
   return (
     <section id="calculadora" className="scroll-mt-20">
@@ -131,7 +138,34 @@ export function Calculator() {
                   min={1}
                   max={20}
                   value={team}
-                  onChange={(e) => setTeam(Number(e.target.value))}
+                  onChange={(e) => {
+                    markUsed()
+                    setTeam(Number(e.target.value))
+                  }}
+                  className="h-2 w-full cursor-pointer appearance-none rounded-full bg-line accent-gold"
+                />
+              </div>
+
+              <div className="mt-6">
+                <div className="mb-2 flex items-center justify-between text-sm">
+                  <label htmlFor="salary" className="font-medium text-foreground">
+                    Salário médio mensal por pessoa
+                  </label>
+                  <span className="whitespace-nowrap font-serif text-lg font-semibold text-indigo-deep">
+                    {formatMZN(salary)}
+                  </span>
+                </div>
+                <input
+                  id="salary"
+                  type="range"
+                  min={10000}
+                  max={150000}
+                  step={5000}
+                  value={salary}
+                  onChange={(e) => {
+                    markUsed()
+                    setSalary(Number(e.target.value))
+                  }}
                   className="h-2 w-full cursor-pointer appearance-none rounded-full bg-line accent-gold"
                 />
               </div>
@@ -154,24 +188,37 @@ export function Calculator() {
                 {hoursMonth > 0 && (
                   <div className="rounded-2xl border border-panel-foreground/15 bg-panel-foreground/5 p-4">
                     <p className="text-sm text-panel-foreground/70">
-                      Plano recomendado: {plan.name} ({plan.cost.toLocaleString('pt-PT')} MZN/mês)
+                      Plano indicativo: {plan.name} — {formatMZN(plan.monthly)}/mês + setup{' '}
+                      {setupLabel(plan, true)}
                     </p>
-                    <p className="mt-1 font-serif text-2xl font-semibold text-gold">
-                      ROI: {roi >= 0 ? '+' : ''}{roi}% no primeiro mês
-                    </p>
+                    {paybackWeeks !== null ? (
+                      <>
+                        <p className="mt-1 font-serif text-2xl font-semibold text-gold">
+                          Setup pago em ~{paybackWeeks} {paybackWeeks === 1 ? 'semana' : 'semanas'}
+                        </p>
+                        <p className="mt-1 text-sm text-panel-foreground/70">
+                          Depois disso, poupança líquida de {formatMZN(netMonth)}/mês.
+                        </p>
+                      </>
+                    ) : (
+                      <p className="mt-1 text-sm text-panel-foreground/80">
+                        Com este volume, a poupança ainda não cobre o plano. No
+                        diagnóstico vemos se um agente mais simples faz sentido.
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
 
               <div className="mt-8">
                 <PillButton href="/diagnostico" variant="gold" className="w-full">
-                  Quero estes resultados — Agendar 30min grátis
+                  Confirmar no diagnóstico grátis
                   <ArrowRight className="h-4 w-4" />
                 </PillButton>
                 <p className="mt-3 text-center text-xs text-panel-foreground/50">
                   {weekly > 0
-                    ? `Baseado em ${weekly}h/semana por pessoa nas tarefas selecionadas, das quais 70% são recuperáveis com automação. Plano e ROI indicativos, confirmados no diagnóstico.`
-                    : 'Estimativa baseada em ~70% de tempo recuperável. Plano e ROI indicativos, confirmados no diagnóstico.'}
+                    ? `Baseado em ${weekly}h/semana por pessoa nas tarefas selecionadas, das quais estimamos que metade é recuperável. Valores indicativos, confirmados no diagnóstico.`
+                    : 'Selecione pelo menos uma tarefa. Valores indicativos, confirmados no diagnóstico.'}
                 </p>
               </div>
             </div>

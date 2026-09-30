@@ -20,7 +20,6 @@ type Sector = {
   label: string
   headline: string
   desc: string
-  impact?: string
   href?: string
 }
 
@@ -30,14 +29,12 @@ const SECTORS: Sector[] = [
     label: 'Saúde & Clínicas',
     headline: 'Reduzam ligações repetitivas',
     desc: 'Agentes de IA respondem a resultados, confirmações e horários automaticamente.',
-    impact: '80 horas/mês',
   },
   {
     icon: Wrench,
     label: 'Ferragens & Material de Construção',
     headline: 'Orçamentos e stock sem parar o balcão',
     desc: 'Agentes respondem a preços, disponibilidade e orçamentos no WhatsApp, sem tirar a equipa do atendimento presencial.',
-    impact: '35+ orçamentos/mês',
     href: '/setores/comercio',
   },
   {
@@ -45,7 +42,6 @@ const SECTORS: Sector[] = [
     label: 'Retalho & E-commerce',
     headline: 'Agentes que vendem no WhatsApp',
     desc: 'Qualificam leads, mostram produtos e processam pedidos 24/7.',
-    impact: '40+ leads qualificadas/mês',
     href: '/setores/comercio',
   },
   {
@@ -53,14 +49,12 @@ const SECTORS: Sector[] = [
     label: 'Advocacia',
     headline: 'Menos emails, mais casos',
     desc: 'Agentes automatizam respostas comuns para a equipa focar em casos reais.',
-    impact: '60 horas/mês',
   },
   {
     icon: GraduationCap,
     label: 'Educação',
     headline: 'Inscrições e confirmações automáticas',
     desc: 'Agentes qualificam inscrições, confirmam presenças e respondem dúvidas de encarregados.',
-    impact: '40 horas/mês',
   },
   {
     icon: Wheat,
@@ -86,17 +80,18 @@ const SECTORS: Sector[] = [
 
 export function Sectors() {
   return (
-    <section id="setores" className="scroll-mt-20 bg-paper">
+    <section id="setores" className="scroll-mt-20">
       <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
         <Reveal className="max-w-2xl">
           <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">
             Setores
           </p>
           <h2 className="text-balance font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
-            Experiência em vários setores de Moçambique
+            Pensado para os setores de Moçambique
           </h2>
-          <p className="mt-3 text-xs text-ink-soft/60">
-            Impacto estimado com base em benchmarks de mercado — a atualizar com resultados reais de clientes Songhai.
+          <p className="mt-4 text-pretty text-lg leading-relaxed text-ink-soft">
+            Cada setor tem as suas perguntas repetidas. Veja o que um agente
+            pode tratar no seu.
           </p>
         </Reveal>
 
@@ -121,30 +116,20 @@ export function Sectors() {
                 <p className="text-sm leading-relaxed text-ink-soft">
                   {s.desc}
                 </p>
-                {s.impact && (
-                  <span
-                    className={`pt-2 text-sm font-medium text-indigo-deep ${s.href ? '' : 'mt-auto'}`}
-                  >
-                    Impacto estimado: {s.impact}
-                  </span>
-                )}
-                {s.href && (
-                  <span className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium text-teal">
-                    Saiba mais
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                )}
+                <span className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium text-teal">
+                  {s.href ? 'Ver soluções para o setor' : 'Falar sobre o meu setor'}
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </motion.div>
             )
             return (
               <RevealItem key={s.label}>
-                {s.href ? (
-                  <Link href={s.href} className="block h-full">
-                    {card}
-                  </Link>
-                ) : (
-                  card
-                )}
+                <Link
+                  href={s.href ?? `/diagnostico?setor=${encodeURIComponent(s.label)}`}
+                  className="block h-full"
+                >
+                  {card}
+                </Link>
               </RevealItem>
             )
           })}

@@ -65,14 +65,12 @@ export const metadata: Metadata = {
     siteName: 'SONGHAI',
     locale: 'pt_MZ',
     type: 'website',
-    images: [{ url: '/songhai-logo.png' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'SONGHAI — Agência de IA e Automação em Moçambique',
     description:
       'Poupe tempo, automatize processos e cresça mais rápido com IA — uma agência moçambicana a atender empresas em todo o país.',
-    images: ['/songhai-logo.png'],
   },
 }
 

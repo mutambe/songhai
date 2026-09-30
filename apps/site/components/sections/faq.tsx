@@ -4,15 +4,16 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import { Reveal } from '@/components/motion/reveal'
+import { formatMZN, getPlan, monthlyLabel } from '@/lib/plans'
 
 const FAQS = [
   {
     q: 'Quanto tempo demora até estar live?',
-    a: 'Agente simples (WhatsApp com respostas automáticas): 5 a 7 dias úteis após aprovada a proposta. Agente médio ou avançado (com CRM, integrações ou pagamentos): 2 a 4 semanas, dependendo da complexidade dos sistemas que já tem. Sempre começamos com um piloto de teste — o agente funciona em ambiente controlado antes de ir ao público. Você aprova, ajustamos, e só depois ativamos.',
+    a: 'Agente simples (WhatsApp com respostas automáticas): 5 a 7 dias úteis após aprovada a proposta. Agente médio ou avançado (com CRM, integrações ou pagamentos): 2 a 4 semanas, dependendo da complexidade dos sistemas que já tem. Sempre começamos com um piloto de teste — o agente funciona em ambiente controlado antes de ir ao público. Aprova, ajustamos, e só depois ativamos.',
   },
   {
     q: 'Quanto custa um agente de IA?',
-    a: 'Agente simples: a partir de 5.000 MZN/mês. Agente médio (com CRM): a partir de 8.000 MZN/mês. Agente avançado (integrações múltiplas, pagamentos): a partir de 12.000 MZN/mês. O valor final depende do volume e das integrações — confirmado no diagnóstico gratuito. Todos com setup único e piloto de 1 mês com 50% de desconto. Veja o detalhe em Preços.',
+    a: `Agente simples: ${monthlyLabel(getPlan('simples'), true)}/mês. Agente médio (com CRM): ${monthlyLabel(getPlan('medio'), true)}/mês. Agente avançado (integrações múltiplas, pagamentos): ${monthlyLabel(getPlan('avancado'), true)}/mês. O valor final depende do volume e das integrações — confirmado no diagnóstico gratuito. Todos com setup único e piloto de 1 mês com 50% de desconto. Veja o detalhe em Preços.`,
   },
   {
     q: 'Preciso de equipa técnica?',
@@ -36,7 +37,7 @@ const FAQS = [
   },
   {
     q: 'O meu negócio é pequeno, vale a pena?',
-    a: 'Se a sua equipa perde tempo a responder às mesmas perguntas no WhatsApp ou a copiar dados entre sistemas, vale. Muitos dos nossos clientes começaram com 5.000 MZN/mês no plano Simples — e o agente trabalha 24 horas por dia, 7 dias por semana, sem férias. Comece pequeno, meça o resultado, e escale quando fizer sentido.',
+    a: `Se a sua equipa perde tempo a responder às mesmas perguntas no WhatsApp ou a copiar dados entre sistemas, vale. O plano Simples começa em ${formatMZN(getPlan('simples').monthly)}/mês — e o agente trabalha 24 horas por dia, 7 dias por semana, sem férias. Comece pequeno, meça o resultado, e escale quando fizer sentido.`,
   },
   {
     q: 'Os meus dados estão seguros?',

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: v.metaDescription,
   alternates: { canonical: '/setores/agricola' },
   openGraph: { title: v.metaTitle, description: v.metaDescription, url: '/setores/agricola' },
-  twitter: { card: 'summary', title: v.metaTitle, description: v.metaDescription },
+  twitter: { card: 'summary_large_image', title: v.metaTitle, description: v.metaDescription },
 }
 
 export default function AgricolaPage() {

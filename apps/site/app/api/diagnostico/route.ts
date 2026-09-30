@@ -3,6 +3,16 @@ import { sendMail } from '@/lib/mailer'
 import { isRateLimited, registerFailedAttempt } from '@/lib/rate-limit'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+// Normaliza para só dígitos (formato wa.me). Um número local de 9 dígitos
+// (ex: 841234567) recebe o indicativo de Moçambique.
+function normalizePhone(value: string) {
+  let digits = value.replace(/\D/g, '')
+  if (digits.startsWith('00')) digits = digits.slice(2)
+  if (digits.length === 9 && digits.startsWith('8')) digits = `258${digits}`
+  return digits
+}
+
 // Link público da Calendly — não é sensível, pode ficar hardcoded.
 const CALENDLY_URL = 'https://calendly.com/songhai-limitada/30min'
 
@@ -29,6 +39,7 @@ export async function POST(request: Request) {
   const name = asString(body?.name)
   const email = asString(body?.email)
   const company = asString(body?.company)
+  const whatsapp = normalizePhone(asString(body?.whatsapp))
   const challenges = asStringArray(body?.challenges)
   const otherChallenge = asString(body?.otherChallenge)
   const sector = asString(body?.sector)
@@ -40,6 +51,9 @@ export async function POST(request: Request) {
   }
   if (!EMAIL_REGEX.test(email)) {
     return NextResponse.json({ error: 'E-mail inválido.' }, { status: 400 })
+  }
+  if (whatsapp.length < 9 || whatsapp.length > 15) {
+    return NextResponse.json({ error: 'Número de WhatsApp inválido.' }, { status: 400 })
   }
 
   const notifyTo = process.env.CONTACT_NOTIFY_EMAIL
@@ -57,6 +71,7 @@ export async function POST(request: Request) {
       text: [
         `Nome: ${name}`,
         `E-mail: ${email}`,
+        `WhatsApp: +${whatsapp} — https://wa.me/${whatsapp}`,
         `Empresa: ${company}`,
         `Setor: ${sector || '(não indicado)'}`,
         `Tamanho da equipa: ${teamSize || '(não indicado)'}`,

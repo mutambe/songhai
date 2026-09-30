@@ -7,7 +7,7 @@ import { DiagnosticoForm } from '@/components/diagnostico-form'
 import { DiagnosticoFaq } from '@/components/diagnostico-faq'
 import { PillButton } from '@/components/pill-button'
 
-const TITLE = 'Diagnóstico Grátis — Quanto Você Perde em Tarefas Manuais?'
+const TITLE = 'Diagnóstico Grátis — Quanto Perde em Tarefas Manuais?'
 const DESCRIPTION =
   'Análise gratuita de 30 minutos aos processos da sua empresa, com relatório em PDF e proposta personalizada. Sem custo, sem compromisso.'
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: '/diagnostico' },
   openGraph: { title: TITLE, description: DESCRIPTION, url: '/diagnostico' },
-  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
 const BENEFITS = [
@@ -51,14 +51,14 @@ export default function DiagnosticoPage() {
               Diagnóstico grátis
             </p>
             <h1 className="text-balance font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              Quanto você realmente perde em tarefas manuais?
+              Quanto tempo perde, de facto, em tarefas manuais?
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft">
               Descubra em 30 minutos. Análise gratuita + relatório PDF + proposta
               personalizada.
             </p>
             <p className="mx-auto mt-6 max-w-xl text-pretty leading-relaxed text-ink-soft">
-              Marcamos uma conversa de 30 minutos. Você explica como funciona o
+              Marcamos uma conversa de 30 minutos. Explica-nos como funciona o
               seu negócio. Nós auditamos os seus processos, identificamos
               oportunidades e estimamos o tempo e o dinheiro que pode recuperar.
             </p>
@@ -82,7 +82,7 @@ export default function DiagnosticoPage() {
             <Reveal delay={0.1} className="lg:col-span-2">
               <div className="space-y-6 lg:sticky lg:top-24">
                 <h2 className="font-serif text-xl font-semibold text-foreground">
-                  O que você recebe
+                  O que recebe
                 </h2>
                 {BENEFITS.map((b) => {
                   const Icon = b.icon

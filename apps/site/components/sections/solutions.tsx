@@ -13,12 +13,16 @@ import {
   Database,
   Plus,
   Check,
+  Zap,
+  Headset,
+  Lightbulb,
 } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 
 const SOLUTIONS = [
   {
     n: '01',
+    group: 'atender',
     icon: MessageSquare,
     title: 'Agentes de IA de Texto',
     tag: 'WhatsApp & Chat',
@@ -34,6 +38,7 @@ const SOLUTIONS = [
   },
   {
     n: '02',
+    group: 'atender',
     icon: PhoneCall,
     title: 'Agentes de IA de Voz',
     tag: 'Telefone & Chamadas',
@@ -49,6 +54,7 @@ const SOLUTIONS = [
   },
   {
     n: '03',
+    group: 'automatizar',
     icon: Workflow,
     title: 'Automação de Processos',
     tag: 'Operações',
@@ -64,6 +70,7 @@ const SOLUTIONS = [
   },
   {
     n: '04',
+    group: 'orientar',
     icon: Compass,
     title: 'Consultoria de IA',
     tag: 'Estratégia & Roadmap',
@@ -79,6 +86,7 @@ const SOLUTIONS = [
   },
   {
     n: '05',
+    group: 'orientar',
     icon: ClipboardCheck,
     title: 'Auditoria de Processos',
     tag: 'Diagnóstico',
@@ -94,8 +102,9 @@ const SOLUTIONS = [
   },
   {
     n: '06',
+    group: 'orientar',
     icon: GraduationCap,
-    title: 'Treinamento em IA',
+    title: 'Formação em IA',
     tag: 'Capacitação',
     desc: 'Preparamos a sua equipa para trabalhar com IA a partir dos seus processos reais, não de exemplos genéricos.',
     metric: 'Equipa autónoma',
@@ -104,11 +113,12 @@ const SOLUTIONS = [
       'Sessões práticas baseadas nos casos reais da sua empresa',
       'Materiais e guias adaptados às ferramentas que já usam',
       'Boas práticas de segurança e uso responsável de IA',
-      'Acompanhamento pós-treinamento para tirar dúvidas',
+      'Acompanhamento pós-formação para tirar dúvidas',
     ],
   },
   {
     n: '07',
+    group: 'orientar',
     icon: Handshake,
     title: 'AI Partner Fracionado',
     tag: 'Planos 8h / 20h / 40h',
@@ -124,6 +134,7 @@ const SOLUTIONS = [
   },
   {
     n: '08',
+    group: 'automatizar',
     icon: Database,
     title: 'Sistemas Empresariais (ERP / SaaS)',
     tag: 'Integração & Customização',
@@ -134,9 +145,30 @@ const SOLUTIONS = [
       'Implementação de ERP/SaaS (OpenProject, Odoo, ERPNext, ou soluções custom)',
       'Customização e migração de dados dos sistemas legados',
       'Integração com automações de IA nos processos-chave (RH, financeiro, vendas)',
-      'Treinamento da equipa e suporte contínuo na plataforma',
+      'Formação da equipa e suporte contínuo na plataforma',
       'Dashboard e relatórios automatizados com insights de IA',
     ],
+  },
+]
+
+const GROUPS = [
+  {
+    id: 'atender',
+    icon: Headset,
+    title: 'Atender',
+    promise: 'Os seus clientes recebem resposta em segundos, 24 horas por dia — no WhatsApp e ao telefone.',
+  },
+  {
+    id: 'automatizar',
+    icon: Zap,
+    title: 'Automatizar',
+    promise: 'O trabalho repetitivo entre e-mail, CRM, faturação e ERP deixa de ser feito à mão.',
+  },
+  {
+    id: 'orientar',
+    icon: Lightbulb,
+    title: 'Orientar',
+    promise: 'Sabe exatamente por onde começar, e a sua equipa aprende a trabalhar com IA.',
   },
 ]
 
@@ -151,91 +183,93 @@ export function Solutions() {
             Soluções
           </p>
           <h2 className="text-balance font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl lg:text-5xl">
-            Oito formas de devolver horas à sua equipa
+            Três formas de devolver horas à sua equipa
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-ink-soft">
-            Do primeiro diagnóstico à parceria contínua — construímos a solução
-            certa para o momento do seu negócio.
+            Comece pelo que mais lhe dói hoje. Do primeiro agente no WhatsApp à
+            parceria contínua, crescemos consigo.
           </p>
         </Reveal>
 
-        <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SOLUTIONS.map((s) => {
-            const Icon = s.icon
-            const isOpen = open === s.n
+        <RevealGroup className="mt-14 grid gap-5 lg:grid-cols-3">
+          {GROUPS.map((group) => {
+            const GroupIcon = group.icon
+            const items = SOLUTIONS.filter((s) => s.group === group.id)
             return (
-              <RevealItem key={s.n}>
-                <motion.article
-                  whileHover={{ y: -4 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                  className="group flex h-full flex-col rounded-2xl border border-line bg-paper p-6 transition-shadow hover:shadow-xl hover:shadow-ink/5"
-                >
-                  <div className="flex items-start justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-sand text-indigo-deep">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <span className="font-serif text-2xl font-semibold text-line transition-colors group-hover:text-gold">
-                      {s.n}
-                    </span>
-                  </div>
-                  <p className="mt-5 text-xs font-medium uppercase tracking-wider text-teal">
-                    {s.tag}
-                  </p>
-                  <h3 className="mt-1.5 font-serif text-xl font-semibold text-foreground">
-                    {s.title}
+              <RevealItem key={group.id}>
+                <article className="flex h-full flex-col rounded-2xl border border-line bg-paper p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15 text-indigo-deep">
+                    <GroupIcon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-5 font-serif text-2xl font-semibold text-foreground">
+                    {group.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                    {s.desc}
+                    {group.promise}
                   </p>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden"
-                      >
-                        <div className="mt-4 rounded-xl bg-sand/60 p-4">
-                          <p className="text-xs font-medium italic text-indigo-deep">
-                            {s.ideal}
-                          </p>
-                          <ul className="mt-3 space-y-2">
-                            {s.details.map((d) => (
-                              <li key={d} className="flex gap-2 text-sm leading-snug text-ink-soft">
-                                <Check className="mt-0.5 h-4 w-4 flex-none text-teal" />
-                                <span>{d}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <ul className="mt-6 divide-y divide-line border-t border-line">
+                    {items.map((s) => {
+                      const Icon = s.icon
+                      const isOpen = open === s.n
+                      return (
+                        <li key={s.n}>
+                          <button
+                            type="button"
+                            onClick={() => setOpen(isOpen ? null : s.n)}
+                            aria-expanded={isOpen}
+                            className="flex w-full items-start gap-3 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                          >
+                            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sand text-indigo-deep">
+                              <Icon className="h-4 w-4" />
+                            </span>
+                            <span className="flex-1">
+                              <span className="block font-medium text-foreground">{s.title}</span>
+                              <span className="mt-0.5 block text-sm leading-relaxed text-ink-soft">
+                                {s.desc}
+                              </span>
+                            </span>
+                            <motion.span
+                              animate={{ rotate: isOpen ? 45 : 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="mt-1 inline-flex text-ink-soft"
+                              aria-hidden="true"
+                            >
+                              <Plus className="h-4 w-4" />
+                            </motion.span>
+                          </button>
 
-                  <div className="mt-auto flex items-center justify-between border-t border-line pt-4">
-                    <span className="text-xs font-medium text-indigo-deep">
-                      {s.metric}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => setOpen(isOpen ? null : s.n)}
-                      aria-expanded={isOpen}
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-gold"
-                    >
-                      {isOpen ? 'Ver menos' : 'Saber mais'}
-                      <motion.span
-                        animate={{ rotate: isOpen ? 45 : 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="inline-flex"
-                      >
-                        <Plus className="h-3.5 w-3.5" />
-                      </motion.span>
-                    </button>
-                  </div>
-                </motion.article>
+                          <AnimatePresence initial={false}>
+                            {isOpen && (
+                              <motion.div
+                                key="content"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                className="overflow-hidden"
+                              >
+                                <div className="mb-4 rounded-xl bg-sand/60 p-4">
+                                  <p className="text-xs font-medium italic text-indigo-deep">
+                                    {s.ideal}
+                                  </p>
+                                  <ul className="mt-3 space-y-2">
+                                    {s.details.map((d) => (
+                                      <li key={d} className="flex gap-2 text-sm leading-snug text-ink-soft">
+                                        <Check className="mt-0.5 h-4 w-4 flex-none text-teal" />
+                                        <span>{d}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </article>
               </RevealItem>
             )
           })}

@@ -22,8 +22,8 @@ export function Problem() {
             O problema
           </p>
           <h2 className="max-w-3xl text-balance font-serif text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-            A sua equipa perde até 70% do tempo em tarefas que a IA resolve em
-            minutos
+            A sua equipa passa horas por semana em tarefas que a IA resolve em
+            segundos
           </h2>
         </Reveal>
 

@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Check, AlertCircle, CalendarClock } from 'lucide-react'
+import { trackEvent } from '@/lib/track'
 
 // Link público da Calendly — não é sensível, pode ficar hardcoded.
 const CALENDLY_URL = 'https://calendly.com/songhai-limitada/30min'
@@ -22,10 +23,18 @@ const SECTORS = [
   'Retalho & E-commerce',
   'Advocacia',
   'Educação',
+  'Agrícola',
   'PME & Startups',
   'Instituições Públicas',
   'Outro',
 ]
+
+// Aceita +258 84 123 4567, 841234567, 00258..., etc. — valida apenas o
+// número de dígitos para não bloquear números estrangeiros.
+function isValidPhone(value: string) {
+  const digits = value.replace(/\D/g, '')
+  return digits.length >= 9 && digits.length <= 15
+}
 
 const TEAM_SIZES = ['3-10', '10-20', '20-50', '50+']
 
@@ -36,6 +45,7 @@ export function DiagnosticoForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    whatsapp: '+258 ',
     company: '',
     otherChallenge: '',
     sector: '',
@@ -46,6 +56,21 @@ export function DiagnosticoForm() {
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
+  const started = useRef(false)
+
+  // Vindo de um cartão de setor (/diagnostico?setor=...), pré-seleciona-o
+  useEffect(() => {
+    const setor = new URLSearchParams(window.location.search).get('setor')
+    if (setor && SECTORS.includes(setor)) {
+      setFormData((prev) => ({ ...prev, sector: setor }))
+    }
+  }, [])
+
+  const markStarted = () => {
+    if (started.current) return
+    started.current = true
+    trackEvent('diagnostico_start')
+  }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -70,6 +95,10 @@ export function DiagnosticoForm() {
         throw new Error('Preencha todos os campos obrigatórios')
       }
 
+      if (!isValidPhone(formData.whatsapp)) {
+        throw new Error('Número de WhatsApp inválido')
+      }
+
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!emailRegex.test(formData.email)) {
         throw new Error('Email inválido')
@@ -84,15 +113,11 @@ export function DiagnosticoForm() {
       if (!res.ok) throw new Error(json.error || 'Erro ao enviar pedido')
 
       setSubmitted(true)
-      fetch(`${process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'}/api/track`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ path: '/diagnostico', event: 'lead' }),
-        keepalive: true,
-      }).catch(() => {})
+      trackEvent('lead')
       setFormData({
         name: '',
         email: '',
+        whatsapp: '+258 ',
         company: '',
         otherChallenge: '',
         sector: '',
@@ -138,7 +163,7 @@ export function DiagnosticoForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} onFocus={markStarted} className="space-y-5">
       {error && (
         <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
           <AlertCircle className="mt-0.5 h-5 w-5 text-red-600 shrink-0" />
@@ -176,6 +201,27 @@ export function DiagnosticoForm() {
           required
           className={inputClasses}
         />
+      </div>
+
+      <div>
+        <label htmlFor="whatsapp" className="mb-2 block text-sm font-medium text-foreground">
+          WhatsApp *
+        </label>
+        <input
+          id="whatsapp"
+          type="tel"
+          name="whatsapp"
+          inputMode="tel"
+          autoComplete="tel"
+          value={formData.whatsapp}
+          onChange={handleChange}
+          placeholder="+258 84 000 0000"
+          required
+          className={inputClasses}
+        />
+        <p className="mt-1.5 text-xs text-ink-soft">
+          Confirmamos a conversa por WhatsApp — é mais rápido que o email.
+        </p>
       </div>
 
       <div>

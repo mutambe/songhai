@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: v.metaDescription,
   alternates: { canonical: '/setores/servicos' },
   openGraph: { title: v.metaTitle, description: v.metaDescription, url: '/setores/servicos' },
-  twitter: { card: 'summary', title: v.metaTitle, description: v.metaDescription },
+  twitter: { card: 'summary_large_image', title: v.metaTitle, description: v.metaDescription },
 }
 
 export default function ServicosPage() {

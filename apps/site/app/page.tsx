@@ -5,9 +5,9 @@ import { Stats } from '@/components/sections/stats'
 import { Problem } from '@/components/sections/problem'
 import { Solutions } from '@/components/sections/solutions'
 import { Tools } from '@/components/sections/tools'
-import { Transformation } from '@/components/sections/transformation'
 import { Method } from '@/components/sections/method'
 import { Calculator } from '@/components/sections/calculator'
+import { PricingTeaser } from '@/components/sections/pricing-teaser'
 import { Sectors } from '@/components/sections/sectors'
 import { Clients } from '@/components/sections/clients'
 import { Faq } from '@/components/sections/faq'
@@ -23,10 +23,10 @@ export default function HomePage() {
         <Problem />
         <Solutions />
         <Tools />
-        <Transformation />
+        <Sectors />
         <Method />
         <Calculator />
-        <Sectors />
+        <PricingTeaser />
         <Clients />
         <Faq />
         <FinalCta />

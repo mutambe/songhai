@@ -1,12 +1,14 @@
 import Link from 'next/link'
 import { Logo } from '@/components/logo'
 
+const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'
+
 const SERVICES = [
   'Agentes de IA de Texto',
   'Agentes de IA de Voz',
   'Automação de Processos',
   'Consultoria de IA',
-  'Treinamento em IA',
+  'Formação em IA',
 ]
 
 const COMPANY = [
@@ -66,9 +68,27 @@ export function SiteFooter() {
 
         <div>
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
-            Legal
+            Contacto
           </h3>
           <ul className="space-y-3 text-sm text-panel-foreground/70">
+            <li>
+              <a
+                href="https://wa.me/258848986002"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-panel-foreground"
+              >
+                WhatsApp: +258 84 898 6002
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:info@songhai.cc"
+                className="transition-colors hover:text-panel-foreground"
+              >
+                info@songhai.cc
+              </a>
+            </li>
             <li>
               <Link
                 href="/contacto"
@@ -87,10 +107,10 @@ export function SiteFooter() {
             </li>
             <li>
               <a
-                href="#"
+                href={PORTAL_URL}
                 className="transition-colors hover:text-panel-foreground"
               >
-                Termos de Serviço
+                Área de cliente
               </a>
             </li>
           </ul>

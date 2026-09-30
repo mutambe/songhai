@@ -2,22 +2,20 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { LogIn, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { PillButton } from '@/components/pill-button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { cn } from '@/lib/utils'
 
 const NAV = [
-  { label: 'Serviços', href: '/#solucoes' },
+  { label: 'Soluções', href: '/#solucoes' },
   { label: 'Setores', href: '/#setores' },
-  { label: 'Método', href: '/#metodo' },
   { label: 'Preços', href: '/precos' },
+  { label: 'Método', href: '/#metodo' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/#faq' },
 ]
-
-const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
@@ -56,14 +54,9 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-5 md:flex">
           <ThemeToggle />
-          <a
-            href={PORTAL_URL}
-            className="inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-foreground"
-          >
-            <LogIn className="h-4 w-4" />
-            Entrar
-          </a>
-          <PillButton href="/contacto">Falar connosco</PillButton>
+          <PillButton href="/diagnostico" variant="gold">
+            Diagnóstico grátis
+          </PillButton>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -96,20 +89,14 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href={PORTAL_URL}
-              className="flex items-center gap-2 rounded-lg px-3 py-3 text-base text-ink-soft transition-colors hover:bg-paper hover:text-foreground"
-            >
-              <LogIn className="h-4 w-4" />
-              Entrar
-            </a>
             <div className="px-3 pt-2">
               <PillButton
-                href="/contacto"
+                href="/diagnostico"
+                variant="gold"
                 className="w-full"
                 onClick={() => setOpen(false)}
               >
-                Falar connosco
+                Diagnóstico grátis
               </PillButton>
             </div>
           </nav>

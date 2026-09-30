@@ -33,10 +33,21 @@ export function FinalCta() {
                 href="/diagnostico"
                 variant="gold"
               >
-                <ArrowRight className="h-4 w-4" />
                 Diagnóstico gratuito de 30 minutos
+                <ArrowRight className="h-4 w-4" />
               </PillButton>
             </div>
+            <p className="mt-6 text-sm text-panel-foreground/60">
+              Prefere conversar já?{' '}
+              <a
+                href="https://wa.me/258848986002"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-colors hover:text-panel-foreground"
+              >
+                WhatsApp +258 84 898 6002
+              </a>
+            </p>
           </div>
         </div>
       </Reveal>

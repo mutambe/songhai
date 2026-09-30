@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
+import { formatMZN, getPlan } from '@/lib/plans'
 
 const FAQS = [
   {
@@ -11,19 +12,19 @@ const FAQS = [
   },
   {
     q: 'Quanto tempo demora?',
-    a: '30 minutos. Focamos, não andamos à volta. Depois você recebe o relatório (enviamos em 24h).',
+    a: '30 minutos. Focamos, não andamos à volta. Depois recebe o relatório (enviamos em 24h).',
   },
   {
     q: 'Depois do diagnóstico, qual é o custo de avançar?',
-    a: 'Depende da complexidade. Enviamos proposta clara com preço fixo. Típico: 5.000-15.000 MZN/mês conforme o serviço.',
+    a: `Depende da complexidade. Enviamos proposta clara com preço fixo. Os planos começam em ${formatMZN(getPlan('simples').monthly)}/mês — veja a tabela completa em Preços.`,
   },
   {
     q: 'Preciso saber de tecnologia para o diagnóstico?',
-    a: 'Não. Você explica como funciona hoje. Nós fazemos a parte técnica.',
+    a: 'Não. Explica-nos como funciona hoje. Nós fazemos a parte técnica.',
   },
   {
-    q: 'Vocês vão tentar me forçar a comprar algo?',
-    a: 'Não. Mostramos oportunidades. Você decide. Oferecemos proposta clara, mas sem pressão.',
+    q: 'Vão tentar forçar-me a comprar algo?',
+    a: 'Não. Mostramos oportunidades. A decisão é sua. Oferecemos proposta clara, mas sem pressão.',
   },
   {
     q: 'Como é o suporte depois de implementar?',
@@ -39,7 +40,7 @@ const FAQS = [
   },
   {
     q: 'Como funciona o agendamento?',
-    a: 'Após submeter o formulário, você recebe um email com o link de calendário. Escolhe a hora que melhor convém.',
+    a: 'Após submeter o formulário, recebe um email com o link de calendário. Escolhe a hora que melhor convém.',
   },
   {
     q: 'Qual é a melhor forma de falar convosco antes do diagnóstico?',

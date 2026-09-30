@@ -5,6 +5,11 @@ import { SiteFooter } from '@/components/site-footer'
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 import { PillButton } from '@/components/pill-button'
 import { PricingFaq } from '@/components/pricing-faq'
+import { getPlan, monthlyLabel, setupLabel } from '@/lib/plans'
+
+const SIMPLES = getPlan('simples')
+const MEDIO = getPlan('medio')
+const AVANCADO = getPlan('avancado')
 
 const TITLE = 'Preços — Agentes de IA e Automação em MZN'
 const DESCRIPTION =
@@ -15,7 +20,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: '/precos' },
   openGraph: { title: TITLE, description: DESCRIPTION, url: '/precos' },
-  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
 type Plan = {
@@ -33,16 +38,16 @@ type Plan = {
 
 const PLANS: Plan[] = [
   {
-    name: 'Agente Simples',
-    price: 'A partir de 5.000 MZN/mês',
-    setup: 'Setup: 2.000 MZN (único)',
+    name: SIMPLES.name,
+    price: `${monthlyLabel(SIMPLES)}/mês`,
+    setup: `Setup: ${setupLabel(SIMPLES)} (único)`,
     idealFor:
       'Pequenas empresas (5-20 pessoas) que querem responder perguntas comuns e confirmações automáticas.',
     included: [
       'Agente de IA customizado',
       'Integração WhatsApp + Google Calendar',
       'Suporte em horário laboral (email/WhatsApp)',
-      'Treinamento da equipa (2 horas)',
+      'Formação da equipa (2 horas)',
       'Ajustes mensais (até 2)',
     ],
     notIncluded: [
@@ -55,9 +60,9 @@ const PLANS: Plan[] = [
     variant: 'outline',
   },
   {
-    name: 'Agente Médio',
-    price: 'A partir de 8.000 MZN/mês',
-    setup: 'Setup: a partir de 3.000 MZN (único)',
+    name: MEDIO.name,
+    price: `${monthlyLabel(MEDIO)}/mês`,
+    setup: `Setup: ${setupLabel(MEDIO, true)} (único)`,
     idealFor:
       'PME médias (20-50 pessoas) que precisam de qualificação de leads e integração com CRM.',
     included: [
@@ -72,15 +77,15 @@ const PLANS: Plan[] = [
       'Integrações com sistemas legados (caso a caso)',
       'Desenvolvimento à medida',
     ],
-    cta: 'Começar com o mais popular 🔥',
+    cta: 'Começar com o recomendado',
     href: '/diagnostico',
     variant: 'gold',
     highlight: true,
   },
   {
-    name: 'Agente Avançado',
-    price: 'A partir de 12.000 MZN/mês',
-    setup: 'Setup: a partir de 4.000 MZN (único)',
+    name: AVANCADO.name,
+    price: `${monthlyLabel(AVANCADO)}/mês`,
+    setup: `Setup: ${setupLabel(AVANCADO, true)} (único)`,
     idealFor:
       'Grandes PME (50+ pessoas) e e-commerce com volume alto, com múltiplas integrações.',
     included: [
@@ -121,8 +126,8 @@ const PLANS: Plan[] = [
 ]
 
 const COMPARISON_ROWS: [string, string, string, string][] = [
-  ['Preço/mês', 'A partir de 5.000 MZN', 'A partir de 8.000 MZN', 'A partir de 12.000 MZN'],
-  ['Setup', '2.000 MZN', 'A partir de 3.000 MZN', 'A partir de 4.000 MZN'],
+  ['Preço/mês', monthlyLabel(SIMPLES), monthlyLabel(MEDIO), monthlyLabel(AVANCADO)],
+  ['Setup', setupLabel(SIMPLES), setupLabel(MEDIO), setupLabel(AVANCADO)],
   ['Agente de IA customizado', '✓', '✓', '✓'],
   ['WhatsApp integrado', '✓', '✓', '✓'],
   ['Calendário', '✓', '✓', '✓'],
@@ -139,9 +144,9 @@ const COMPARISON_ROWS: [string, string, string, string][] = [
 const ADDONS = [
   { name: 'Integração com CRM adicional', price: '1.000-2.000 MZN', desc: 'Ligar um CRM diferente do incluído no plano, ou adicionar CRM ao plano Simples (HubSpot, Salesforce, etc.)' },
   { name: 'Integração ERP', price: '2.000-5.000 MZN', desc: 'Ligar sistema legado (mais complexo)' },
-  { name: 'Relatório personalizado', price: '500 MZN', desc: 'Relatório novo, sob medida' },
+  { name: 'Relatório personalizado', price: '500 MZN', desc: 'Relatório novo, à medida' },
   { name: 'Agente adicional', price: '40% do plano base', desc: '2º agente (ex: suporte + vendas)' },
-  { name: 'Treinamento extra', price: '200 MZN/hora', desc: 'Consultoria e boas práticas' },
+  { name: 'Formação extra', price: '200 MZN/hora', desc: 'Consultoria e boas práticas' },
   { name: 'Análise / auditoria', price: '1.000-2.000 MZN', desc: 'Aprofundar oportunidades de otimização' },
 ]
 
@@ -178,7 +183,7 @@ export default function PrecosPage() {
                 >
                   {plan.highlight && (
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-indigo-deep">
-                      Mais popular
+                      Recomendado
                     </span>
                   )}
                   <h2 className="font-serif text-xl font-semibold text-foreground">

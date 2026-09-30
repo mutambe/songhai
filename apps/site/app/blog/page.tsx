@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: '/blog' },
   openGraph: { title: TITLE, description: DESCRIPTION, url: '/blog' },
-  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
 export const dynamic = 'force-dynamic'
