@@ -85,7 +85,7 @@ export function WhatsAppDemo() {
               }`}
             >
               {m.text}
-              <span className="mt-1 flex items-center justify-end gap-1 text-[10px] text-[#667781]">
+              <span className="mt-1 flex items-center justify-end gap-1 text-[10px] text-[#54656f]">
                 {m.time}
                 {m.from === 'agent' && <CheckCheck className="h-3 w-3 text-[#53bdeb]" aria-hidden="true" />}
               </span>

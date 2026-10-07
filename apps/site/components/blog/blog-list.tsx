@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { ArrowRight, Clock, X } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { coverSources } from '@/lib/blog-covers'
 import {
   CATEGORIES,
   formatDate,
@@ -82,7 +83,7 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
         >
           <div
             className={`relative min-h-56 overflow-hidden bg-gradient-to-br ${featured.gradient} bg-cover bg-center p-8`}
-            style={featured.coverImage ? { backgroundImage: `url(${featured.coverImage})` } : undefined}
+            style={featured.coverImage ? { backgroundImage: `url(${coverSources(featured.coverImage).card})` } : undefined}
           >
             {!featured.coverImage && (
               <PostIllustration
@@ -152,7 +153,7 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
               >
                 <div
                   className={`relative h-40 overflow-hidden bg-gradient-to-br ${post.gradient} bg-cover bg-center p-5`}
-                  style={post.coverImage ? { backgroundImage: `url(${post.coverImage})` } : undefined}
+                  style={post.coverImage ? { backgroundImage: `url(${coverSources(post.coverImage).card})` } : undefined}
                 >
                   {!post.coverImage && (
                     <PostIllustration

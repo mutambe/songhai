@@ -3,6 +3,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 import { PillButton } from '@/components/pill-button'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import type { Vertical } from '@/lib/verticals'
 
 export function VerticalPage({ v }: { v: Vertical }) {
@@ -10,8 +11,15 @@ export function VerticalPage({ v }: { v: Vertical }) {
     <>
       <SiteHeader />
       <main>
-        <section className="px-5 pb-14 pt-16 text-center lg:px-8">
-          <Reveal className="mx-auto max-w-3xl">
+        <Breadcrumbs
+          className="mx-auto max-w-6xl px-5 pt-8 lg:px-8"
+          items={[
+            { name: 'Setores', href: '/#setores' },
+            { name: v.eyebrow, href: `/setores/${v.slug}` },
+          ]}
+        />
+        <section className="px-5 pb-14 pt-10 text-center lg:px-8">
+          <Reveal hero className="mx-auto max-w-3xl">
             <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">
               {v.eyebrow}
             </p>

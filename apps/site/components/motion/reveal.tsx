@@ -1,7 +1,8 @@
 'use client'
 
 import { motion, type Variants } from 'framer-motion'
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
+import { cn } from '@/lib/utils'
 
 const container: Variants = {
   hidden: {},
@@ -23,11 +24,22 @@ export function Reveal({
   children,
   className,
   delay = 0,
+  hero = false,
 }: {
   children: ReactNode
   className?: string
   delay?: number
+  // Para o topo da página: entrada em CSS, visível logo na primeira pintura
+  // (o framer-motion só revela o conteúdo depois de o JavaScript carregar).
+  hero?: boolean
 }) {
+  if (hero) {
+    return (
+      <div className={cn('hero-fade', className)} style={{ '--d': `${delay}s` } as CSSProperties}>
+        {children}
+      </div>
+    )
+  }
   return (
     <motion.div
       className={className}

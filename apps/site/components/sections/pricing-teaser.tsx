@@ -33,7 +33,7 @@ export function PricingTeaser() {
                   }`}
                 >
                   {highlight && (
-                    <span className="absolute -top-3 left-6 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-indigo-deep">
+                    <span className="absolute -top-3 left-6 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-on-gold">
                       Recomendado
                     </span>
                   )}

@@ -204,10 +204,10 @@ export function ConnectedDiagram() {
           }}
         >
           <Image
-            src="/songhai-mark.png"
+            src="/songhai-mark-sm.webp"
             alt="SONGHAI"
-            width={512}
-            height={380}
+            width={172}
+            height={128}
             className="h-9 w-12 object-contain sm:h-11 sm:w-14"
           />
           <span className="text-[10px] font-bold uppercase tracking-wider text-gold sm:text-xs">

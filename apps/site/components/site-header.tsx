@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { LockKeyhole, Menu, X } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { PillButton } from '@/components/pill-button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { cn } from '@/lib/utils'
+
+const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'
 
 const NAV = [
   { label: 'Soluções', href: '/#solucoes' },
@@ -53,6 +55,15 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-5 md:flex">
+          {/* Acesso discreto ao Portal interno da equipa. */}
+          <a
+            href={PORTAL_URL}
+            aria-label="Entrar no Portal"
+            title="Entrar no Portal"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink-soft/70 transition-colors hover:bg-paper hover:text-foreground"
+          >
+            <LockKeyhole className="h-4 w-4" />
+          </a>
           <ThemeToggle />
           <PillButton href="/diagnostico" variant="gold">
             Diagnóstico grátis
@@ -99,6 +110,13 @@ export function SiteHeader() {
                 Diagnóstico grátis
               </PillButton>
             </div>
+            <a
+              href={PORTAL_URL}
+              className="mt-2 inline-flex items-center gap-2 px-3 py-2 text-sm text-ink-soft/80 transition-colors hover:text-foreground"
+            >
+              <LockKeyhole className="h-3.5 w-3.5" />
+              Entrar no Portal
+            </a>
           </nav>
         </div>
       )}

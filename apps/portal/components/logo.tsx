@@ -6,36 +6,31 @@ export function Logo({
   className,
   href = '/',
   glow = true,
+  size = 'md',
 }: {
   className?: string
   href?: string
   glow?: boolean
+  size?: 'md' | 'lg'
 }) {
   return (
     <Link
       href={href}
       className={cn(
-        'inline-flex items-center gap-2 font-serif text-xl font-semibold tracking-tight text-foreground',
+        'inline-flex items-center gap-2.5 font-serif font-semibold tracking-tight text-foreground',
+        size === 'lg' ? 'text-3xl' : 'text-xl',
         className,
       )}
       aria-label="Portal SONGHAI — início"
     >
-      <span className="relative inline-flex h-8 shrink-0 items-center justify-center">
-        {glow && (
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 rounded-full bg-mint/25 blur-md"
-          />
-        )}
-        <Image
-          src="/songhai-mark.png"
-          alt="Logótipo SONGHAI"
-          width={512}
-          height={380}
-          className="relative h-8 w-auto object-contain"
-          priority
-        />
-      </span>
+      <Image
+        src="/songhai-mark.png"
+        alt="Logótipo SONGHAI"
+        width={512}
+        height={380}
+        className={cn('w-auto object-contain', size === 'lg' ? 'h-12' : 'h-8', glow && 'eagle-glow')}
+        priority
+      />
       <span>
         SONGHAI<span className="text-gold">.</span>
       </span>
