@@ -5,6 +5,7 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
+import { TableKit } from '@tiptap/extension-table'
 import {
   Bold,
   Italic,
@@ -30,6 +31,8 @@ export function RichTextEditor({
       StarterKit.configure({ heading: { levels: [2, 3] } }),
       Link.configure({ openOnClick: false, autolink: true }),
       Image,
+      // Sem isto, abrir um artigo com tabela no editor apagava-a ao gravar.
+      TableKit,
     ],
     content: value,
     editorProps: {

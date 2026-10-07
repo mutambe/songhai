@@ -1,9 +1,16 @@
 import 'server-only'
 import { promises as fs } from 'fs'
 import path from 'path'
-import { isPubliclyVisible, slugify, type BlogPost } from '@/lib/blog'
+import { isPubliclyVisible, slugify, type ArticleWidget, type BlogPost } from '@/lib/blog'
 import { sanitizeArticleHtml } from '@/lib/sanitize'
-import { CODE_ARTICLES } from '@/lib/blog-articles'
+import { CODE_ARTICLES, CODE_ARTICLES_VERSION } from '@/lib/blog-articles'
+
+// O HTML dos separadores (widget "tabs") é editável no painel, por isso passa
+// pelo mesmo filtro que o corpo das secções.
+function sanitizeWidget(widget: ArticleWidget | undefined): ArticleWidget | undefined {
+  if (!widget || widget.type !== 'tabs') return widget
+  return { ...widget, tabs: widget.tabs.map((t) => ({ ...t, body: sanitizeArticleHtml(t.body) })) }
+}
 
 function sanitizeContent(content: BlogPost['content']): BlogPost['content'] {
   return {
@@ -11,15 +18,56 @@ function sanitizeContent(content: BlogPost['content']): BlogPost['content'] {
     sections: content.sections.map((section) => ({
       ...section,
       body: sanitizeArticleHtml(section.body),
+      widget: sanitizeWidget(section.widget),
     })),
   }
 }
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'posts.json')
+// Regista que versão dos artigos escritos no código já foi copiada para
+// posts.json, para a cópia acontecer uma só vez (ver seedCodeArticles).
+const SEED_FILE = path.join(process.cwd(), 'data', 'blog-seed.json')
 
-async function readStore(): Promise<BlogPost[]> {
+async function readRaw(): Promise<BlogPost[]> {
   const raw = await fs.readFile(DATA_FILE, 'utf-8')
   return JSON.parse(raw) as BlogPost[]
+}
+
+/**
+ * Copia os artigos de lib/blog-articles para posts.json (o volume da VPS),
+ * uma vez por versão: os novos são acrescentados e os 5 originais de julho
+ * são substituídos pelas versões revistas. Depois disso o painel /admin/blog
+ * é a única fonte: edições e apagamentos feitos lá nunca são desfeitos,
+ * porque blog-seed.json lembra que a cópia já foi feita.
+ */
+async function seedCodeArticles(posts: BlogPost[]): Promise<boolean> {
+  let seeded: Record<string, number> = {}
+  try {
+    seeded = JSON.parse(await fs.readFile(SEED_FILE, 'utf-8'))
+  } catch {}
+
+  let changed = false
+  for (const article of CODE_ARTICLES) {
+    if ((seeded[article.slug] ?? 0) >= CODE_ARTICLES_VERSION) continue
+    const copy: BlogPost = structuredClone(article)
+    const index = posts.findIndex((p) => p.slug === article.slug)
+    if (index === -1) posts.push(copy)
+    else posts[index] = copy
+    if (copy.featured) posts.forEach((p) => p !== copy && (p.featured = false))
+    seeded[article.slug] = CODE_ARTICLES_VERSION
+    changed = true
+  }
+  if (changed) {
+    await writeStore(posts)
+    await fs.writeFile(SEED_FILE, JSON.stringify(seeded, null, 2), 'utf-8')
+  }
+  return changed
+}
+
+async function readStore(): Promise<BlogPost[]> {
+  const posts = await readRaw()
+  await seedCodeArticles(posts)
+  return posts
 }
 
 async function writeStore(posts: BlogPost[]) {
@@ -30,19 +78,6 @@ async function writeStore(posts: BlogPost[]) {
 export async function listPosts(): Promise<BlogPost[]> {
   const posts = await readStore()
   return [...posts].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
-}
-
-/**
- * Posts do volume (painel) + artigos escritos no código (lib/blog-articles).
- * Os do código chegam a produção com o deploy, sem mexer no volume da VPS, e
- * prevalecem sobre um artigo do painel com o mesmo slug: é assim que os 5
- * artigos originais foram revistos e enriquecidos. Editar um desses no painel
- * deixa de mudar o site público. O painel continua a gerir data/posts.json.
- */
-async function readPublicPool(): Promise<BlogPost[]> {
-  const stored = await readStore()
-  const codeSlugs = new Set(CODE_ARTICLES.map((p) => p.slug))
-  return [...stored.filter((p) => !codeSlugs.has(p.slug)), ...CODE_ARTICLES]
 }
 
 /**
@@ -57,7 +92,7 @@ function isVisible(post: BlogPost) {
 
 /** Só posts realmente publicados (site público). */
 export async function listPublishedPosts(): Promise<BlogPost[]> {
-  const posts = await readPublicPool()
+  const posts = await readStore()
   return posts
     .filter(isVisible)
     .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
@@ -71,7 +106,7 @@ export async function getPost(slug: string): Promise<BlogPost | null> {
 
 /** Post por slug, só se estiver publicamente visível (site público). */
 export async function getPublishedPost(slug: string): Promise<BlogPost | null> {
-  const post = (await readPublicPool()).find((p) => p.slug === slug) ?? null
+  const post = (await readStore()).find((p) => p.slug === slug) ?? null
   if (!post || !isVisible(post)) return null
   return post
 }
