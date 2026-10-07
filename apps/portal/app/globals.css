@@ -18,7 +18,7 @@
   --color-muted: var(--paper-muted);
   --color-muted-foreground: var(--ink-soft);
   --color-accent: var(--gold);
-  --color-accent-foreground: #1a1204;
+  --color-accent-foreground: var(--mint-ink);
   --color-destructive: oklch(0.637 0.237 25.331);
   --color-border: var(--line);
   --color-input: var(--line);
@@ -26,13 +26,17 @@
 
   --color-sand: var(--sand);
   --color-paper: var(--paper);
+  --color-paper-muted: var(--paper-muted);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-indigo-deep: var(--indigo-deep);
   --color-indigo: var(--indigo);
   --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
   --color-teal: var(--teal);
   --color-mint: var(--mint);
+  --color-mint-ink: var(--mint-ink);
+  --color-sky: var(--sky);
   --color-line: var(--line);
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -42,21 +46,25 @@
   --radius-2xl: calc(var(--radius) + 8px);
 }
 
+/* Assinatura SONGHAI: azul-marinho, dourado e o azul da águia — as mesmas
+   cores do painel escuro do site (songhai.cc). O token "mint" ficou com o
+   nome antigo para não mexer em todas as páginas, mas é agora o dourado. */
 :root {
   color-scheme: dark;
-  --sand: #0a0b0a;
-  --paper: #131615;
-  --paper-muted: #191c1a;
-  --ink: #f4f5f2;
-  --ink-soft: #9a9d98;
-  --indigo-deep: #122733;
-  --indigo: #1b3a4b;
-  --gold: #c89b3c;
-  --gold-dark: #a63c07;
-  --teal: #185347;
-  --mint: #2fe6ab;
-  --mint-ink: #06120d;
-  --line: rgba(255, 255, 255, 0.1);
+  --sand: #07121b;
+  --paper: #0c1b26;
+  --paper-muted: #112330;
+  --ink: #f6f2e8;
+  --ink-soft: #9fb1bd;
+  --indigo-deep: #0d212c;
+  --indigo: #1e2158;
+  --gold: #d4b066;
+  --gold-dark: #a6812f;
+  --teal: #5dd9c1;
+  --mint: #d4b066;
+  --mint-ink: #0b1620;
+  --sky: #5cc8f5;
+  --line: rgba(212, 176, 102, 0.14);
   --radius: 1rem;
 }
 
@@ -69,7 +77,53 @@
     font-feature-settings: 'ss01', 'cv01';
   }
   ::selection {
-    background: var(--mint);
+    background: var(--gold);
     color: var(--mint-ink);
+  }
+}
+
+/* Fundo de marca: luz índigo no topo, um toque dourado em baixo. */
+.songhai-backdrop {
+  background:
+    radial-gradient(60% 50% at 15% 0%, rgba(30, 33, 88, 0.85), transparent 70%),
+    radial-gradient(45% 40% at 95% 10%, rgba(92, 200, 245, 0.10), transparent 70%),
+    radial-gradient(50% 45% at 85% 100%, rgba(212, 176, 102, 0.12), transparent 70%);
+}
+
+/* Grelha fina, como papel técnico, que desvanece nas bordas. */
+.songhai-grid {
+  background-image:
+    linear-gradient(rgba(212, 176, 102, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 176, 102, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(70% 60% at 50% 30%, black, transparent);
+}
+
+/* Brilho da águia (o mesmo efeito do logótipo do site). */
+.eagle-glow {
+  filter: drop-shadow(0 0 3px rgb(92 200 245 / 0.5)) drop-shadow(0 0 14px rgb(92 200 245 / 0.3));
+}
+
+/* Linha dourada de assinatura. */
+.gold-rule {
+  background: linear-gradient(90deg, transparent, rgba(212, 176, 102, 0.7), transparent);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
   }
 }

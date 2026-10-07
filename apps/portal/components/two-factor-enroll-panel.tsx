@@ -83,9 +83,9 @@ export function TwoFactorEnrollPanel({
   return (
     <div className="space-y-5">
       {error && (
-        <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
-          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
-          <p className="text-sm text-red-800">{error}</p>
+        <div className="flex items-start gap-3 rounded-lg border border-red-400/30 bg-red-500/10 px-4 py-3">
+          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+          <p className="text-sm text-red-200">{error}</p>
         </div>
       )}
 

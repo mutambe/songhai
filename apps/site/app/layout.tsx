@@ -4,6 +4,7 @@ import './globals.css'
 import { WhatsAppButton } from '@/components/whatsapp-button'
 import { AnalyticsBeacon } from '@/components/analytics-beacon'
 import { SOCIAL_PROFILES } from '@/lib/social'
+import { BUSINESS, OPENING_HOURS } from '@/lib/business'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -88,18 +89,27 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'SONGHAI',
+  legalName: BUSINESS.legalName,
   description:
     'Agência de inteligência artificial e automação de processos para empresas em Maputo e em todo o Moçambique.',
   url: SITE_URL,
   logo: `${SITE_URL}/songhai-logo.png`,
   image: `${SITE_URL}/songhai-logo.png`,
-  telephone: '+258848986002',
+  telephone: BUSINESS.phone,
+  email: BUSINESS.email,
   sameAs: SOCIAL_PROFILES.map((s) => s.url),
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Maputo',
-    addressCountry: 'MZ',
+    streetAddress: BUSINESS.streetAddress,
+    addressLocality: BUSINESS.locality,
+    addressCountry: BUSINESS.countryCode,
   },
+  openingHoursSpecification: OPENING_HOURS.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.days,
+    opens: h.opens,
+    closes: h.closes,
+  })),
   areaServed: {
     '@type': 'Country',
     name: 'Moçambique',

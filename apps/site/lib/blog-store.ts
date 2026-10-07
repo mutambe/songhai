@@ -3,6 +3,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { isPubliclyVisible, slugify, type BlogPost } from '@/lib/blog'
 import { sanitizeArticleHtml } from '@/lib/sanitize'
+import { CODE_ARTICLES } from '@/lib/blog-articles'
 
 function sanitizeContent(content: BlogPost['content']): BlogPost['content'] {
   return {
@@ -31,10 +32,35 @@ export async function listPosts(): Promise<BlogPost[]> {
   return [...posts].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
 }
 
+/**
+ * Posts do volume (painel) + artigos escritos no código (lib/blog-articles).
+ * Os do código chegam a produção com o deploy, sem mexer no volume da VPS, e
+ * prevalecem sobre um artigo do painel com o mesmo slug: é assim que os 5
+ * artigos originais foram revistos e enriquecidos. Editar um desses no painel
+ * deixa de mudar o site público. O painel continua a gerir data/posts.json.
+ */
+async function readPublicPool(): Promise<BlogPost[]> {
+  const stored = await readStore()
+  const codeSlugs = new Set(CODE_ARTICLES.map((p) => p.slug))
+  return [...stored.filter((p) => !codeSlugs.has(p.slug)), ...CODE_ARTICLES]
+}
+
+/**
+ * BLOG_PREVIEW_SCHEDULED=1 mostra também os artigos agendados (data futura),
+ * para os rever localmente antes de chegarem. Nunca definir em produção
+ * (docker-stack.yml não a define).
+ */
+function isVisible(post: BlogPost) {
+  if (process.env.BLOG_PREVIEW_SCHEDULED === '1') return post.status === 'published'
+  return isPubliclyVisible(post)
+}
+
 /** Só posts realmente publicados (site público). */
 export async function listPublishedPosts(): Promise<BlogPost[]> {
-  const posts = await listPosts()
-  return posts.filter(isPubliclyVisible)
+  const posts = await readPublicPool()
+  return posts
+    .filter(isVisible)
+    .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
 }
 
 /** Post por slug (admin) — inclui rascunhos e agendados. */
@@ -45,8 +71,8 @@ export async function getPost(slug: string): Promise<BlogPost | null> {
 
 /** Post por slug, só se estiver publicamente visível (site público). */
 export async function getPublishedPost(slug: string): Promise<BlogPost | null> {
-  const post = await getPost(slug)
-  if (!post || !isPubliclyVisible(post)) return null
+  const post = (await readPublicPool()).find((p) => p.slug === slug) ?? null
+  if (!post || !isVisible(post)) return null
   return post
 }
 

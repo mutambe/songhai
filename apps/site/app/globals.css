@@ -20,7 +20,8 @@
   --color-muted: var(--paper-muted);
   --color-muted-foreground: var(--ink-soft);
   --color-accent: var(--gold);
-  --color-accent-foreground: var(--indigo-deep);
+  --color-accent-foreground: var(--on-gold);
+  --color-on-gold: var(--on-gold);
   --color-destructive: oklch(0.577 0.245 27.325);
   --color-border: var(--line);
   --color-input: var(--line);
@@ -56,6 +57,9 @@
   --indigo: #34379e;
   --gold: #bd8420;
   --gold-dark: #a63c07;
+  /* Texto sobre fundo dourado — fixo nos dois temas. O --indigo-deep passa a
+     azul-claro no tema escuro e ficava ilegível nos botões dourados. */
+  --on-gold: #1e2158;
   --teal: #0c4c3f;
   --line: #d9cba1;
   --radius: 1rem;
@@ -102,6 +106,51 @@ html[data-theme='dark'] .logo-mark-dark {
   display: block;
 }
 
+/* Brilho da águia: halo azul discreto e um reflexo de luz que atravessa só a
+   silhueta (máscara com o próprio PNG) — ao carregar a página e ao passar o
+   rato. O ficheiro do logótipo não é alterado. */
+.logo-glow {
+  filter: drop-shadow(0 0 2px rgb(56 189 248 / 0.35)) drop-shadow(0 0 8px rgb(56 189 248 / 0.2));
+  transition: filter 0.4s ease;
+}
+html[data-theme='dark'] .logo-glow {
+  filter: drop-shadow(0 0 3px rgb(56 189 248 / 0.45)) drop-shadow(0 0 12px rgb(56 189 248 / 0.25));
+}
+.group:hover .logo-glow {
+  filter: drop-shadow(0 0 3px rgb(56 189 248 / 0.6)) drop-shadow(0 0 14px rgb(56 189 248 / 0.35));
+}
+.logo-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask: url('/songhai-mark-sm.webp') center / contain no-repeat;
+  mask: url('/songhai-mark-sm.webp') center / contain no-repeat;
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.85) 50%, transparent 62%);
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  animation: logo-shine 1.6s ease-out 0.5s both;
+}
+.group:hover .logo-shine {
+  animation: logo-shine-hover 1.1s ease-out both;
+}
+@keyframes logo-shine {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+/* Nome diferente para a animação reiniciar a cada passagem do rato. */
+@keyframes logo-shine-hover {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -112,7 +161,24 @@ html[data-theme='dark'] .logo-mark-dark {
   }
   ::selection {
     background: var(--gold);
-    color: var(--indigo-deep);
+    color: var(--on-gold);
+  }
+}
+
+/* Entrada do conteúdo do topo da página. Em CSS (e não framer-motion) para
+   começar logo na primeira pintura: com framer-motion o texto ficava invisível
+   até o JavaScript carregar (~3,5 s no telemóvel), o que atrasava o LCP. */
+.hero-fade {
+  animation: hero-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both;
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

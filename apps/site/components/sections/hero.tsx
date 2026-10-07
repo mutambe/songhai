@@ -8,10 +8,10 @@ import { formatMZN, getPlan } from '@/lib/plans'
 
 const STARTING_PRICE = formatMZN(getPlan('simples').monthly)
 
+// Entrada em CSS (.hero-fade, globals.css): visível logo na primeira pintura,
+// sem esperar pelo JavaScript — este texto é o LCP da página.
 const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay },
+  style: { '--d': `${delay}s` } as React.CSSProperties,
 })
 
 export function Hero() {
@@ -29,16 +29,16 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-14 sm:pt-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:px-8 lg:pt-24">
         <div className="text-center lg:text-left">
-          <motion.p
+          <p
             {...fadeUp(0)}
-            className="mb-5 text-sm font-medium uppercase tracking-wider text-teal"
+            className="hero-fade mb-5 text-sm font-medium uppercase tracking-wider text-teal"
           >
             Agência de IA e automação · Maputo
-          </motion.p>
+          </p>
 
-          <motion.h1
+          <h1
             {...fadeUp(0.05)}
-            className="text-balance font-serif text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            className="hero-fade text-balance font-serif text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
             O seu WhatsApp a responder, qualificar e vender{' '}
             <span className="relative inline-block">
@@ -51,20 +51,20 @@ export function Hero() {
               />
               24h por dia
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
+          <p
             {...fadeUp(0.15)}
-            className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft lg:mx-0"
+            className="hero-fade mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft lg:mx-0"
           >
             Criamos agentes de IA que atendem os seus clientes mesmo quando a
             equipa está ocupada ou a loja fechada — e automatizamos o trabalho
             repetitivo que fica por trás.
-          </motion.p>
+          </p>
 
-          <motion.ul
+          <ul
             {...fadeUp(0.22)}
-            className="mx-auto mt-6 flex max-w-xl flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-indigo-deep lg:mx-0 lg:justify-start"
+            className="hero-fade mx-auto mt-6 flex max-w-xl flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-indigo-deep lg:mx-0 lg:justify-start"
           >
             {[`A partir de ${STARTING_PRICE}/mês`, 'Pronto em 30 dias', 'Suporte incluído'].map((item) => (
               <li key={item} className="flex items-center gap-1.5">
@@ -72,11 +72,11 @@ export function Hero() {
                 {item}
               </li>
             ))}
-          </motion.ul>
+          </ul>
 
-          <motion.div
+          <div
             {...fadeUp(0.3)}
-            className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
+            className="hero-fade mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
           >
             <PillButton href="/diagnostico" variant="gold">
               Diagnóstico grátis de 30 min
@@ -85,11 +85,11 @@ export function Hero() {
             <PillButton href="/precos" variant="outline">
               Ver preços
             </PillButton>
-          </motion.div>
+          </div>
 
-          <motion.p {...fadeUp(0.4)} className="mt-5 text-sm text-ink-soft/80">
+          <p {...fadeUp(0.4)} className="hero-fade mt-5 text-sm text-ink-soft/80">
             Sem compromisso · recebe um relatório em PDF com as oportunidades
-          </motion.p>
+          </p>
         </div>
 
         <motion.div

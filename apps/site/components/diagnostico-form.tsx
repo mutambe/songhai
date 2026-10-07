@@ -147,7 +147,7 @@ export function DiagnosticoForm() {
           href={CALENDLY_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-indigo-deep transition-all hover:shadow-lg hover:shadow-gold/30"
+          className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-all hover:shadow-lg hover:shadow-gold/30"
         >
           <CalendarClock className="h-4 w-4" />
           Escolher horário no calendário
@@ -331,7 +331,7 @@ export function DiagnosticoForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-gold px-6 py-3 text-sm font-medium text-indigo-deep transition-all hover:shadow-lg hover:shadow-gold/30 disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-all hover:shadow-lg hover:shadow-gold/30 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {loading ? 'A enviar...' : 'Agendar meu diagnóstico grátis'}
       </button>

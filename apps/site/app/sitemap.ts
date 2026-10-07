@@ -3,6 +3,10 @@ import { listPublishedPosts } from '@/lib/blog-store'
 
 const SITE_URL = 'https://songhai.cc'
 
+// Regenera de hora a hora: os artigos agendados (lib/blog-articles) entram no
+// sitemap quando a data de publicação chega, sem precisar de novo deploy.
+export const revalidate = 3600
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await listPublishedPosts()
 

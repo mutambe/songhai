@@ -1,13 +1,18 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PillButton } from '@/components/pill-button'
 import { formatDate } from '@/lib/blog'
 import { getPublishedPost } from '@/lib/blog-store'
 import { OPEN_GRAPH_DEFAULTS } from '@/lib/seo'
+import { coverSources } from '@/lib/blog-covers'
+import { SOCIAL_PROFILES } from '@/lib/social'
+import { SocialIcon } from '@/components/social-icon'
+import { ArticleWidgetView } from '@/components/blog/article-widget'
 import { PostIllustration } from '@/components/blog/post-icon'
 
 export const dynamic = 'force-dynamic'
@@ -20,6 +25,7 @@ export async function generateMetadata({
   const { slug } = await params
   const post = await getPublishedPost(slug)
   if (!post) return { title: 'Artigo não encontrado' }
+  const cover = post.coverImage ? coverSources(post.coverImage) : null
   return {
     title: post.title,
     description: post.excerpt,
@@ -32,13 +38,13 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
-      images: post.coverImage ? [{ url: post.coverImage }] : undefined,
+      images: cover ? [{ url: cover.absolute }] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: post.coverImage ? [post.coverImage] : undefined,
+      images: cover ? [cover.absolute] : undefined,
     },
   }
 }
@@ -51,16 +57,22 @@ export default async function ArticlePage({
   const { slug } = await params
   const post = await getPublishedPost(slug)
   if (!post) notFound()
+  const cover = post.coverImage ? coverSources(post.coverImage) : null
 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
-    image: post.coverImage ? [post.coverImage] : undefined,
+    image: cover ? [cover.absolute] : undefined,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
-    author: { '@type': 'Organization', name: post.author },
+    // Artigos assinados por uma pessoa (ex.: Phill Muthambe) usam Person;
+    // os da "Equipa Songhai" continuam como Organization.
+    author: {
+      '@type': post.author.startsWith('Equipa') ? 'Organization' : 'Person',
+      name: post.author,
+    },
     publisher: {
       '@type': 'Organization',
       name: 'SONGHAI',
@@ -87,13 +99,12 @@ export default async function ArticlePage({
       <SiteHeader />
       <main>
         <article className="mx-auto max-w-3xl px-5 py-14 lg:px-8">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Voltar ao blog
-          </Link>
+          <Breadcrumbs
+            items={[
+              { name: 'Blog', href: '/blog' },
+              { name: post.title, href: `/blog/${slug}` },
+            ]}
+          />
 
           <div className="mt-8">
             <span className="inline-flex rounded-full bg-teal/10 px-3 py-1 text-xs font-medium text-teal">
@@ -105,7 +116,12 @@ export default async function ArticlePage({
             <div className="mt-5 flex items-center gap-4 text-sm text-ink-soft">
               <span>{post.author}</span>
               <span aria-hidden="true">·</span>
-              <span>{formatDate(post.publishedAt)}</span>
+              <span>
+                {formatDate(post.publishedAt)}
+                {post.updatedAt && post.updatedAt.slice(0, 10) !== post.publishedAt.slice(0, 10) && (
+                  <> · atualizado a {formatDate(post.updatedAt)}</>
+                )}
+              </span>
               <span className="inline-flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" />
                 {post.readingTime}
@@ -113,12 +129,16 @@ export default async function ArticlePage({
             </div>
           </div>
 
-          {post.coverImage ? (
+          {cover ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={post.coverImage}
+              src={cover.src}
+              srcSet={cover.srcSet}
+              sizes="(min-width: 768px) 720px, 100vw"
               alt={`Ilustração do artigo: ${post.title}`}
               className="mt-8 h-52 w-full rounded-3xl object-cover sm:h-72"
+              // É o maior elemento da página (LCP): pedir com prioridade.
+              fetchPriority="high"
             />
           ) : (
             <div
@@ -146,6 +166,7 @@ export default async function ArticlePage({
                   // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{ __html: section.body }}
                 />
+                {section.widget && <ArticleWidgetView widget={section.widget} />}
               </section>
             ))}
 
@@ -183,7 +204,55 @@ export default async function ArticlePage({
             )}
           </div>
 
-          <div className="mt-14 rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground sm:px-10">
+          <div className="mt-10 grid gap-4 rounded-3xl border border-line bg-paper p-6 sm:grid-cols-2 sm:p-7">
+            <div>
+              <p className="text-sm font-semibold text-foreground">Siga a SONGHAI</p>
+              <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+                Casos reais, novidades e dicas curtas sobre IA e WhatsApp, todas as semanas.
+              </p>
+              <ul className="mt-3 flex gap-2">
+                {SOCIAL_PROFILES.map((s) => (
+                  <li key={s.name}>
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`SONGHAI no ${s.name}`}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:border-teal hover:text-teal"
+                    >
+                      <SocialIcon network={s.name} className="h-[18px] w-[18px]" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-foreground">Partilhe este artigo</p>
+              <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+                Conhece alguém a quem isto pode ser útil?
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(`${post.title} https://songhai.cc/blog/${slug}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-teal hover:text-teal"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://songhai.cc/blog/${slug}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-teal hover:text-teal"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground sm:px-10">
             <h2 className="text-balance font-serif text-2xl font-semibold sm:text-3xl">
               Pronto para recuperar o tempo da sua equipa?
             </h2>

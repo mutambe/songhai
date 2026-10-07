@@ -1,4 +1,17 @@
-import { GitCompare, Wallet, MapPin, Route, Stethoscope, Sparkles } from 'lucide-react'
+import {
+  GitCompare,
+  Wallet,
+  MapPin,
+  Route,
+  Stethoscope,
+  Sparkles,
+  MessageCircle,
+  Calculator,
+  Smartphone,
+  LayoutDashboard,
+  Store,
+  TrendingUp,
+} from 'lucide-react'
 
 const POST_ICONS = {
   'git-compare': GitCompare,
@@ -6,6 +19,12 @@ const POST_ICONS = {
   'map-pin': MapPin,
   route: Route,
   stethoscope: Stethoscope,
+  'message-circle': MessageCircle,
+  calculator: Calculator,
+  smartphone: Smartphone,
+  'layout-dashboard': LayoutDashboard,
+  store: Store,
+  'trending-up': TrendingUp,
 } as const
 
 export function PostIllustration({

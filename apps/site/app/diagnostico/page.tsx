@@ -45,7 +45,7 @@ export default function DiagnosticoPage() {
       <SiteHeader />
       <main>
         <section className="px-5 pb-14 pt-16 text-center lg:px-8">
-          <Reveal className="mx-auto max-w-3xl">
+          <Reveal hero className="mx-auto max-w-3xl">
             <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">
               Diagnóstico grátis
             </p>

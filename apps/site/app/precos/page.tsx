@@ -6,7 +6,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 import { PillButton } from '@/components/pill-button'
 import { PricingFaq } from '@/components/pricing-faq'
-import { getPlan, monthlyLabel, setupLabel } from '@/lib/plans'
+import { PLAN_PRICES, getPlan, monthlyLabel, setupLabel } from '@/lib/plans'
 
 const SIMPLES = getPlan('simples')
 const MEDIO = getPlan('medio')
@@ -149,13 +149,55 @@ const ADDONS = [
   { name: 'Análise / auditoria', price: '1.000-2.000 MZN', desc: 'Aprofundar oportunidades de otimização' },
 ]
 
+// Planos em JSON-LD, para o Google e assistentes de IA lerem os preços em MZN.
+// Os preços "a partir de" usam minPrice.
+const pricingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Agentes de IA no WhatsApp',
+  serviceType: 'Agentes de Inteligência Artificial',
+  provider: { '@type': 'ProfessionalService', name: 'SONGHAI', url: 'https://songhai.cc' },
+  areaServed: { '@type': 'Country', name: 'Moçambique' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Planos SONGHAI',
+    itemListElement: PLAN_PRICES.map((plan) => ({
+      '@type': 'Offer',
+      name: plan.name,
+      description: plan.audience,
+      url: 'https://songhai.cc/precos',
+      priceCurrency: 'MZN',
+      priceSpecification: [
+        {
+          '@type': 'UnitPriceSpecification',
+          name: 'Mensalidade',
+          minPrice: plan.monthly,
+          priceCurrency: 'MZN',
+          unitText: 'mês',
+        },
+        {
+          '@type': 'PriceSpecification',
+          name: 'Setup (pagamento único)',
+          ...(plan.setupFrom ? { minPrice: plan.setup } : { price: plan.setup }),
+          priceCurrency: 'MZN',
+        },
+      ],
+    })),
+  },
+}
+
 export default function PrecosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingSchema).replace(/</g, '\\u003c') }}
+      />
       <SiteHeader />
       <main>
         <section className="px-5 pb-14 pt-16 text-center lg:px-8">
-          <Reveal className="mx-auto max-w-3xl">
+          <Reveal hero className="mx-auto max-w-3xl">
             <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">
               Preços
             </p>
@@ -181,7 +223,7 @@ export default function PrecosPage() {
                   }`}
                 >
                   {plan.highlight && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-indigo-deep">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-on-gold">
                       Recomendado
                     </span>
                   )}

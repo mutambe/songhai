@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Logo } from '@/components/logo'
 import { SocialIcon } from '@/components/social-icon'
 import { SOCIAL_PROFILES } from '@/lib/social'
+import { BUSINESS, OPENING_HOURS } from '@/lib/business'
 
 const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'
 
@@ -89,6 +90,20 @@ export function SiteFooter() {
           </h3>
           <ul className="space-y-3 text-sm text-panel-foreground/70">
             <li>
+              <address className="not-italic leading-relaxed">
+                {BUSINESS.streetAddress}
+                <br />
+                {BUSINESS.locality}, {BUSINESS.country}
+              </address>
+            </li>
+            <li className="leading-relaxed">
+              {OPENING_HOURS.map((h) => (
+                <span key={h.label} className="block">
+                  {h.label}: {h.display}
+                </span>
+              ))}
+            </li>
+            <li>
               <a
                 href="https://wa.me/258848986002"
                 target="_blank"
@@ -127,7 +142,7 @@ export function SiteFooter() {
                 href={PORTAL_URL}
                 className="transition-colors hover:text-panel-foreground"
               >
-                Área de cliente
+                Entrar no Portal
               </a>
             </li>
           </ul>
@@ -136,7 +151,7 @@ export function SiteFooter() {
 
       <div className="border-t border-panel-foreground/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-sm text-panel-foreground/60 sm:flex-row lg:px-8">
-          <p>© {new Date().getFullYear()} SONGHAI. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} {BUSINESS.legalName}. Todos os direitos reservados.</p>
           <p>Desenvolvido pela Songhai</p>
         </div>
       </div>

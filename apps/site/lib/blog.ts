@@ -6,6 +6,35 @@ export type BlogCategory =
 
 export type BlogStatus = 'draft' | 'published'
 
+export type WeighItem = { title: string; detail: string }
+
+/**
+ * Elemento interativo opcional no fim de uma secção do artigo
+ * (components/blog/article-widget.tsx). Só os artigos definidos no código
+ * (lib/blog-articles) os usam; o editor do painel não os cria.
+ */
+export type ArticleWidget =
+  | {
+      type: 'pros-cons'
+      question: string
+      pros: WeighItem[]
+      cons: WeighItem[]
+    }
+  | {
+      type: 'checklist'
+      title: string
+      items: string[]
+      /** O resultado mostrado é o de maior `min` que não ultrapassa o nº de "sim". */
+      results: { min: number; title: string; body: string }[]
+    }
+  | { type: 'roi-calculator' }
+  | {
+      type: 'tabs'
+      title: string
+      /** `body` é HTML escrito no código (confiável), não vindo do painel. */
+      tabs: { label: string; body: string }[]
+    }
+
 export type BlogPost = {
   slug: string
   title: string
@@ -26,7 +55,7 @@ export type BlogPost = {
   updatedAt?: string
   content: {
     lead: string
-    sections: { heading: string; body: string }[]
+    sections: { heading: string; body: string; widget?: ArticleWidget }[]
     quote?: string
     callout?: { title: string; body: string }
   }
