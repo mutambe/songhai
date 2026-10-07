@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { Logo } from '@/components/logo'
+import { SocialIcon } from '@/components/social-icon'
+import { SOCIAL_PROFILES } from '@/lib/social'
 
 const PORTAL_URL = process.env.NEXT_PUBLIC_PORTAL_URL || 'http://localhost:3002'
 
@@ -28,6 +30,21 @@ export function SiteFooter() {
           <p className="max-w-xs text-sm leading-relaxed text-panel-foreground/70">
             Poupe tempo. Automatize processos. Cresça mais rápido.
           </p>
+          <ul className="flex gap-3">
+            {SOCIAL_PROFILES.map((s) => (
+              <li key={s.name}>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`SONGHAI no ${s.name}`}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-panel-foreground/15 text-panel-foreground/70 transition-colors hover:border-gold hover:text-gold"
+                >
+                  <SocialIcon network={s.name} className="h-[18px] w-[18px]" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>

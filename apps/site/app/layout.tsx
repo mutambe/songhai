@@ -3,6 +3,7 @@ import { Inter, Fraunces } from 'next/font/google'
 import './globals.css'
 import { WhatsAppButton } from '@/components/whatsapp-button'
 import { AnalyticsBeacon } from '@/components/analytics-beacon'
+import { SOCIAL_PROFILES } from '@/lib/social'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -93,6 +94,7 @@ const structuredData = {
   logo: `${SITE_URL}/songhai-logo.png`,
   image: `${SITE_URL}/songhai-logo.png`,
   telephone: '+258848986002',
+  sameAs: SOCIAL_PROFILES.map((s) => s.url),
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Maputo',
