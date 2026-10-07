@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import { Search, FileText, ShieldCheck } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
@@ -11,13 +12,11 @@ const TITLE = 'Diagnóstico Grátis — Quanto Perde em Tarefas Manuais?'
 const DESCRIPTION =
   'Análise gratuita de 30 minutos aos processos da sua empresa, com relatório em PDF e proposta personalizada. Sem custo, sem compromisso.'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/diagnostico' },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: '/diagnostico' },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
-}
+  path: '/diagnostico',
+})
 
 const BENEFITS = [
   {

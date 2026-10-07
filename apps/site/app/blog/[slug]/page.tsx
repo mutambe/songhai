@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { PillButton } from '@/components/pill-button'
 import { formatDate } from '@/lib/blog'
 import { getPublishedPost } from '@/lib/blog-store'
+import { OPEN_GRAPH_DEFAULTS } from '@/lib/seo'
 import { PostIllustration } from '@/components/blog/post-icon'
 
 export const dynamic = 'force-dynamic'
@@ -24,10 +25,13 @@ export async function generateMetadata({
     description: post.excerpt,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
+      ...OPEN_GRAPH_DEFAULTS,
       title: post.title,
       description: post.excerpt,
+      url: `/blog/${slug}`,
       type: 'article',
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt || post.publishedAt,
       images: post.coverImage ? [{ url: post.coverImage }] : undefined,
     },
     twitter: {

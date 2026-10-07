@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import { Check, X, ArrowRight } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
@@ -15,13 +16,11 @@ const TITLE = 'Preços — Agentes de IA e Automação em MZN'
 const DESCRIPTION =
   'Preços transparentes em MZN para agentes de IA e automação, sem contactar-nos para orçamento. Três planos, sem surpresas.'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/precos' },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: '/precos' },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
-}
+  path: '/precos',
+})
 
 type Plan = {
   name: string

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { BlogList } from '@/components/blog/blog-list'
@@ -9,13 +10,11 @@ const TITLE = 'Blog — IA e Automação em Maputo, Moçambique'
 const DESCRIPTION =
   'Artigos práticos sobre agentes de IA, automação de processos e casos de uso reais de empresas em Maputo e em Moçambique.'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/blog' },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: '/blog' },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
-}
+  path: '/blog',
+})
 
 export const dynamic = 'force-dynamic'
 

@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import { ContactForm } from '@/components/contact-form'
 import { Reveal } from '@/components/motion/reveal'
 
@@ -6,13 +7,11 @@ const TITLE = 'Contactar — Agência de IA em Maputo'
 const DESCRIPTION =
   'Entre em contacto com a SONGHAI, agência de IA e automação em Maputo, Moçambique, para um diagnóstico gratuito. Resposta garantida em 24 horas.'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/contacto' },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: '/contacto' },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
-}
+  path: '/contacto',
+})
 
 export default function ContactPage() {
   return (

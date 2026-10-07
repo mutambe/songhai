@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: '%s | SONGHAI',
   },
   description:
-    'Agência de IA e automação de processos, com sede em Maputo, a atender empresas em todo o Moçambique. Poupe tempo e cresça mais rápido — diagnóstico gratuito.',
+    'Agência de IA e automação de processos em Maputo, para empresas de todo o Moçambique. Poupe tempo e cresça mais rápido — diagnóstico gratuito.',
   keywords: [
     'Inteligência Artificial Moçambique',
     'IA Maputo',

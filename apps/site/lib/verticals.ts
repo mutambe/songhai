@@ -14,7 +14,7 @@ export type Vertical = {
 export const VERTICALS: Record<Vertical['slug'], Vertical> = {
   agricola: {
     slug: 'agricola',
-    metaTitle: 'Agentes de IA para o Setor Agrícola — Songhai',
+    metaTitle: 'Agentes de IA para o Setor Agrícola',
     metaDescription:
       'Automatize cotações, encomendas e atualizações de stock com agentes de IA para o agronegócio em Moçambique. Preços em MZN.',
     eyebrow: 'Setor Agrícola',
@@ -59,7 +59,7 @@ export const VERTICALS: Record<Vertical['slug'], Vertical> = {
   },
   comercio: {
     slug: 'comercio',
-    metaTitle: 'Agentes de IA para Comércio e Retalho — Songhai',
+    metaTitle: 'Agentes de IA para Comércio e Retalho',
     metaDescription:
       'Catálogo, orçamentos e pagamentos automatizados no WhatsApp para lojas, ferragens e distribuição em Moçambique. Preços em MZN.',
     eyebrow: 'Comércio & Retalho',
@@ -104,7 +104,7 @@ export const VERTICALS: Record<Vertical['slug'], Vertical> = {
   },
   servicos: {
     slug: 'servicos',
-    metaTitle: 'Agentes de IA para Empresas de Serviços — Songhai',
+    metaTitle: 'Agentes de IA para Empresas de Serviços',
     metaDescription:
       'Agendamentos, lembretes e qualificação de clientes automatizados para clínicas, advocacia, educação e consultoria. Preços em MZN.',
     eyebrow: 'Serviços Profissionais',

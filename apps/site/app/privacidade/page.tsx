@@ -1,12 +1,14 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import { Reveal } from '@/components/motion/reveal'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Política de Privacidade',
-  description: 'Política de privacidade e proteção de dados da SONGHAI',
-  alternates: { canonical: '/privacidade' },
-}
+  description:
+    'Como a SONGHAI recolhe, usa e protege os dados pessoais de clientes e visitantes do site, e como pode exercer os seus direitos.',
+  path: '/privacidade',
+})
 
 export default function PrivacyPage() {
   return (
