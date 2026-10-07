@@ -19,3 +19,6 @@ node_modules
 # Imagens enviadas via upload no painel do blog — conteúdo de runtime, não
 # código-fonte; persistem no volume Docker, não precisam de estar no git.
 /data/blog-images/
+# Registo da cópia única dos artigos de lib/blog-articles para posts.json
+# (estado do servidor, vive no volume Docker).
+/data/blog-seed.json

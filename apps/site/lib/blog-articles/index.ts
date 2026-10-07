@@ -12,11 +12,14 @@ import { metodoMaie } from './revisto-metodo-maie'
 import { clinicas } from './revisto-clinicas'
 
 /**
- * Artigos escritos no código. Chegam a produção com o deploy, ao contrário dos
- * do painel (/admin/blog), que vivem no volume Docker (data/posts.json).
- * São juntos aos do painel em lib/blog-store.ts e prevalecem sobre um artigo
- * do painel com o mesmo slug.
+ * Artigos escritos no código, copiados uma única vez para data/posts.json (o
+ * volume da VPS) por lib/blog-store.ts. Depois da cópia são geridos no painel
+ * /admin/blog como qualquer outro artigo; alterar este ficheiro não muda o
+ * site. Para forçar uma nova cópia (substituindo as edições feitas no painel),
+ * aumentar CODE_ARTICLES_VERSION.
  */
+export const CODE_ARTICLES_VERSION = 1
+
 export const CODE_ARTICLES: BlogPost[] = [
   // Novos, publicados entre agosto e outubro de 2026.
   agenteWhatsapp,

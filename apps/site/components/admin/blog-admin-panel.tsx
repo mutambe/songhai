@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Pencil, Plus, Star, Trash2, X } from 'lucide-react'
-import { CATEGORIES, formatDate, slugify, type BlogCategory, type BlogPost, type BlogStatus } from '@/lib/blog'
+import { CATEGORIES, formatDate, slugify, type ArticleWidget, type BlogCategory, type BlogPost, type BlogStatus } from '@/lib/blog'
 import { RichTextEditor } from '@/components/admin/rich-text-editor'
 
 const GRADIENT_PRESETS = [
@@ -13,7 +13,16 @@ const GRADIENT_PRESETS = [
   { label: 'Teal → Dourado', value: 'from-[#2f6e62] via-[#c89b3c] to-[#1b3a4b]' },
 ]
 
-type SectionDraft = { heading: string; body: string }
+// widget: elemento interativo (calculadora, teste, etc.). O editor não o
+// altera, mas tem de o devolver ao gravar, senão perdia-se.
+type SectionDraft = { heading: string; body: string; widget?: ArticleWidget }
+
+const WIDGET_LABELS: Record<ArticleWidget['type'], string> = {
+  'pros-cons': 'Vantagens e desvantagens',
+  checklist: 'Teste rápido',
+  'roi-calculator': 'Calculadora de retorno',
+  tabs: 'Separadores',
+}
 
 type Draft = {
   slug: string
@@ -55,7 +64,7 @@ function emptyDraft(): Draft {
     status: 'draft',
     publishedAt: toDatetimeLocal(new Date().toISOString()),
     readingTime: '5 min',
-    author: 'Equipa Songhai',
+    author: 'Phill Muthambe',
     gradient: GRADIENT_PRESETS[0].value,
     coverImage: '',
     featured: false,
@@ -82,7 +91,7 @@ function postToDraft(post: BlogPost): Draft {
     coverImage: post.coverImage || '',
     featured: !!post.featured,
     lead: post.content.lead,
-    sections: post.content.sections.map((s) => ({ heading: s.heading, body: s.body })),
+    sections: post.content.sections.map((s) => ({ heading: s.heading, body: s.body, widget: s.widget })),
     quote: post.content.quote || '',
     calloutTitle: post.content.callout?.title || '',
     calloutBody: post.content.callout?.body || '',
@@ -108,8 +117,8 @@ function draftToPayload(draft: Draft) {
     content: {
       lead: draft.lead.trim(),
       sections: draft.sections
-        .filter((s) => s.heading.trim() || s.body.trim())
-        .map((s) => ({ heading: s.heading.trim(), body: s.body })),
+        .filter((s) => s.heading.trim() || s.body.trim() || s.widget)
+        .map((s) => ({ heading: s.heading.trim(), body: s.body, ...(s.widget ? { widget: s.widget } : {}) })),
       ...(draft.quote.trim() ? { quote: draft.quote.trim() } : {}),
       ...(draft.calloutTitle.trim() && draft.calloutBody.trim()
         ? { callout: { title: draft.calloutTitle.trim(), body: draft.calloutBody.trim() } }
@@ -549,6 +558,24 @@ function BlogEditor({
                   value={section.body}
                   onChange={(html) => updateSection(i, { body: html })}
                 />
+                {section.widget && (
+                  <div className="mt-3 flex items-center justify-between gap-3 rounded-xl border border-dashed border-teal/50 bg-teal/5 px-4 py-3">
+                    <p className="text-sm text-foreground">
+                      <span className="font-semibold">Elemento interativo:</span>{' '}
+                      {WIDGET_LABELS[section.widget.type]}
+                      <span className="block text-xs text-ink-soft">
+                        Aparece no fim desta secção e é mantido ao gravar.
+                      </span>
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => updateSection(i, { widget: undefined })}
+                      className="shrink-0 text-xs text-ink-soft hover:text-red-500"
+                    >
+                      Remover elemento
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>
