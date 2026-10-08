@@ -103,7 +103,7 @@ export const clinicas: BlogPost = {
       },
       {
         heading: 'Por onde começar',
-        body: `<p>Para a maioria das clínicas, o plano Simples chega para começar: confirmações, perguntas frequentes e marcações ligadas ao Google Calendar. Quando faz sentido ligar a um sistema de gestão ou a um CRM, sobe-se para o Médio. Os valores estão em <a href="/precos">songhai.cc/precos</a>, e a página <a href="/setores/servicos">empresas de serviços</a> tem mais detalhe sobre clínicas, escritórios e centros de formação.</p>
+        body: `<p>Para a maioria das clínicas, o plano Médio é o ponto de partida, porque inclui a agenda (Google Calendar) para marcações, além de CRM e qualificação de clientes. O plano Simples serve se só precisar de confirmações e perguntas frequentes no WhatsApp. Os valores estão em <a href="/precos">songhai.cc/precos</a>, e a página <a href="/setores/servicos">empresas de serviços</a> tem mais detalhe sobre clínicas, escritórios e centros de formação.</p>
 <p>O <a href="/diagnostico">diagnóstico gratuito de 30 minutos</a> é o melhor primeiro passo. Publicamos dicas para clínicas e outros serviços no <a href="https://www.instagram.com/songhai_lda/" target="_blank">Instagram</a> e no <a href="https://www.linkedin.com/in/songhai-lda/" target="_blank">LinkedIn</a> da SONGHAI.</p>`,
       },
     ],

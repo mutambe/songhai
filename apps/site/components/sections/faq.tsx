@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     q: 'Vocês também fazem integração com o meu ERP/CRM?',
-    a: 'Sim. Integramos HubSpot, Salesforce, Zoho e outras plataformas populares. Se usa um sistema próprio ou legado, avaliamos caso a caso — na maioria das vezes conseguimos ligar via API ou exportação de dados. A auditoria grátis de 30 minutos serve exatamente para mapear isso.',
+    a: 'Depende do sistema. As integrações estão condicionadas a o sistema permitir a ligação (por API ou exportação de dados), a existir documentação técnica e, quando necessário, ao apoio técnico do fornecedor. Se usa um sistema próprio ou legado, avaliamos caso a caso. A auditoria grátis de 30 minutos serve exatamente para mapear isso.',
   },
   {
     q: 'Como funciona o suporte?',

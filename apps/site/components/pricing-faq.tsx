@@ -22,6 +22,10 @@ const FAQS = [
     a: 'Varia por plano: Simples é em horário laboral (seg-sex, 9h-17h); Médio tem resposta prioritária em menos de 2 horas em horário laboral; Avançado tem resposta VIP em menos de 1 hora em horário laboral, com cobertura 24/7 para incidentes críticos. Para urgências, WhatsApp +258 84 898 6002.',
   },
   {
+    q: 'O que são os tokens incluídos no plano?',
+    a: 'Os tokens medem o consumo do agente e do SonghaiCRM. Todos os meses o plano inclui um número de tokens; se o consumo ultrapassar esse valor, o excedente é cobrado à parte. Cada plano inclui também 1 número de WhatsApp — números adicionais são sob consulta, porque cada um acresce custos de API.',
+  },
+  {
     q: 'Posso aumentar ou diminuir o plano depois?',
     a: 'Sim, sem penalidade. Pode começar com o plano Simples e mudar para o Médio ou Avançado mais tarde — paga só a diferença.',
   },

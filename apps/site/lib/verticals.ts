@@ -143,8 +143,8 @@ export const VERTICALS: Record<Vertical['slug'], Vertical> = {
         desc: 'Confirmações, lembretes de pagamento e follow-up pós-serviço, tudo automatizado.',
       },
     ],
-    suggestedPlan: 'Agente Simples ou Médio',
+    suggestedPlan: 'Agente Médio',
     suggestedPlanDesc:
-      'Clínicas e escritórios pequenos costumam começar no Simples para agendamento e confirmações, subindo para o Médio com CRM quando o volume de clientes cresce.',
+      'Para agendamento ligado à agenda e CRM, o ponto de partida é o plano Médio. O Simples serve se só precisar de confirmações e perguntas frequentes no WhatsApp.',
   },
 }

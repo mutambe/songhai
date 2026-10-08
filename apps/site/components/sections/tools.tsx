@@ -42,9 +42,6 @@ const TOOLS: Tool[] = [
   { name: 'Gemini', render: GeminiIcon },
   { name: 'M-Pesa', color: '#e60000' },
   { name: 'Google Calendar', slug: 'google-calendar' },
-  { name: 'HubSpot', slug: 'hubspot' },
-  { name: 'Odoo', slug: 'odoo' },
-  { name: 'ERPNext', slug: 'erpnext' },
 ]
 
 function Monogram({ name, color }: { name: string; color?: string }) {

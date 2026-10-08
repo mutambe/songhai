@@ -42,7 +42,7 @@ export const custoReal: BlogPost = {
         heading: 'O que está incluído',
         body: `<ul>
 <li><strong>Agente configurado para o seu negócio</strong>, com a sua informação, o seu tom e as suas regras.</li>
-<li><strong>Ligação ao WhatsApp</strong> e ao Google Calendar em todos os planos.</li>
+<li><strong>Ligação ao WhatsApp</strong> em todos os planos e ao Google Calendar a partir do plano Médio.</li>
 <li><strong>Formação da equipa</strong> para acompanhar e corrigir o agente.</li>
 <li><strong>Ajustes mensais</strong>: 2 no Simples, 4 no Médio, ilimitados no Avançado. Um ajuste é, por exemplo, mudar preços, acrescentar perguntas frequentes ou alterar uma regra de passagem.</li>
 <li><strong>Ligação a um CRM</strong> e qualificação automática de clientes a partir do plano Médio.</li>

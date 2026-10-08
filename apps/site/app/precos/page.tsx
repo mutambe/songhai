@@ -26,7 +26,6 @@ type Plan = {
   name: string
   price: string
   setup: string
-  idealFor: string
   included: string[]
   notIncluded: string[]
   cta: string
@@ -40,11 +39,10 @@ const PLANS: Plan[] = [
     name: SIMPLES.name,
     price: `${monthlyLabel(SIMPLES)}/mês`,
     setup: `Setup: ${setupLabel(SIMPLES)} (único)`,
-    idealFor:
-      'Pequenas empresas (5-20 pessoas) que querem responder perguntas comuns e confirmações automáticas.',
     included: [
       'Agente de IA customizado',
-      'Integração WhatsApp + Google Calendar',
+      '1 número de WhatsApp incluído',
+      'SonghaiCRM (agenda bloqueada, tokens mensais incluídos)',
       'Suporte em horário laboral (email/WhatsApp)',
       'Formação da equipa (2 horas)',
       'Ajustes mensais (até 2)',
@@ -62,11 +60,10 @@ const PLANS: Plan[] = [
     name: MEDIO.name,
     price: `${monthlyLabel(MEDIO)}/mês`,
     setup: `Setup: ${setupLabel(MEDIO, true)} (único)`,
-    idealFor:
-      'PME médias (20-50 pessoas) que precisam de qualificação de leads e integração com CRM.',
     included: [
       'Tudo do plano Simples',
-      'Integração com CRM (HubSpot, Salesforce, etc.)',
+      'Agenda (Google Calendar nativo no SonghaiCRM)',
+      'Integração com CRM externo (sujeita a condições)',
       'Qualificação automática de leads',
       'Relatórios diários/semanais',
       'Ajustes mensais (até 4)',
@@ -85,8 +82,6 @@ const PLANS: Plan[] = [
     name: AVANCADO.name,
     price: `${monthlyLabel(AVANCADO)}/mês`,
     setup: `Setup: ${setupLabel(AVANCADO, true)} (único)`,
-    idealFor:
-      'Grandes PME (50+ pessoas) e e-commerce com volume alto, com múltiplas integrações.',
     included: [
       'Tudo dos planos Simples e Médio',
       'Integração múltipla (CRM, POS, ERP, faturação)',
@@ -108,8 +103,6 @@ const PLANS: Plan[] = [
     name: 'Enterprise',
     price: 'Sob consulta',
     setup: 'Proposta à medida',
-    idealFor:
-      'Grandes empresas e grupos com múltiplas unidades, requisitos de segurança específicos ou volumes acima do plano Avançado.',
     included: [
       'Tudo do plano Avançado',
       'Múltiplas unidades/filiais numa só conta',
@@ -124,24 +117,33 @@ const PLANS: Plan[] = [
   },
 ]
 
-const COMPARISON_ROWS: [string, string, string, string][] = [
-  ['Preço/mês', monthlyLabel(SIMPLES), monthlyLabel(MEDIO), monthlyLabel(AVANCADO)],
-  ['Setup', setupLabel(SIMPLES), setupLabel(MEDIO), setupLabel(AVANCADO)],
-  ['Agente de IA customizado', '✓', '✓', '✓'],
-  ['WhatsApp integrado', '✓', '✓', '✓'],
-  ['Calendário', '✓', '✓', '✓'],
-  ['CRM integrado', '—', '✓', '✓'],
-  ['Qualificação de leads', 'Manual', 'Automática', 'Automática'],
-  ['Relatórios', 'Básico', 'Personalizados', 'Dashboard em tempo real'],
-  ['Integração POS/ERP', '—', '—', '✓'],
-  ['Processamento de pagamentos', '—', '—', '✓'],
-  ['Suporte', 'Horário laboral', 'Prioritário <2h', 'VIP <1h + 24/7 crítico'],
-  ['Ajustes/mês', '2', '4', 'Ilimitados'],
-  ['Reunião de otimização', '—', '—', 'Mensal'],
+const Y = true
+const N = false
+
+const COMPARISON_ROWS: [string, string | boolean, string | boolean, string | boolean, string | boolean][] = [
+  ['Preço/mês', monthlyLabel(SIMPLES), monthlyLabel(MEDIO), monthlyLabel(AVANCADO), 'Sob consulta'],
+  ['Setup', setupLabel(SIMPLES), setupLabel(MEDIO), setupLabel(AVANCADO), 'À medida'],
+  ['Agente de IA + WhatsApp (1 número incluído)', Y, Y, Y, Y],
+  ['SonghaiCRM (agenda bloqueada, tokens mensais incluídos)', Y, Y, Y, Y],
+  ['Agenda (Google Calendar nativo no SonghaiCRM)', N, Y, Y, Y],
+  ['CRM e funil', N, Y, Y, Y],
+  ['Qualificação de leads', N, Y, Y, Y],
+  ['Relatórios', N, Y, Y, Y],
+  ['Integrações (ERP, POS)', N, N, Y, Y],
+  ['M-Pesa', N, N, Y, Y],
+  ['Analytics em tempo real', N, N, Y, Y],
 ]
 
+function Cell({ value }: { value: string | boolean }) {
+  if (value === true) return <Check aria-label="Incluído" className="h-4 w-4 text-teal" />
+  if (value === false) return <X aria-label="Não incluído" className="h-4 w-4 text-ink-soft/50" />
+  return <>{value}</>
+}
+
 const ADDONS = [
-  { name: 'Integração com CRM adicional', price: '1.000-2.000 MZN', desc: 'Ligar um CRM diferente do incluído no plano, ou adicionar CRM ao plano Simples (HubSpot, Salesforce, etc.)' },
+  { name: 'Número de WhatsApp adicional', price: 'Sob consulta', desc: 'Cada plano inclui 1 número. Cada número extra acresce à mensalidade, por causa dos custos das APIs do agente. Preço sob consulta.' },
+  { name: 'Tokens adicionais', price: 'Cobrado por consumo', desc: 'Cada plano inclui um número de tokens por mês. O consumo acima do incluído é cobrado ao cliente.' },
+  { name: 'Integração com CRM adicional', price: '1.000-2.000 MZN', desc: 'Ligar um CRM diferente do incluído no plano, sujeito às condições da integração' },
   { name: 'Integração ERP', price: '2.000-5.000 MZN', desc: 'Ligar sistema legado (mais complexo)' },
   { name: 'Relatório personalizado', price: '500 MZN', desc: 'Relatório novo, à medida' },
   { name: 'Agente adicional', price: '40% do plano base', desc: '2º agente (ex: suporte + vendas)' },
@@ -234,9 +236,6 @@ export default function PrecosPage() {
                     {plan.price}
                   </p>
                   <p className="mt-1 text-xs text-ink-soft">{plan.setup}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-                    {plan.idealFor}
-                  </p>
 
                   <ul className="mt-6 space-y-2">
                     {plan.included.map((item) => (
@@ -269,6 +268,12 @@ export default function PrecosPage() {
               integrações necessárias — confirmado no diagnóstico gratuito,
               antes de qualquer compromisso.
             </p>
+            <p className="mt-2 text-sm text-ink-soft">
+              Todas as integrações com sistemas de terceiros (CRM, ERP, POS e
+              outros) estão condicionadas: dependem de o sistema permitir a
+              ligação, de existir documentação técnica e, quando necessário, do
+              apoio técnico do respetivo fornecedor.
+            </p>
           </Reveal>
 
           <Reveal delay={0.2} className="mx-auto mt-6 max-w-3xl">
@@ -297,15 +302,17 @@ export default function PrecosPage() {
                     <th className="py-3 px-4 font-serif text-base font-semibold text-foreground">Simples</th>
                     <th className="py-3 px-4 font-serif text-base font-semibold text-foreground">Médio</th>
                     <th className="py-3 px-4 font-serif text-base font-semibold text-foreground">Avançado</th>
+                    <th className="py-3 px-4 font-serif text-base font-semibold text-foreground">Enterprise</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {COMPARISON_ROWS.map(([feature, s, m, a]) => (
+                  {COMPARISON_ROWS.map(([feature, s, m, a, e]) => (
                     <tr key={feature} className="border-b border-line/60">
                       <td className="py-3 pr-4 text-ink-soft">{feature}</td>
-                      <td className="py-3 px-4 text-foreground">{s}</td>
-                      <td className="py-3 px-4 text-foreground">{m}</td>
-                      <td className="py-3 px-4 text-foreground">{a}</td>
+                      <td className="py-3 px-4 text-foreground"><Cell value={s} /></td>
+                      <td className="py-3 px-4 text-foreground"><Cell value={m} /></td>
+                      <td className="py-3 px-4 text-foreground"><Cell value={a} /></td>
+                      <td className="py-3 px-4 text-foreground"><Cell value={e} /></td>
                     </tr>
                   ))}
                 </tbody>
