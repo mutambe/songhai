@@ -23,8 +23,8 @@ export function SiteFooter() {
     <footer className="grid bg-[var(--field-night)] text-white lg:min-h-[100svh] lg:grid-cols-2">
       <div className="relative min-h-[50svh] lg:min-h-full">
         <Image
-          src="/blog-covers/agencias-globais-1600.webp"
-          alt="Aperto de mão entre dois profissionais, um de camisa azul e outro de camisa branca, a fechar um negócio"
+          src="/aperto-de-mao.webp"
+          alt="Aperto de mão entre dois profissionais, um de fato azul e outro de blazer bege, a fechar um negócio"
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
           className="object-cover object-[50%_50%]"
@@ -118,10 +118,6 @@ export function SiteFooter() {
           <p className="mt-10 text-sm leading-relaxed text-white/80">
             © {new Date().getFullYear()} {BUSINESS.legalName}. Todos os direitos reservados.
             Desenvolvido pela Songhai.
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-white/80">
-            Fotografias via Unsplash: Cytonn Photography, Iwaria Inc., Adeolu Eletu e
-            National Cancer Institute.
           </p>
         </div>
       </div>
