@@ -9,7 +9,7 @@ export type BlogStatus = 'draft' | 'published'
 export type WeighItem = { title: string; detail: string }
 
 /**
- * Elemento interativo opcional no fim de uma secção do artigo
+ * Elemento interactivo opcional no fim de uma secção do artigo
  * (components/blog/article-widget.tsx). Só os artigos definidos no código
  * (lib/blog-articles) os usam; o editor do painel não os cria.
  */

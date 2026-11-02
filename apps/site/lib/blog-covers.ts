@@ -12,7 +12,7 @@
 //   custo-retorno     ZeIwbS3woy0  Iwaria Inc.
 //   mpesa             9Ge8ngH6JeQ  Mohamed Nohassi (+ conversa ilustrativa)
 //   songhaicrm        l3MMvRYdPhc  Cytonn Photography
-//   setores           s8Kzx7C6yqo  Ali Mkumbwa
+//   sectores           s8Kzx7C6yqo  Ali Mkumbwa
 //   tendencias        HuE1cJo-x34  Franck V. (+ conversa ilustrativa)
 //   automacao-vs-ia   ZJEKICY5EXY  Cytonn Photography
 //   custo-real        GJao3ZTX9gU  Cytonn Photography

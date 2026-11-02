@@ -36,7 +36,7 @@ export const custoRetorno: BlogPost = {
 <tr><td>${A.name}</td><td>a partir de ${formatMZN(A.monthly)}</td><td>a partir de ${formatMZN(A.setup)}</td><td>Várias integrações, pagamentos M-Pesa e volume alto</td></tr>
 </tbody>
 </table>
-<p>O "a partir de" existe porque o trabalho de ligar um agente a um sistema que a empresa já usa (um CRM, um programa de faturação, uma folha de stock) varia muito. Uma integração simples cabe no setup base. Um sistema antigo sem API pode exigir mais.</p>
+<p>O "a partir de" existe porque o trabalho de ligar um agente a um sistema que a empresa já usa (um CRM, um programa de facturação, uma folha de stock) varia muito. Uma integração simples cabe no setup base. Um sistema antigo sem API pode exigir mais.</p>
 <h3>Custos que convém conhecer desde o início</h3>
 <ul>
 <li><strong>Mensagens da Meta.</strong> Quando o agente usa o canal oficial do WhatsApp, a Meta cobra algumas categorias de mensagens, sobretudo as que a empresa envia por iniciativa própria (lembretes, avisos, campanhas). As respostas a quem escreveu primeiro seguem regras diferentes. Explicamos o impacto no seu caso durante o diagnóstico, com números.</li>
@@ -46,7 +46,7 @@ export const custoRetorno: BlogPost = {
       },
       {
         heading: 'O custo de não ter agente',
-        body: `<p>Esta parte não aparece em nenhuma fatura, por isso é fácil ignorá-la.</p>
+        body: `<p>Esta parte não aparece em nenhuma factura, por isso é fácil ignorá-la.</p>
 <ul>
 <li><strong>Horas da equipa.</strong> Cada pergunta de preço respondida à mão leva dois, três, cinco minutos, entre ler, procurar a informação e escrever. Multiplique por dezenas de conversas e por 26 dias de trabalho.</li>
 <li><strong>Clientes que desistem.</strong> Quem pede um orçamento a três fornecedores costuma ficar com o primeiro que responde bem. Responder no dia seguinte é, muitas vezes, responder tarde demais.</li>
@@ -64,19 +64,19 @@ export const custoRetorno: BlogPost = {
         heading: 'Três exemplos ilustrativos',
         body: `<p>Os três negócios abaixo não são clientes reais. São perfis comuns, com números redondos, para mostrar como a mesma conta dá resultados muito diferentes.</p>
 <h3>Uma ferragem na Matola</h3>
-<p>60 conversas por dia, 3 minutos cada, o agente resolve 60% sozinho, uma hora da equipa vale 200 MZN. São cerca de <strong>47 horas por mês</strong>, que valem 9.360 MZN. O volume pede o plano Médio (8.000 MZN), o que deixa um saldo pequeno, perto de 1.360 MZN por mês.</p>
-<p>Aqui o tempo poupado quase só paga o plano. A decisão depende de outra coisa: quantas vendas a loja perde hoje à noite e ao domingo. Se forem duas ou três chapas de zinco por semana, a conta muda completamente.</p>
+<p>60 conversas por dia, 3 minutos cada, o agente resolve 60% sozinho, uma hora da equipa vale 200 MZN. São cerca de <strong>47 horas por mês</strong>, que valem 9.360 MZN. O volume pede o plano Médio (12.000 MZN), e o tempo poupado, sozinho, fica perto de 2.640 MZN abaixo da mensalidade.</p>
+<p>Aqui o tempo poupado, sozinho, não paga o plano. A decisão depende de outra coisa: quantas vendas a loja perde hoje à noite e ao domingo. Se forem duas ou três chapas de zinco por semana, a conta muda completamente.</p>
 <h3>Uma clínica com duas salas</h3>
-<p>35 conversas por dia, 5 minutos cada (marcações levam mais tempo), 50% resolvidas pelo agente, hora a 300 MZN. Cerca de <strong>38 horas por mês</strong>, que valem perto de 11.375 MZN, contra 5.000 MZN do plano Simples. Saldo de mais de 6.000 MZN por mês, e o setup recupera-se no primeiro mês. Somam-se as faltas a consultas que os lembretes evitam.</p>
+<p>35 conversas por dia, 5 minutos cada (marcações levam mais tempo), 50% resolvidas pelo agente, hora a 300 MZN. Cerca de <strong>38 horas por mês</strong>, que valem perto de 11.375 MZN, contra 7.000 MZN do plano Simples. Saldo de mais de 4.000 MZN por mês, e o setup recupera-se no primeiro mês. Somam-se as faltas a consultas que os lembretes evitam.</p>
 <h3>Um distribuidor de produtos agrícolas</h3>
-<p>Na época alta, 120 conversas por dia, 4 minutos cada, 65% resolvidas, hora a 180 MZN. São mais de <strong>130 horas por mês</strong>, o equivalente a quase uma pessoa a tempo inteiro, com um valor perto de 24.300 MZN. O plano Avançado custa 12.000 MZN e inclui a confirmação de pagamentos por M-Pesa, que neste negócio é metade do trabalho.</p>`,
+<p>Na época alta, 120 conversas por dia, 4 minutos cada, 65% resolvidas, hora a 180 MZN. São mais de <strong>130 horas por mês</strong>, o equivalente a quase uma pessoa a tempo inteiro, com um valor perto de 24.300 MZN. O plano Avançado custa 18.000 MZN e inclui a confirmação de pagamentos por M-Pesa, que neste negócio é metade do trabalho.</p>`,
       },
       {
         heading: 'Quando não compensa',
         body: `<p>Dizemos isto a clientes com alguma frequência, e preferimos dizê-lo antes do que depois:</p>
 <ul>
 <li><strong>Volume baixo.</strong> Com menos de dez conversas por dia, as respostas rápidas e o catálogo gratuitos do WhatsApp Business costumam chegar.</li>
-<li><strong>Informação que muda todos os dias sem dono.</strong> Se os preços mudam diariamente e ninguém os pode atualizar, o agente vai errar.</li>
+<li><strong>Informação que muda todos os dias sem dono.</strong> Se os preços mudam diariamente e ninguém os pode actualizar, o agente vai errar.</li>
 <li><strong>Vendas que acontecem quase todas ao balcão.</strong> Se o WhatsApp é um canal secundário, o ganho é proporcional.</li>
 <li><strong>Relação muito pessoal.</strong> Há negócios em que os clientes compram porque falam com o dono. Aí o agente pode servir só para fora de horas, ou não servir.</li>
 </ul>`,
@@ -84,16 +84,15 @@ export const custoRetorno: BlogPost = {
       {
         heading: 'Como reduzir o risco',
         body: `<ul>
-<li><strong>Piloto de um mês</strong> com setup gratuito e 50% de desconto na primeira mensalidade. Se não fizer sentido, cancela sem penalidade.</li>
+<li><strong>Piloto de um mês</strong>, com cancelamento sem penalidade se não fizer sentido.</li>
 <li><strong>Garantia de horas.</strong> Se no primeiro trimestre o agente não lhe poupar pelo menos 10 horas por mês, devolvemos a diferença em crédito.</li>
-<li><strong>Desconto por pagamento antecipado:</strong> 10% pagando seis meses, 15% pagando doze.</li>
 <li><strong>Começar pequeno.</strong> A maior parte dos clientes começa no plano Simples, só com o WhatsApp, e sobe quando os números o justificam.</li>
 </ul>
-<p>Todos os valores e condições estão em <a href="/precos">songhai.cc/precos</a>. Se preferir fazer estas contas com alguém, o <a href="/diagnostico">diagnóstico gratuito</a> serve exatamente para isso. E no <a href="https://www.linkedin.com/in/songhai-lda/" target="_blank">LinkedIn</a> e no <a href="https://www.instagram.com/songhai_lda/" target="_blank">Instagram</a> da SONGHAI publicamos regularmente exemplos de contas como estas.</p>`,
+<p>Todos os valores e condições estão em <a href="/precos">songhai.cc/precos</a>. Se preferir fazer estas contas com alguém, o <a href="/diagnostico">diagnóstico gratuito</a> serve exactamente para isso. E no <a href="https://www.linkedin.com/in/songhai-lda/" target="_blank">LinkedIn</a> e no <a href="https://www.instagram.com/songhai_lda/" target="_blank">Instagram</a> da SONGHAI publicamos regularmente exemplos de contas como estas.</p>`,
       },
     ],
     quote:
-      'O preço do agente aparece na fatura. O preço de responder tarde não aparece em lado nenhum, e costuma ser maior.',
+      'O preço do agente aparece na factura. O preço de responder tarde não aparece em lado nenhum, e costuma ser maior.',
     callout: {
       title: 'Uma regra prática',
       body: 'Se a sua equipa passa mais de duas horas por dia a responder às mesmas perguntas no WhatsApp, quase de certeza que o plano Simples se paga só com esse tempo.',

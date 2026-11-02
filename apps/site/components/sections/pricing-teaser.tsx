@@ -1,75 +1,76 @@
-'use client'
-
 import Link from 'next/link'
 import { ArrowRight, ShieldCheck } from 'lucide-react'
-import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
-import { PLAN_PRICES, formatMZN, setupLabel } from '@/lib/plans'
+import { PillButton } from '@/components/pill-button'
+import { PLAN_PRICES, formatMZN, formatNumber, getPlan, setupLabel } from '@/lib/plans'
 
+// A oferta numa frase, com o preço num bloco de cor, e os três pacotes lado a lado.
 export function PricingTeaser() {
+  const entry = getPlan('simples')
+
   return (
-    <section id="precos" className="scroll-mt-20 bg-paper">
-      <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
-        <Reveal className="max-w-2xl">
-          <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">
-            Preços
-          </p>
-          <h2 className="text-balance font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
-            Preços publicados, em meticais
+    <section
+      id="precos"
+      className="scroll-mt-16 bg-[var(--field-indigo)] px-5 py-16 text-white lg:px-8 lg:py-24"
+    >
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-12">
+          <h2 className="poster text-[clamp(2rem,4.6vw,5rem)] lg:col-span-7">
+            <span className="block">Agente desde</span>
+            <span className="block">
+              <span className="inline-block bg-[var(--field-gold)] px-[0.15em] text-[#1e2158]">
+                {formatNumber(entry.monthly)} MZN
+              </span>
+              /mês.
+            </span>
           </h2>
-          <p className="mt-4 text-pretty text-lg leading-relaxed text-ink-soft">
-            Sem pedir orçamento para saber quanto custa. O valor final é
-            confirmado no diagnóstico, antes de qualquer compromisso.
-          </p>
-        </Reveal>
 
-        <RevealGroup className="mt-12 grid gap-5 md:grid-cols-3">
-          {PLAN_PRICES.map((plan) => {
-            const highlight = plan.id === 'medio'
-            return (
-              <RevealItem key={plan.id}>
-                <div
-                  className={`relative flex h-full flex-col rounded-2xl border p-6 ${
-                    highlight ? 'border-gold bg-sand shadow-lg shadow-gold/10' : 'border-line bg-paper'
-                  }`}
-                >
-                  {highlight && (
-                    <span className="absolute -top-3 left-6 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-on-gold">
-                      Recomendado
-                    </span>
-                  )}
-                  <h3 className="font-serif text-xl font-semibold text-foreground">{plan.name}</h3>
-                  <p className="mt-3 text-sm text-ink-soft">A partir de</p>
-                  <p className="font-serif text-3xl font-semibold text-indigo-deep">
-                    {formatMZN(plan.monthly)}
-                    <span className="ml-1 font-sans text-sm font-medium text-ink-soft">/mês</span>
-                  </p>
-                  <p className="mt-1 text-xs text-ink-soft">Setup: {setupLabel(plan, true)} (único)</p>
-                  <p className="mt-4 text-sm leading-relaxed text-ink-soft">{plan.audience}</p>
-                </div>
-              </RevealItem>
-            )
-          })}
-        </RevealGroup>
-
-        <Reveal delay={0.1}>
-          <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-teal/30 bg-teal/5 px-6 py-5 sm:flex-row sm:items-center">
-            <p className="flex items-start gap-3 text-sm leading-relaxed text-foreground">
-              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-teal" aria-hidden="true" />
+          <div className="lg:col-span-5">
+            <p className="max-w-[46ch] text-lg leading-snug text-white/90">
+              Preço de um agente de IA no WhatsApp, publicado em meticais. Inclui
+              configuração, piloto de teste e suporte. O valor final é confirmado
+              no diagnóstico, antes de qualquer compromisso.
+            </p>
+            <p className="mt-4 flex max-w-[46ch] items-start gap-3 text-base leading-snug text-white/90">
+              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[var(--field-gold)]" aria-hidden="true" />
               <span>
-                <span className="font-semibold">Garantia de resultado:</span> se não
-                poupar pelo menos 10 horas/mês no primeiro trimestre, devolvemos a
-                diferença em crédito.
+                <strong className="font-bold text-white">Garantia:</strong> se não poupar pelo
+                menos 10 horas por mês no primeiro trimestre, devolvemos a diferença em crédito.
               </span>
             </p>
-            <Link
-              href="/precos"
-              className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-teal hover:text-teal/80"
-            >
-              Ver tabela completa
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
-        </Reveal>
+        </div>
+
+        <ul className="mt-12 grid gap-4 md:grid-cols-3">
+          {PLAN_PRICES.map((plan) => (
+            <li
+              key={plan.id}
+              className="flex flex-col border border-white/15 bg-white/[0.04] p-6 transition-colors hover:bg-white/[0.08]"
+            >
+              <p className="text-sm font-bold uppercase tracking-wider text-white/70">{plan.shortName}</p>
+              <p className="mt-3 text-4xl font-black leading-none text-[var(--field-gold)]">
+                {formatNumber(plan.monthly)}
+                <span className="ml-2 text-base font-bold text-white">MZN/mês</span>
+              </p>
+              <p className="mt-3 border-t border-white/15 pt-3 text-base text-white/90">
+                Setup: {setupLabel(plan, true)} (único)
+              </p>
+              <p className="mt-2 text-base leading-snug text-white/80">{plan.audience}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <PillButton href="/precos" variant="gold">
+            Ver tabela completa
+            <ArrowRight className="h-5 w-5" />
+          </PillButton>
+          <Link
+            href="/diagnostico"
+            className="text-lg font-bold underline underline-offset-4 transition-opacity hover:opacity-80"
+          >
+            Pedir diagnóstico grátis
+          </Link>
+        </div>
       </div>
     </section>
   )

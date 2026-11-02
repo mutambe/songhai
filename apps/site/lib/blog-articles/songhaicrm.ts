@@ -62,14 +62,14 @@ export const songhaiCrm: BlogPost = {
 <li><strong>Follow-ups automáticos</strong> que retomam conversas paradas no momento certo, conforme a etapa do funil.</li>
 <li><strong>Passagem para uma pessoa</strong> quando é preciso, com registo de quando e porquê.</li>
 <li><strong>Evolução da IA:</strong> uma página que mostra onde o agente acerta, onde erra e o que falta ensinar-lhe. As melhorias sugeridas pela própria IA só entram depois de aprovadas por alguém da equipa.</li>
-<li><strong>Limite de gasto</strong> com IA por organização, para a fatura do mês nunca ser uma surpresa.</li>
+<li><strong>Limite de gasto</strong> com IA por organização, para a factura do mês nunca ser uma surpresa.</li>
 </ul>`,
             },
             {
               label: 'Automações',
               body: `<ul>
 <li><strong>Regras QUANDO / SE / ENTÃO.</strong> Por exemplo: quando chega uma mensagem com a palavra "orçamento", se o cliente for novo, então atribuir ao vendedor de turno e marcar como prioridade.</li>
-<li><strong>Entrada de contactos</strong> a partir de formulários do site, páginas de campanha ou outras ferramentas, diretamente para a etapa certa do funil.</li>
+<li><strong>Entrada de contactos</strong> a partir de formulários do site, páginas de campanha ou outras ferramentas, directamente para a etapa certa do funil.</li>
 <li><strong>Avisos para outros sistemas</strong> quando alguma coisa acontece no CRM.</li>
 <li>Todas as automações nascem desligadas, até alguém as rever e ligar.</li>
 </ul>`,
@@ -97,7 +97,7 @@ export const songhaiCrm: BlogPost = {
 <li><strong>Feriados de Moçambique</strong> nas contas de dias úteis e prazos.</li>
 <li><strong>Português de Moçambique</strong> em todo o sistema: contacto, ecrã, equipa, palavra-passe.</li>
 <li><strong>Horário de envio</strong> entre as 6h e as 23h, para as mensagens automáticas não chegarem a meio da noite.</li>
-<li><strong>Regras moçambicanas de proteção de dados</strong> aplicadas por defeito.</li>
+<li><strong>Regras moçambicanas de protecção de dados</strong> aplicadas por defeito.</li>
 </ul>`,
       },
       {
@@ -105,9 +105,9 @@ export const songhaiCrm: BlogPost = {
         body: `<p>O SonghaiCRM assenta em código aberto e corre num servidor da própria empresa, ou num servidor que a SONGHAI gere em seu nome. Isto tem consequências práticas:</p>
 <ul>
 <li><strong>Os dados não ficam presos a um fornecedor.</strong> Se um dia quiser mudar de sistema, os dados são seus.</li>
-<li><strong>Não há preço por utilizador.</strong> Dar acesso a mais uma pessoa da equipa não aumenta a fatura do software.</li>
-<li><strong>Cada empresa está isolada</strong> das outras ao nível da base de dados, e esse isolamento é testado automaticamente a cada atualização.</li>
-<li><strong>Atualizações com um clique</strong>, a partir do próprio sistema.</li>
+<li><strong>Não há preço por utilizador.</strong> Dar acesso a mais uma pessoa da equipa não aumenta a factura do software.</li>
+<li><strong>Cada empresa está isolada</strong> das outras ao nível da base de dados, e esse isolamento é testado automaticamente a cada actualização.</li>
+<li><strong>actualizações com um clique</strong>, a partir do próprio sistema.</li>
 </ul>`,
       },
       {
@@ -118,7 +118,7 @@ export const songhaiCrm: BlogPost = {
           question: 'O SonghaiCRM é a escolha certa para a sua equipa?',
           pros: [
             { title: 'WhatsApp e IA no centro', detail: 'Não é um extra: o sistema foi desenhado à volta das conversas e dos agentes.' },
-            { title: 'Sem custo por utilizador', detail: 'Toda a equipa pode ter acesso sem multiplicar a fatura.' },
+            { title: 'Sem custo por utilizador', detail: 'Toda a equipa pode ter acesso sem multiplicar a factura.' },
             { title: 'Dados no seu servidor', detail: 'Controlo total sobre a informação dos seus clientes.' },
             { title: 'Adaptado a Moçambique', detail: 'Metical, fuso de Maputo, +258, NUIT, feriados e português de cá.' },
             { title: 'Nada morre no silêncio', detail: 'Radar e follow-ups recuperam clientes que ficaram sem resposta.' },
@@ -128,7 +128,7 @@ export const songhaiCrm: BlogPost = {
             { title: 'Curva de aprendizagem', detail: 'A equipa precisa de algumas sessões para tirar partido do funil e das automações.' },
             { title: 'IA tem custo de uso', detail: 'Cada conversa do agente consome créditos do modelo de IA, com limite configurável.' },
             { title: 'Ligação por QR code tem riscos', detail: 'É a forma mais rápida de começar, mas a Meta pode bloquear números usados para envios em massa. O canal oficial é mais seguro e tem custo por mensagem.' },
-            { title: 'Integrações locais caso a caso', detail: 'Ligar a um programa de faturação ou ERP local exige avaliação própria.' },
+            { title: 'Integrações locais caso a caso', detail: 'Ligar a um programa de facturação ou ERP local exige avaliação própria.' },
           ],
         },
       },

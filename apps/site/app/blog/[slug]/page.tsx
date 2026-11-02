@@ -91,7 +91,7 @@ export default async function ArticlePage({
     <>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         // Escapar "<" evita que um título/excerto com "</script>" feche o bloco
         // mais cedo e permita injetar HTML/script a seguir.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }}
@@ -107,19 +107,19 @@ export default async function ArticlePage({
           />
 
           <div className="mt-8">
-            <span className="inline-flex rounded-full bg-teal/10 px-3 py-1 text-xs font-medium text-teal">
+            <span className="inline-flex text-lg font-bold text-teal">
               {post.category}
             </span>
-            <h1 className="mt-4 text-balance font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h1 className="mt-5 max-w-[34ch] text-balance text-[clamp(1.6rem,3vw,3rem)] font-black leading-[1] tracking-normal text-foreground">
               {post.title}
             </h1>
-            <div className="mt-5 flex items-center gap-4 text-sm text-ink-soft">
+            <div className="mt-5 flex items-center gap-4 text-base text-ink-soft">
               <span>{post.author}</span>
               <span aria-hidden="true">·</span>
               <span>
                 {formatDate(post.publishedAt)}
                 {post.updatedAt && post.updatedAt.slice(0, 10) !== post.publishedAt.slice(0, 10) && (
-                  <> · atualizado a {formatDate(post.updatedAt)}</>
+                  <> · actualizado a {formatDate(post.updatedAt)}</>
                 )}
               </span>
               <span className="inline-flex items-center gap-1">
@@ -136,13 +136,13 @@ export default async function ArticlePage({
               srcSet={cover.srcSet}
               sizes="(min-width: 768px) 720px, 100vw"
               alt={`Ilustração do artigo: ${post.title}`}
-              className="mt-8 h-52 w-full rounded-3xl object-cover sm:h-72"
+              className="mt-8 h-52 w-full object-cover sm:h-72"
               // É o maior elemento da página (LCP): pedir com prioridade.
               fetchPriority="high"
             />
           ) : (
             <div
-              className={`relative mt-8 h-52 overflow-hidden rounded-3xl bg-gradient-to-br ${post.gradient} sm:h-72`}
+              className={`relative mt-8 h-52 overflow-hidden bg-[var(--field-indigo)] sm:h-72`}
             >
               <PostIllustration
                 icon={post.icon}
@@ -152,18 +152,18 @@ export default async function ArticlePage({
           )}
 
           <div className="mt-10">
-            <p className="text-pretty font-serif text-xl leading-relaxed text-foreground">
+            <p className="text-pretty text-xl leading-relaxed text-foreground">
               {post.content.lead}
             </p>
 
             {post.content.sections.map((section) => (
               <section key={section.heading} className="mt-10">
-                <h2 className="font-serif text-2xl font-semibold text-foreground">
+                <h2 className="text-3xl font-black tracking-normal text-foreground">
                   {section.heading}
                 </h2>
                 <div
-                  className="prose prose-lg mt-4 max-w-none font-serif leading-relaxed text-ink-soft prose-headings:font-serif prose-headings:text-foreground prose-a:text-teal prose-strong:text-foreground prose-img:rounded-2xl"
-                  // eslint-disable-next-line react/no-danger
+                  className="prose prose-lg mt-4 max-w-none leading-relaxed text-ink-soft prose-headings:text-foreground prose-a:text-teal prose-strong:text-foreground prose-img:"
+                   
                   dangerouslySetInnerHTML={{ __html: section.body }}
                 />
                 {section.widget && <ArticleWidgetView widget={section.widget} />}
@@ -172,15 +172,15 @@ export default async function ArticlePage({
 
             {post.content.quote && (
               <blockquote className="my-10 border-l-4 border-gold pl-6">
-                <p className="text-balance font-serif text-2xl font-medium italic leading-snug text-indigo-deep">
+                <p className="text-balance text-2xl font-medium italic leading-snug text-indigo-deep">
                   {post.content.quote}
                 </p>
               </blockquote>
             )}
 
             {post.content.callout && (
-              <div className="my-10 rounded-2xl border border-line bg-paper p-6">
-                <p className="text-sm font-semibold uppercase tracking-wider text-teal">
+              <div className="my-10 bg-foreground/[0.05] p-6">
+                <p className="text-xl font-bold text-foreground">
                   {post.content.callout.title}
                 </p>
                 <p className="mt-2 leading-relaxed text-ink-soft">
@@ -190,12 +190,12 @@ export default async function ArticlePage({
             )}
 
             {post.tags?.length > 0 && (
-              <div className="mt-10 flex flex-wrap gap-2 border-t border-line pt-6">
+              <div className="mt-10 flex flex-wrap gap-2 pt-6">
                 {post.tags.map((tag) => (
                   <Link
                     key={tag}
                     href={`/blog?tag=${encodeURIComponent(tag)}`}
-                    className="rounded-full bg-paper-muted px-3 py-1 text-xs font-medium text-ink-soft transition-colors hover:text-teal"
+                    className="bg-paper-muted px-3 py-1 text-base font-medium text-ink-soft transition-colors hover:text-teal"
                   >
                     #{tag}
                   </Link>
@@ -204,10 +204,10 @@ export default async function ArticlePage({
             )}
           </div>
 
-          <div className="mt-10 grid gap-4 rounded-3xl border border-line bg-paper p-6 sm:grid-cols-2 sm:p-7">
+          <div className="mt-10 grid gap-4 bg-foreground/[0.05] p-6 sm:grid-cols-2 sm:p-7">
             <div>
-              <p className="text-sm font-semibold text-foreground">Siga a SONGHAI</p>
-              <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+              <p className="text-base font-semibold text-foreground">Siga a SONGHAI</p>
+              <p className="mt-1 text-base leading-relaxed text-ink-soft">
                 Casos reais, novidades e dicas curtas sobre IA e WhatsApp, todas as semanas.
               </p>
               <ul className="mt-3 flex gap-2">
@@ -218,7 +218,7 @@ export default async function ArticlePage({
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`SONGHAI no ${s.name}`}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:border-teal hover:text-teal"
+                      className="flex h-10 w-10 items-center justify-center bg-foreground/10 text-foreground transition-colors hover:bg-gold hover:text-on-gold"
                     >
                       <SocialIcon network={s.name} className="h-[18px] w-[18px]" />
                     </a>
@@ -227,8 +227,8 @@ export default async function ArticlePage({
               </ul>
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground">Partilhe este artigo</p>
-              <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+              <p className="text-base font-semibold text-foreground">Partilhe este artigo</p>
+              <p className="mt-1 text-base leading-relaxed text-ink-soft">
                 Conhece alguém a quem isto pode ser útil?
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -236,7 +236,7 @@ export default async function ArticlePage({
                   href={`https://wa.me/?text=${encodeURIComponent(`${post.title} https://songhai.cc/blog/${slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-teal hover:text-teal"
+                  className="bg-foreground/[0.06] px-4 py-2 text-base font-medium text-foreground transition-colors hover:bg-gold hover:text-on-gold"
                 >
                   WhatsApp
                 </a>
@@ -244,7 +244,7 @@ export default async function ArticlePage({
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://songhai.cc/blog/${slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-teal hover:text-teal"
+                  className="bg-foreground/[0.06] px-4 py-2 text-base font-medium text-foreground transition-colors hover:bg-gold hover:text-on-gold"
                 >
                   LinkedIn
                 </a>
@@ -252,8 +252,8 @@ export default async function ArticlePage({
             </div>
           </div>
 
-          <div className="mt-10 rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground sm:px-10">
-            <h2 className="text-balance font-serif text-2xl font-semibold sm:text-3xl">
+          <div className="mt-10 bg-primary px-6 py-12 text-center text-primary-foreground sm:px-10">
+            <h2 className="text-balance text-3xl font-black tracking-normal sm:text-3xl">
               Pronto para recuperar o tempo da sua equipa?
             </h2>
             <p className="mx-auto mt-3 max-w-md text-pretty leading-relaxed text-primary-foreground/75">

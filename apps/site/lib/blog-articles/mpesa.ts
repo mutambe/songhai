@@ -20,7 +20,7 @@ export const mpesa: BlogPost = {
   icon: 'smartphone',
   content: {
     lead:
-      'Em Moçambique, vender pelo WhatsApp e receber por carteira móvel já é a forma normal de fazer negócio para milhares de lojas, produtores e prestadores de serviços. O que quase ninguém automatizou ainda é o meio: confirmar o pagamento, atualizar a encomenda e avisar quem entrega. É aí que se perde mais tempo, e onde acontecem mais erros.',
+      'Em Moçambique, vender pelo WhatsApp e receber por carteira móvel já é a forma normal de fazer negócio para milhares de lojas, produtores e prestadores de serviços. O que quase ninguém automatizou ainda é o meio: confirmar o pagamento, actualizar a encomenda e avisar quem entrega. É aí que se perde mais tempo, e onde acontecem mais erros.',
     sections: [
       {
         heading: 'O fluxo que todos conhecem',
@@ -42,7 +42,7 @@ export const mpesa: BlogPost = {
 <ol>
 <li><strong>Pedido.</strong> O cliente escreve o que quer, como escreveria a uma pessoa. O agente confirma produto, quantidade, preço e disponibilidade.</li>
 <li><strong>Total.</strong> O agente calcula o valor com a entrega, conforme o bairro, e mostra o resumo.</li>
-<li><strong>Pagamento.</strong> O cliente recebe o pedido de pagamento. Com uma conta comercial ligada à API da operadora, o pedido aparece diretamente no telemóvel do cliente e ele só confirma com o PIN. Sem essa ligação, o agente gera uma referência única para aquela encomenda.</li>
+<li><strong>Pagamento.</strong> O cliente recebe o pedido de pagamento. Com uma conta comercial ligada à API da operadora, o pedido aparece directamente no telemóvel do cliente e ele só confirma com o PIN. Sem essa ligação, o agente gera uma referência única para aquela encomenda.</li>
 <li><strong>Confirmação.</strong> A confirmação do pagamento chega ao sistema pela operadora, não por captura de ecrã. O agente só dá a encomenda como paga quando o dinheiro entrou.</li>
 <li><strong>Seguimento.</strong> A encomenda muda de estado, a equipa de entrega é avisada e o cliente recebe a confirmação, e mais tarde o aviso de que a entrega saiu.</li>
 </ol>
@@ -52,7 +52,7 @@ export const mpesa: BlogPost = {
         heading: 'M-Pesa, e-Mola e mKesh',
         body: `<p>As três carteiras móveis do país funcionam de forma parecida para o cliente, mas não para a integração:</p>
 <ul>
-<li><strong>M-Pesa</strong>, da Vodacom, é a mais usada e a que tem a integração para empresas mais madura. É por onde começa a maior parte dos projetos.</li>
+<li><strong>M-Pesa</strong>, da Vodacom, é a mais usada e a que tem a integração para empresas mais madura. É por onde começa a maior parte dos projectos.</li>
 <li><strong>e-Mola</strong>, da Movitel, e <strong>mKesh</strong>, da Tmcel, também podem ser ligadas. As condições dependem do acordo comercial que a empresa tem com cada operadora.</li>
 </ul>
 <p>Na prática, recomendamos começar com a carteira onde está a maioria dos seus clientes, medir durante um mês e só depois juntar as outras. Transferência bancária e pagamento na entrega podem continuar a existir em paralelo, tratados pela equipa.</p>`,
@@ -95,12 +95,12 @@ export const mpesa: BlogPost = {
 <li><strong>O agente nunca pede o PIN.</strong> O PIN só é escrito no ecrã de confirmação da própria carteira, no telemóvel do cliente. Diga isto aos seus clientes, por escrito, no perfil do WhatsApp.</li>
 <li><strong>Os dados de pagamento ficam no sistema, não na conversa.</strong> A conversa mostra o estado da encomenda, não números de conta.</li>
 <li><strong>Acessos com nome.</strong> Cada pessoa da equipa tem o seu acesso, e fica registado quem fez o quê.</li>
-<li><strong>Proteção de dados.</strong> Nomes, números e moradas dos clientes são tratados segundo as regras moçambicanas de proteção de dados e de transações eletrónicas, e não são usados para treinar modelos de IA.</li>
+<li><strong>Protecção de dados.</strong> Nomes, números e moradas dos clientes são tratados segundo as regras moçambicanas de protecção de dados e de transacções electrónicas, e não são usados para treinar modelos de IA.</li>
 </ul>`,
       },
       {
         heading: 'Está pronto?',
-        body: `<p>Antes de falar connosco, faça este teste. Se tiver quatro ou mais respostas "sim", o projeto avança depressa.</p>`,
+        body: `<p>Antes de falar connosco, faça este teste. Se tiver quatro ou mais respostas "sim", o projecto avança depressa.</p>`,
         widget: {
           type: 'checklist',
           title: 'Está pronto para receber pagamentos através do agente?',
@@ -114,15 +114,15 @@ export const mpesa: BlogPost = {
           ],
           results: [
             { min: 0, title: 'Comece pelo básico', body: 'Antes de automatizar pagamentos, vale a pena organizar a conta comercial e a lista de preços. Um agente simples, só para pedidos, pode ser um bom primeiro passo.' },
-            { min: 3, title: 'Quase lá', body: 'Faltam um ou dois pontos. São resolvidos durante a preparação do projeto, normalmente em poucos dias.' },
+            { min: 3, title: 'Quase lá', body: 'Faltam um ou dois pontos. São resolvidos durante a preparação do projecto, normalmente em poucos dias.' },
             { min: 5, title: 'Pronto para avançar', body: 'Tem tudo o que é preciso. A implementação com pagamentos leva tipicamente duas a quatro semanas, incluindo testes com pagamentos reais de baixo valor.' },
           ],
         },
       },
       {
         heading: 'Por onde começar',
-        body: `<p>No plano Avançado, o processamento de pagamentos por M-Pesa e outras carteiras já está incluído, com confirmação automática, referências e atualização das encomendas em tempo real. Nos planos Simples e Médio, pode ser acrescentado à parte.</p>
-<p>O primeiro passo é o <a href="/diagnostico">diagnóstico gratuito de 30 minutos</a>, onde olhamos para o seu fluxo atual de vendas e pagamentos e dizemos o que faz sentido automatizar primeiro. Os preços estão em <a href="/precos">songhai.cc/precos</a>.</p>
+        body: `<p>No plano Avançado, o processamento de pagamentos por M-Pesa e outras carteiras já está incluído, com confirmação automática, referências e actualização das encomendas em tempo real. Nos planos Simples e Médio, pode ser acrescentado à parte.</p>
+<p>O primeiro passo é o <a href="/diagnostico">diagnóstico gratuito de 30 minutos</a>, onde olhamos para o seu fluxo actual de vendas e pagamentos e dizemos o que faz sentido automatizar primeiro. Os preços estão em <a href="/precos">songhai.cc/precos</a>.</p>
 <p>No <a href="https://www.instagram.com/songhai_lda/" target="_blank">Instagram</a> da SONGHAI mostramos como estas conversas ficam no telemóvel do cliente, passo a passo.</p>`,
       },
     ],

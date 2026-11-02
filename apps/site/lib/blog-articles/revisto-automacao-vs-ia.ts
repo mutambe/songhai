@@ -25,10 +25,10 @@ export const automacaoVsIa: BlogPost = {
         body: `<p>Automação é um conjunto de regras fixas que executa tarefas repetitivas. Funciona sempre no formato <strong>"quando acontece isto, faz aquilo"</strong>:</p>
 <ul>
 <li>Quando chega um formulário do site, copia os dados para a folha de clientes.</li>
-<li>Quando uma fatura passa 30 dias sem pagamento, envia um lembrete.</li>
+<li>Quando uma factura passa 30 dias sem pagamento, envia um lembrete.</li>
 <li>Quando um pedido é marcado como pago, avisa o armazém.</li>
 </ul>
-<p>Não há interpretação. Se a regra diz "assunto contém <em>orçamento</em>" e o cliente escreve "cotação", a regra não dispara. É exatamente por isso que a automação é previsível, barata e rápida de montar: faz sempre a mesma coisa, da mesma forma.</p>`,
+<p>Não há interpretação. Se a regra diz "assunto contém <em>orçamento</em>" e o cliente escreve "cotação", a regra não dispara. É exactamente por isso que a automação é previsível, barata e rápida de montar: faz sempre a mesma coisa, da mesma forma.</p>`,
       },
       {
         heading: 'O que é IA',
@@ -51,7 +51,7 @@ export const automacaoVsIa: BlogPost = {
 <tr><td>Entende linguagem natural</td><td>Não</td><td>Sim</td></tr>
 <tr><td>Lida com exceções</td><td>Não, só faz o que está na regra</td><td>Sim, ou reconhece que deve passar a uma pessoa</td></tr>
 <tr><td>Tipo de erro</td><td>Previsível: a regra não dispara</td><td>Menos previsível: interpreta mal uma mensagem</td></tr>
-<tr><td>Manutenção</td><td>Só quando o processo muda</td><td>Revisão regular das conversas e atualização da informação</td></tr>
+<tr><td>Manutenção</td><td>Só quando o processo muda</td><td>Revisão regular das conversas e actualização da informação</td></tr>
 <tr><td>Melhor para</td><td>Mover dados entre sistemas, lembretes, avisos internos</td><td>Conversar com clientes, qualificar pedidos, decidir o passo seguinte</td></tr>
 </tbody></table></div>`,
       },
@@ -74,7 +74,7 @@ export const automacaoVsIa: BlogPost = {
             {
               label: 'Precisa de IA',
               body: `<ul>
-<li><strong>Loja de eletrodomésticos:</strong> responder no WhatsApp a perguntas sobre modelos, preços, garantia e entrega, escritas de mil maneiras diferentes.</li>
+<li><strong>Loja de electrodomésticos:</strong> responder no WhatsApp a perguntas sobre modelos, preços, garantia e entrega, escritas de mil maneiras diferentes.</li>
 <li><strong>Imobiliária:</strong> perceber, a partir de uma conversa, se o interessado quer comprar ou arrendar, em que bairro e com que orçamento, antes de passar ao agente imobiliário.</li>
 <li><strong>Clínica:</strong> marcar e remarcar consultas por conversa, com o paciente a sugerir horários em texto livre ("pode ser quinta de manhã?").</li>
 </ul>`,
@@ -120,7 +120,7 @@ export const automacaoVsIa: BlogPost = {
 <li><strong>Automatizar um processo desorganizado.</strong> Se hoje ninguém sabe ao certo qual é o preço de entrega para cada bairro, nenhuma ferramenta vai acertar. Primeiro organiza-se, depois automatiza-se.</li>
 <li><strong>Esquecer quem mantém.</strong> Tanto as regras como a base de conhecimento precisam de um responsável na empresa.</li>
 </ul>
-<p>Se tiver dúvidas sobre uma tarefa concreta, o <a href="/diagnostico">diagnóstico gratuito de 30 minutos</a> serve exatamente para isto: olhamos para o processo e dizemos se é caso de automação, de IA ou das duas. Partilhamos mais exemplos destes no <a href="https://www.instagram.com/songhai_lda/" target="_blank">Instagram</a> e no <a href="https://www.linkedin.com/in/songhai-lda/" target="_blank">LinkedIn</a> da SONGHAI.</p>`,
+<p>Se tiver dúvidas sobre uma tarefa concreta, o <a href="/diagnostico">diagnóstico gratuito de 30 minutos</a> serve exactamente para isto: olhamos para o processo e dizemos se é caso de automação, de IA ou das duas. Partilhamos mais exemplos destes no <a href="https://www.instagram.com/songhai_lda/" target="_blank">Instagram</a> e no <a href="https://www.linkedin.com/in/songhai-lda/" target="_blank">LinkedIn</a> da SONGHAI.</p>`,
       },
     ],
     quote:

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Fraunces } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { WhatsAppButton } from '@/components/whatsapp-button'
 import { AnalyticsBeacon } from '@/components/analytics-beacon'
@@ -10,13 +10,6 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
-})
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
 })
 
 const SITE_URL = 'https://songhai.cc'
@@ -78,8 +71,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f5efe0' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f1412' },
+    { media: '(prefers-color-scheme: light)', color: '#f4f4f8' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b0d1f' },
   ],
 }
 
@@ -129,17 +122,17 @@ export default function RootLayout({
   return (
     <html
       lang="pt-MZ"
-      className={`${inter.variable} ${fraunces.variable} bg-background`}
+      className={`${inter.variable} bg-background`}
       suppressHydrationWarning
     >
       <head>
         <script
-          // eslint-disable-next-line react/no-danger
+           
           dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
         />
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
+           
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
         />
       </head>

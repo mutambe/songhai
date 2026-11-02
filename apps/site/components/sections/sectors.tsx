@@ -1,23 +1,12 @@
-'use client'
-
+import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import {
-  Stethoscope,
-  Wrench,
-  ShoppingBag,
-  Scale,
-  GraduationCap,
-  Rocket,
-  Landmark,
-  Wheat,
-  ArrowRight,
-} from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 
 type Sector = {
-  icon: typeof Stethoscope
   label: string
+  // Valor aceite pelo formulário de diagnóstico (?setor=...)
+  form: string
   headline: string
   desc: string
   href?: string
@@ -25,114 +14,109 @@ type Sector = {
 
 const SECTORS: Sector[] = [
   {
-    icon: Stethoscope,
-    label: 'Saúde & Clínicas',
-    headline: 'Reduzam ligações repetitivas',
+    label: 'Saúde e clínicas',
+    form: 'Saúde & Clínicas',
+    headline: 'Menos chamadas repetidas',
     desc: 'Agentes de IA respondem a resultados, confirmações e horários automaticamente.',
   },
   {
-    icon: Wrench,
-    label: 'Ferragens & Material de Construção',
+    label: 'Ferragens e construção',
+    form: 'Ferragens & Material de Construção',
     headline: 'Orçamentos e stock sem parar o balcão',
-    desc: 'Agentes respondem a preços, disponibilidade e orçamentos no WhatsApp, sem tirar a equipa do atendimento presencial.',
-    href: '/setores/comercio',
+    desc: 'Preços, disponibilidade e orçamentos no WhatsApp, sem tirar a equipa do atendimento presencial.',
+    href: '/sectores/comercio',
   },
   {
-    icon: ShoppingBag,
-    label: 'Retalho & E-commerce',
+    label: 'Retalho e comércio online',
+    form: 'Retalho & E-commerce',
     headline: 'Agentes que vendem no WhatsApp',
-    desc: 'Qualificam leads, mostram produtos e processam pedidos 24/7.',
-    href: '/setores/comercio',
+    desc: 'Qualificam clientes, mostram produtos e processam pedidos 24 horas por dia.',
+    href: '/sectores/comercio',
   },
   {
-    icon: Scale,
     label: 'Advocacia',
-    headline: 'Menos emails, mais casos',
-    desc: 'Agentes automatizam respostas comuns para a equipa focar em casos reais.',
+    form: 'Advocacia',
+    headline: 'Menos e-mails, mais casos',
+    desc: 'Respostas comuns automatizadas para a equipa se concentrar nos casos reais.',
   },
   {
-    icon: GraduationCap,
     label: 'Educação',
-    headline: 'Inscrições e confirmações automáticas',
-    desc: 'Agentes qualificam inscrições, confirmam presenças e respondem dúvidas de encarregados.',
+    form: 'Educação',
+    headline: 'Inscrições e confirmações sem papel',
+    desc: 'Qualificam inscrições, confirmam presenças e respondem às dúvidas dos encarregados.',
   },
   {
-    icon: Wheat,
     label: 'Agrícola',
+    form: 'Agrícola',
     headline: 'Cotações e encomendas sem esperar pela colheita',
-    desc: 'Agentes respondem preços, confirmam encomendas e avisam sobre entregas, ligados ao seu stock em tempo real.',
-    href: '/setores/agricola',
+    desc: 'Respondem preços, confirmam encomendas e avisam sobre entregas, ligados ao stock em tempo real.',
+    href: '/sectores/agricola',
   },
   {
-    icon: Rocket,
-    label: 'PME & Startups',
-    headline: 'Cresça mais rápido, sem burocracia',
-    desc: 'Automatizamos as tarefas repetitivas para a equipa focar em vender, atender e fazer o negócio crescer.',
-    href: '/setores/servicos',
+    label: 'PME e startups',
+    form: 'PME & Startups',
+    headline: 'Crescer sem burocracia',
+    desc: 'Automatizamos as tarefas repetitivas para a equipa vender, atender e fazer o negócio crescer.',
+    href: '/sectores/servicos',
   },
   {
-    icon: Landmark,
-    label: 'Instituições Públicas',
+    label: 'Instituições públicas',
+    form: 'Instituições Públicas',
     headline: 'Atendimento ao cidadão sem filas',
-    desc: 'Agentes respondem a pedidos e dúvidas frequentes, libertando as equipas para casos complexos.',
+    desc: 'Respondem a pedidos e dúvidas frequentes, libertando as equipas para os casos complexos.',
   },
 ]
 
 export function Sectors() {
   return (
-    <section id="setores" className="scroll-mt-20">
-      <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-        <Reveal className="max-w-2xl">
-          <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">
-            Setores
-          </p>
-          <h2 className="text-balance font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
-            Pensado para os setores de Moçambique
-          </h2>
-          <p className="mt-4 text-pretty text-lg leading-relaxed text-ink-soft">
-            Cada setor tem as suas perguntas repetidas. Veja o que um agente
-            pode tratar no seu.
-          </p>
-        </Reveal>
+    <section id="sectores" className="scroll-mt-16">
+      <div className="mx-auto grid max-w-[1600px] gap-12 px-5 py-16 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-24">
+        <div className="lg:col-span-5 [container-type:inline-size]">
+          <div className="lg:sticky lg:top-24">
+            <Reveal>
+              <h2 className="poster text-[clamp(2.2rem,12.5cqw,5.5rem)]">
+                Sectores de Moçambique
+              </h2>
+              <p className="mt-6 max-w-[34ch] text-xl leading-snug">
+                Cada sector tem as suas perguntas repetidas. Veja o que um
+                agente pode tratar no seu.
+              </p>
+            </Reveal>
+            <figure className="relative -ml-8 mt-10 hidden [mask-image:linear-gradient(to_right,transparent,#000_18%,#000_72%,transparent),linear-gradient(to_bottom,transparent,#000_16%,#000_74%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in] lg:block">
+              <Image
+                src="/sectores-saude.webp"
+                alt="Médico de bata branca a usar o telemóvel, com um portátil na mesa"
+                width={1600}
+                height={1067}
+                sizes="40vw"
+                className="aspect-[4/3] w-full object-cover object-center"
+              />
+            </figure>
+          </div>
+        </div>
 
-        <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {SECTORS.map((s) => {
-            const Icon = s.icon
-            const card = (
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                className="group flex h-full flex-col items-start gap-3 rounded-2xl border border-line bg-sand p-6 transition-colors hover:border-teal/40"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-paper text-indigo-deep transition-colors group-hover:text-teal">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span className="text-xs font-medium uppercase tracking-wider text-teal">
-                  {s.label}
-                </span>
-                <span className="font-serif text-lg font-semibold leading-snug text-foreground">
-                  {s.headline}
-                </span>
-                <p className="text-sm leading-relaxed text-ink-soft">
-                  {s.desc}
-                </p>
-                <span className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium text-teal">
-                  {s.href ? 'Ver soluções para o setor' : 'Falar sobre o meu setor'}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </motion.div>
-            )
-            return (
+        <RevealGroup className="lg:col-span-7">
+          <ul className="space-y-9 lg:space-y-10">
+            {SECTORS.map((s) => (
               <RevealItem key={s.label}>
-                <Link
-                  href={s.href ?? `/diagnostico?setor=${encodeURIComponent(s.label)}`}
-                  className="block h-full"
-                >
-                  {card}
-                </Link>
+                <li>
+                  <Link
+                    href={s.href ?? `/diagnostico?setor=${encodeURIComponent(s.form)}`}
+                    className="group block lg:pr-20"
+                  >
+                    <span className="flex items-center justify-between gap-4 text-[clamp(1.9rem,3.2vw,3.8rem)] font-black leading-[1.02] tracking-normal transition-transform duration-300 group-hover:translate-x-3">
+                      {s.label}
+                      <ArrowRight className="h-[0.7em] w-[0.7em] shrink-0" aria-hidden="true" />
+                    </span>
+                    <span className="mt-2 block text-xl font-bold leading-snug">{s.headline}</span>
+                    <span className="mt-1 block max-w-[52ch] text-lg leading-snug text-ink-soft">
+                      {s.desc}
+                    </span>
+                  </Link>
+                </li>
               </RevealItem>
-            )
-          })}
+            ))}
+          </ul>
         </RevealGroup>
       </div>
     </section>

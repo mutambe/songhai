@@ -13,7 +13,7 @@ const GRADIENT_PRESETS = [
   { label: 'Teal → Dourado', value: 'from-[#2f6e62] via-[#c89b3c] to-[#1b3a4b]' },
 ]
 
-// widget: elemento interativo (calculadora, teste, etc.). O editor não o
+// widget: elemento interactivo (calculadora, teste, etc.). O editor não o
 // altera, mas tem de o devolver ao gravar, senão perdia-se.
 type SectionDraft = { heading: string; body: string; widget?: ArticleWidget }
 
@@ -152,7 +152,7 @@ export function BlogAdminPanel({ initialPosts }: { initialPosts: BlogPost[] }) {
   }
 
   const handleDelete = async (post: BlogPost) => {
-    if (!window.confirm(`Apagar o artigo "${post.title}"? Esta ação não pode ser desfeita.`)) return
+    if (!window.confirm(`Apagar o artigo "${post.title}"? Esta acção não pode ser desfeita.`)) return
     try {
       const res = await fetch(`/api/admin/blog/posts/${post.slug}`, { method: 'DELETE' })
       const json = await res.json().catch(() => null)
@@ -223,7 +223,7 @@ export function BlogAdminPanel({ initialPosts }: { initialPosts: BlogPost[] }) {
       <button
         type="button"
         onClick={startCreate}
-        className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:shadow-lg"
+        className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors"
       >
         <Plus className="h-4 w-4" />
         Novo artigo
@@ -517,7 +517,7 @@ function BlogEditor({
             onChange={(e) => update('featured', e.target.checked)}
             className="h-4 w-4 rounded border-line accent-teal"
           />
-          Artigo em destaque (substitui o destaque atual)
+          Artigo em destaque (substitui o destaque actual)
         </label>
 
         <Field label="Introdução (primeiro parágrafo, em destaque)">
@@ -535,7 +535,7 @@ function BlogEditor({
             {draft.sections.map((section, i) => (
               <div key={i} className="rounded-2xl border border-line bg-sand/40 p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-xs font-medium uppercase tracking-wider text-ink-soft">
+                  <span className="text-sm font-semibold text-ink-soft">
                     Secção {i + 1}
                   </span>
                   {draft.sections.length > 1 && (
@@ -561,7 +561,7 @@ function BlogEditor({
                 {section.widget && (
                   <div className="mt-3 flex items-center justify-between gap-3 rounded-xl border border-dashed border-teal/50 bg-teal/5 px-4 py-3">
                     <p className="text-sm text-foreground">
-                      <span className="font-semibold">Elemento interativo:</span>{' '}
+                      <span className="font-semibold">Elemento interactivo:</span>{' '}
                       {WIDGET_LABELS[section.widget.type]}
                       <span className="block text-xs text-ink-soft">
                         Aparece no fim desta secção e é mantido ao gravar.
@@ -599,7 +599,7 @@ function BlogEditor({
         </Field>
 
         <div className="grid gap-3 rounded-2xl border border-line bg-sand/40 p-4">
-          <p className="text-xs font-medium uppercase tracking-wider text-ink-soft">
+          <p className="text-sm font-semibold text-ink-soft">
             Caixa de destaque (opcional)
           </p>
           <input
@@ -623,7 +623,7 @@ function BlogEditor({
           type="button"
           onClick={onSave}
           disabled={saving}
-          className="rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-50"
         >
           {saving ? 'A guardar...' : 'Guardar'}
         </button>

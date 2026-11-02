@@ -23,6 +23,11 @@ apps/portal/public/previews/*
 !apps/portal/public/previews/.gitkeep
 apps/site/data/subscribers.json
 
+# material de publicidade (vídeos, cartazes, legendas) — não faz parte do projeto
+docs/videos/
+docs/cartazes/
+docs/exemplo cartazes/
+
 # misc
 .DS_Store
 *.tsbuildinfo
@@ -33,3 +38,6 @@ next-env.d.ts
 
 # Histórico de permissões de sessão do Claude Code — pode conter segredos de teste
 .claude/
+
+# Capturas e relatórios do inspector de design (locais)
+.taste-skill/

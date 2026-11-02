@@ -28,7 +28,7 @@ const FAQS = [
   },
   {
     q: 'Como é o suporte depois de implementar?',
-    a: 'Suporte 24/7 está incluído. Problemas técnicos: resposta em menos de 4 horas. Revisão mensal com otimizações.',
+    a: 'O suporte está incluído em todos os planos. O Simples tem resposta em horário laboral e o Médio tem resposta prioritária em menos de 2 horas. O Avançado e o Enterprise têm suporte VIP, com resposta em menos de 1 hora e cobertura 24/7 para incidentes críticos.',
   },
   {
     q: 'E se mudar de ideia após 1 mês?',
@@ -52,7 +52,7 @@ export function DiagnosticoFaq() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <div className="divide-y divide-line border-y border-line">
+    <div className="space-y-2">
       {FAQS.map((faq, i) => {
         const isOpen = open === i
         return (
@@ -63,11 +63,11 @@ export function DiagnosticoFaq() {
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             >
-              <span className="font-serif text-lg font-medium text-foreground">
+              <span className="text-lg font-medium text-foreground">
                 {faq.q}
               </span>
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-indigo-deep transition-transform duration-300 ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground/10 text-foreground transition-transform duration-300 ${
                   isOpen ? 'rotate-45 bg-gold' : ''
                 }`}
               >

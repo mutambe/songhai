@@ -4,6 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // O endereço antigo (grafia do Acordo de 1990) passa a /sectores, sem perder links.
+  async redirects() {
+    return [{ source: '/setores/:path*', destination: '/sectores/:path*', permanent: true }]
+  },
   async headers() {
     return [
       {

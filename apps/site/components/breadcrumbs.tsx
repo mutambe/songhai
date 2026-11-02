@@ -12,7 +12,7 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    // Âncoras (ex.: "/#setores") não são páginas — ficam só no caminho visível.
+    // Âncoras (ex.: "/#sectores") não são páginas — ficam só no caminho visível.
     itemListElement: trail.filter((c) => !c.href.includes('#')).map((c, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -25,7 +25,7 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
     <nav aria-label="Caminho" className={className}>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
       />
       <ol className="flex flex-wrap items-center gap-1.5 text-sm text-ink-soft">

@@ -57,20 +57,20 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="space-y-4 rounded-2xl border border-teal/30 bg-teal/5 px-6 py-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-teal/20">
+      <div className="space-y-4 bg-teal/10 px-6 py-8 text-center">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center bg-teal/20">
           <Check className="h-6 w-6 text-teal" />
         </div>
         <h3 className="font-semibold text-foreground">
           Mensagem enviada com sucesso!
         </h3>
-        <p className="text-sm text-ink-soft">
+        <p className="text-base text-ink-soft">
           Obrigado pelo seu contacto. Entraremos em contacto num prazo de 24
           horas.
         </p>
         <button
           onClick={() => setSubmitted(false)}
-          className="mt-4 text-sm text-teal hover:text-teal/80 transition-colors"
+          className="mt-4 text-base text-teal hover:text-teal/80 transition-colors"
         >
           Enviar outra mensagem
         </button>
@@ -81,14 +81,14 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {error && (
-        <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+        <div className="flex items-start gap-3 border border-red-200 bg-red-50 px-4 py-3">
           <AlertCircle className="mt-0.5 h-5 w-5 text-red-600 shrink-0" />
-          <p className="text-sm text-red-800">{error}</p>
+          <p className="text-base text-red-800">{error}</p>
         </div>
       )}
 
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+        <label htmlFor="name" className="block text-base font-medium text-foreground mb-2">
           Nome *
         </label>
         <input
@@ -99,12 +99,12 @@ export function ContactForm() {
           onChange={handleChange}
           placeholder="Seu nome completo"
           required
-          className="w-full rounded-lg border border-line bg-sand px-4 py-3 text-sm text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors"
+          className="w-full bg-foreground/[0.05] px-4 py-3 text-base text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+        <label htmlFor="email" className="block text-base font-medium text-foreground mb-2">
           Email *
         </label>
         <input
@@ -115,12 +115,12 @@ export function ContactForm() {
           onChange={handleChange}
           placeholder="seu.email@empresa.com"
           required
-          className="w-full rounded-lg border border-line bg-sand px-4 py-3 text-sm text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors"
+          className="w-full bg-foreground/[0.05] px-4 py-3 text-base text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors"
         />
       </div>
 
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+        <label htmlFor="company" className="block text-base font-medium text-foreground mb-2">
           Empresa
         </label>
         <input
@@ -130,12 +130,12 @@ export function ContactForm() {
           value={formData.company}
           onChange={handleChange}
           placeholder="Nome da sua empresa (opcional)"
-          className="w-full rounded-lg border border-line bg-sand px-4 py-3 text-sm text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors"
+          className="w-full bg-foreground/[0.05] px-4 py-3 text-base text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+        <label htmlFor="message" className="block text-base font-medium text-foreground mb-2">
           Mensagem *
         </label>
         <textarea
@@ -146,19 +146,19 @@ export function ContactForm() {
           placeholder="Descreva brevemente o seu desafio ou interesse em IA e automação..."
           required
           rows={5}
-          className="w-full rounded-lg border border-line bg-sand px-4 py-3 text-sm text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors resize-none"
+          className="w-full bg-foreground/[0.05] px-4 py-3 text-base text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? 'A enviar...' : 'Enviar mensagem'}
       </button>
 
-      <p className="text-xs text-ink-soft text-center">
+      <p className="text-base text-ink-soft text-center">
         Respeitamos a sua privacidade. Leia a nossa{' '}
         <a href="/privacidade" className="underline hover:text-ink transition-colors">
           Política de Privacidade

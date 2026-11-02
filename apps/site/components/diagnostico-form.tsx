@@ -13,7 +13,7 @@ const CHALLENGES = [
   'Entrada de dados (de email para sistema)',
   'Qualificação de leads (triagem manual)',
   'Confirmações de reuniões / follow-ups',
-  'Processamento de pedidos / faturas',
+  'Processamento de pedidos / facturas',
   'Relatórios (compilar dados, mandar por email)',
 ]
 
@@ -39,7 +39,7 @@ function isValidPhone(value: string) {
 const TEAM_SIZES = ['3-10', '10-20', '20-50', '50+']
 
 const inputClasses =
-  'w-full rounded-lg border border-line bg-sand px-4 py-3 text-sm text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors'
+  'w-full bg-foreground/[0.05] px-4 py-3 text-base text-foreground outline-none focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-gold transition-colors'
 
 export function DiagnosticoForm() {
   const [formData, setFormData] = useState({
@@ -58,10 +58,11 @@ export function DiagnosticoForm() {
   const [error, setError] = useState('')
   const started = useRef(false)
 
-  // Vindo de um cartão de setor (/diagnostico?setor=...), pré-seleciona-o
+  // Vindo de um cartão de setor (/diagnostico?setor=...), pré-selecciona-o
   useEffect(() => {
     const setor = new URLSearchParams(window.location.search).get('setor')
     if (setor && SECTORS.includes(setor)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFormData((prev) => ({ ...prev, sector: setor }))
     }
   }, [])
@@ -134,12 +135,12 @@ export function DiagnosticoForm() {
 
   if (submitted) {
     return (
-      <div className="space-y-4 rounded-2xl border border-teal/30 bg-teal/5 px-6 py-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-teal/20">
+      <div className="space-y-4 bg-teal/10 px-6 py-8 text-center">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center bg-teal/20">
           <Check className="h-6 w-6 text-teal" />
         </div>
         <h3 className="font-semibold text-foreground">Pedido recebido!</h3>
-        <p className="text-sm text-ink-soft">
+        <p className="text-base text-ink-soft">
           Recebeu a sua confirmação por email. Agora escolha o melhor horário
           para a conversa de 30 minutos.
         </p>
@@ -147,14 +148,14 @@ export function DiagnosticoForm() {
           href={CALENDLY_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-all hover:shadow-lg hover:shadow-gold/30"
+          className="mt-2 inline-flex items-center justify-center gap-2 bg-gold px-6 py-3 text-base font-medium text-on-gold transition-colors"
         >
           <CalendarClock className="h-4 w-4" />
           Escolher horário no calendário
         </a>
         <button
           onClick={() => setSubmitted(false)}
-          className="mt-2 block text-sm text-teal hover:text-teal/80 transition-colors"
+          className="mt-2 block text-base text-teal hover:text-teal/80 transition-colors"
         >
           Agendar outro diagnóstico
         </button>
@@ -165,14 +166,14 @@ export function DiagnosticoForm() {
   return (
     <form onSubmit={handleSubmit} onFocus={markStarted} className="space-y-5">
       {error && (
-        <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+        <div className="flex items-start gap-3 border border-red-200 bg-red-50 px-4 py-3">
           <AlertCircle className="mt-0.5 h-5 w-5 text-red-600 shrink-0" />
-          <p className="text-sm text-red-800">{error}</p>
+          <p className="text-base text-red-800">{error}</p>
         </div>
       )}
 
       <div>
-        <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
+        <label htmlFor="name" className="mb-2 block text-base font-medium text-foreground">
           Nome completo *
         </label>
         <input
@@ -188,7 +189,7 @@ export function DiagnosticoForm() {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
+        <label htmlFor="email" className="mb-2 block text-base font-medium text-foreground">
           Email de trabalho *
         </label>
         <input
@@ -204,7 +205,7 @@ export function DiagnosticoForm() {
       </div>
 
       <div>
-        <label htmlFor="whatsapp" className="mb-2 block text-sm font-medium text-foreground">
+        <label htmlFor="whatsapp" className="mb-2 block text-base font-medium text-foreground">
           WhatsApp *
         </label>
         <input
@@ -219,13 +220,13 @@ export function DiagnosticoForm() {
           required
           className={inputClasses}
         />
-        <p className="mt-1.5 text-xs text-ink-soft">
+        <p className="mt-1.5 text-base text-ink-soft">
           Confirmamos a conversa por WhatsApp — é mais rápido que o email.
         </p>
       </div>
 
       <div>
-        <label htmlFor="company" className="mb-2 block text-sm font-medium text-foreground">
+        <label htmlFor="company" className="mb-2 block text-base font-medium text-foreground">
           Nome da empresa *
         </label>
         <input
@@ -241,14 +242,14 @@ export function DiagnosticoForm() {
       </div>
 
       <fieldset>
-        <legend className="mb-2 block text-sm font-medium text-foreground">
+        <legend className="mb-2 block text-base font-medium text-foreground">
           Qual é o seu maior desafio com tarefas manuais?
         </legend>
         <div className="space-y-2">
           {CHALLENGES.map((c) => (
             <label
               key={c}
-              className="flex cursor-pointer items-start gap-2.5 text-sm text-ink-soft"
+              className="flex cursor-pointer items-start gap-2.5 text-base text-ink-soft"
             >
               <input
                 type="checkbox"
@@ -271,8 +272,8 @@ export function DiagnosticoForm() {
       </fieldset>
 
       <div>
-        <label htmlFor="sector" className="mb-2 block text-sm font-medium text-foreground">
-          Qual é o seu setor?
+        <label htmlFor="sector" className="mb-2 block text-base font-medium text-foreground">
+          Qual é o seu sector?
         </label>
         <select
           id="sector"
@@ -281,7 +282,7 @@ export function DiagnosticoForm() {
           onChange={handleChange}
           className={inputClasses}
         >
-          <option value="">Selecione um setor</option>
+          <option value="">Seleccione um sector</option>
           {SECTORS.map((s) => (
             <option key={s} value={s}>
               {s}
@@ -291,7 +292,7 @@ export function DiagnosticoForm() {
       </div>
 
       <div>
-        <label htmlFor="teamSize" className="mb-2 block text-sm font-medium text-foreground">
+        <label htmlFor="teamSize" className="mb-2 block text-base font-medium text-foreground">
           Quantas pessoas na vossa equipa?
         </label>
         <select
@@ -301,7 +302,7 @@ export function DiagnosticoForm() {
           onChange={handleChange}
           className={inputClasses}
         >
-          <option value="">Selecione</option>
+          <option value="">Seleccione</option>
           {TEAM_SIZES.map((t) => (
             <option key={t} value={t}>
               {t}
@@ -313,7 +314,7 @@ export function DiagnosticoForm() {
       <div>
         <label
           htmlFor="preferredTime"
-          className="mb-2 block text-sm font-medium text-foreground"
+          className="mb-2 block text-base font-medium text-foreground"
         >
           Qual é o melhor horário para conectarmos? (opcional)
         </label>
@@ -331,12 +332,12 @@ export function DiagnosticoForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-all hover:shadow-lg hover:shadow-gold/30 disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full bg-gold px-6 py-3 text-base font-medium text-on-gold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
       >
         {loading ? 'A enviar...' : 'Agendar meu diagnóstico grátis'}
       </button>
 
-      <p className="text-center text-xs text-ink-soft">
+      <p className="text-center text-base text-ink-soft">
         Respeitamos a sua privacidade. Não vamos mandar spam. Leia a nossa{' '}
         <a href="/privacidade" className="underline transition-colors hover:text-ink">
           Política de Privacidade

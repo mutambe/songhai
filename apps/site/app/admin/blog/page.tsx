@@ -17,7 +17,7 @@ export default async function BlogAdminPage() {
   const posts = await listPosts()
 
   return (
-    <main className="mx-auto min-h-screen max-w-5xl px-5 py-10 lg:px-8 lg:py-14">
+    <main className="mx-auto min-h-svh max-w-5xl px-5 py-10 lg:px-8 lg:py-14">
       <div className="mb-8 flex items-center justify-between">
         <div>
           <p className="text-sm font-medium uppercase tracking-wider text-teal">

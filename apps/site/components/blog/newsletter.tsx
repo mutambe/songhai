@@ -41,7 +41,7 @@ export function Newsletter() {
             Receba insights sobre IA e automação
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-pretty leading-relaxed text-ink-soft">
-            Artigos práticos sobre como poupar tempo com IA, diretamente na sua
+            Artigos práticos sobre como poupar tempo com IA, directamente na sua
             caixa de entrada. Sem spam.
           </p>
           {error && <p className="mt-4 text-sm text-red-500">{error}</p>}

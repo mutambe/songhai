@@ -12,6 +12,8 @@ export function LogoutButton() {
     try {
       await fetch('/api/admin/blog/logout', { method: 'POST' })
     } finally {
+      // Destino noutra aplicação (portal), não numa rota deste site.
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
       window.location.href = `${PORTAL_URL}/portal`
     }
   }

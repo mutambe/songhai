@@ -6,6 +6,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { ContactForm } from '@/components/contact-form'
 import { Reveal } from '@/components/motion/reveal'
+import { PillButton } from '@/components/pill-button'
 
 const TITLE = 'Contactar — Agência de IA em Maputo'
 const DESCRIPTION =
@@ -24,37 +25,39 @@ export default function ContactPage() {
       <main>
         <section className="px-5 py-20 lg:px-8">
           <Reveal hero className="mx-auto max-w-4xl">
-            <div className="space-y-3 text-center">
-              <p className="text-sm font-medium uppercase tracking-wider text-teal">
-                Contactar
-              </p>
-              <h1 className="font-serif text-4xl font-semibold text-foreground sm:text-5xl">
-                Vamos conversar sobre a sua estratégia de IA
+            <div className="space-y-6">
+              <h1 className="poster max-w-[20ch] text-[clamp(1.75rem,4.8vw,5rem)]">
+                Vamos conversar sobre IA
               </h1>
-              <p className="mx-auto max-w-2xl text-pretty leading-relaxed text-ink-soft">
+              <p className="max-w-[52ch] text-pretty text-xl leading-snug text-foreground">
                 Preencha o formulário abaixo e entraremos em contacto num prazo de
                 24 horas para discutir como podemos ajudar a sua empresa a economizar
                 tempo com automação de IA.
               </p>
+              <div className="pt-2">
+                <PillButton href="#formulario" variant="gold">
+                  Ir para o formulário
+                </PillButton>
+              </div>
             </div>
           </Reveal>
         </section>
 
         <section className="px-5 pb-12 lg:px-8">
           <Reveal className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-line bg-paper p-5">
+            <div className="bg-foreground/[0.05] p-5">
               <MapPin className="h-5 w-5 text-teal" aria-hidden="true" />
-              <p className="mt-3 text-sm font-semibold text-foreground">Morada</p>
-              <address className="mt-1 text-sm not-italic leading-relaxed text-ink-soft">
+              <p className="mt-3 text-base font-semibold text-foreground">Morada</p>
+              <address className="mt-1 text-base not-italic leading-relaxed text-ink-soft">
                 {BUSINESS.streetAddress}
                 <br />
                 {BUSINESS.locality}, {BUSINESS.country}
               </address>
             </div>
-            <div className="rounded-2xl border border-line bg-paper p-5">
+            <div className="bg-foreground/[0.05] p-5">
               <Clock className="h-5 w-5 text-teal" aria-hidden="true" />
-              <p className="mt-3 text-sm font-semibold text-foreground">Horário</p>
-              <ul className="mt-1 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-3 text-base font-semibold text-foreground">Horário</p>
+              <ul className="mt-1 text-base leading-relaxed text-ink-soft">
                 {OPENING_HOURS.map((h) => (
                   <li key={h.label}>
                     {h.label}: {h.display}
@@ -62,10 +65,10 @@ export default function ContactPage() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl border border-line bg-paper p-5">
+            <div className="bg-foreground/[0.05] p-5">
               <MessageCircle className="h-5 w-5 text-teal" aria-hidden="true" />
-              <p className="mt-3 text-sm font-semibold text-foreground">Contactos</p>
-              <ul className="mt-1 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-3 text-base font-semibold text-foreground">Contactos</p>
+              <ul className="mt-1 text-base leading-relaxed text-ink-soft">
                 <li>
                   <a
                     href="https://wa.me/258848986002"
@@ -86,7 +89,7 @@ export default function ContactPage() {
           </Reveal>
         </section>
 
-        <section className="px-5 pb-24 lg:px-8">
+        <section id="formulario" className="scroll-mt-20 px-5 pb-24 lg:px-8">
           <Reveal className="mx-auto max-w-2xl">
             <ContactForm />
           </Reveal>

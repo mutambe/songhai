@@ -3,7 +3,7 @@ import { AUTHOR } from './shared'
 
 export const agenteWhatsapp: BlogPost = {
   slug: 'agente-ia-whatsapp-o-que-faz-e-quando-compensa',
-  title: 'Agente de IA no WhatsApp: o que faz, o que não faz e quando compensa',
+  title: 'Agente de IA no WhatsApp: quando compensa',
   excerpt:
     'Como funciona por dentro um agente de IA no WhatsApp, onde ajuda de verdade, onde falha e como decidir se é a altura certa para o seu negócio.',
   category: 'Agentes de IA',
@@ -34,8 +34,8 @@ export const agenteWhatsapp: BlogPost = {
         heading: 'Como funciona por dentro',
         body: `<p>Há quatro peças, e todas são configuradas por quem implementa o agente, não pelo cliente final:</p>
 <ol>
-<li><strong>A ligação ao número.</strong> Pode ser feita pela API oficial da Meta (a via mais estável para volumes grandes) ou por ligação direta ao número. A escolha mexe no custo e no risco de bloqueio, por isso decide-se no diagnóstico.</li>
-<li><strong>A base de conhecimento.</strong> É o que o agente sabe: tabela de preços, perguntas frequentes, políticas de troca, zonas de entrega, horários. Se esta base estiver errada ou desatualizada, o agente responde errado com toda a confiança. É a peça mais importante e a mais esquecida.</li>
+<li><strong>A ligação ao número.</strong> Pode ser feita pela API oficial da Meta (a via mais estável para volumes grandes) ou por ligação directa ao número. A escolha mexe no custo e no risco de bloqueio, por isso decide-se no diagnóstico.</li>
+<li><strong>A base de conhecimento.</strong> É o que o agente sabe: tabela de preços, perguntas frequentes, políticas de troca, zonas de entrega, horários. Se esta base estiver errada ou desactualizada, o agente responde errado com toda a confiança. É a peça mais importante e a mais esquecida.</li>
 <li><strong>As regras de passagem.</strong> Em que situações o agente para e chama uma pessoa: reclamação, pedido de desconto acima de um valor, cliente que pede para falar com alguém, pergunta que ele não sabe responder.</li>
 <li><strong>O registo.</strong> Cada conversa fica guardada, com o que o agente respondeu e porquê. É daqui que saem as correções da semana seguinte.</li>
 </ol>
@@ -64,7 +64,7 @@ export const agenteWhatsapp: BlogPost = {
         heading: 'Onde falha, ou onde não deve ser usado',
         body: `<p>Esta parte costuma ficar fora das apresentações comerciais. Não devia.</p>
 <ul>
-<li><strong>Informação desatualizada.</strong> Se o preço do cimento mudou ontem e ninguém atualizou a base de conhecimento, o agente vai dar o preço antigo a toda a gente. Alguém da empresa tem de ser dono desta informação.</li>
+<li><strong>Informação desactualizada.</strong> Se o preço do cimento mudou ontem e ninguém actualizou a base de conhecimento, o agente vai dar o preço antigo a toda a gente. Alguém da empresa tem de ser dono desta informação.</li>
 <li><strong>Negociação e reclamações sensíveis.</strong> Um cliente zangado com uma entrega atrasada precisa de uma pessoa, não de uma resposta bem escrita. O agente deve reconhecer o tom e passar a conversa.</li>
 <li><strong>Línguas nacionais e mistura de línguas.</strong> O agente entende bem português e inglês, e lida razoavelmente com mistura e calão. Conversas inteiras em changana, ronga ou emakhuwa ainda exigem testes caso a caso antes de prometer o que quer que seja.</li>
 <li><strong>Notas de voz.</strong> Muitos clientes preferem gravar. Nem todas as configurações tratam bem notas de voz longas, por isso confirme este ponto no piloto.</li>
@@ -83,7 +83,7 @@ export const agenteWhatsapp: BlogPost = {
           ],
           cons: [
             { title: 'Mensalidade fixa', detail: 'Paga o mesmo em meses fracos. Com pouco volume, o custo pode não se justificar.' },
-            { title: 'Exige informação organizada', detail: 'Preços, regras e stock têm de estar escritos e atualizados por alguém da empresa.' },
+            { title: 'Exige informação organizada', detail: 'Preços, regras e stock têm de estar escritos e actualizados por alguém da empresa.' },
             { title: 'Não substitui o contacto humano', detail: 'Reclamações, negociação e clientes de longa data continuam a precisar de uma pessoa.' },
             { title: 'Semanas de afinação', detail: 'No primeiro mês há respostas a corrigir. É normal, mas exige atenção da equipa.' },
             { title: 'Alguns clientes desconfiam', detail: 'Há quem prefira saber que fala com uma pessoa. A transparência resolve a maioria dos casos.' },
@@ -130,7 +130,7 @@ export const agenteWhatsapp: BlogPost = {
 <ol>
 <li><strong>Diagnóstico gratuito de 30 minutos.</strong> Olhamos para as suas conversas reais e dizemos se compensa, e com que plano. Às vezes a resposta é que não compensa, e dizemo-lo.</li>
 <li><strong>Preparação.</strong> Precisamos das 30 perguntas que mais recebe, da tabela de preços, das regras de entrega e de pagamento, e do nome de quem recebe as conversas passadas pelo agente.</li>
-<li><strong>Piloto de um mês.</strong> Setup gratuito e 50% de desconto no primeiro mês. Um agente simples fica pronto em 5 a 7 dias úteis.</li>
+<li><strong>Piloto de um mês.</strong> Cancelamento sem penalidade se não fizer sentido. Um agente simples fica pronto em 5 a 7 dias úteis.</li>
 <li><strong>Medição.</strong> No fim do mês olhamos para três números: tempo até à primeira resposta, percentagem de conversas resolvidas sem ninguém da equipa e conversas fora de horas que acabaram em venda.</li>
 </ol>
 <p>Se os números não convencerem, cancela sem penalidade. Os preços de cada plano estão em <a href="/precos">songhai.cc/precos</a>, em meticais e sem letras pequenas.</p>

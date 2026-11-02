@@ -5,7 +5,7 @@ export const agenciasGlobais: BlogPost = {
   slug: 'agencias-globais-mocambique-falham',
   title: 'Porquê agências globais não entendem Moçambique',
   excerpt:
-    'Língua, infraestrutura, preços em dólares e suporte noutro fuso: onde os projetos de IA de agências internacionais costumam tropeçar em Moçambique, e quando uma agência global é mesmo a melhor escolha.',
+    'Língua, infra-estrutura, preços em dólares e suporte noutro fuso: onde os projectos de IA de agências internacionais costumam tropeçar em Moçambique, e quando uma agência global é mesmo a melhor escolha.',
   category: 'Guias',
   tags: ['mercado local', 'agências', 'moçambique'],
   status: 'published',
@@ -18,22 +18,22 @@ export const agenciasGlobais: BlogPost = {
   icon: 'map-pin',
   content: {
     lead:
-      'Ouvimos a mesma história várias vezes. Uma empresa contrata uma agência internacional, paga em dólares, e meses depois o projeto está parado: o agente responde num português que soa estranho aos clientes, a ligação aos sistemas locais não avança e o suporte demora dias. Não é falta de competência dessas agências. É que foram feitas para outros mercados.',
+      'Ouvimos a mesma história várias vezes. Uma empresa contrata uma agência internacional, paga em dólares, e meses depois o projecto está parado: o agente responde num português que soa estranho aos clientes, a ligação aos sistemas locais não avança e o suporte demora dias. Não é falta de competência dessas agências. É que foram feitas para outros mercados.',
     sections: [
       {
         heading: 'A língua não é só "português"',
-        body: `<p>Uma agência que "fala português" costuma configurar os agentes em português do Brasil ou num português genérico. Para um cliente em Maputo, a diferença nota-se logo: "celular" em vez de telemóvel, "você" a cada frase, "time" em vez de equipa, "contato" em vez de contacto. Parece pouco, mas um agente que soa estrangeiro gera desconfiança, e a confiança é tudo numa conversa de venda.</p>
+        body: `<p>Uma agência que "fala português" costuma configurar os agentes em português do Brasil ou num português genérico. Para um cliente em Maputo, a diferença nota-se logo: "celular" em vez de telemóvel, "você" a cada frase, "time" em vez de equipa, "contacto" em vez de contacto. Parece pouco, mas um agente que soa estrangeiro gera desconfiança, e a confiança é tudo numa conversa de venda.</p>
 <p>Há também o que não está em nenhum dicionário: os nomes dos bairros, as abreviaturas que os clientes usam no WhatsApp, a mistura com palavras de línguas nacionais, a forma de tratar um cliente mais velho. Um agente configurado em Moçambique, com conversas reais de clientes moçambicanos, aprende isto. Um agente configurado à distância, não.</p>`,
       },
       {
-        heading: 'A infraestrutura local é diferente',
-        body: `<p>Muitas PME moçambicanas gerem o negócio com folhas de Excel, programas de faturação locais ou sistemas antigos que ninguém quer substituir. A internet cai, a energia falha, e o WhatsApp é o sistema de comunicação principal.</p>
-<p>Uma agência habituada a ligar ferramentas internacionais de última geração tende a pedir que a empresa mude primeiro os seus sistemas. O projeto fica dependente de uma migração que ninguém tinha orçamentado.</p>
-<p>A abordagem que funciona é a contrária: trabalhar com o que a empresa já tem. Se o stock está numa folha de Excel, o agente lê a folha. Se o programa de faturação não tem API, procura-se outra forma de trocar os dados. A perfeição técnica pode esperar; o cliente que escreve hoje no WhatsApp não.</p>`,
+        heading: 'A infra-estrutura local é diferente',
+        body: `<p>Muitas PME moçambicanas gerem o negócio com folhas de Excel, programas de facturação locais ou sistemas antigos que ninguém quer substituir. A internet cai, a energia falha, e o WhatsApp é o sistema de comunicação principal.</p>
+<p>Uma agência habituada a ligar ferramentas internacionais de última geração tende a pedir que a empresa mude primeiro os seus sistemas. O projecto fica dependente de uma migração que ninguém tinha orçamentado.</p>
+<p>A abordagem que funciona é a contrária: trabalhar com o que a empresa já tem. Se o stock está numa folha de Excel, o agente lê a folha. Se o programa de facturação não tem API, procura-se outra forma de trocar os dados. A perfeição técnica pode esperar; o cliente que escreve hoje no WhatsApp não.</p>`,
       },
       {
         heading: 'Preço em dólares, não em meticais',
-        body: `<p>Um orçamento em dólares parece razoável até ser convertido. Somam-se as variações do câmbio, as comissões das transferências internacionais e, muitas vezes, licenças de software cobradas por utilizador, também em dólares. Para uma PME, o total pode ultrapassar o orçamento anual de tecnologia antes de o projeto arrancar.</p>
+        body: `<p>Um orçamento em dólares parece razoável até ser convertido. Somam-se as variações do câmbio, as comissões das transferências internacionais e, muitas vezes, licenças de software cobradas por utilizador, também em dólares. Para uma PME, o total pode ultrapassar o orçamento anual de tecnologia antes de o projecto arrancar.</p>
 <p>Preços definidos em meticais desde o início, com o setup e a mensalidade separados, permitem planear. É por isso que os nossos estão publicados em <a href="/precos">songhai.cc/precos</a>, sem precisar de pedir orçamento.</p>`,
       },
       {
@@ -43,21 +43,21 @@ export const agenciasGlobais: BlogPost = {
       },
       {
         heading: 'Global ou local: uma comparação honesta',
-        body: `<p>Seria pouco sério dizer que uma agência local é sempre a melhor escolha. Há casos em que não é. Marque o que pesa mais no seu projeto:</p>`,
+        body: `<p>Seria pouco sério dizer que uma agência local é sempre a melhor escolha. Há casos em que não é. Marque o que pesa mais no seu projecto:</p>`,
         widget: {
           type: 'pros-cons',
-          question: 'Para o seu projeto, faz mais sentido uma agência local?',
+          question: 'Para o seu projecto, faz mais sentido uma agência local?',
           pros: [
             { title: 'Português de Moçambique', detail: 'Agentes configurados com a forma como os seus clientes realmente escrevem.' },
             { title: 'Preços em meticais', detail: 'Sem surpresas de câmbio nem comissões de transferências internacionais.' },
             { title: 'Mesmo fuso e presença física', detail: 'Suporte em horário de Maputo e possibilidade de reuniões presenciais.' },
-            { title: 'Conhece os sistemas locais', detail: 'M-Pesa, e-Mola, programas de faturação locais, Excel, NUIT.' },
-            { title: 'Projetos à escala de uma PME', detail: 'Começar pequeno, com um piloto de um mês, em vez de um projeto de muitos meses.' },
+            { title: 'Conhece os sistemas locais', detail: 'M-Pesa, e-Mola, programas de facturação locais, Excel, NUIT.' },
+            { title: 'Projectos à escala de uma PME', detail: 'Começar pequeno, com um piloto de um mês, em vez de um projecto de muitos meses.' },
           ],
           cons: [
             { title: 'Equipas mais pequenas', detail: 'Uma agência local tem menos pessoas do que uma multinacional.' },
-            { title: 'Projetos multinacionais', detail: 'Se a sua empresa opera em vários países ao mesmo tempo, uma agência global pode coordenar melhor.' },
-            { title: 'Ferramentas proprietárias', detail: 'Algumas agências globais têm plataformas próprias muito maduras para setores específicos.' },
+            { title: 'Projectos multinacionais', detail: 'Se a sua empresa opera em vários países ao mesmo tempo, uma agência global pode coordenar melhor.' },
+            { title: 'Ferramentas proprietárias', detail: 'Algumas agências globais têm plataformas próprias muito maduras para sectores específicos.' },
             { title: 'Exigências de grupo', detail: 'Filiais de grupos internacionais às vezes têm de usar os fornecedores escolhidos pela sede.' },
           ],
         },
@@ -78,7 +78,7 @@ export const agenciasGlobais: BlogPost = {
     quote: 'As agências globais não são más. Simplesmente não foram feitas para Moçambique.',
     callout: {
       title: 'O que observamos',
-      body: 'Os projetos que encontramos parados raramente falharam por causa da tecnologia. Falharam porque a solução foi desenhada para outro mercado e nunca chegou a ser adaptada ao português, aos sistemas e ao orçamento de uma empresa moçambicana.',
+      body: 'Os projectos que encontramos parados raramente falharam por causa da tecnologia. Falharam porque a solução foi desenhada para outro mercado e nunca chegou a ser adaptada ao português, aos sistemas e ao orçamento de uma empresa moçambicana.',
     },
   },
 }

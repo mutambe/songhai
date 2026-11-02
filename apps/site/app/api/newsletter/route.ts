@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     sendMail({
       to: email,
       subject: 'Subscrição confirmada — SONGHAI',
-      text: 'Obrigado por subscrever! Vai receber artigos práticos sobre IA e automação diretamente no seu e-mail.',
+      text: 'Obrigado por subscrever! Vai receber artigos práticos sobre IA e automação directamente no seu e-mail.',
     }).catch((err) => console.error('[newsletter] Falha ao enviar confirmação:', err))
   }
 

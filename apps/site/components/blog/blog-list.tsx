@@ -45,8 +45,8 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
   if (activeTag && byTag.length === 0) {
     return (
       <div className="mx-auto max-w-7xl px-5 pb-24 text-center lg:px-8">
-        <p className="text-ink-soft">Nenhum artigo com a tag "{activeTag}".</p>
-        <Link href="/blog" className="mt-3 inline-block text-sm text-teal hover:underline">
+        <p className="text-ink-soft">Nenhum artigo com a tag &ldquo;{activeTag}&rdquo;.</p>
+        <Link href="/blog" className="mt-3 inline-block text-base text-teal hover:underline">
           Ver todos os artigos
         </Link>
       </div>
@@ -61,13 +61,13 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
   return (
     <div className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
       {activeTag && (
-        <div className="mb-6 flex items-center gap-2 text-sm text-ink-soft">
+        <div className="mb-6 flex items-center gap-2 text-base text-ink-soft">
           <span>
             A filtrar por tag: <span className="font-medium text-foreground">#{activeTag}</span>
           </span>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs hover:border-ink/30 hover:text-foreground"
+            className="inline-flex items-center gap-1 bg-foreground/[0.06] px-2.5 py-1 text-base hover:bg-foreground/10 hover:text-foreground"
           >
             <X className="h-3 w-3" />
             Limpar
@@ -79,10 +79,10 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
       <Reveal>
         <Link
           href={`/blog/${featured.slug}`}
-          className="group grid overflow-hidden rounded-3xl border border-line bg-paper lg:grid-cols-2"
+          className="group grid overflow-hidden bg-foreground/[0.05] lg:grid-cols-2"
         >
           <div
-            className={`relative min-h-56 overflow-hidden bg-gradient-to-br ${featured.gradient} bg-cover bg-center p-8`}
+            className={`relative min-h-56 overflow-hidden bg-[var(--field-indigo)] bg-cover bg-center p-8`}
             style={featured.coverImage ? { backgroundImage: `url(${coverSources(featured.coverImage).card})` } : undefined}
           >
             {!featured.coverImage && (
@@ -91,28 +91,28 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
                 className="pointer-events-none absolute -bottom-6 -right-6 h-40 w-40 text-paper/25"
               />
             )}
-            <span className="relative inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
+            <span className="relative inline-flex bg-paper/90 px-3 py-1 text-base font-medium text-indigo-deep">
               {featured.category}
             </span>
           </div>
           <div className="flex flex-col justify-center p-8 lg:p-10">
-            <p className="text-xs font-medium uppercase tracking-wider text-teal">
+            <p className="text-base font-semibold text-teal">
               Em destaque
             </p>
-            <h2 className="mt-3 text-balance font-serif text-2xl font-semibold leading-tight text-foreground lg:text-3xl">
+            <h2 className="mt-3 text-balance text-3xl font-black tracking-normal leading-tight text-foreground lg:text-3xl">
               {featured.title}
             </h2>
             <p className="mt-3 text-pretty leading-relaxed text-ink-soft">
               {featured.excerpt}
             </p>
-            <div className="mt-5 flex items-center gap-4 text-sm text-ink-soft">
+            <div className="mt-5 flex items-center gap-4 text-base text-ink-soft">
               <span>{formatDate(featured.publishedAt)}</span>
               <span className="inline-flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" />
                 {featured.readingTime}
               </span>
             </div>
-            <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-indigo-deep transition-colors group-hover:text-gold">
+            <span className="mt-5 inline-flex items-center gap-1 text-base font-medium text-indigo-deep transition-colors group-hover:text-gold">
               Ler artigo
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </span>
@@ -128,7 +128,7 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
             type="button"
             onClick={() => setFilter(cat)}
             aria-pressed={filter === cat}
-            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
+            className={`border px-4 py-2 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
               filter === cat
                 ? 'border-indigo-deep bg-primary text-primary-foreground'
                 : 'border-line bg-paper text-ink-soft hover:border-ink/30'
@@ -149,10 +149,10 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
             <motion.div whileHover={{ y: -4 }} className="h-full">
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-shadow hover:shadow-xl hover:shadow-ink/5"
+                className="group flex h-full flex-col overflow-hidden bg-foreground/[0.05]"
               >
                 <div
-                  className={`relative h-40 overflow-hidden bg-gradient-to-br ${post.gradient} bg-cover bg-center p-5`}
+                  className={`relative h-40 overflow-hidden bg-[var(--field-indigo)] bg-cover bg-center p-5`}
                   style={post.coverImage ? { backgroundImage: `url(${coverSources(post.coverImage).card})` } : undefined}
                 >
                   {!post.coverImage && (
@@ -161,18 +161,18 @@ function BlogListInner({ initialPosts }: { initialPosts: BlogPost[] }) {
                       className="pointer-events-none absolute -bottom-4 -right-4 h-24 w-24 text-paper/25"
                     />
                   )}
-                  <span className="relative inline-flex rounded-full bg-paper/90 px-3 py-1 text-xs font-medium text-indigo-deep">
+                  <span className="relative inline-flex bg-paper/90 px-3 py-1 text-base font-medium text-indigo-deep">
                     {post.category}
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-balance font-serif text-lg font-semibold leading-snug text-foreground">
+                  <h3 className="text-balance text-xl font-black tracking-normal leading-snug text-foreground">
                     {post.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-2 flex-1 text-base leading-relaxed text-ink-soft">
                     {post.excerpt}
                   </p>
-                  <div className="mt-4 flex items-center gap-3 text-xs text-ink-soft">
+                  <div className="mt-4 flex items-center gap-3 text-base text-ink-soft">
                     <span>{formatDate(post.publishedAt)}</span>
                     <span className="inline-flex items-center gap-1">
                       <Clock className="h-3 w-3" />

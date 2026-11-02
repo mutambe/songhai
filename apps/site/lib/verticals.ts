@@ -14,20 +14,20 @@ export type Vertical = {
 export const VERTICALS: Record<Vertical['slug'], Vertical> = {
   agricola: {
     slug: 'agricola',
-    metaTitle: 'Agentes de IA para o Setor Agrícola',
+    metaTitle: 'Agentes de IA para o Sector Agrícola',
     metaDescription:
-      'Automatize cotações, encomendas e atualizações de stock com agentes de IA para o agronegócio em Moçambique. Preços em MZN.',
-    eyebrow: 'Setor Agrícola',
+      'Automatize cotações, encomendas e actualizações de stock com agentes de IA para o agronegócio em Moçambique. Preços em MZN.',
+    eyebrow: 'Sector Agrícola',
     headline: 'Agentes de IA para o agronegócio em Moçambique',
     intro:
-      'Entre fornecedores, compradores e época de colheita, a comunicação não pode parar. Automatizamos cotações, encomendas e atualizações de stock para a sua equipa focar na produção.',
+      'Entre fornecedores, compradores e época de colheita, a comunicação não pode parar. Automatizamos cotações, encomendas e actualizações de stock para a sua equipa focar na produção.',
     painPoints: [
       {
         title: 'Cotações perdidas',
         desc: 'Pedidos de preço chegam por WhatsApp a qualquer hora e ficam sem resposta até ao dia seguinte.',
       },
       {
-        title: 'Stock desatualizado',
+        title: 'Stock desactualizado',
         desc: 'Compradores perguntam disponibilidade de produtos que já esgotaram ou que só chegam na próxima colheita.',
       },
       {
@@ -38,7 +38,7 @@ export const VERTICALS: Record<Vertical['slug'], Vertical> = {
     useCases: [
       {
         title: 'Cotações automáticas',
-        desc: 'O agente responde preços atualizados de produtos agrícolas no WhatsApp, a qualquer hora.',
+        desc: 'O agente responde preços actualizados de produtos agrícolas no WhatsApp, a qualquer hora.',
       },
       {
         title: 'Confirmação de encomendas e entregas',
@@ -128,18 +128,18 @@ export const VERTICALS: Record<Vertical['slug'], Vertical> = {
     useCases: [
       {
         title: 'Agendamento automático',
-        desc: 'O agente marca, remarca e cancela horários diretamente na sua agenda, sem intervenção manual.',
+        desc: 'O agente marca, remarca e cancela horários directamente na sua agenda, sem intervenção manual.',
       },
       {
         title: 'Lembretes de consulta ou reunião',
-        desc: 'Mensagens automáticas reduzem faltas e libertam a receção para tarefas mais importantes.',
+        desc: 'Mensagens automáticas reduzem faltas e libertam a recepção para tarefas mais importantes.',
       },
       {
         title: 'Qualificação de clientes',
         desc: 'O agente recolhe a informação inicial antes da consulta ou reunião, poupando tempo à equipa.',
       },
       {
-        title: 'Follow-up e faturação',
+        title: 'Follow-up e facturação',
         desc: 'Confirmações, lembretes de pagamento e follow-up pós-serviço, tudo automatizado.',
       },
     ],

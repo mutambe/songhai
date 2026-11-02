@@ -19,11 +19,11 @@ export default function PrivacyPage() {
       <main>
         <section className="px-5 py-20 lg:px-8">
           <Reveal hero className="mx-auto max-w-4xl">
-            <h1 className="font-serif text-4xl font-semibold text-foreground sm:text-5xl">
+            <h1 className="poster max-w-[20ch] text-[clamp(1.75rem,4.8vw,5rem)]">
               Política de Privacidade
             </h1>
-            <p className="mt-2 text-sm text-ink-soft">
-              Última atualização: 14 de julho de 2026
+            <p className="mt-2 text-base text-ink-soft">
+              Última actualização: 14 de julho de 2026
             </p>
           </Reveal>
         </section>
@@ -36,8 +36,8 @@ export default function PrivacyPage() {
                 1. Introdução
               </h2>
               <p className="text-ink-soft leading-relaxed">
-                A SONGHAI ("nós", "nos", "nosso") respeita a privacidade dos nossos
-                utilizadores ("utilizador", "você"). Esta Política de Privacidade
+                A SONGHAI (&ldquo;nós&rdquo;, &ldquo;nos&rdquo;, &ldquo;nosso&rdquo;) respeita a privacidade dos nossos
+                utilizadores (&ldquo;utilizador&rdquo;, &ldquo;você&rdquo;). Esta Política de Privacidade
                 explica como recolhemos, utilizamos, divulgamos e salvaguardamos as
                 suas informações quando visita o nosso website e utiliza os nossos
                 serviços.
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
             {/* Data Protection */}
             <div className="space-y-3">
               <h2 className="font-semibold text-foreground text-lg">
-                4. Proteção de Dados
+                4. Protecção de Dados
               </h2>
               <p className="text-ink-soft leading-relaxed">
                 Implementamos medidas técnicas e organizacionais apropriadas para
@@ -116,7 +116,7 @@ export default function PrivacyPage() {
                 5. Os Seus Direitos
               </h2>
               <p className="text-ink-soft leading-relaxed">
-                Nos termos da legislação moçambicana aplicável à proteção de dados
+                Nos termos da legislação moçambicana aplicável à protecção de dados
                 pessoais, você tem direito a:
               </p>
               <ul className="space-y-2 text-ink-soft leading-relaxed list-disc list-inside">
@@ -182,12 +182,12 @@ export default function PrivacyPage() {
             </div>
 
             {/* Changes */}
-            <div className="space-y-3 border-t border-line pt-8">
-              <p className="text-xs text-ink-soft">
-                Esta Política de Privacidade pode ser atualizada ocasionalmente.
+            <div className="space-y-3 pt-8">
+              <p className="text-base text-ink-soft">
+                Esta Política de Privacidade pode ser actualizada ocasionalmente.
                 Qualquer alteração será publicada nesta página com a data de
-                atualização. O uso continuado do website após alterações constitui
-                aceitação da Política de Privacidade atualizada.
+                actualização. O uso continuado do website após alterações constitui
+                aceitação da Política de Privacidade actualizada.
               </p>
             </div>
           </Reveal>

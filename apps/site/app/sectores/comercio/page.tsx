@@ -8,7 +8,7 @@ const v = VERTICALS.comercio
 export const metadata: Metadata = pageMetadata({
   title: v.metaTitle,
   description: v.metaDescription,
-  path: '/setores/comercio',
+  path: '/sectores/comercio',
 })
 
 export default function ComercioPage() {

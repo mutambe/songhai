@@ -11,7 +11,7 @@ function applyTheme(theme: 'light' | 'dark') {
   localStorage.setItem(STORAGE_KEY, theme)
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute('content', theme === 'dark' ? '#0f1412' : '#f5efe0')
+    ?.setAttribute('content', theme === 'dark' ? '#0b0d1f' : '#f4f4f8')
 }
 
 export function ThemeToggle({ className }: { className?: string }) {
@@ -19,6 +19,8 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   useEffect(() => {
     const current = document.documentElement.getAttribute('data-theme')
+    // Lê o tema aplicado antes da hidratação (script no <head>).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(current === 'dark' ? 'dark' : 'light')
   }, [])
 
@@ -32,9 +34,9 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       onClick={toggle}
-      aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+      aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo escuro'}
       className={cn(
-        'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:text-foreground',
+        'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-transparent text-ink-soft outline-none transition-colors hover:bg-foreground/10 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-gold',
         className,
       )}
     >

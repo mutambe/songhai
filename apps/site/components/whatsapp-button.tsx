@@ -6,6 +6,8 @@ import { X } from 'lucide-react'
 import { trackEvent } from '@/lib/track'
 
 const BUBBLE_DELAY_MS = 8000
+// O balão é um convite, não uma barreira: some sozinho e não volta nesta sessão.
+const BUBBLE_VISIBLE_MS = 9000
 const BUBBLE_DISMISSED_KEY = 'songhai-wa-bubble-dismissed'
 
 // Glifo oficial do WhatsApp (Simple Icons, CC0)
@@ -29,8 +31,25 @@ export function WhatsAppButton() {
       dismissed = sessionStorage.getItem(BUBBLE_DISMISSED_KEY) === '1'
     } catch {}
     if (dismissed) return
-    const id = window.setTimeout(() => setShowBubble(true), BUBBLE_DELAY_MS)
-    return () => window.clearTimeout(id)
+    const show = window.setTimeout(() => {
+      if (window.scrollY <= 300) setShowBubble(true)
+    }, BUBBLE_DELAY_MS)
+    const hide = window.setTimeout(() => {
+      setShowBubble(false)
+      try {
+        sessionStorage.setItem(BUBBLE_DISMISSED_KEY, '1')
+      } catch {}
+    }, BUBBLE_DELAY_MS + BUBBLE_VISIBLE_MS)
+    // O convite só vive no início da página: ao rolar para o conteúdo, desaparece.
+    const onScroll = () => {
+      if (window.scrollY > 300) setShowBubble(false)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.clearTimeout(show)
+      window.clearTimeout(hide)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   const dismissBubble = () => {
@@ -49,10 +68,10 @@ export function WhatsAppButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="relative mb-1 max-w-[14rem] rounded-2xl rounded-br-sm border border-line bg-paper py-3 pl-4 pr-8 text-sm text-foreground shadow-lg"
+            className="relative mb-1 max-w-[14rem] bg-paper py-3 pl-4 pr-8 text-sm text-foreground"
           >
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('whatsapp_click')}>
-              Tem uma dúvida? Fale connosco no WhatsApp — respondemos em minutos 👋
+              Tem uma dúvida? Fale connosco no WhatsApp — respondemos em minutos
             </a>
             <button
               type="button"
@@ -79,7 +98,7 @@ export function WhatsAppButton() {
         transition={{ duration: 0.5, delay: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25d366] text-white shadow-lg transition-shadow duration-300 hover:bg-[#20ba58] hover:shadow-xl md:h-14 md:w-14"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25d366] text-white transition-colors duration-300 hover:bg-[#20ba58] md:h-14 md:w-14"
         aria-label="Contactar via WhatsApp"
         title="Enviar mensagem via WhatsApp"
       >

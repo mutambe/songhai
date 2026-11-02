@@ -13,13 +13,13 @@ export function Logo({
     <Link
       href="/"
       className={cn(
-        'group inline-flex items-center gap-2 font-serif text-xl font-semibold tracking-tight text-foreground',
+        'group inline-flex items-center gap-2 text-xl font-black tracking-tight text-foreground',
         className,
       )}
       aria-label="SONGHAI — página inicial"
     >
       {withMark && (
-        <span className="logo-glow relative inline-flex h-8 shrink-0 items-center justify-center [aspect-ratio:512/380]">
+        <span className="relative inline-flex h-8 shrink-0 items-center justify-center [aspect-ratio:512/380]">
           <Image
             src="/songhai-mark-light-sm.webp"
             alt="Logótipo SONGHAI"
@@ -36,7 +36,6 @@ export function Logo({
             className="logo-mark-dark absolute inset-0 hidden h-full w-full object-contain"
             priority
           />
-          <span aria-hidden="true" className="logo-shine" />
         </span>
       )}
       <span>

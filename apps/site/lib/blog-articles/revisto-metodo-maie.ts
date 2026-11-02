@@ -22,7 +22,7 @@ export const metodoMaie: BlogPost = {
     sections: [
       {
         heading: 'A ideia por trás do método',
-        body: `<p>Projetos de tecnologia costumam correr mal pelos mesmos motivos: mudar tudo de uma vez, descobrir os problemas só quando os clientes já estão a usar o sistema, e deixar a equipa de fora até ao último dia.</p>
+        body: `<p>Projectos de tecnologia costumam correr mal pelos mesmos motivos: mudar tudo de uma vez, descobrir os problemas só quando os clientes já estão a usar o sistema, e deixar a equipa de fora até ao último dia.</p>
 <p>O MAIE inverte isto em três princípios:</p>
 <ul>
 <li><strong>Nada muda para os clientes</strong> enquanto o agente não estiver testado com conversas reais.</li>
@@ -32,7 +32,7 @@ export const metodoMaie: BlogPost = {
       },
       {
         heading: 'As quatro fases, semana a semana',
-        body: `<p>Os prazos abaixo são os de um projeto com integrações (CRM, agenda, faturação). Um agente simples, só com WhatsApp, fica pronto em 5 a 7 dias úteis, juntando as primeiras fases.</p>`,
+        body: `<p>Os prazos abaixo são os de um projecto com integrações (CRM, agenda, facturação). Um agente simples, só com WhatsApp, fica pronto em 5 a 7 dias úteis, juntando as primeiras fases.</p>`,
         widget: {
           type: 'tabs',
           title: 'Método MAIE',
@@ -56,7 +56,7 @@ export const metodoMaie: BlogPost = {
             {
               label: 'I · Integrar',
               body: `<p><strong>Semanas 3 e 4.</strong> Ligamos o agente ao número real e aos sistemas da empresa.</p>
-<p><strong>O que fazemos:</strong> ligação ao WhatsApp, à agenda, ao CRM e, se for o caso, aos pagamentos e à faturação. O agente começa por uma parte das conversas (por exemplo, só fora de horas) antes de passar para todas.</p>
+<p><strong>O que fazemos:</strong> ligação ao WhatsApp, à agenda, ao CRM e, se for o caso, aos pagamentos e à facturação. O agente começa por uma parte das conversas (por exemplo, só fora de horas) antes de passar para todas.</p>
 <p><strong>O que pedimos à sua equipa:</strong> rever diariamente as conversas do agente durante estas semanas e apontar o que corrigir.</p>
 <p><strong>O que recebe:</strong> o agente em produção, com uma rede de segurança: tudo o que ele não sabe passa para a equipa.</p>
 <p><strong>Risco para a operação:</strong> baixo e controlado, porque a passagem é gradual e reversível.</p>`,
@@ -65,8 +65,8 @@ export const metodoMaie: BlogPost = {
               label: 'E · Escalar',
               body: `<p><strong>Da semana 5 em diante.</strong> Acompanhamos os números e alargamos o que funciona.</p>
 <p><strong>O que fazemos:</strong> medimos o tempo de primeira resposta, a parte das conversas resolvidas sem a equipa e as vendas fora de horas. Fazemos os ajustes mensais do plano e, quando faz sentido, levamos o agente a novos processos (pós-venda, cobranças, marcações).</p>
-<p><strong>O que pedimos à sua equipa:</strong> meia hora por semana para rever conversas e manter os preços atualizados.</p>
-<p><strong>O que recebe:</strong> relatórios regulares e, no plano Avançado, uma reunião mensal de otimização.</p>`,
+<p><strong>O que pedimos à sua equipa:</strong> meia hora por semana para rever conversas e manter os preços actualizados.</p>
+<p><strong>O que recebe:</strong> relatórios regulares e, no plano Avançado, uma reunião mensal de optimização.</p>`,
             },
           ],
         },
@@ -88,16 +88,16 @@ export const metodoMaie: BlogPost = {
           type: 'checklist',
           title: 'A sua empresa está pronta para começar o MAIE?',
           items: [
-            'Há uma pessoa que pode ser o responsável interno pelo projeto.',
+            'Há uma pessoa que pode ser o responsável interno pelo projecto.',
             'Os preços dos produtos ou serviços estão escritos num só sítio.',
             'Sabe quais são as 10 perguntas que os clientes mais fazem.',
             'O WhatsApp da empresa é um número da empresa, e não o telemóvel pessoal de alguém.',
-            'A equipa pode dedicar meia hora por dia ao projeto durante duas semanas.',
+            'A equipa pode dedicar meia hora por dia ao projecto durante duas semanas.',
           ],
           results: [
             { min: 0, title: 'Comece pela organização', body: 'Antes de qualquer agente, vale a pena separar o número da empresa e juntar preços e perguntas frequentes num documento. A fase Mapear ajuda a fazer isso.' },
             { min: 3, title: 'Pronta, com ajustes', body: 'Os pontos em falta resolvem-se durante a primeira semana do método.' },
-            { min: 5, title: 'Pronta para arrancar', body: 'Tem tudo o que é preciso. Num projeto simples, o agente pode estar a responder em pouco mais de uma semana.' },
+            { min: 5, title: 'Pronta para arrancar', body: 'Tem tudo o que é preciso. Num projecto simples, o agente pode estar a responder em pouco mais de uma semana.' },
           ],
         },
       },

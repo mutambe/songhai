@@ -2,199 +2,1202 @@
   {
     "slug": "automacao-vs-ia-qual-usar-quando",
     "title": "Automação vs. IA: qual usar quando? Guia prático para Moçambique",
-    "excerpt": "Confuso entre automação e IA? Este guia prático mostra qual usar quando — e quanto custa em Moçambique.",
+    "excerpt": "Automação e IA resolvem problemas diferentes e custam valores diferentes. Um guia com exemplos de empresas moçambicanas e um teste para classificar as suas tarefas.",
     "category": "Guias",
-    "readingTime": "7 min",
-    "author": "Equipa Songhai",
+    "tags": [
+      "automação",
+      "agentes de ia",
+      "guia"
+    ],
+    "status": "published",
+    "publishedAt": "2026-07-19T00:00:00.000Z",
+    "updatedAt": "2026-10-07T07:00:00.000Z",
+    "readingTime": "9 min",
+    "author": "Phill Muthambe",
     "gradient": "from-[#c89b3c] via-[#1b3a4b] to-[#122733]",
+    "coverImage": "/blog-covers/automacao-vs-ia-1280.webp",
     "icon": "git-compare",
-    "coverImage": "https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    "featured": true,
     "content": {
-      "lead": "IA é para problemas complexos. Automação é para tarefas repetitivas. Usar IA quando bastava automação significa pagar mais pelo mesmo resultado — e é um erro comum em empresas em Maputo e no resto de Moçambique.",
+      "lead": "Muitas empresas chegam até nós a pedir \"IA\" quando o que precisam é de uma automação simples, e algumas pedem uma automação quando o problema só se resolve com IA. A diferença importa porque mexe no preço, no tempo de implementação e no tipo de erros que vão aparecer. Este guia ajuda a separar as duas coisas antes de gastar dinheiro.",
       "sections": [
         {
           "heading": "O que é automação",
-          "body": "<p>Automação é um conjunto de regras simples que executa tarefas repetitivas: \"se o email chegar com o assunto X, reencaminha para o departamento Y.\" Não há inteligência envolvida, apenas condição e ação.</p><p>É previsível, rápida de configurar e mais barata — ideal para tarefas como copiar dados de um formulário para uma folha de cálculo ou de um email para o CRM.</p>"
+          "body": "<p>Automação é um conjunto de regras fixas que executa tarefas repetitivas. Funciona sempre no formato <strong>\"quando acontece isto, faz aquilo\"</strong>:</p>\n<ul>\n<li>Quando chega um formulário do site, copia os dados para a folha de clientes.</li>\n<li>Quando uma factura passa 30 dias sem pagamento, envia um lembrete.</li>\n<li>Quando um pedido é marcado como pago, avisa o armazém.</li>\n</ul>\n<p>Não há interpretação. Se a regra diz \"assunto contém <em>orçamento</em>\" e o cliente escreve \"cotação\", a regra não dispara. É exatamente por isso que a automação é previsível, barata e rápida de montar: faz sempre a mesma coisa, da mesma forma.</p>"
         },
         {
           "heading": "O que é IA",
-          "body": "<p>Um agente de IA entende contexto e toma decisões. Recebe uma pergunta de um cliente em português, interpreta o que está a ser pedido e responde de forma natural, no tom da marca.</p><p>É mais cara e demora mais a configurar do que uma automação simples, mas trata exceções e melhora com o uso.</p>"
+          "body": "<p>Um agente de IA lê linguagem escrita por pessoas, percebe a intenção e decide o que fazer com base no contexto. O cliente escreve \"boa tarde, vcs tem tinta branca de 20 litros? é pra amanhã\", e o agente percebe que se trata de uma pergunta de stock, de um produto concreto e com urgência.</p>\n<p>A IA trata bem o que a automação não consegue:</p>\n<ul>\n<li>Frases escritas de muitas maneiras diferentes, com erros e abreviaturas.</li>\n<li>Perguntas que misturam vários assuntos na mesma mensagem.</li>\n<li>Casos que não estavam previstos, onde é preciso decidir se responde ou passa a uma pessoa.</li>\n</ul>\n<p>Em troca, custa mais, exige uma base de conhecimento bem escrita e pode errar de formas menos previsíveis. Por isso precisa de revisão regular, sobretudo nas primeiras semanas.</p>"
         },
         {
           "heading": "Comparação lado a lado",
-          "body": "<div class=\"overflow-x-auto\"><table><thead><tr><th>Critério</th><th>Automação</th><th>IA</th></tr></thead><tbody><tr><td>Configuração</td><td>Regras simples (se isto, então aquilo)</td><td>Treino e prompts</td></tr><tr><td>Tempo de setup</td><td>3-5 dias</td><td>2-3 semanas</td></tr><tr><td>Aprende com o uso?</td><td>Não</td><td>Sim</td></tr><tr><td>Trata exceções?</td><td>Não</td><td>Sim</td></tr><tr><td>Linguagem natural?</td><td>Não</td><td>Sim</td></tr><tr><td>Quando usar</td><td>Tarefas repetitivas e previsíveis</td><td>Tarefas que exigem decisão ou contexto</td></tr></tbody></table></div>"
+          "body": "<div class=\"overflow-x-auto\"><table>\n<thead><tr><th>Critério</th><th>Automação</th><th>Agente de IA</th></tr></thead>\n<tbody>\n<tr><td>Como se configura</td><td>Regras do tipo \"se isto, então aquilo\"</td><td>Base de conhecimento, instruções e regras de passagem para pessoas</td></tr>\n<tr><td>Tempo típico de implementação</td><td>Poucos dias</td><td>5 a 7 dias úteis para um agente simples; 2 a 4 semanas com integrações</td></tr>\n<tr><td>Entende linguagem natural</td><td>Não</td><td>Sim</td></tr>\n<tr><td>Lida com exceções</td><td>Não, só faz o que está na regra</td><td>Sim, ou reconhece que deve passar a uma pessoa</td></tr>\n<tr><td>Tipo de erro</td><td>Previsível: a regra não dispara</td><td>Menos previsível: interpreta mal uma mensagem</td></tr>\n<tr><td>Manutenção</td><td>Só quando o processo muda</td><td>Revisão regular das conversas e actualização da informação</td></tr>\n<tr><td>Melhor para</td><td>Mover dados entre sistemas, lembretes, avisos internos</td><td>Conversar com clientes, qualificar pedidos, decidir o passo seguinte</td></tr>\n</tbody></table></div>"
         },
         {
-          "heading": "Como decidir",
-          "body": "<p>Use automação se a tarefa é totalmente previsível, não exige julgamento e uma margem de erro de cerca de 10% é aceitável.</p><p>Use IA se a tarefa envolve comunicação com pessoas, decisão com múltiplas variáveis ou exige elevada precisão.</p><p>Na prática, muitos processos combinam as duas: a automação move os dados, a IA interpreta e decide.</p>"
+          "heading": "Exemplos de empresas moçambicanas",
+          "body": "<p>Os casos abaixo são ilustrativos, mas são situações que encontramos com frequência:</p>",
+          "widget": {
+            "type": "tabs",
+            "title": "Que ferramenta para cada tarefa?",
+            "tabs": [
+              {
+                "label": "Só automação",
+                "body": "<ul>\n<li><strong>Escola privada:</strong> enviar o lembrete da propina a todos os encarregados no dia 25 de cada mês. A mensagem é sempre a mesma; só muda o nome e o valor.</li>\n<li><strong>Distribuidora:</strong> copiar cada encomenda confirmada da folha de vendas para a folha do armazém.</li>\n<li><strong>Consultora:</strong> criar uma pasta para cada cliente novo, com o nome e a data.</li>\n</ul>\n<p>Nenhuma destas tarefas exige interpretar o que alguém escreveu. Uma automação faz o trabalho por uma fração do custo.</p>"
+              },
+              {
+                "label": "Precisa de IA",
+                "body": "<ul>\n<li><strong>Loja de electrodomésticos:</strong> responder no WhatsApp a perguntas sobre modelos, preços, garantia e entrega, escritas de mil maneiras diferentes.</li>\n<li><strong>Imobiliária:</strong> perceber, a partir de uma conversa, se o interessado quer comprar ou arrendar, em que bairro e com que orçamento, antes de passar ao agente imobiliário.</li>\n<li><strong>Clínica:</strong> marcar e remarcar consultas por conversa, com o paciente a sugerir horários em texto livre (\"pode ser quinta de manhã?\").</li>\n</ul>"
+              },
+              {
+                "label": "As duas juntas",
+                "body": "<p>Na maioria dos negócios, a melhor solução combina as duas:</p>\n<ol>\n<li>O agente de IA conversa com o cliente e percebe o pedido.</li>\n<li>Quando o pedido fica confirmado, uma automação regista-o no sistema, avisa o armazém e agenda a entrega.</li>\n<li>Outra automação envia a confirmação e, mais tarde, o aviso de entrega.</li>\n</ol>\n<p>A IA trata da parte em que é preciso entender pessoas. A automação trata da parte em que é preciso fazer sempre a mesma coisa sem falhar.</p>"
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Como decidir: classifique a sua tarefa",
+          "body": "<p>Pense numa tarefa concreta que gostaria de tirar das mãos da equipa e responda às perguntas abaixo. Quanto mais respostas \"sim\", mais a tarefa precisa de IA.</p>",
+          "widget": {
+            "type": "checklist",
+            "title": "Automação ou IA para esta tarefa?",
+            "items": [
+              "A tarefa começa com uma mensagem escrita por um cliente ou fornecedor.",
+              "A mesma pergunta chega escrita de muitas formas diferentes.",
+              "É preciso perceber a intenção da pessoa, e não só copiar dados.",
+              "Às vezes a resposta certa depende do contexto (bairro, quantidade, urgência).",
+              "Há casos imprevistos que hoje alguém resolve \"a olho\"."
+            ],
+            "results": [
+              {
+                "min": 0,
+                "title": "Automação chega",
+                "body": "A tarefa é previsível. Uma automação simples resolve-a com menos custo e menos manutenção do que um agente de IA."
+              },
+              {
+                "min": 2,
+                "title": "Combinação das duas",
+                "body": "Há uma parte de interpretação e uma parte repetitiva. O mais eficiente costuma ser um agente na entrada e automações a seguir."
+              },
+              {
+                "min": 4,
+                "title": "Precisa de IA",
+                "body": "A tarefa vive de linguagem e de contexto. Uma automação de regras fixas vai falhar muitas vezes; um agente de IA é a ferramenta certa."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Erros comuns a evitar",
+          "body": "<ul>\n<li><strong>Usar IA para mover dados.</strong> Pagar um agente para copiar linhas de uma folha para outra é gastar mais pelo mesmo resultado, e com mais risco de erro.</li>\n<li><strong>Usar menus rígidos para conversar com clientes.</strong> O \"digite 1, 2 ou 3\" irrita quem só queria saber um preço, e muitos desistem a meio.</li>\n<li><strong>Automatizar um processo desorganizado.</strong> Se hoje ninguém sabe ao certo qual é o preço de entrega para cada bairro, nenhuma ferramenta vai acertar. Primeiro organiza-se, depois automatiza-se.</li>\n<li><strong>Esquecer quem mantém.</strong> Tanto as regras como a base de conhecimento precisam de um responsável na empresa.</li>\n</ul>\n<p>Se tiver dúvidas sobre uma tarefa concreta, o <a href=\"/diagnostico\">diagnóstico gratuito de 30 minutos</a> serve exatamente para isto: olhamos para o processo e dizemos se é caso de automação, de IA ou das duas. Partilhamos mais exemplos destes no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> e no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> da SONGHAI.</p>"
         }
       ],
+      "quote": "A automação faz sempre a mesma coisa sem falhar. A IA percebe o que as pessoas querem dizer. A maior parte dos negócios precisa das duas, cada uma no seu lugar.",
       "callout": {
         "title": "Regra prática",
-        "body": "Se a tarefa segue sempre os mesmos passos, comece por automação. Só avance para IA quando precisar de interpretar linguagem ou lidar com exceções."
+        "body": "Se a tarefa segue sempre os mesmos passos, comece por automação. Só avance para IA quando for preciso interpretar o que alguém escreveu ou lidar com exceções."
       }
-    },
-    "tags": [],
-    "status": "published",
-    "publishedAt": "2026-07-19T00:00:00.000Z"
+    }
   },
   {
     "slug": "custo-real-ia-pme-mocambique",
     "title": "Custo real de IA para PME moçambicanas, sem surpresas",
-    "excerpt": "Quanto custa um agente de IA? Guia transparente com preços, ROI e exemplos ilustrativos em contexto moçambicano.",
+    "excerpt": "O que está incluído no preço de um agente de IA, o que fica de fora, os custos que aparecem depois e as perguntas a fazer a qualquer fornecedor antes de assinar.",
     "category": "Guias",
-    "readingTime": "6 min",
-    "author": "Equipa Songhai",
+    "tags": [
+      "preços",
+      "pme",
+      "contratos"
+    ],
+    "status": "published",
+    "publishedAt": "2026-07-18T00:00:00.000Z",
+    "updatedAt": "2026-10-07T07:00:00.000Z",
+    "readingTime": "9 min",
+    "author": "Phill Muthambe",
     "gradient": "from-[#122733] via-[#c89b3c] to-[#2f6e62]",
+    "coverImage": "/blog-covers/custo-real-1280.webp",
     "icon": "wallet",
-    "coverImage": "https://images.pexels.com/photos/7580753/pexels-photo-7580753.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "content": {
-      "lead": "\"Quanto vai custar isto?\" é a primeira pergunta que qualquer empresa em Maputo faz antes de contactar uma agência. Muitas agências respondem \"contacte-nos para orçamento\". Preferimos ser transparentes desde já.",
+      "lead": "\"Quanto vai custar isto?\" é a primeira pergunta de qualquer empresa antes de contactar uma agência. Muitas respondem \"contacte-nos para orçamento\", e o número só aparece depois de duas reuniões. Preferimos o contrário: pôr os valores à vista, explicar o que cada um cobre e dizer também o que não está incluído. É isso que torna um preço \"sem surpresas\".",
       "sections": [
         {
-          "heading": "Estrutura de preço",
-          "body": "<p>Setup único: 2.000-5.000 MZN, conforme a complexidade das integrações.</p><p>Agente simples (WhatsApp, perguntas e respostas): 5.000-8.000 MZN/mês.</p><p>Agente médio ou avançado (com integrações de CRM, faturação e inventário): 8.000-15.000 MZN/mês.</p><p>Suporte 24/7 está incluído em todos os planos.</p>"
+          "heading": "A estrutura do preço",
+          "body": "<p>Há dois valores a ter em conta: o <strong>setup</strong>, pago uma única vez no início, e a <strong>mensalidade</strong>.</p>\n<div class=\"overflow-x-auto\"><table>\n<thead><tr><th>Plano</th><th>Setup (único)</th><th>Mensalidade</th><th>Suporte</th></tr></thead>\n<tbody>\n<tr><td>Agente Simples</td><td>2.000 MZN</td><td>a partir de 7.000 MZN</td><td>Horário laboral, por email e WhatsApp</td></tr>\n<tr><td>Agente Médio</td><td>a partir de 3.000 MZN</td><td>a partir de 12.000 MZN</td><td>Prioritário, resposta em menos de 2 horas</td></tr>\n<tr><td>Agente Avançado</td><td>a partir de 4.000 MZN</td><td>a partir de 18.000 MZN</td><td>Resposta em menos de 1 hora; 24/7 para incidentes críticos</td></tr>\n<tr><td>Enterprise</td><td colspan=\"2\">Proposta à medida</td><td>Gestor de conta dedicado</td></tr>\n</tbody></table></div>\n<p>O setup paga a configuração do agente, a ligação ao WhatsApp e aos sistemas, a escrita da base de conhecimento, os testes e a formação da equipa. A mensalidade paga o alojamento, o uso do modelo de IA, os ajustes do mês e o suporte.</p>"
         },
         {
-          "heading": "Como calcular o retorno",
-          "body": "<p>Multiplique as horas mensais que a sua equipa gasta numa tarefa pelo custo-hora dessa pessoa. Se esse valor for superior ao custo mensal do agente, o investimento compensa.</p><p><em>Exemplo ilustrativo:</em> uma equipa gasta 40h/mês em tarefas manuais, a um custo-hora de 300 MZN — um benefício de 12.000 MZN. Um agente médio custa cerca de 8.000 MZN/mês, o que resulta num ganho líquido de 4.000 MZN/mês e retorno em cerca de 2 meses. Este é apenas um exemplo de cálculo, não um resultado garantido.</p>"
+          "heading": "O que está incluído",
+          "body": "<ul>\n<li><strong>Agente configurado para o seu negócio</strong>, com a sua informação, o seu tom e as suas regras.</li>\n<li><strong>Ligação ao WhatsApp</strong> em todos os planos e ao Google Calendar a partir do plano Médio.</li>\n<li><strong>Formação da equipa</strong> para acompanhar e corrigir o agente.</li>\n<li><strong>Ajustes mensais</strong>: 2 no Simples, 4 no Médio, ilimitados no Avançado. Um ajuste é, por exemplo, mudar preços, acrescentar perguntas frequentes ou alterar uma regra de passagem.</li>\n<li><strong>Ligação a um CRM</strong> e qualificação automática de clientes a partir do plano Médio.</li>\n<li><strong>Integrações múltiplas e pagamentos M-Pesa</strong> no plano Avançado.</li>\n</ul>"
         },
         {
           "heading": "O que não está incluído",
-          "body": "<p>Consultoria estratégica fora do âmbito acordado, alterações acima de duas por mês, e desenvolvimento de código à medida não fazem parte do plano base — mas podem ser orçamentados à parte.</p>"
+          "body": "<p>É aqui que costumam aparecer as surpresas, por isso fica tudo escrito:</p>\n<ul>\n<li><strong>Desenvolvimento à medida</strong> fora do âmbito acordado. Configurar não é o mesmo que programar um sistema novo.</li>\n<li><strong>Consultoria estratégica</strong>, vendida à parte.</li>\n<li><strong>Integrações com sistemas antigos</strong> sem API, avaliadas caso a caso.</li>\n<li><strong>Ajustes acima do limite do plano</strong>.</li>\n<li><strong>Custos da Meta</strong> no canal oficial do WhatsApp, que dependem do tipo e da quantidade de mensagens que a empresa envia por iniciativa própria. Estimamos este valor no diagnóstico, antes de qualquer compromisso.</li>\n</ul>\n<p>Os extras mais comuns têm preço publicado: integração com outro CRM (1.000 a 2.000 MZN), integração com ERP (2.000 a 5.000 MZN), relatório personalizado (500 MZN), formação extra (200 MZN por hora) e um segundo agente (40% do plano base). A lista completa está em <a href=\"/precos\">songhai.cc/precos</a>.</p>"
+        },
+        {
+          "heading": "Como saber se compensa",
+          "body": "<p>A conta básica é: <strong>horas que a equipa gasta por mês na tarefa × custo de uma hora dessa pessoa</strong>. Se o resultado for maior do que a mensalidade, o agente paga-se só com o tempo poupado.</p>\n<p><em>Exemplo ilustrativo:</em> uma equipa gasta 40 horas por mês a responder a mensagens repetidas, a um custo de 300 MZN por hora. São 12.000 MZN de tempo. O plano Simples custa 5.000 MZN, o que deixa 5.000 MZN por mês de diferença, e o setup recupera-se no primeiro mês. Com volumes maiores, o plano indicado sobe e a conta tem de ser refeita.</p>\n<p>Esta conta deixa de fora o ganho que muitas vezes é maior: as vendas que deixam de se perder por falta de resposta à noite e ao fim de semana.</p>"
+        },
+        {
+          "heading": "Perguntas a fazer antes de assinar",
+          "body": "<p>Seja com a SONGHAI ou com outro fornecedor, estas perguntas evitam a maior parte dos problemas. Use o teste abaixo para avaliar a proposta que tem em mãos:</p>",
+          "widget": {
+            "type": "checklist",
+            "title": "A proposta que recebeu é \"sem surpresas\"?",
+            "items": [
+              "Os preços estão em meticais, e não em dólares a converter.",
+              "O setup e a mensalidade estão separados e escritos.",
+              "Está claro o que fica de fora e quanto custa à parte.",
+              "Pode cancelar sem penalidade, ou com um aviso prévio curto.",
+              "Os dados e as conversas dos seus clientes continuam a ser seus se sair.",
+              "O suporte é em português, com horários e tempos de resposta escritos.",
+              "Os custos da Meta (WhatsApp oficial) foram explicados com números."
+            ],
+            "results": [
+              {
+                "min": 0,
+                "title": "Proposta com muitas zonas cinzentas",
+                "body": "Peça por escrito as respostas que faltam antes de assinar. Uma proposta clara não tem nada a esconder."
+              },
+              {
+                "min": 4,
+                "title": "Razoável, com pontos a esclarecer",
+                "body": "A base está lá. Esclareça os pontos em falta, sobretudo cancelamento e propriedade dos dados."
+              },
+              {
+                "min": 6,
+                "title": "Proposta transparente",
+                "body": "Tem a informação de que precisa para decidir. Agora a pergunta é só se os números compensam no seu caso."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Formas de reduzir o risco",
+          "body": "<ul>\n<li><strong>Piloto de um mês</strong>, com cancelamento sem penalidade se os resultados não convencerem.</li>\n<li><strong>Cancelamento sem penalidade</strong>, em qualquer mês.</li>\n<li><strong>Garantia de horas:</strong> se no primeiro trimestre o agente não poupar pelo menos 10 horas por mês, devolvemos a diferença em crédito.</li>\n\n</ul>\n<p>Para fazer as contas com os números da sua empresa, marque o <a href=\"/diagnostico\">diagnóstico gratuito de 30 minutos</a>. E se quiser ver exemplos de custos e resultados explicados em poucas linhas, siga a SONGHAI no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> e no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a>.</p>"
         }
       ],
+      "quote": "Um preço só é transparente quando também diz o que fica de fora.",
       "callout": {
         "title": "Sem penalidade se não resultar",
-        "body": "Se não vir retorno nos primeiros meses, pode cancelar sem penalidade. Alterações simples são gratuitas até duas por mês."
+        "body": "Se não vir retorno, pode cancelar em qualquer mês sem custo de cancelamento. E os dados dos seus clientes não são vendidos, partilhados nem usados para treinar modelos de IA."
       }
-    },
-    "tags": [],
-    "status": "published",
-    "publishedAt": "2026-07-18T00:00:00.000Z"
+    }
   },
   {
     "slug": "agencias-globais-mocambique-falham",
     "title": "Porquê agências globais não entendem Moçambique",
-    "excerpt": "Agências de IA globais prometem muito mas falham em Moçambique. Veja porquê — e a alternativa local.",
+    "excerpt": "Língua, infra-estrutura, preços em dólares e suporte noutro fuso: onde os projectos de IA de agências internacionais costumam tropeçar em Moçambique, e quando uma agência global é mesmo a melhor escolha.",
     "category": "Guias",
-    "readingTime": "7 min",
-    "author": "Equipa Songhai",
+    "tags": [
+      "mercado local",
+      "agências",
+      "moçambique"
+    ],
+    "status": "published",
+    "publishedAt": "2026-07-17T00:00:00.000Z",
+    "updatedAt": "2026-10-07T07:00:00.000Z",
+    "readingTime": "9 min",
+    "author": "Phill Muthambe",
     "gradient": "from-[#1b3a4b] via-[#122733] to-[#c89b3c]",
+    "coverImage": "/blog-covers/agencias-globais-1280.webp",
     "icon": "map-pin",
-    "coverImage": "https://images.pexels.com/photos/30188151/pexels-photo-30188151.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "content": {
-      "lead": "É uma história comum em Moçambique: uma empresa contrata uma agência internacional, paga milhares de dólares, e meses depois o projeto está parado — o agente não entende o português de Moçambique, a integração com os sistemas locais vira um caos e o suporte demora dias a responder.",
+      "lead": "Ouvimos a mesma história várias vezes. Uma empresa contrata uma agência internacional, paga em dólares, e meses depois o projecto está parado: o agente responde num português que soa estranho aos clientes, a ligação aos sistemas locais não avança e o suporte demora dias. Não é falta de competência dessas agências. É que foram feitas para outros mercados.",
       "sections": [
         {
           "heading": "A língua não é só \"português\"",
-          "body": "<p>Uma agência internacional que \"fala português\" normalmente fala um português genérico — não o português de Moçambique, com o seu próprio tom e expressões. Um agente que soa estranho a um cliente em Maputo gera desconfiança em vez de confiança.</p><p>A nossa abordagem: agentes treinados no português de Moçambique, com o tom e as expressões que os seus clientes realmente usam.</p>"
+          "body": "<p>Uma agência que \"fala português\" costuma configurar os agentes em português do Brasil ou num português genérico. Para um cliente em Maputo, a diferença nota-se logo: \"celular\" em vez de telemóvel, \"você\" a cada frase, \"time\" em vez de equipa, \"contacto\" em vez de contacto. Parece pouco, mas um agente que soa estrangeiro gera desconfiança, e a confiança é tudo numa conversa de venda.</p>\n<p>Há também o que não está em nenhum dicionário: os nomes dos bairros, as abreviaturas que os clientes usam no WhatsApp, a mistura com palavras de línguas nacionais, a forma de tratar um cliente mais velho. Um agente configurado em Moçambique, com conversas reais de clientes moçambicanos, aprende isto. Um agente configurado à distância, não.</p>"
         },
         {
-          "heading": "A infraestrutura local é diferente",
-          "body": "<p>Muitas PME em Moçambique ainda usam Excel para tudo, têm sistemas legados difíceis de manter e lidam com conectividade inconsistente. Uma agência global costuma desistir se não conseguir uma integração \"perfeita\" com ferramentas mainstream.</p><p>A nossa abordagem: trabalhamos com o que a empresa já tem — Excel, sistema legado ou outro — em vez de exigir que a empresa se adapte à ferramenta.</p>"
+          "heading": "A infra-estrutura local é diferente",
+          "body": "<p>Muitas PME moçambicanas gerem o negócio com folhas de Excel, programas de facturação locais ou sistemas antigos que ninguém quer substituir. A internet cai, a energia falha, e o WhatsApp é o sistema de comunicação principal.</p>\n<p>Uma agência habituada a ligar ferramentas internacionais de última geração tende a pedir que a empresa mude primeiro os seus sistemas. O projecto fica dependente de uma migração que ninguém tinha orçamentado.</p>\n<p>A abordagem que funciona é a contrária: trabalhar com o que a empresa já tem. Se o stock está numa folha de Excel, o agente lê a folha. Se o programa de facturação não tem API, procura-se outra forma de trocar os dados. A perfeição técnica pode esperar; o cliente que escreve hoje no WhatsApp não.</p>"
         },
         {
           "heading": "Preço em dólares, não em meticais",
-          "body": "<p>Um orçamento em dólares soa razoável até ser convertido para meticais — e muitas vezes ultrapassa todo o orçamento de TI de uma PME pequena, inviabilizando o projeto antes de começar.</p><p>A nossa abordagem: preços definidos em MZN desde o início, para caber no orçamento real de uma empresa moçambicana.</p>"
+          "body": "<p>Um orçamento em dólares parece razoável até ser convertido. Somam-se as variações do câmbio, as comissões das transferências internacionais e, muitas vezes, licenças de software cobradas por utilizador, também em dólares. Para uma PME, o total pode ultrapassar o orçamento anual de tecnologia antes de o projecto arrancar.</p>\n<p>Preços definidos em meticais desde o início, com o setup e a mensalidade separados, permitem planear. É por isso que os nossos estão publicados em <a href=\"/precos\">songhai.cc/precos</a>, sem precisar de pedir orçamento.</p>"
         },
         {
           "heading": "Suporte fora de horas e fora de português",
-          "body": "<p>Suporte \"24/7 global\" muitas vezes significa uma equipa offshore, em fuso horário diferente, que responde em inglês a um pedido urgente enviado em português. Um problema às 9h da manhã pode só ter resposta à noite.</p><p>A nossa abordagem: equipa em Maputo, suporte em português, resposta em poucas horas.</p>"
+          "body": "<p>\"Suporte 24/7\" numa agência global significa muitas vezes uma equipa noutro continente, num fuso diferente, a responder em inglês. Um problema reportado às 9h em Maputo pode ter resposta só ao fim do dia, e a conversa pode exigir três trocas de email para explicar o contexto.</p>\n<p>Uma equipa local responde no mesmo fuso, em português, e pode ir ver o problema ao local quando é preciso. Na SONGHAI o suporte está em Maputo, com tempos de resposta escritos em cada plano.</p>"
+        },
+        {
+          "heading": "Global ou local: uma comparação honesta",
+          "body": "<p>Seria pouco sério dizer que uma agência local é sempre a melhor escolha. Há casos em que não é. Marque o que pesa mais no seu projecto:</p>",
+          "widget": {
+            "type": "pros-cons",
+            "question": "Para o seu projecto, faz mais sentido uma agência local?",
+            "pros": [
+              {
+                "title": "Português de Moçambique",
+                "detail": "Agentes configurados com a forma como os seus clientes realmente escrevem."
+              },
+              {
+                "title": "Preços em meticais",
+                "detail": "Sem surpresas de câmbio nem comissões de transferências internacionais."
+              },
+              {
+                "title": "Mesmo fuso e presença física",
+                "detail": "Suporte em horário de Maputo e possibilidade de reuniões presenciais."
+              },
+              {
+                "title": "Conhece os sistemas locais",
+                "detail": "M-Pesa, e-Mola, programas de facturação locais, Excel, NUIT."
+              },
+              {
+                "title": "Projectos à escala de uma PME",
+                "detail": "Começar pequeno, com um piloto de um mês, em vez de um projecto de muitos meses."
+              }
+            ],
+            "cons": [
+              {
+                "title": "Equipas mais pequenas",
+                "detail": "Uma agência local tem menos pessoas do que uma multinacional."
+              },
+              {
+                "title": "Projectos multinacionais",
+                "detail": "Se a sua empresa opera em vários países ao mesmo tempo, uma agência global pode coordenar melhor."
+              },
+              {
+                "title": "Ferramentas proprietárias",
+                "detail": "Algumas agências globais têm plataformas próprias muito maduras para sectores específicos."
+              },
+              {
+                "title": "Exigências de grupo",
+                "detail": "Filiais de grupos internacionais às vezes têm de usar os fornecedores escolhidos pela sede."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Como avaliar qualquer agência",
+          "body": "<p>Seja local ou global, peça sempre:</p>\n<ul>\n<li><strong>Uma demonstração com as suas mensagens reais</strong>, e não com um exemplo preparado.</li>\n<li><strong>Preços por escrito em meticais</strong>, com o que está e o que não está incluído.</li>\n<li><strong>Quem responde quando algo falha</strong>, em que língua e em quanto tempo.</li>\n<li><strong>Um piloto curto</strong> antes de um contrato longo.</li>\n<li><strong>Referências de empresas moçambicanas</strong> com quem possa falar.</li>\n</ul>\n<p>Se quiser pôr a SONGHAI à prova com estas mesmas perguntas, comece pelo <a href=\"/diagnostico\">diagnóstico gratuito de 30 minutos</a>. Partilhamos o nosso trabalho com empresas moçambicanas no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> e no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a>.</p>"
         }
       ],
-      "quote": "Não é que as agências globais sejam más — é que não foram feitas para Moçambique.",
+      "quote": "As agências globais não são más. Simplesmente não foram feitas para Moçambique.",
       "callout": {
-        "title": "O resultado",
-        "body": "Implementações genéricas, pensadas para outros mercados, tendem a ter uma taxa de sucesso muito mais baixa em Moçambique do que soluções desenhadas de raiz para a realidade local."
+        "title": "O que observamos",
+        "body": "Os projectos que encontramos parados raramente falharam por causa da tecnologia. Falharam porque a solução foi desenhada para outro mercado e nunca chegou a ser adaptada ao português, aos sistemas e ao orçamento de uma empresa moçambicana."
       }
-    },
-    "tags": [],
-    "status": "published",
-    "publishedAt": "2026-07-17T00:00:00.000Z"
+    }
   },
   {
     "slug": "metodo-maie-implementar-ia-negocio",
     "title": "Método MAIE: como implementamos IA sem quebrar o seu negócio",
-    "excerpt": "Método estruturado para implementar IA: Mapear, Automatizar, Integrar, Escalar — sem disrupção.",
+    "excerpt": "Mapear, Automatizar, Integrar, Escalar. As quatro fases com que pomos um agente de IA a funcionar, o que acontece em cada semana, o que pedimos à sua equipa e como se controla o risco.",
     "category": "Casos de uso",
-    "readingTime": "8 min",
-    "author": "Equipa Songhai",
+    "tags": [
+      "método",
+      "implementação",
+      "agentes de ia"
+    ],
+    "status": "published",
+    "publishedAt": "2026-07-16T00:00:00.000Z",
+    "updatedAt": "2026-10-07T07:00:00.000Z",
+    "readingTime": "10 min",
+    "author": "Phill Muthambe",
     "gradient": "from-[#2f6e62] via-[#122733] to-[#1b3a4b]",
+    "coverImage": "/blog-covers/metodo-maie-1280.webp",
     "icon": "route",
-    "coverImage": "https://images.pexels.com/photos/37894920/pexels-photo-37894920.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "content": {
-      "lead": "\"E se quebrar tudo o que está a funcionar?\" É o receio mais comum de quem pensa em implementar IA. O Método MAIE existe exatamente para evitar isso: um processo em quatro fases, cada uma isolada da seguinte.",
+      "lead": "\"E se isto estragar o que já está a funcionar?\" É o receio mais comum de quem pensa em pôr IA no atendimento, e é um receio razoável. O WhatsApp da empresa é muitas vezes o principal canal de vendas, e ninguém quer arriscá-lo. O Método MAIE existe para isso: quatro fases, cada uma validada antes de passar à seguinte, com a operação real protegida até ao fim.",
       "sections": [
         {
-          "heading": "Mapear (semana 1)",
-          "body": "<p>Entrevistamos o gerente e a equipa para perceber onde o tempo é gasto e que ferramentas já usam. O resultado é um relatório com os processos identificados, oportunidades priorizadas por impacto e uma estimativa de tempo e dinheiro recuperável.</p><p>Custo: incluído no diagnóstico gratuito. Disrupção: zero — ninguém muda nada nesta fase.</p>"
+          "heading": "A ideia por trás do método",
+          "body": "<p>Projectos de tecnologia costumam correr mal pelos mesmos motivos: mudar tudo de uma vez, descobrir os problemas só quando os clientes já estão a usar o sistema, e deixar a equipa de fora até ao último dia.</p>\n<p>O MAIE inverte isto em três princípios:</p>\n<ul>\n<li><strong>Nada muda para os clientes</strong> enquanto o agente não estiver testado com conversas reais.</li>\n<li><strong>A passagem é gradual</strong>, com uma parte pequena das conversas primeiro.</li>\n<li><strong>A equipa participa desde a primeira semana</strong>, porque é ela que conhece as respostas certas e quem vai acompanhar o agente depois.</li>\n</ul>"
         },
         {
-          "heading": "Automatizar (semana 2-3)",
-          "body": "<p>Desenhamos o agente à medida do negócio — que perguntas faz, que tom usa, que sistemas acede — e construímo-lo em ambiente de testes, sem afetar a operação real.</p><p>Disrupção: zero. Está tudo em ambiente de testes até estar pronto.</p>"
+          "heading": "As quatro fases, semana a semana",
+          "body": "<p>Os prazos abaixo são os de um projecto com integrações (CRM, agenda, facturação). Um agente simples, só com WhatsApp, fica pronto em 5 a 7 dias úteis, juntando as primeiras fases.</p>",
+          "widget": {
+            "type": "tabs",
+            "title": "Método MAIE",
+            "tabs": [
+              {
+                "label": "M · Mapear",
+                "body": "<p><strong>Semana 1.</strong> Conversamos com a gerência e com quem atende os clientes para perceber onde vai o tempo e que ferramentas já existem.</p>\n<p><strong>O que fazemos:</strong> lemos uma amostra de conversas reais do WhatsApp, identificamos as perguntas que mais se repetem e onde se perdem clientes.</p>\n<p><strong>O que pedimos à sua equipa:</strong> uma ou duas conversas de 30 minutos e acesso a exemplos de mensagens.</p>\n<p><strong>O que recebe:</strong> um relatório com os processos identificados, as oportunidades por ordem de impacto e uma estimativa de horas e dinheiro recuperáveis.</p>\n<p><strong>Risco para a operação:</strong> nenhum. Nada muda nesta fase. Está incluída no diagnóstico gratuito.</p>"
+              },
+              {
+                "label": "A · Automatizar",
+                "body": "<p><strong>Semanas 2 e 3.</strong> Construímos o agente à medida do negócio.</p>\n<p><strong>O que fazemos:</strong> escrevemos a base de conhecimento, definimos o tom, as regras de passagem para pessoas e as automações à volta do agente. Tudo num ambiente de testes, separado do número real.</p>\n<p><strong>O que pedimos à sua equipa:</strong> tabela de preços, regras de entrega e pagamento, e alguém para testar o agente com perguntas difíceis.</p>\n<p><strong>O que recebe:</strong> um agente a funcionar num número de testes, que pode experimentar à vontade.</p>\n<p><strong>Risco para a operação:</strong> nenhum. Os clientes continuam a falar com a equipa como sempre.</p>"
+              },
+              {
+                "label": "I · Integrar",
+                "body": "<p><strong>Semanas 3 e 4.</strong> Ligamos o agente ao número real e aos sistemas da empresa.</p>\n<p><strong>O que fazemos:</strong> ligação ao WhatsApp, à agenda, ao CRM e, se for o caso, aos pagamentos e à facturação. O agente começa por uma parte das conversas (por exemplo, só fora de horas) antes de passar para todas.</p>\n<p><strong>O que pedimos à sua equipa:</strong> rever diariamente as conversas do agente durante estas semanas e apontar o que corrigir.</p>\n<p><strong>O que recebe:</strong> o agente em produção, com uma rede de segurança: tudo o que ele não sabe passa para a equipa.</p>\n<p><strong>Risco para a operação:</strong> baixo e controlado, porque a passagem é gradual e reversível.</p>"
+              },
+              {
+                "label": "E · Escalar",
+                "body": "<p><strong>Da semana 5 em diante.</strong> Acompanhamos os números e alargamos o que funciona.</p>\n<p><strong>O que fazemos:</strong> medimos o tempo de primeira resposta, a parte das conversas resolvidas sem a equipa e as vendas fora de horas. Fazemos os ajustes mensais do plano e, quando faz sentido, levamos o agente a novos processos (pós-venda, cobranças, marcações).</p>\n<p><strong>O que pedimos à sua equipa:</strong> meia hora por semana para rever conversas e manter os preços actualizados.</p>\n<p><strong>O que recebe:</strong> relatórios regulares e, no plano Avançado, uma reunião mensal de optimização.</p>"
+              }
+            ]
+          }
         },
         {
-          "heading": "Integrar (semana 3-4)",
-          "body": "<p>Ligamos o agente ao WhatsApp Business, ao calendário, ao CRM e aos sistemas de faturação já usados pela empresa. Começamos com uma percentagem pequena do tráfego real antes de avançar para a totalidade.</p><p>Disrupção: mínima — a transição é gradual, não instantânea.</p>"
+          "heading": "Como o risco é controlado",
+          "body": "<ul>\n<li><strong>Ambiente de testes separado.</strong> Até à fase de integração, o agente não toca no número real.</li>\n<li><strong>Passagem gradual.</strong> Primeiro uma fatia das conversas, depois todas.</li>\n<li><strong>Rede de segurança.</strong> O agente passa à equipa qualquer conversa que não saiba tratar, e qualquer cliente que peça uma pessoa.</li>\n<li><strong>Reversível.</strong> Se algo correr mal, desligar o agente devolve o WhatsApp ao funcionamento normal em minutos.</li>\n<li><strong>Piloto de um mês</strong>, com cancelamento sem penalidade se os resultados não convencerem.</li>\n</ul>"
         },
         {
-          "heading": "Escalar (semana 5 em diante)",
-          "body": "<p>Com o agente em produção, acompanhamos o desempenho com métricas, ajustamos mensalmente e expandimos para novos processos conforme o negócio cresce. A equipa vai ganhando autonomia para gerir o sistema.</p>"
+          "heading": "O que a sua empresa precisa de ter",
+          "body": "<p>O método funciona melhor quando algumas coisas já estão no sítio. Veja em que ponto está:</p>",
+          "widget": {
+            "type": "checklist",
+            "title": "A sua empresa está pronta para começar o MAIE?",
+            "items": [
+              "Há uma pessoa que pode ser o responsável interno pelo projecto.",
+              "Os preços dos produtos ou serviços estão escritos num só sítio.",
+              "Sabe quais são as 10 perguntas que os clientes mais fazem.",
+              "O WhatsApp da empresa é um número da empresa, e não o telemóvel pessoal de alguém.",
+              "A equipa pode dedicar meia hora por dia ao projecto durante duas semanas."
+            ],
+            "results": [
+              {
+                "min": 0,
+                "title": "Comece pela organização",
+                "body": "Antes de qualquer agente, vale a pena separar o número da empresa e juntar preços e perguntas frequentes num documento. A fase Mapear ajuda a fazer isso."
+              },
+              {
+                "min": 3,
+                "title": "Pronta, com ajustes",
+                "body": "Os pontos em falta resolvem-se durante a primeira semana do método."
+              },
+              {
+                "min": 5,
+                "title": "Pronta para arrancar",
+                "body": "Tem tudo o que é preciso. Num projecto simples, o agente pode estar a responder em pouco mais de uma semana."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Começar pela fase Mapear",
+          "body": "<p>A primeira fase está incluída no <a href=\"/diagnostico\">diagnóstico gratuito de 30 minutos</a>: sai de lá com uma ideia clara do que automatizar primeiro e do que pode esperar. Os planos e prazos estão em <a href=\"/precos\">songhai.cc/precos</a>.</p>\n<p>No <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> e no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> da SONGHAI mostramos bastidores destas fases, com exemplos do que encontramos no terreno.</p>"
         }
       ],
+      "quote": "Nenhum cliente da empresa deve dar pela mudança antes de ela estar testada.",
       "callout": {
-        "title": "Porque o método reduz risco",
-        "body": "Cada fase depende da anterior e só avança quando está validada. Isso significa resultados visíveis já no primeiro mês, em vez de um investimento de longo prazo sem garantias."
+        "title": "Porque o método reduz o risco",
+        "body": "Cada fase só avança quando a anterior está validada, e até à integração a operação real não é tocada. Os primeiros resultados aparecem no primeiro mês, sem apostar o canal de vendas principal numa só mudança."
       }
-    },
-    "tags": [],
-    "status": "published",
-    "publishedAt": "2026-07-16T00:00:00.000Z"
+    }
   },
   {
     "slug": "5-tarefas-clinicas-perdem-tempo-ia",
-    "title": "5 tarefas que clínicas em Maputo perdem tempo — que IA resolve em minutos",
-    "excerpt": "Clínicas em Maputo gastam centenas de horas em tarefas manuais. Veja quais pode eliminar com IA.",
+    "title": "5 tarefas em que as clínicas de Maputo perdem tempo, e que um agente de IA resolve",
+    "excerpt": "Confirmações, perguntas repetidas, marcações, faltas e relatórios: onde vai o tempo da recepção de uma clínica, como um agente ajuda em cada tarefa e os cuidados com dados de saúde.",
     "category": "Casos de uso",
-    "readingTime": "6 min",
-    "author": "Equipa Songhai",
+    "tags": [
+      "clínicas",
+      "saúde",
+      "marcações"
+    ],
+    "status": "published",
+    "publishedAt": "2026-07-15T00:00:00.000Z",
+    "updatedAt": "2026-10-07T07:00:00.000Z",
+    "readingTime": "10 min",
+    "author": "Phill Muthambe",
     "gradient": "from-[#c89b3c] via-[#2f6e62] to-[#122733]",
+    "coverImage": "/blog-covers/clinicas-1280.webp",
     "icon": "stethoscope",
-    "coverImage": "https://images.pexels.com/photos/7108396/pexels-photo-7108396.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "content": {
-      "lead": "Quanto tempo a sua equipa gasta em emails e chamadas que não agregam valor? Em clínicas em Maputo, a estimativa típica do setor é entre 60 e 100 horas por mês — o equivalente a uma pessoa a tempo inteiro dedicada só a confirmações de consulta.",
+      "lead": "Numa clínica, a recepção é o ponto por onde tudo passa: marcações, confirmações, dúvidas sobre preços e seguros, remarcações, pacientes à espera ao balcão. Boa parte deste trabalho é repetitivo e acontece pelo WhatsApp e pelo telefone. As cinco tarefas abaixo são as que mais tempo consomem nas clínicas com que falamos, e são também as que um agente de IA trata melhor.",
       "sections": [
         {
-          "heading": "Confirmação de consultas (15-20h/mês)",
-          "body": "<p>O paciente marca consulta. A clínica precisa confirmar 24 horas antes — normalmente por chamada ou email. Se liga, ninguém atende no consultório. Se envia email, muitos pacientes não leem. O resultado são consultórios vazios e receita perdida.</p><p>Um agente de IA envia a confirmação automaticamente pelo WhatsApp do paciente — canal com taxa de abertura muito mais alta do que o email. O paciente responde \"sim\" ou \"não\" e o sistema atualiza a agenda sozinho.</p>"
+          "heading": "Antes de começar: de onde vêm os números",
+          "body": "<p>As horas indicadas em cada tarefa são <strong>estimativas ilustrativas</strong> para uma clínica com duas ou três salas e movimento médio. Não são resultados de um caso específico. Cada clínica é diferente, e a melhor forma de saber os seus números é contar durante uma semana: quantas mensagens, quantas chamadas, quanto tempo cada uma leva.</p>"
         },
         {
-          "heading": "Perguntas repetidas (20-30h/mês)",
-          "body": "<p>\"Qual é o vosso horário?\", \"Aceitam seguro?\", \"Qual é a taxa da consulta?\" — as mesmas perguntas chegam dezenas de vezes por mês, e cada uma é respondida manualmente.</p><p>Um agente treinado nas respostas mais comuns responde em segundos, sem esperar que alguém da equipa esteja livre.</p>"
+          "heading": "1. Confirmação de consultas",
+          "body": "<p><strong>Estimativa: 15 a 20 horas por mês.</strong></p>\n<p>A clínica confirma as consultas na véspera, normalmente por telefone. Muitas chamadas não são atendidas, outras exigem segunda tentativa, e o email quase ninguém lê. Resultado: horários vazios que podiam ter sido dados a outro paciente.</p>\n<p><strong>Com um agente:</strong> a confirmação é enviada pelo WhatsApp, onde os pacientes já estão. O paciente responde \"sim\", \"não\" ou \"posso mudar para sexta?\", e o agente actualiza a agenda ou propõe novos horários. A recepção só vê as exceções.</p>"
         },
         {
-          "heading": "Agendamento manual (25-35h/mês)",
-          "body": "<p>Marcar uma consulta por chamada envolve ouvir a disponibilidade do paciente, verificar a agenda, confirmar o horário e enviar confirmação — tudo manualmente. Se a confirmação não chega, o paciente nem sabe que foi marcado.</p><p>Um agente integrado com o calendário da clínica faz todo o processo em conversa, com a agenda atualizada em tempo real.</p>"
+          "heading": "2. Perguntas repetidas",
+          "body": "<p><strong>Estimativa: 20 a 30 horas por mês.</strong></p>\n<p>\"Qual é o horário?\", \"Aceitam o seguro X?\", \"Quanto custa a consulta de pediatria?\", \"Preciso de ir em jejum para as análises?\". As mesmas perguntas, dezenas de vezes por semana, muitas vezes enquanto há pacientes ao balcão.</p>\n<p><strong>Com um agente:</strong> responde em segundos, a qualquer hora, com a informação que a clínica definiu: horários, especialidades, preços, seguros aceites, preparação para exames. Perguntas clínicas (\"este sintoma é grave?\") são sempre passadas a um profissional, nunca respondidas pelo agente.</p>"
         },
         {
-          "heading": "Seguimento de faltas (10-15h/mês)",
-          "body": "<p>Quando um paciente falta, raramente alguém liga a perguntar porquê — e o paciente muitas vezes vai para outra clínica. Um agente contacta automaticamente após a falta, pergunta se está tudo bem e propõe remarcar.</p>"
+          "heading": "3. Marcações e remarcações",
+          "body": "<p><strong>Estimativa: 25 a 35 horas por mês.</strong></p>\n<p>Marcar uma consulta envolve várias mensagens: o paciente diz quando pode, alguém verifica a agenda, propõe horários, confirma, envia a confirmação. Uma remarcação repete o processo. Quando a confirmação não chega, o paciente nem sabe que ficou marcado.</p>\n<p><strong>Com um agente:</strong> ligado à agenda da clínica, o agente vê as vagas reais e marca na conversa, mesmo quando o paciente escreve em texto livre (\"de preferência quinta de manhã\"). A agenda fica actualizada no momento, sem marcações duplicadas.</p>"
         },
         {
-          "heading": "Relatórios diários e mensais (8-12h/mês)",
-          "body": "<p>Compilar quantos pacientes vieram, quanto faturou e quantas faltas houve significa juntar dados de vários sistemas à mão. Um agente acede aos sistemas da clínica e gera o relatório automaticamente, pronto ao início da manhã.</p>"
+          "heading": "4. Seguimento de faltas",
+          "body": "<p><strong>Estimativa: 10 a 15 horas por mês.</strong></p>\n<p>Quando um paciente falta, raramente alguém tem tempo de ligar a saber porquê. Muitas vezes o paciente acaba por ir a outra clínica.</p>\n<p><strong>Com um agente:</strong> no próprio dia, o paciente recebe uma mensagem cordial a perguntar se está tudo bem e a propor uma nova data. Muitos remarcam logo ali.</p>"
+        },
+        {
+          "heading": "5. Relatórios do dia e do mês",
+          "body": "<p><strong>Estimativa: 8 a 12 horas por mês.</strong></p>\n<p>Quantos pacientes vieram, quantas faltas houve, que especialidades tiveram mais procura. Juntar estes números à mão, de vários sistemas, consome horas no fim de cada mês.</p>\n<p><strong>Com automação:</strong> esta tarefa é mais de automação do que de IA. Os dados das marcações e confirmações já estão registados, e o relatório é gerado sozinho, pronto ao início da manhã.</p>"
+        },
+        {
+          "heading": "Quanto disto acontece na sua clínica?",
+          "body": "<p>Responda pensando numa semana normal:</p>",
+          "widget": {
+            "type": "checklist",
+            "title": "Onde vai o tempo da sua recepção?",
+            "items": [
+              "As consultas são confirmadas por chamada ou mensagem escrita à mão.",
+              "Responde às mesmas perguntas sobre preços, horários e seguros várias vezes por dia.",
+              "As marcações pelo WhatsApp são copiadas à mão para a agenda.",
+              "Há faltas sem aviso todas as semanas.",
+              "Ninguém contacta os pacientes que faltaram.",
+              "Os números do mês são juntados à mão."
+            ],
+            "results": [
+              {
+                "min": 0,
+                "title": "Recepção bem organizada",
+                "body": "A sua clínica já tem os processos principais resolvidos. Um agente traria um ganho pequeno."
+              },
+              {
+                "min": 2,
+                "title": "Há tempo a recuperar",
+                "body": "Duas ou três destas tarefas já justificam olhar para um agente simples, sobretudo para confirmações e perguntas repetidas."
+              },
+              {
+                "min": 4,
+                "title": "A recepção está sobrecarregada",
+                "body": "É o perfil típico em que um agente se paga depressa. Comece pelas confirmações e marcações, que são as que mais horas libertam."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Os cuidados com dados de saúde",
+          "body": "<p>Uma clínica não é uma loja. Antes de pôr um agente a falar com pacientes, há regras que não podem falhar:</p>\n<ul>\n<li><strong>O agente não dá conselhos clínicos.</strong> Marca, confirma, informa sobre horários e preços. Tudo o que é clínico vai para um profissional.</li>\n<li><strong>Acesso mínimo.</strong> O agente acede à agenda, não ao processo clínico do paciente.</li>\n<li><strong>Dados protegidos.</strong> As conversas são guardadas com acesso restrito, segundo as regras moçambicanas de protecção de dados, e não são usadas para treinar modelos de IA.</li>\n<li><strong>Transparência.</strong> O paciente deve saber que está a falar com um assistente automático e poder pedir uma pessoa a qualquer momento.</li>\n</ul>",
+          "widget": {
+            "type": "pros-cons",
+            "question": "Um agente no WhatsApp da sua clínica: mais ganhos ou mais riscos?",
+            "pros": [
+              {
+                "title": "Menos faltas",
+                "detail": "Confirmações e lembretes automáticos libertam horários a tempo de os dar a outros pacientes."
+              },
+              {
+                "title": "Recepção mais disponível",
+                "detail": "Quem está ao balcão atende quem está à frente, em vez do telemóvel."
+              },
+              {
+                "title": "Marcações a qualquer hora",
+                "detail": "Os pacientes marcam à noite e ao fim de semana, quando têm tempo."
+              },
+              {
+                "title": "Pacientes recuperados",
+                "detail": "Quem falta é contactado no próprio dia, com proposta de nova data."
+              }
+            ],
+            "cons": [
+              {
+                "title": "Dados sensíveis",
+                "detail": "Exigem regras de acesso apertadas e um fornecedor de confiança."
+              },
+              {
+                "title": "Pacientes mais velhos",
+                "detail": "Alguns preferem o telefone. O agente deve conviver com o atendimento por chamada."
+              },
+              {
+                "title": "Agenda tem de estar certa",
+                "detail": "Se os horários dos médicos não estiverem actualizados, o agente marca mal."
+              },
+              {
+                "title": "Limites claros",
+                "detail": "É preciso definir bem o que o agente nunca responde, para não haver conselhos clínicos indevidos."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Por onde começar",
+          "body": "<p>Para a maioria das clínicas, o plano Médio é o ponto de partida, porque inclui a agenda (Google Calendar) para marcações, além de CRM e qualificação de clientes. O plano Simples serve se só precisar de confirmações e perguntas frequentes no WhatsApp. Os valores estão em <a href=\"/precos\">songhai.cc/precos</a>, e a página <a href=\"/sectores/servicos\">empresas de serviços</a> tem mais detalhe sobre clínicas, escritórios e centros de formação.</p>\n<p>O <a href=\"/diagnostico\">diagnóstico gratuito de 30 minutos</a> é o melhor primeiro passo. Publicamos dicas para clínicas e outros serviços no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> e no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> da SONGHAI.</p>"
         }
       ],
-      "quote": "Se recuperasse estas horas todos os meses, o que a sua equipa faria com elas?",
+      "quote": "Se a sua recepção recuperasse estas horas todos os meses, o que faria com elas?",
       "callout": {
-        "title": "Tempo total estimado",
-        "body": "Somadas, estas cinco tarefas representam entre 78 e 112 horas por mês — mais de uma pessoa a tempo inteiro dedicada só a trabalho repetitivo. Estimativa baseada em padrões típicos do setor, não num caso específico."
+        "title": "Somando as cinco tarefas",
+        "body": "Nas estimativas acima, as cinco tarefas somam entre 78 e 112 horas por mês, perto de uma pessoa a tempo inteiro. São valores ilustrativos: conte os da sua clínica durante uma semana antes de decidir."
       }
-    },
-    "tags": [],
+    }
+  },
+  {
+    "slug": "agente-ia-whatsapp-o-que-faz-e-quando-compensa",
+    "title": "Agente de IA no WhatsApp: quando compensa",
+    "excerpt": "Como funciona por dentro um agente de IA no WhatsApp, onde ajuda de verdade, onde falha e como decidir se é a altura certa para o seu negócio.",
+    "category": "Agentes de IA",
+    "tags": [
+      "whatsapp",
+      "agentes de ia",
+      "atendimento"
+    ],
     "status": "published",
-    "publishedAt": "2026-07-15T00:00:00.000Z"
+    "publishedAt": "2026-10-07T07:00:00.000Z",
+    "readingTime": "11 min",
+    "author": "Phill Muthambe",
+    "gradient": "from-[#1b3a4b] via-[#2f6e62] to-[#c89b3c]",
+    "coverImage": "/blog-covers/agente-whatsapp-1280.webp",
+    "icon": "message-circle",
+    "featured": true,
+    "content": {
+      "lead": "Quase todas as empresas com quem falamos em Maputo têm o mesmo problema no WhatsApp. As mensagens chegam a qualquer hora, metade delas é a mesma pergunta e a resposta depende de quem está livre naquele momento. Um agente de IA resolve uma boa parte disto. Não resolve tudo, e convém saber onde fica a fronteira antes de pagar por um.",
+      "sections": [
+        {
+          "heading": "O que é, sem jargão",
+          "body": "<p>Um agente de IA no WhatsApp é um programa ligado ao número da sua empresa que lê cada mensagem, percebe o que o cliente quer e responde com a informação que a empresa lhe deu: preços, horários, produtos, regras de entrega, formas de pagamento. Quando a pergunta sai do que ele sabe, ou quando o cliente pede uma pessoa, passa a conversa para alguém da equipa.</p>\n<p>Convém separá-lo de duas coisas que já conhece:</p>\n<ul>\n<li><strong>As respostas automáticas do WhatsApp Business</strong> (mensagem de ausência, saudação, respostas rápidas). São textos fixos. Respondem sempre o mesmo, seja qual for a pergunta.</li>\n<li><strong>Os chatbots de menu</strong>, do tipo \"digite 1 para preços, 2 para horários\". Funcionam enquanto o cliente segue o caminho previsto. Basta escrever \"ainda têm cimento de 42,5 e entregam na Machava?\" para o menu se perder.</li>\n</ul>\n<p>O agente lê a frase como ela vem, com erros, abreviaturas e mistura de assuntos, e responde às duas perguntas na mesma mensagem.</p>"
+        },
+        {
+          "heading": "Como funciona por dentro",
+          "body": "<p>Há quatro peças, e todas são configuradas por quem implementa o agente, não pelo cliente final:</p>\n<ol>\n<li><strong>A ligação ao número.</strong> Pode ser feita pela API oficial da Meta (a via mais estável para volumes grandes) ou por ligação directa ao número. A escolha mexe no custo e no risco de bloqueio, por isso decide-se no diagnóstico.</li>\n<li><strong>A base de conhecimento.</strong> É o que o agente sabe: tabela de preços, perguntas frequentes, políticas de troca, zonas de entrega, horários. Se esta base estiver errada ou desactualizada, o agente responde errado com toda a confiança. É a peça mais importante e a mais esquecida.</li>\n<li><strong>As regras de passagem.</strong> Em que situações o agente para e chama uma pessoa: reclamação, pedido de desconto acima de um valor, cliente que pede para falar com alguém, pergunta que ele não sabe responder.</li>\n<li><strong>O registo.</strong> Cada conversa fica guardada, com o que o agente respondeu e porquê. É daqui que saem as correções da semana seguinte.</li>\n</ol>\n<h3>Uma conversa típica (exemplo ilustrativo)</h3>\n<p>Uma ferragem na Matola, 21h40 de uma terça-feira. A loja fechou às 17h.</p>\n<ul>\n<li><strong>Cliente:</strong> boa noite, quanto está a chapa de zinco 3 metros? preciso de 20</li>\n<li><strong>Agente:</strong> Boa noite! A chapa de zinco de 3 metros está a 1.150 MZN a unidade, 20 unidades ficam em 23.000 MZN. Para entrega, em que bairro fica a obra?</li>\n<li><strong>Cliente:</strong> Khongolote</li>\n<li><strong>Agente:</strong> Para Khongolote a entrega custa 800 MZN e sai no dia seguinte ao pagamento. Quer que deixe o pedido registado? Amanhã às 8h a nossa equipa confirma o stock e envia a referência de pagamento.</li>\n</ul>\n<p>Os preços acima são inventados para o exemplo. O que interessa é o que aconteceu: o cliente teve resposta às 21h40, a loja ficou com um pedido qualificado (produto, quantidade, local) e ninguém da equipa trabalhou fora de horas.</p>"
+        },
+        {
+          "heading": "Onde o agente ajuda de verdade",
+          "body": "<ul>\n<li><strong>Perguntas repetidas.</strong> Preço, horário, localização, \"têm em stock?\", \"fazem entrega?\". Em muitos negócios isto é a maior parte das mensagens do dia.</li>\n<li><strong>Fora de horas e fins de semana.</strong> O cliente que escreve às 22h e só recebe resposta às 9h do dia seguinte muitas vezes já comprou noutro lado.</li>\n<li><strong>Qualificação antes da equipa entrar.</strong> O agente recolhe nome, bairro, quantidade, orçamento e urgência. Quando a conversa chega ao vendedor, ele já sabe com quem fala e não perde dez mensagens a perguntar o básico.</li>\n<li><strong>Marcações.</strong> Consultas, visitas, recolhas. Ligado ao Google Calendar, o agente vê as vagas e marca sem sobrepor.</li>\n<li><strong>Lembretes e confirmações.</strong> \"A sua consulta é amanhã às 10h, confirma?\" Reduz faltas sem ninguém passar a manhã a ligar.</li>\n<li><strong>Picos.</strong> Campanhas, fim do mês, época de colheita, regresso às aulas. O agente responde a cem pessoas ao mesmo tempo com a mesma qualidade com que responde a uma.</li>\n</ul>"
+        },
+        {
+          "heading": "Onde falha, ou onde não deve ser usado",
+          "body": "<p>Esta parte costuma ficar fora das apresentações comerciais. Não devia.</p>\n<ul>\n<li><strong>Informação desactualizada.</strong> Se o preço do cimento mudou ontem e ninguém actualizou a base de conhecimento, o agente vai dar o preço antigo a toda a gente. Alguém da empresa tem de ser dono desta informação.</li>\n<li><strong>Negociação e reclamações sensíveis.</strong> Um cliente zangado com uma entrega atrasada precisa de uma pessoa, não de uma resposta bem escrita. O agente deve reconhecer o tom e passar a conversa.</li>\n<li><strong>Línguas nacionais e mistura de línguas.</strong> O agente entende bem português e inglês, e lida razoavelmente com mistura e calão. Conversas inteiras em changana, ronga ou emakhuwa ainda exigem testes caso a caso antes de prometer o que quer que seja.</li>\n<li><strong>Notas de voz.</strong> Muitos clientes preferem gravar. Nem todas as configurações tratam bem notas de voz longas, por isso confirme este ponto no piloto.</li>\n<li><strong>Envios em massa.</strong> Usar o número para disparar promoções a milhares de contactos que não pediram é a forma mais rápida de ver o número bloqueado pela Meta. Isto não é um defeito do agente, é uma regra do WhatsApp.</li>\n<li><strong>Custo fixo.</strong> O agente tem uma mensalidade, haja muitas ou poucas mensagens. Abaixo de um certo volume não compensa.</li>\n</ul>",
+          "widget": {
+            "type": "pros-cons",
+            "question": "Um agente de WhatsApp faz sentido para o seu negócio agora?",
+            "pros": [
+              {
+                "title": "Resposta imediata a qualquer hora",
+                "detail": "Os clientes que escrevem à noite e ao fim de semana deixam de esperar até à manhã seguinte."
+              },
+              {
+                "title": "Equipa livre do repetitivo",
+                "detail": "Quem atendia perguntas de preço passa a tratar de vendas, entregas e clientes difíceis."
+              },
+              {
+                "title": "Pedidos chegam qualificados",
+                "detail": "Produto, quantidade, bairro e urgência já recolhidos antes de alguém pegar na conversa."
+              },
+              {
+                "title": "Aguenta picos sem contratar",
+                "detail": "Campanhas e épocas altas deixam de significar mensagens sem resposta."
+              },
+              {
+                "title": "Tudo fica registado",
+                "detail": "Sabe quem perguntou o quê, quando, e o que lhe foi respondido."
+              }
+            ],
+            "cons": [
+              {
+                "title": "Mensalidade fixa",
+                "detail": "Paga o mesmo em meses fracos. Com pouco volume, o custo pode não se justificar."
+              },
+              {
+                "title": "Exige informação organizada",
+                "detail": "Preços, regras e stock têm de estar escritos e actualizados por alguém da empresa."
+              },
+              {
+                "title": "Não substitui o contacto humano",
+                "detail": "Reclamações, negociação e clientes de longa data continuam a precisar de uma pessoa."
+              },
+              {
+                "title": "Semanas de afinação",
+                "detail": "No primeiro mês há respostas a corrigir. É normal, mas exige atenção da equipa."
+              },
+              {
+                "title": "Alguns clientes desconfiam",
+                "detail": "Há quem prefira saber que fala com uma pessoa. A transparência resolve a maioria dos casos."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Como saber se é a altura certa",
+          "body": "<p>Não há uma regra única, mas há sinais que se repetem nas empresas onde o agente se paga depressa. Responda com sinceridade:</p>",
+          "widget": {
+            "type": "checklist",
+            "title": "É altura de pôr um agente no seu WhatsApp?",
+            "items": [
+              "Recebe mais de 20 mensagens de clientes por dia no WhatsApp.",
+              "Mais de metade dessas mensagens são perguntas que já respondeu muitas vezes.",
+              "Recebe mensagens fora do horário de expediente e responde só no dia seguinte.",
+              "Já perdeu vendas porque respondeu tarde.",
+              "Tem os preços e as regras do negócio escritos em algum lado (folha de Excel, documento, catálogo).",
+              "Há alguém na equipa que pode rever as conversas do agente meia hora por semana.",
+              "A mesma pessoa que vende é a que responde às mensagens repetidas."
+            ],
+            "results": [
+              {
+                "min": 0,
+                "title": "Ainda não é a altura",
+                "body": "Com este volume, as respostas rápidas e o catálogo do WhatsApp Business dão conta do recado. Volte a fazer este teste quando as mensagens aumentarem."
+              },
+              {
+                "min": 3,
+                "title": "Vale a pena testar",
+                "body": "Há ganho, mas convém confirmar com números reais. Um piloto de um mês com o plano Simples é a forma mais barata de tirar a dúvida."
+              },
+              {
+                "min": 5,
+                "title": "Está a perder tempo e vendas",
+                "body": "O seu caso é o típico em que o agente se paga nos primeiros meses. O que falta é organizar a informação e definir quando a conversa passa para a equipa."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Como começar sem arriscar",
+          "body": "<p>A maneira mais segura é um piloto curto, com metas definidas antes de começar. Na SONGHAI fazemos assim:</p>\n<ol>\n<li><strong>Diagnóstico gratuito de 30 minutos.</strong> Olhamos para as suas conversas reais e dizemos se compensa, e com que plano. Às vezes a resposta é que não compensa, e dizemo-lo.</li>\n<li><strong>Preparação.</strong> Precisamos das 30 perguntas que mais recebe, da tabela de preços, das regras de entrega e de pagamento, e do nome de quem recebe as conversas passadas pelo agente.</li>\n<li><strong>Piloto de um mês.</strong> Cancelamento sem penalidade se não fizer sentido. Um agente simples fica pronto em 5 a 7 dias úteis.</li>\n<li><strong>Medição.</strong> No fim do mês olhamos para três números: tempo até à primeira resposta, percentagem de conversas resolvidas sem ninguém da equipa e conversas fora de horas que acabaram em venda.</li>\n</ol>\n<p>Se os números não convencerem, cancela sem penalidade. Os preços de cada plano estão em <a href=\"/precos\">songhai.cc/precos</a>, em meticais e sem letras pequenas.</p>\n<p>Publicamos casos e dicas curtas sobre isto no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> e no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> da SONGHAI. Se este tema lhe interessa, é lá que vai encontrar a continuação.</p>"
+        }
+      ],
+      "quote": "Um agente bem configurado não substitui a sua equipa. Tira-lhe da frente as perguntas que ela já sabe responder de olhos fechados.",
+      "callout": {
+        "title": "Antes de decidir",
+        "body": "Conte quantas mensagens recebeu no WhatsApp na última semana e quantas eram a mesma pergunta. Esse número diz mais sobre o seu caso do que qualquer demonstração."
+      }
+    }
+  },
+  {
+    "slug": "quanto-custa-agente-whatsapp-e-quanto-devolve",
+    "title": "Quanto custa um agente de WhatsApp em Moçambique, e quanto devolve: as contas em meticais",
+    "excerpt": "Setup, mensalidade, custos que ninguém menciona e uma calculadora para fazer as contas ao seu caso. Com três exemplos ilustrativos e os casos em que não compensa.",
+    "category": "Guias",
+    "tags": [
+      "preços",
+      "retorno",
+      "whatsapp"
+    ],
+    "status": "published",
+    "publishedAt": "2026-09-23T07:00:00.000Z",
+    "readingTime": "10 min",
+    "author": "Phill Muthambe",
+    "gradient": "from-[#122733] via-[#2f6e62] to-[#c89b3c]",
+    "coverImage": "/blog-covers/custo-retorno-1280.webp",
+    "icon": "calculator",
+    "content": {
+      "lead": "A pergunta que mais ouvimos depois de \"funciona mesmo?\" é \"quanto custa?\". A segunda é mais difícil de responder do que parece, porque o preço do agente é só metade da conta. A outra metade é quanto lhe custa hoje não ter um. Este artigo faz as duas.",
+      "sections": [
+        {
+          "heading": "O que entra no preço",
+          "body": "<p>Um agente tem dois custos: um <strong>setup</strong>, pago uma vez, que cobre a configuração, a ligação ao WhatsApp, a escrita da base de conhecimento e os testes; e uma <strong>mensalidade</strong>, que cobre o alojamento, o uso do modelo de IA, os ajustes do mês e o suporte.</p>\n<p>Na SONGHAI os valores são públicos:</p>\n<table>\n<thead><tr><th>Plano</th><th>Mensalidade</th><th>Setup</th><th>Para quem</th></tr></thead>\n<tbody>\n<tr><td>Agente Simples</td><td>a partir de 7.000 MZN</td><td>2.000 MZN</td><td>Perguntas frequentes, confirmações e marcações</td></tr>\n<tr><td>Agente Médio</td><td>a partir de 12.000 MZN</td><td>a partir de 3.000 MZN</td><td>Qualificação de clientes e ligação a um CRM</td></tr>\n<tr><td>Agente Avançado</td><td>a partir de 18.000 MZN</td><td>a partir de 4.000 MZN</td><td>Várias integrações, pagamentos M-Pesa e volume alto</td></tr>\n</tbody>\n</table>\n<p>O \"a partir de\" existe porque o trabalho de ligar um agente a um sistema que a empresa já usa (um CRM, um programa de facturação, uma folha de stock) varia muito. Uma integração simples cabe no setup base. Um sistema antigo sem API pode exigir mais.</p>\n<h3>Custos que convém conhecer desde o início</h3>\n<ul>\n<li><strong>Mensagens da Meta.</strong> Quando o agente usa o canal oficial do WhatsApp, a Meta cobra algumas categorias de mensagens, sobretudo as que a empresa envia por iniciativa própria (lembretes, avisos, campanhas). As respostas a quem escreveu primeiro seguem regras diferentes. Explicamos o impacto no seu caso durante o diagnóstico, com números.</li>\n<li><strong>Tempo da equipa no primeiro mês.</strong> Alguém tem de rever as conversas e apontar o que está mal. Conte com meia hora a uma hora por dia nas primeiras duas semanas, e muito menos depois.</li>\n<li><strong>Extras.</strong> Um segundo agente (por exemplo, um para vendas e outro para pós-venda), integrações adicionais ou relatórios à medida têm preços próprios, também publicados na página de preços.</li>\n</ul>"
+        },
+        {
+          "heading": "O custo de não ter agente",
+          "body": "<p>Esta parte não aparece em nenhuma factura, por isso é fácil ignorá-la.</p>\n<ul>\n<li><strong>Horas da equipa.</strong> Cada pergunta de preço respondida à mão leva dois, três, cinco minutos, entre ler, procurar a informação e escrever. Multiplique por dezenas de conversas e por 26 dias de trabalho.</li>\n<li><strong>Clientes que desistem.</strong> Quem pede um orçamento a três fornecedores costuma ficar com o primeiro que responde bem. Responder no dia seguinte é, muitas vezes, responder tarde demais.</li>\n<li><strong>Erros de cópia.</strong> Pedidos copiados do WhatsApp para um caderno ou para o Excel, com a quantidade ou o bairro trocados.</li>\n<li><strong>O vendedor a fazer de recepcionista.</strong> A pessoa que devia estar a fechar negócios grandes passa a manhã a dizer o horário da loja.</li>\n</ul>"
+        },
+        {
+          "heading": "Faça as contas ao seu caso",
+          "body": "<p>A conta de base é simples: <strong>horas que o agente devolve por mês × custo de uma hora da sua equipa</strong>. Se o resultado for maior do que a mensalidade, o agente paga-se só com o tempo poupado, antes de contar uma única venda a mais.</p>\n<p>Mexa nos valores abaixo com os números da sua empresa. A calculadora usa os preços reais dos planos e indica qual faz sentido para o volume que escolher.</p>",
+          "widget": {
+            "type": "roi-calculator"
+          }
+        },
+        {
+          "heading": "Três exemplos ilustrativos",
+          "body": "<p>Os três negócios abaixo não são clientes reais. São perfis comuns, com números redondos, para mostrar como a mesma conta dá resultados muito diferentes.</p>\n<h3>Uma ferragem na Matola</h3>\n<p>60 conversas por dia, 3 minutos cada, o agente resolve 60% sozinho, uma hora da equipa vale 200 MZN. São cerca de <strong>47 horas por mês</strong>, que valem 9.360 MZN. O volume pede o plano Médio (12.000 MZN), e o tempo poupado, sozinho, fica perto de 2.640 MZN abaixo da mensalidade.</p>\n<p>Aqui o tempo poupado, sozinho, não paga o plano. A decisão depende de outra coisa: quantas vendas a loja perde hoje à noite e ao domingo. Se forem duas ou três chapas de zinco por semana, a conta muda completamente.</p>\n<h3>Uma clínica com duas salas</h3>\n<p>35 conversas por dia, 5 minutos cada (marcações levam mais tempo), 50% resolvidas pelo agente, hora a 300 MZN. Cerca de <strong>38 horas por mês</strong>, que valem perto de 11.375 MZN, contra 7.000 MZN do plano Simples. Saldo de mais de 4.000 MZN por mês, e o setup recupera-se no primeiro mês. Somam-se as faltas a consultas que os lembretes evitam.</p>\n<h3>Um distribuidor de produtos agrícolas</h3>\n<p>Na época alta, 120 conversas por dia, 4 minutos cada, 65% resolvidas, hora a 180 MZN. São mais de <strong>130 horas por mês</strong>, o equivalente a quase uma pessoa a tempo inteiro, com um valor perto de 24.300 MZN. O plano Avançado custa 18.000 MZN e inclui a confirmação de pagamentos por M-Pesa, que neste negócio é metade do trabalho.</p>"
+        },
+        {
+          "heading": "Quando não compensa",
+          "body": "<p>Dizemos isto a clientes com alguma frequência, e preferimos dizê-lo antes do que depois:</p>\n<ul>\n<li><strong>Volume baixo.</strong> Com menos de dez conversas por dia, as respostas rápidas e o catálogo gratuitos do WhatsApp Business costumam chegar.</li>\n<li><strong>Informação que muda todos os dias sem dono.</strong> Se os preços mudam diariamente e ninguém os pode actualizar, o agente vai errar.</li>\n<li><strong>Vendas que acontecem quase todas ao balcão.</strong> Se o WhatsApp é um canal secundário, o ganho é proporcional.</li>\n<li><strong>Relação muito pessoal.</strong> Há negócios em que os clientes compram porque falam com o dono. Aí o agente pode servir só para fora de horas, ou não servir.</li>\n</ul>"
+        },
+        {
+          "heading": "Como reduzir o risco",
+          "body": "<ul>\n<li><strong>Piloto de um mês</strong>, com cancelamento sem penalidade se não fizer sentido.</li>\n<li><strong>Garantia de horas.</strong> Se no primeiro trimestre o agente não lhe poupar pelo menos 10 horas por mês, devolvemos a diferença em crédito.</li>\n\n<li><strong>Começar pequeno.</strong> A maior parte dos clientes começa no plano Simples, só com o WhatsApp, e sobe quando os números o justificam.</li>\n</ul>\n<p>Todos os valores e condições estão em <a href=\"/precos\">songhai.cc/precos</a>. Se preferir fazer estas contas com alguém, o <a href=\"/diagnostico\">diagnóstico gratuito</a> serve exatamente para isso. E no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> e no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> da SONGHAI publicamos regularmente exemplos de contas como estas.</p>"
+        }
+      ],
+      "quote": "O preço do agente aparece na factura. O preço de responder tarde não aparece em lado nenhum, e costuma ser maior.",
+      "callout": {
+        "title": "Uma regra prática",
+        "body": "Se a sua equipa passa mais de duas horas por dia a responder às mesmas perguntas no WhatsApp, quase de certeza que o plano Simples se paga só com esse tempo."
+      }
+    }
+  },
+  {
+    "slug": "vender-pelo-whatsapp-e-receber-por-m-pesa",
+    "title": "Vender pelo WhatsApp e receber por M-Pesa: como funciona um agente que trata da encomenda ao pagamento",
+    "excerpt": "Do \"mande o comprovativo\" à confirmação automática: o fluxo completo de uma venda com agente de IA e carteira móvel, o que é preciso ter, os riscos e as regras de segurança.",
+    "category": "Casos de uso",
+    "tags": [
+      "m-pesa",
+      "pagamentos",
+      "whatsapp"
+    ],
+    "status": "published",
+    "publishedAt": "2026-09-10T07:00:00.000Z",
+    "readingTime": "10 min",
+    "author": "Phill Muthambe",
+    "gradient": "from-[#2f6e62] via-[#122733] to-[#c89b3c]",
+    "coverImage": "/blog-covers/mpesa-1280.webp",
+    "icon": "smartphone",
+    "content": {
+      "lead": "Em Moçambique, vender pelo WhatsApp e receber por carteira móvel já é a forma normal de fazer negócio para milhares de lojas, produtores e prestadores de serviços. O que quase ninguém automatizou ainda é o meio: confirmar o pagamento, actualizar a encomenda e avisar quem entrega. É aí que se perde mais tempo, e onde acontecem mais erros.",
+      "sections": [
+        {
+          "heading": "O fluxo que todos conhecem",
+          "body": "<p>Quem vende pelo WhatsApp conhece este guião de cor:</p>\n<ol>\n<li>O cliente pergunta o preço e a disponibilidade.</li>\n<li>Alguém responde, às vezes horas depois.</li>\n<li>O cliente decide e pergunta \"para onde mando?\".</li>\n<li>A empresa envia o número M-Pesa.</li>\n<li>O cliente paga e manda a captura de ecrã do comprovativo.</li>\n<li>Alguém abre as mensagens da carteira, procura o pagamento, confere o valor e o nome.</li>\n<li>Confirma ao cliente, anota a encomenda num caderno ou no Excel e avisa o estafeta.</li>\n</ol>\n<p>Sete passos, quase todos manuais. Os problemas aparecem nos sítios previsíveis: capturas de ecrã editadas, pagamentos com o valor errado, encomendas pagas que ficam esquecidas porque a mensagem desceu na lista, e uma pessoa da equipa presa ao telemóvel o dia inteiro para conferir pagamentos.</p>"
+        },
+        {
+          "heading": "Como fica com um agente",
+          "body": "<p>Com um agente de IA ligado ao WhatsApp e ao sistema de pagamentos, o mesmo guião fica assim:</p>\n<ol>\n<li><strong>Pedido.</strong> O cliente escreve o que quer, como escreveria a uma pessoa. O agente confirma produto, quantidade, preço e disponibilidade.</li>\n<li><strong>Total.</strong> O agente calcula o valor com a entrega, conforme o bairro, e mostra o resumo.</li>\n<li><strong>Pagamento.</strong> O cliente recebe o pedido de pagamento. Com uma conta comercial ligada à API da operadora, o pedido aparece directamente no telemóvel do cliente e ele só confirma com o PIN. Sem essa ligação, o agente gera uma referência única para aquela encomenda.</li>\n<li><strong>Confirmação.</strong> A confirmação do pagamento chega ao sistema pela operadora, não por captura de ecrã. O agente só dá a encomenda como paga quando o dinheiro entrou.</li>\n<li><strong>Seguimento.</strong> A encomenda muda de estado, a equipa de entrega é avisada e o cliente recebe a confirmação, e mais tarde o aviso de que a entrega saiu.</li>\n</ol>\n<p>A equipa deixa de conferir pagamentos um a um. Passa a tratar só das exceções: pagamentos a mais, a menos, reembolsos e clientes com dúvidas.</p>"
+        },
+        {
+          "heading": "M-Pesa, e-Mola e mKesh",
+          "body": "<p>As três carteiras móveis do país funcionam de forma parecida para o cliente, mas não para a integração:</p>\n<ul>\n<li><strong>M-Pesa</strong>, da Vodacom, é a mais usada e a que tem a integração para empresas mais madura. É por onde começa a maior parte dos projectos.</li>\n<li><strong>e-Mola</strong>, da Movitel, e <strong>mKesh</strong>, da Tmcel, também podem ser ligadas. As condições dependem do acordo comercial que a empresa tem com cada operadora.</li>\n</ul>\n<p>Na prática, recomendamos começar com a carteira onde está a maioria dos seus clientes, medir durante um mês e só depois juntar as outras. Transferência bancária e pagamento na entrega podem continuar a existir em paralelo, tratados pela equipa.</p>"
+        },
+        {
+          "heading": "O que é preciso ter antes",
+          "body": "<ul>\n<li><strong>Uma conta comercial na carteira móvel</strong>, em nome da empresa. Um número pessoal não serve para integração e mistura as contas da empresa com as suas.</li>\n<li><strong>Lista de produtos com preços</strong>, mesmo que seja uma folha de Excel. É a partir dela que o agente responde.</li>\n<li><strong>Regras de entrega</strong>: bairros servidos, custo por zona, prazos, dias sem entregas.</li>\n<li><strong>Política de cancelamentos e reembolsos</strong>, escrita. O agente precisa de saber o que pode prometer.</li>\n<li><strong>Alguém responsável pelas exceções</strong>, com nome e horário. É para essa pessoa que o agente passa os casos que não deve resolver sozinho.</li>\n</ul>"
+        },
+        {
+          "heading": "Vantagens e riscos, lado a lado",
+          "body": "<p>Automatizar pagamentos mexe com dinheiro e com confiança. Vale a pena pesar bem os dois lados, com a realidade do seu negócio à frente:</p>",
+          "widget": {
+            "type": "pros-cons",
+            "question": "Receber pagamentos pelo agente compensa no seu caso?",
+            "pros": [
+              {
+                "title": "Fim dos comprovativos falsos",
+                "detail": "A confirmação vem da operadora. Uma captura de ecrã editada deixa de valer."
+              },
+              {
+                "title": "Vende enquanto a loja está fechada",
+                "detail": "Pedido, pagamento e confirmação acontecem às 23h sem ninguém acordado."
+              },
+              {
+                "title": "Menos erros de valor",
+                "detail": "O total é calculado pelo sistema, com a entrega incluída, sempre da mesma forma."
+              },
+              {
+                "title": "Encomendas que não se perdem",
+                "detail": "Cada pedido tem um estado: por pagar, pago, em entrega, entregue."
+              },
+              {
+                "title": "Uma pessoa a menos presa ao telemóvel",
+                "detail": "Conferir pagamentos deixa de ser o trabalho de alguém a tempo inteiro."
+              }
+            ],
+            "cons": [
+              {
+                "title": "Custo mais alto",
+                "detail": "O processamento de pagamentos está no plano Avançado (a partir de 18.000 MZN/mês) ou como extra nos outros planos."
+              },
+              {
+                "title": "Depende da operadora",
+                "detail": "É preciso conta comercial e aceitar as taxas e regras da carteira móvel."
+              },
+              {
+                "title": "Quando a rede falha",
+                "detail": "Se a operadora ou a internet falharem, tem de existir um plano B combinado com a equipa."
+              },
+              {
+                "title": "Reembolsos continuam manuais",
+                "detail": "Devolver dinheiro é uma decisão que deve passar sempre por uma pessoa."
+              },
+              {
+                "title": "Clientes desconfiados",
+                "detail": "Alguns hesitam em pagar numa conversa automática. É preciso explicar bem e ter um contacto humano visível."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Segurança: as regras que não se negociam",
+          "body": "<ul>\n<li><strong>O agente nunca pede o PIN.</strong> O PIN só é escrito no ecrã de confirmação da própria carteira, no telemóvel do cliente. Diga isto aos seus clientes, por escrito, no perfil do WhatsApp.</li>\n<li><strong>Os dados de pagamento ficam no sistema, não na conversa.</strong> A conversa mostra o estado da encomenda, não números de conta.</li>\n<li><strong>Acessos com nome.</strong> Cada pessoa da equipa tem o seu acesso, e fica registado quem fez o quê.</li>\n<li><strong>Protecção de dados.</strong> Nomes, números e moradas dos clientes são tratados segundo as regras moçambicanas de protecção de dados e de transacções electrónicas, e não são usados para treinar modelos de IA.</li>\n</ul>"
+        },
+        {
+          "heading": "Está pronto?",
+          "body": "<p>Antes de falar connosco, faça este teste. Se tiver quatro ou mais respostas \"sim\", o projecto avança depressa.</p>",
+          "widget": {
+            "type": "checklist",
+            "title": "Está pronto para receber pagamentos através do agente?",
+            "items": [
+              "Já recebe a maioria dos pagamentos por carteira móvel.",
+              "Tem, ou pode abrir, uma conta comercial em nome da empresa.",
+              "Tem a lista de produtos e preços escrita num só sítio.",
+              "Sabe quanto custa a entrega para cada bairro ou zona.",
+              "Tem uma política de cancelamentos e reembolsos, mesmo que simples.",
+              "Há uma pessoa definida para tratar das exceções."
+            ],
+            "results": [
+              {
+                "min": 0,
+                "title": "Comece pelo básico",
+                "body": "Antes de automatizar pagamentos, vale a pena organizar a conta comercial e a lista de preços. Um agente simples, só para pedidos, pode ser um bom primeiro passo."
+              },
+              {
+                "min": 3,
+                "title": "Quase lá",
+                "body": "Faltam um ou dois pontos. São resolvidos durante a preparação do projecto, normalmente em poucos dias."
+              },
+              {
+                "min": 5,
+                "title": "Pronto para avançar",
+                "body": "Tem tudo o que é preciso. A implementação com pagamentos leva tipicamente duas a quatro semanas, incluindo testes com pagamentos reais de baixo valor."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Por onde começar",
+          "body": "<p>No plano Avançado, o processamento de pagamentos por M-Pesa e outras carteiras já está incluído, com confirmação automática, referências e actualização das encomendas em tempo real. Nos planos Simples e Médio, pode ser acrescentado à parte.</p>\n<p>O primeiro passo é o <a href=\"/diagnostico\">diagnóstico gratuito de 30 minutos</a>, onde olhamos para o seu fluxo actual de vendas e pagamentos e dizemos o que faz sentido automatizar primeiro. Os preços estão em <a href=\"/precos\">songhai.cc/precos</a>.</p>\n<p>No <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> da SONGHAI mostramos como estas conversas ficam no telemóvel do cliente, passo a passo.</p>"
+        }
+      ],
+      "quote": "O comprovativo em captura de ecrã foi uma solução de recurso. Com a confirmação a vir da operadora, deixa de ser preciso confiar numa imagem.",
+      "callout": {
+        "title": "Diga aos seus clientes",
+        "body": "Ponha no perfil do WhatsApp da empresa: \"Nunca pedimos o seu PIN. O pagamento é sempre confirmado no ecrã da sua carteira.\" Uma frase destas evita muitas burlas em seu nome."
+      }
+    }
+  },
+  {
+    "slug": "songhaicrm-crm-para-vender-pelo-whatsapp-em-mocambique",
+    "title": "SonghaiCRM: o CRM para quem vende pelo WhatsApp em Moçambique",
+    "excerpt": "Conversas, funil de vendas e agentes de IA no mesmo sítio, em meticais, no fuso de Maputo e com os dados no servidor da sua empresa. O que tem, para quem é e quais os limites.",
+    "category": "Automação",
+    "tags": [
+      "songhaicrm",
+      "crm",
+      "whatsapp",
+      "vendas"
+    ],
+    "status": "published",
+    "publishedAt": "2026-08-27T07:00:00.000Z",
+    "readingTime": "11 min",
+    "author": "Phill Muthambe",
+    "gradient": "from-[#122733] via-[#1b3a4b] to-[#2f6e62]",
+    "coverImage": "/blog-covers/songhaicrm-1280.webp",
+    "icon": "layout-dashboard",
+    "content": {
+      "lead": "A maior parte das empresas moçambicanas que vende pelo WhatsApp gere os clientes em três sítios ao mesmo tempo: o telemóvel de quem atende, um caderno ou folha de Excel, e a memória da equipa. Funciona até o negócio crescer, até alguém sair da empresa com o telemóvel, ou até dois vendedores responderem ao mesmo cliente com preços diferentes. O SonghaiCRM existe para juntar tudo isto num só lugar.",
+      "sections": [
+        {
+          "heading": "Porque mais um CRM",
+          "body": "<p>Há muitos CRMs no mercado. A maioria foi pensada para outro contexto:</p>\n<ul>\n<li><strong>Feitos à volta do email</strong>, com o WhatsApp como módulo extra, muitas vezes pago à parte.</li>\n<li><strong>Cobrados em dólares, por utilizador</strong>, o que torna caro dar acesso a toda a equipa.</li>\n<li><strong>Em inglês ou em português do Brasil</strong>, com CPF, reais e fusos que não são os nossos.</li>\n<li><strong>Com os dados em servidores no estrangeiro</strong>, fora do controlo da empresa.</li>\n</ul>\n<p>O SonghaiCRM parte do contrário: o WhatsApp é o canal principal, os agentes de IA trabalham dentro do próprio CRM, e o sistema fala como se fala em Moçambique, conta em meticais e corre no servidor da empresa.</p>"
+        },
+        {
+          "heading": "O que tem lá dentro",
+          "body": "<p>O sistema está organizado em cinco áreas. Escolha uma para ver o que inclui:</p>",
+          "widget": {
+            "type": "tabs",
+            "title": "As áreas do SonghaiCRM",
+            "tabs": [
+              {
+                "label": "Atendimento",
+                "body": "<ul>\n<li><strong>Caixa de conversas</strong> com todas as conversas do WhatsApp da empresa. A equipa e o agente de IA trabalham lado a lado, e vê-se sempre quem está a responder.</li>\n<li><strong>Radar</strong> das conversas que arrefeceram: clientes que ficaram sem resposta e que ainda podem ser recuperados.</li>\n<li><strong>Respostas rápidas</strong> partilhadas por toda a equipa, para as mensagens que se repetem.</li>\n<li><strong>Distribuição automática</strong> das conversas pela equipa, por rotação ou pelo assunto da mensagem.</li>\n</ul>"
+              },
+              {
+                "label": "Funil de vendas",
+                "body": "<ul>\n<li><strong>Quadro Kanban</strong> com cada negócio na sua etapa: novo contacto, proposta, negociação, ganho, perdido.</li>\n<li><strong>Vocabulário do seu negócio.</strong> Numa clínica, o cliente chama-se paciente e \"ganho\" passa a \"agendado\". Numa loja, \"pago\". Cada funil fala a língua da equipa que o usa.</li>\n<li><strong>Motivos de perda</strong> registados, para perceber porque é que os negócios não fecham.</li>\n<li><strong>Ficha de contacto</strong> com todo o histórico de conversas, notas e negócios.</li>\n</ul>"
+              },
+              {
+                "label": "Agentes de IA",
+                "body": "<ul>\n<li><strong>Agentes que atendem, qualificam e movem o negócio no funil</strong>, com uma base de conhecimento própria de cada empresa.</li>\n<li><strong>Follow-ups automáticos</strong> que retomam conversas paradas no momento certo, conforme a etapa do funil.</li>\n<li><strong>Passagem para uma pessoa</strong> quando é preciso, com registo de quando e porquê.</li>\n<li><strong>Evolução da IA:</strong> uma página que mostra onde o agente acerta, onde erra e o que falta ensinar-lhe. As melhorias sugeridas pela própria IA só entram depois de aprovadas por alguém da equipa.</li>\n<li><strong>Limite de gasto</strong> com IA por organização, para a factura do mês nunca ser uma surpresa.</li>\n</ul>"
+              },
+              {
+                "label": "Automações",
+                "body": "<ul>\n<li><strong>Regras QUANDO / SE / ENTÃO.</strong> Por exemplo: quando chega uma mensagem com a palavra \"orçamento\", se o cliente for novo, então atribuir ao vendedor de turno e marcar como prioridade.</li>\n<li><strong>Entrada de contactos</strong> a partir de formulários do site, páginas de campanha ou outras ferramentas, directamente para a etapa certa do funil.</li>\n<li><strong>Avisos para outros sistemas</strong> quando alguma coisa acontece no CRM.</li>\n<li>Todas as automações nascem desligadas, até alguém as rever e ligar.</li>\n</ul>"
+              },
+              {
+                "label": "Gestão",
+                "body": "<ul>\n<li><strong>Desempenho</strong> do funil e de cada pessoa da equipa.</li>\n<li><strong>Registo de auditoria</strong> de tudo o que acontece no sistema.</li>\n<li><strong>Papéis e permissões</strong>: cada pessoa vê apenas o que deve ver.</li>\n<li><strong>Segurança</strong> com verificação em dois passos opcional, códigos de recuperação e controlo de sessões abertas.</li>\n</ul>"
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Feito para Moçambique, nos detalhes",
+          "body": "<p>É nos pormenores que se nota se um sistema foi feito para o nosso mercado ou apenas traduzido:</p>\n<ul>\n<li><strong>Metical</strong> como moeda, com os valores escritos como se escrevem cá.</li>\n<li><strong>Fuso horário de Maputo</strong> (UTC+2) em marcações, lembretes e relatórios.</li>\n<li><strong>Números +258</strong> validados como números moçambicanos.</li>\n<li><strong>NUIT</strong> nos dados das empresas clientes.</li>\n<li><strong>Feriados de Moçambique</strong> nas contas de dias úteis e prazos.</li>\n<li><strong>Português de Moçambique</strong> em todo o sistema: contacto, ecrã, equipa, palavra-passe.</li>\n<li><strong>Horário de envio</strong> entre as 6h e as 23h, para as mensagens automáticas não chegarem a meio da noite.</li>\n<li><strong>Regras moçambicanas de protecção de dados</strong> aplicadas por defeito.</li>\n</ul>"
+        },
+        {
+          "heading": "Os seus dados ficam consigo",
+          "body": "<p>O SonghaiCRM assenta em código aberto e corre num servidor da própria empresa, ou num servidor que a SONGHAI gere em seu nome. Isto tem consequências práticas:</p>\n<ul>\n<li><strong>Os dados não ficam presos a um fornecedor.</strong> Se um dia quiser mudar de sistema, os dados são seus.</li>\n<li><strong>Não há preço por utilizador.</strong> Dar acesso a mais uma pessoa da equipa não aumenta a factura do software.</li>\n<li><strong>Cada empresa está isolada</strong> das outras ao nível da base de dados, e esse isolamento é testado automaticamente a cada actualização.</li>\n<li><strong>actualizações com um clique</strong>, a partir do próprio sistema.</li>\n</ul>"
+        },
+        {
+          "heading": "Vantagens e limites",
+          "body": "<p>Nenhum sistema serve a toda a gente. Marque o que pesa para a sua empresa:</p>",
+          "widget": {
+            "type": "pros-cons",
+            "question": "O SonghaiCRM é a escolha certa para a sua equipa?",
+            "pros": [
+              {
+                "title": "WhatsApp e IA no centro",
+                "detail": "Não é um extra: o sistema foi desenhado à volta das conversas e dos agentes."
+              },
+              {
+                "title": "Sem custo por utilizador",
+                "detail": "Toda a equipa pode ter acesso sem multiplicar a factura."
+              },
+              {
+                "title": "Dados no seu servidor",
+                "detail": "Controlo total sobre a informação dos seus clientes."
+              },
+              {
+                "title": "Adaptado a Moçambique",
+                "detail": "Metical, fuso de Maputo, +258, NUIT, feriados e português de cá."
+              },
+              {
+                "title": "Nada morre no silêncio",
+                "detail": "Radar e follow-ups recuperam clientes que ficaram sem resposta."
+              }
+            ],
+            "cons": [
+              {
+                "title": "Precisa de um servidor",
+                "detail": "Tem de existir um servidor e alguém que o mantenha, seja a sua equipa ou a SONGHAI."
+              },
+              {
+                "title": "Curva de aprendizagem",
+                "detail": "A equipa precisa de algumas sessões para tirar partido do funil e das automações."
+              },
+              {
+                "title": "IA tem custo de uso",
+                "detail": "Cada conversa do agente consome créditos do modelo de IA, com limite configurável."
+              },
+              {
+                "title": "Ligação por QR code tem riscos",
+                "detail": "É a forma mais rápida de começar, mas a Meta pode bloquear números usados para envios em massa. O canal oficial é mais seguro e tem custo por mensagem."
+              },
+              {
+                "title": "Integrações locais caso a caso",
+                "detail": "Ligar a um programa de facturação ou ERP local exige avaliação própria."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Para quem é",
+          "body": "<p>O SonghaiCRM faz mais sentido para empresas onde:</p>\n<ul>\n<li>Mais do que uma pessoa responde ao WhatsApp da empresa.</li>\n<li>Os clientes precisam de seguimento ao longo de dias ou semanas (orçamentos, propostas, marcações).</li>\n<li>Já se perderam clientes por falta de resposta ou por esquecimento.</li>\n<li>Há interesse em pôr um agente de IA a trabalhar, mas com controlo sobre o que ele faz.</li>\n</ul>\n<p>Comércio e distribuição, clínicas, imobiliárias, escolas e centros de formação, prestadores de serviços e agências são os casos mais comuns. Para quem tem um só número e uma só pessoa a responder, o WhatsApp Business com um agente simples costuma chegar.</p>"
+        },
+        {
+          "heading": "Como começar",
+          "body": "<p>Começa com uma conversa. No <a href=\"/diagnostico\">diagnóstico gratuito</a> olhamos para a forma como a sua equipa trabalha hoje e mostramos o sistema com os seus próprios casos. Se fizer sentido, tratamos da instalação, da ligação ao WhatsApp, da passagem dos contactos que já tem e da formação da equipa.</p>\n<p>O SonghaiCRM também pode ser o CRM ligado ao agente de IA nos planos Médio e Avançado, que estão descritos em <a href=\"/precos\">songhai.cc/precos</a>.</p>\n<p>Vamos publicar demonstrações curtas de cada área do sistema no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> e no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> da SONGHAI. Siga-nos para as ver primeiro.</p>"
+        }
+      ],
+      "quote": "Um cliente não devia depender do telemóvel de quem o atendeu da primeira vez. A história dele pertence à empresa.",
+      "callout": {
+        "title": "Pergunta para a sua equipa",
+        "body": "Se a pessoa que mais atende no WhatsApp faltasse amanhã, alguém saberia em que ponto está cada cliente? Se a resposta for \"não\", é por aqui que vale a pena começar."
+      }
+    }
+  },
+  {
+    "slug": "agentes-ia-comercio-agricultura-servicos-mocambique",
+    "title": "Comércio, agricultura e serviços: o que um agente de IA faz em cada sector",
+    "excerpt": "Três sectores, três rotinas diferentes. O dia a dia antes e depois de um agente de IA numa loja, num negócio agrícola e numa empresa de serviços em Moçambique, com o que muda e o que não muda.",
+    "category": "Casos de uso",
+    "tags": [
+      "sectores",
+      "comércio",
+      "agricultura",
+      "serviços"
+    ],
+    "status": "published",
+    "publishedAt": "2026-08-14T07:00:00.000Z",
+    "readingTime": "10 min",
+    "author": "Phill Muthambe",
+    "gradient": "from-[#c89b3c] via-[#1b3a4b] to-[#2f6e62]",
+    "coverImage": "/blog-covers/setores-1280.webp",
+    "icon": "store",
+    "content": {
+      "lead": "Quando se fala de agentes de IA, a conversa tende a ficar no abstrato. Na prática, o que um agente faz depende muito do negócio. Uma ferragem, um fornecedor de milho e uma clínica recebem mensagens muito diferentes, em horas diferentes, com problemas diferentes. Este artigo olha para os três sectores onde mais trabalhamos e descreve, com exemplos ilustrativos, como fica o dia a dia.",
+      "sections": [
+        {
+          "heading": "O que os três têm em comum",
+          "body": "<p>Antes das diferenças, o que se repete em todos:</p>\n<ul>\n<li><strong>O WhatsApp é o canal principal</strong>, muitas vezes mais usado do que o telefone e muito mais do que o email.</li>\n<li><strong>Uma parte grande das mensagens é repetida</strong>: preço, disponibilidade, horário, localização.</li>\n<li><strong>As mensagens não respeitam o horário.</strong> Chegam à noite, ao domingo, nos feriados.</li>\n<li><strong>Quem responde é quem também faz outra coisa</strong>: atende ao balcão, negocia com fornecedores, recebe pacientes.</li>\n</ul>\n<p>Em todos os casos, o agente faz o mesmo tipo de trabalho: responde ao repetitivo, recolhe a informação que a equipa precisa e passa o resto. O que muda é o conteúdo.</p>"
+        },
+        {
+          "heading": "Antes e depois, sector a sector",
+          "body": "<p>Escolha o sector mais próximo do seu:</p>",
+          "widget": {
+            "type": "tabs",
+            "title": "Um dia típico, antes e depois do agente",
+            "tabs": [
+              {
+                "label": "Comércio e retalho",
+                "body": "<p><strong>Exemplo ilustrativo:</strong> uma loja de materiais de construção com três pessoas no balcão.</p>\n<p><strong>Antes.</strong> Entre clientes ao balcão, o telefone e o WhatsApp, as mensagens ficam para quando houver tempo. Os pedidos de orçamento com dez artigos levam meia hora a responder. À noite chegam pedidos que só são vistos no dia seguinte, e alguns desses clientes já compraram na loja ao lado.</p>\n<p><strong>Depois.</strong></p>\n<ul>\n<li>O agente envia preços, fotos e disponibilidade a partir do catálogo.</li>\n<li>Pedidos de orçamento com vários artigos são respondidos em minutos, com o total e o custo de entrega para o bairro.</li>\n<li>O pagamento por M-Pesa é confirmado automaticamente e a encomenda passa para a lista de entregas.</li>\n<li>O cliente recebe aviso quando o pedido sai, e deixa de ligar a perguntar.</li>\n</ul>\n<p><strong>O que não muda:</strong> descontos para clientes grandes, crédito a construtores conhecidos e reclamações continuam com as pessoas da loja.</p>\n<p><strong>Plano mais comum:</strong> Agente Médio, ou Avançado quando há volume de pagamentos.</p>"
+              },
+              {
+                "label": "Agricultura e agronegócio",
+                "body": "<p><strong>Exemplo ilustrativo:</strong> um distribuidor de sementes, fertilizantes e cereais que trabalha com produtores e compradores de várias províncias.</p>\n<p><strong>Antes.</strong> Na época alta, a pessoa que negoceia preços com compradores grandes é a mesma que responde a dezenas de pedidos de cotação por dia. Os compradores perguntam por produtos que já esgotaram, ou que só chegam na próxima colheita. Recolhas e entregas são combinadas por mensagens soltas e às vezes ficam esquecidas.</p>\n<p><strong>Depois.</strong></p>\n<ul>\n<li>O agente responde a pedidos de cotação com os preços actualizados da semana, a qualquer hora.</li>\n<li>Ligado ao registo de stock ou de colheita, deixa de prometer o que já não existe e indica quando volta a haver.</li>\n<li>Marca recolhas, entregas e visitas ao terreno sem sobreposições.</li>\n<li>Confirma encomendas e envia a referência de pagamento.</li>\n</ul>\n<p><strong>O que não muda:</strong> negociação de grandes volumes e contratos de época continuam a ser feitos por pessoas, com o agente a preparar a informação.</p>\n<p><strong>Plano mais comum:</strong> Agente Simples para começar, Médio quando é preciso qualificar compradores.</p>"
+              },
+              {
+                "label": "Serviços",
+                "body": "<p><strong>Exemplo ilustrativo:</strong> uma clínica, um escritório de advogados ou um centro de formação.</p>\n<p><strong>Antes.</strong> Cada marcação feita por WhatsApp é copiada à mão para a agenda. Remarcações geram conversas longas. Sem lembretes, uma parte dos clientes não aparece e o horário fica vazio. A recepção passa o dia a responder às mesmas dúvidas sobre preços, documentos necessários e horários.</p>\n<p><strong>Depois.</strong></p>\n<ul>\n<li>O agente marca, remarca e cancela directamente na agenda, respeitando as vagas reais.</li>\n<li>Envia lembretes na véspera e pede confirmação. Quem não pode vir liberta o horário a tempo.</li>\n<li>Recolhe a informação inicial antes da consulta ou reunião: motivo, documentos, dados de contacto.</li>\n<li>Faz o seguimento depois do serviço e lembra pagamentos pendentes.</li>\n</ul>\n<p><strong>O que não muda:</strong> qualquer pergunta clínica ou jurídica é sempre passada a um profissional. O agente não dá conselhos, marca e organiza.</p>\n<p><strong>Plano mais comum:</strong> Agente Simples ou Médio.</p>"
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Vantagens e cuidados por sector",
+          "body": "<p><strong>No comércio</strong>, o maior ganho costuma estar nas vendas fora de horas e na velocidade dos orçamentos. O maior cuidado é manter preços e stock actualizados, porque um preço errado dado a cem clientes vira cem conversas difíceis.</p>\n<p><strong>Na agricultura</strong>, o ganho está em aguentar a época alta sem contratar e em não perder cotações. O cuidado está nos preços que mudam com a campanha e com o câmbio: alguém tem de os actualizar todas as semanas, e o agente deve dizer claramente até quando cada preço é válido.</p>\n<p><strong>Nos serviços</strong>, o ganho está nas faltas que deixam de acontecer e no tempo da recepção. O cuidado está na confidencialidade: dados de saúde ou de processos jurídicos exigem regras de acesso apertadas e nunca devem ser usados fora do atendimento.</p>",
+          "widget": {
+            "type": "pros-cons",
+            "question": "No seu sector, o agente traz mais ganhos ou mais trabalho?",
+            "pros": [
+              {
+                "title": "Mensagens fora de horas atendidas",
+                "detail": "Em qualquer sector, é aqui que se recuperam mais clientes."
+              },
+              {
+                "title": "Orçamentos e cotações em minutos",
+                "detail": "Quem responde primeiro, e bem, costuma ficar com o negócio."
+              },
+              {
+                "title": "Agenda sem buracos",
+                "detail": "Lembretes e confirmações reduzem as faltas sem aviso."
+              },
+              {
+                "title": "Época alta sem contratar",
+                "detail": "O volume extra de mensagens deixa de exigir pessoas a mais."
+              }
+            ],
+            "cons": [
+              {
+                "title": "Preços que mudam muito",
+                "detail": "Exigem alguém responsável por actualizar a informação do agente."
+              },
+              {
+                "title": "Dados sensíveis",
+                "detail": "Saúde e justiça pedem regras de acesso e cuidados adicionais."
+              },
+              {
+                "title": "Clientes muito habituados ao dono",
+                "detail": "Alguns vão estranhar no início. Convém avisar e manter o contacto humano visível."
+              },
+              {
+                "title": "Integração com sistemas antigos",
+                "detail": "Ligar a um programa de stock ou facturação antigo pode levar mais tempo."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Por onde começar em cada caso",
+          "body": "<ul>\n<li><strong>Comércio:</strong> comece pelo catálogo e pelos orçamentos. Os pagamentos vêm a seguir, quando o fluxo de pedidos estiver estável.</li>\n<li><strong>Agricultura:</strong> comece pelas cotações e pela disponibilidade. Defina com clareza a validade de cada preço.</li>\n<li><strong>Serviços:</strong> comece pelas marcações e pelos lembretes. É onde o retorno aparece mais depressa.</li>\n</ul>\n<p>Cada sector tem uma página própria no site, com mais detalhe: <a href=\"/sectores/comercio\">comércio e retalho</a>, <a href=\"/sectores/agricola\">sector agrícola</a> e <a href=\"/sectores/servicos\">empresas de serviços</a>.</p>\n<p>Se o seu negócio não cabe em nenhum destes três, provavelmente cabe num diagnóstico. <a href=\"/diagnostico\">Marque aqui os 30 minutos gratuitos</a>, ou acompanhe os casos que publicamos no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> e no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> da SONGHAI.</p>"
+        }
+      ],
+      "quote": "O agente não precisa de saber vender cimento, sementes ou consultas. Precisa de saber o que a sua empresa responde quando lhe perguntam por eles.",
+      "callout": {
+        "title": "Um exercício de 10 minutos",
+        "body": "Abra o WhatsApp da empresa, percorra as últimas 50 conversas e marque as que podiam ter sido respondidas só com a informação que já tem escrita. A percentagem que encontrar é uma boa estimativa do que um agente resolveria."
+      }
+    }
+  },
+  {
+    "slug": "tendencias-vendas-whatsapp-ia-brasil-india-quenia-mocambique",
+    "title": "O que o Brasil, a Índia e o Quénia mostram sobre o futuro das vendas pelo WhatsApp em Moçambique",
+    "excerpt": "Pagamentos dentro da conversa, agentes que executam tarefas, mensagens pagas por unidade. As tendências que já mudaram o comércio noutros mercados, e o que significam para as empresas moçambicanas.",
+    "category": "Guias",
+    "tags": [
+      "tendências",
+      "mercados",
+      "whatsapp",
+      "pagamentos"
+    ],
+    "status": "published",
+    "publishedAt": "2026-08-01T07:00:00.000Z",
+    "readingTime": "12 min",
+    "author": "Phill Muthambe",
+    "gradient": "from-[#1b3a4b] via-[#c89b3c] to-[#122733]",
+    "coverImage": "/blog-covers/tendencias-1280.webp",
+    "icon": "trending-up",
+    "content": {
+      "lead": "Moçambique não precisa de adivinhar para onde vai o comércio pelo WhatsApp. Há países onde este caminho começou mais cedo, e os resultados estão à vista. O Quénia mostrou o que acontece quando o dinheiro passa para o telemóvel. A Índia e o Brasil mostraram o que acontece quando a loja, o pagamento e o atendimento passam para dentro da conversa. Vale a pena olhar para os três com atenção, e com algum sentido crítico.",
+      "sections": [
+        {
+          "heading": "Quénia: quando o dinheiro passou para o telemóvel",
+          "body": "<p>O M-Pesa nasceu no Quénia em 2007, lançado pela Safaricom. Começou como forma de enviar dinheiro a familiares e acabou por se tornar a infra-estrutura de pagamentos de boa parte da economia: pequenos comerciantes, transportes, contas de serviços, salários.</p>\n<p>A lição para nós não é o M-Pesa em si, que em Moçambique existe desde 2013 através da Vodacom, ao lado do e-Mola e do mKesh. A lição é o que veio depois: <strong>quando quase toda a gente consegue pagar pelo telemóvel, o passo seguinte é vender pelo telemóvel de ponta a ponta</strong>. O pagamento deixa de ser o obstáculo e o obstáculo passa a ser o atendimento: responder depressa, confirmar sem erros, entregar a horas.</p>\n<p>Em Moçambique, a primeira parte já aconteceu. A segunda está a começar.</p>"
+        },
+        {
+          "heading": "Índia: comprar sem sair da conversa",
+          "body": "<p>A Índia juntou duas coisas: um sistema público de pagamentos instantâneos (o UPI, lançado em 2016) e uma utilização massiva do WhatsApp. O resultado foi a compra feita inteiramente dentro da conversa. Em 2022, a JioMart passou a permitir encomendar mercearia directamente no WhatsApp, do catálogo ao carrinho e ao pagamento, sem abrir outra aplicação.</p>\n<p>O que isto ensina:</p>\n<ul>\n<li><strong>Cada aplicação a mais é um cliente a menos.</strong> Pedir ao cliente que saia do WhatsApp para um site, preencha um formulário e volte é perder parte dele pelo caminho.</li>\n<li><strong>O catálogo tem de estar onde está a conversa.</strong> O WhatsApp Business já tem catálogo e carrinho. A maioria das empresas moçambicanas ainda não os usa, ou usa-os desactualizados.</li>\n</ul>"
+        },
+        {
+          "heading": "Brasil: o WhatsApp como balcão principal",
+          "body": "<p>No Brasil, o Pix, lançado pelo Banco Central em 2020, tornou o pagamento instantâneo uma coisa banal. Ao mesmo tempo, o WhatsApp tornou-se o principal canal de atendimento de uma enorme quantidade de empresas, das pequenas lojas às grandes marcas. Foi também ali que o próprio WhatsApp testou pagamentos dentro da conversa.</p>\n<p>A consequência mais interessante não foi tecnológica, foi de expectativa: <strong>os clientes passaram a esperar resposta no WhatsApp em minutos, a qualquer hora</strong>. As empresas que não acompanharam ficaram com fama de lentas, mesmo quando o produto era bom.</p>\n<p>Foi essa pressão que levou ao uso generalizado de automação e, mais recentemente, de agentes de IA no atendimento. Moçambique tem uma vantagem aqui: pode aprender com os erros. Muitas empresas brasileiras começaram com robôs de menu rígidos que irritavam os clientes, e tiveram de recomeçar.</p>"
+        },
+        {
+          "heading": "Cinco tendências que vão chegar cá",
+          "body": "<ol>\n<li><strong>Agentes que fazem, não só respondem.</strong> A geração anterior de bots respondia a perguntas. Os agentes actuais consultam stock, marcam na agenda, geram referências de pagamento e actualizam o CRM. A própria Meta tem vindo a testar assistentes de IA para empresas dentro do WhatsApp.</li>\n<li><strong>Pagamento dentro da conversa.</strong> Em Moçambique, a forma mais realista é a ligação do agente às carteiras móveis: o cliente recebe o pedido de pagamento no telemóvel e confirma com o PIN, sem capturas de ecrã.</li>\n<li><strong>Mensagens pagas por unidade.</strong> Em 2025 a Meta mudou a forma de cobrar o canal oficial, passando a cobrar por mensagem em várias categorias. Isto vai premiar quem envia pouco e bem, e castigar quem dispara campanhas em massa.</li>\n<li><strong>Notas de voz como texto.</strong> Em mercados onde se grava mais do que se escreve, como o nosso, a transcrição automática de notas de voz vai tornar-se essencial para qualquer agente.</li>\n<li><strong>Confiança e protecção de dados.</strong> Com mais burlas pelo WhatsApp, os clientes vão preferir empresas com número verificado, regras claras (\"nunca pedimos o PIN\") e dados bem guardados.</li>\n</ol>"
+        },
+        {
+          "heading": "O que é diferente em Moçambique",
+          "body": "<p>Copiar o que funcionou noutro país sem ajustar é um erro comum. Há diferenças que contam:</p>\n<ul>\n<li><strong>Custo dos dados móveis.</strong> Mensagens com muitas fotografias e vídeos pesam no pacote do cliente. Um bom agente responde com texto curto e só envia imagens quando pedidas.</li>\n<li><strong>Cobertura de rede fora das cidades.</strong> Em zonas rurais, as mensagens podem chegar com atraso. Fluxos de pagamento têm de tolerar isso.</li>\n<li><strong>Línguas nacionais.</strong> Português e inglês funcionam bem. Changana, ronga, emakhuwa, sena e as outras línguas ainda exigem testes cuidadosos antes de qualquer promessa.</li>\n<li><strong>Energia.</strong> Lojas com cortes de energia frequentes beneficiam de ter o atendimento a correr num servidor, e não no telemóvel ou no computador da loja.</li>\n<li><strong>Empresas pequenas.</strong> A maioria das empresas tem poucas pessoas. As soluções têm de ser simples de usar e baratas para começar, em meticais.</li>\n</ul>",
+          "widget": {
+            "type": "pros-cons",
+            "question": "Adoptar já, ou esperar que o mercado amadureça?",
+            "pros": [
+              {
+                "title": "Vantagem sobre a concorrência",
+                "detail": "Enquanto poucos respondem a qualquer hora, quem o faz destaca-se mais."
+              },
+              {
+                "title": "Os clientes já lá estão",
+                "detail": "WhatsApp e carteiras móveis já fazem parte do dia a dia dos seus clientes."
+              },
+              {
+                "title": "Aprender com tempo",
+                "detail": "Quem começa cedo afina o agente com calma, antes de ser obrigatório."
+              },
+              {
+                "title": "Custos de entrada baixos",
+                "detail": "Hoje é possível começar com um plano pequeno e um piloto de um mês."
+              }
+            ],
+            "cons": [
+              {
+                "title": "Tecnologia a mudar depressa",
+                "detail": "Regras e preços do WhatsApp e dos modelos de IA mudam várias vezes por ano."
+              },
+              {
+                "title": "Clientes ainda a habituar-se",
+                "detail": "Alguns segmentos preferem falar com uma pessoa e vão demorar a mudar."
+              },
+              {
+                "title": "Exige organização interna",
+                "detail": "Preços, stock e regras têm de estar escritos antes de qualquer automação."
+              },
+              {
+                "title": "Línguas nacionais ainda limitadas",
+                "detail": "Se os seus clientes escrevem sobretudo em línguas nacionais, o ganho hoje é menor."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Em que fase está a sua empresa?",
+          "body": "<p>As empresas que mais beneficiaram destas tendências noutros mercados passaram por fases parecidas. Veja onde está a sua:</p>",
+          "widget": {
+            "type": "checklist",
+            "title": "Maturidade das vendas pelo WhatsApp",
+            "items": [
+              "Usa o WhatsApp Business (não o WhatsApp pessoal) para falar com clientes.",
+              "Tem catálogo de produtos ou serviços actualizado no WhatsApp.",
+              "Aceita pagamentos por M-Pesa, e-Mola ou mKesh numa conta da empresa.",
+              "Responde a mensagens fora do horário de expediente no próprio dia.",
+              "Regista os clientes e as conversas num sistema, e não só no telemóvel.",
+              "Sabe quanto tempo demora, em média, a responder a um cliente novo.",
+              "Volta a contactar clientes antigos com ofertas ou lembretes."
+            ],
+            "results": [
+              {
+                "min": 0,
+                "title": "Fase de arranque",
+                "body": "O primeiro passo é separar o WhatsApp da empresa do pessoal e montar um catálogo. É gratuito e muda logo a imagem da empresa."
+              },
+              {
+                "min": 3,
+                "title": "Fase de organização",
+                "body": "A base existe. O passo seguinte é registar os clientes num sistema e responder mais depressa, que é onde um agente simples começa a fazer diferença."
+              },
+              {
+                "min": 5,
+                "title": "Pronta para automatizar",
+                "body": "Tem os processos no sítio. Um agente ligado ao CRM e aos pagamentos pode multiplicar o que a equipa já faz bem."
+              },
+              {
+                "min": 7,
+                "title": "À frente do mercado",
+                "body": "Está onde as empresas mais avançadas do Brasil e da Índia estavam há poucos anos. O desafio agora é medir e afinar."
+              }
+            ]
+          }
+        },
+        {
+          "heading": "Para onde vamos",
+          "body": "<p>O padrão que se repete nos três países é simples: primeiro os clientes passam a usar o telemóvel para tudo, depois os pagamentos ficam instantâneos, e por fim o atendimento tem de acompanhar essa velocidade. Moçambique já fez as duas primeiras partes. A terceira é a que está em aberto, e é também a que mais depende das empresas e menos dos operadores ou do Estado.</p>\n<p>Na SONGHAI acompanhamos estes mercados de perto e trazemos para cá o que faz sentido, adaptado a meticais, às nossas carteiras móveis e às nossas línguas. Partilhamos o que aprendemos no <a href=\"https://www.linkedin.com/in/songhai-lda/\" target=\"_blank\">LinkedIn</a> e no <a href=\"https://www.instagram.com/songhai_lda/\" target=\"_blank\">Instagram</a> da SONGHAI.</p>\n<p>Se quiser perceber em que ponto está a sua empresa e qual seria o passo seguinte, o <a href=\"/diagnostico\">diagnóstico gratuito de 30 minutos</a> é o melhor sítio para começar.</p>"
+        }
+      ],
+      "quote": "Os clientes moçambicanos já pagam pelo telemóvel e já falam com as empresas pelo WhatsApp. Falta que as empresas respondam ao mesmo ritmo.",
+      "callout": {
+        "title": "Para levar daqui",
+        "body": "Não é preciso adoptar todas as tendências ao mesmo tempo. Escolha a que resolve o problema que mais lhe custa hoje, seja responder tarde, confirmar pagamentos ou perder clientes antigos, e comece por aí."
+      }
+    }
   }
 ]

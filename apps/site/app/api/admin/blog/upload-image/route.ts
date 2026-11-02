@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   const formData = await request.formData().catch(() => null)
   const file = formData?.get('image')
   if (!(file instanceof File)) {
-    return NextResponse.json({ error: 'Selecione uma imagem.' }, { status: 400 })
+    return NextResponse.json({ error: 'Seleccione uma imagem.' }, { status: 400 })
   }
   if (!isValidBlogImage(file)) {
     return NextResponse.json(

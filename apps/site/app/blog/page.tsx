@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { PillButton } from '@/components/pill-button'
 import { BlogList } from '@/components/blog/blog-list'
 import { Newsletter } from '@/components/blog/newsletter'
 import { listPublishedPosts } from '@/lib/blog-store'
@@ -25,18 +26,20 @@ export default async function BlogPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="px-5 pb-14 pt-16 text-center lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <p className="mb-4 text-sm font-medium uppercase tracking-wider text-teal">
-              Blog
-            </p>
-            <h1 className="text-balance font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              Ideias para pôr a IA a trabalhar pela sua empresa
+        <section className="px-5 pb-14 pt-14 lg:px-8 lg:pb-20 lg:pt-20">
+          <div className="mx-auto max-w-[1600px]">
+            <h1 className="poster max-w-[20ch] text-[clamp(1.75rem,4.8vw,5rem)]">
+              IA a trabalhar pela sua empresa
             </h1>
-            <p className="mx-auto mt-4 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-[46ch] text-pretty text-xl leading-snug text-foreground sm:text-2xl">
               Guias, casos de uso e boas práticas sobre agentes de IA e automação
               — em português de Moçambique.
             </p>
+            <div className="mt-8">
+              <PillButton href="/diagnostico" variant="gold">
+                Diagnóstico grátis
+              </PillButton>
+            </div>
           </div>
         </section>
         <BlogList initialPosts={posts} />

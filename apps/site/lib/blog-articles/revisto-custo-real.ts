@@ -64,7 +64,7 @@ export const custoReal: BlogPost = {
       {
         heading: 'Como saber se compensa',
         body: `<p>A conta básica é: <strong>horas que a equipa gasta por mês na tarefa × custo de uma hora dessa pessoa</strong>. Se o resultado for maior do que a mensalidade, o agente paga-se só com o tempo poupado.</p>
-<p><em>Exemplo ilustrativo:</em> uma equipa gasta 40 horas por mês a responder a mensagens repetidas, a um custo de 300 MZN por hora. São 12.000 MZN de tempo. O plano Simples custa ${formatMZN(S.monthly)}, o que deixa 7.000 MZN por mês de diferença, e o setup recupera-se no primeiro mês. Com volumes maiores, o plano indicado sobe e a conta tem de ser refeita.</p>
+<p><em>Exemplo ilustrativo:</em> uma equipa gasta 40 horas por mês a responder a mensagens repetidas, a um custo de 300 MZN por hora. São 12.000 MZN de tempo. O plano Simples custa ${formatMZN(S.monthly)}, o que deixa 5.000 MZN por mês de diferença, e o setup recupera-se no primeiro mês. Com volumes maiores, o plano indicado sobe e a conta tem de ser refeita.</p>
 <p>Esta conta deixa de fora o ganho que muitas vezes é maior: as vendas que deixam de se perder por falta de resposta à noite e ao fim de semana.</p>`,
       },
       {
@@ -92,10 +92,9 @@ export const custoReal: BlogPost = {
       {
         heading: 'Formas de reduzir o risco',
         body: `<ul>
-<li><strong>Piloto de um mês</strong> com setup gratuito e 50% de desconto na primeira mensalidade.</li>
+<li><strong>Piloto de um mês</strong>, com cancelamento sem penalidade se os resultados não convencerem.</li>
 <li><strong>Cancelamento sem penalidade</strong>, em qualquer mês.</li>
 <li><strong>Garantia de horas:</strong> se no primeiro trimestre o agente não poupar pelo menos 10 horas por mês, devolvemos a diferença em crédito.</li>
-<li><strong>Descontos</strong> de 10% pagando seis meses e de 15% pagando doze, e descontos no segundo e terceiro agente.</li>
 </ul>
 <p>Para fazer as contas com os números da sua empresa, marque o <a href="/diagnostico">diagnóstico gratuito de 30 minutos</a>. E se quiser ver exemplos de custos e resultados explicados em poucas linhas, siga a SONGHAI no <a href="https://www.linkedin.com/in/songhai-lda/" target="_blank">LinkedIn</a> e no <a href="https://www.instagram.com/songhai_lda/" target="_blank">Instagram</a>.</p>`,
       },

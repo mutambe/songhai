@@ -21,17 +21,17 @@ export const tendencias: BlogPost = {
     sections: [
       {
         heading: 'Quénia: quando o dinheiro passou para o telemóvel',
-        body: `<p>O M-Pesa nasceu no Quénia em 2007, lançado pela Safaricom. Começou como forma de enviar dinheiro a familiares e acabou por se tornar a infraestrutura de pagamentos de boa parte da economia: pequenos comerciantes, transportes, contas de serviços, salários.</p>
+        body: `<p>O M-Pesa nasceu no Quénia em 2007, lançado pela Safaricom. Começou como forma de enviar dinheiro a familiares e acabou por se tornar a infra-estrutura de pagamentos de boa parte da economia: pequenos comerciantes, transportes, contas de serviços, salários.</p>
 <p>A lição para nós não é o M-Pesa em si, que em Moçambique existe desde 2013 através da Vodacom, ao lado do e-Mola e do mKesh. A lição é o que veio depois: <strong>quando quase toda a gente consegue pagar pelo telemóvel, o passo seguinte é vender pelo telemóvel de ponta a ponta</strong>. O pagamento deixa de ser o obstáculo e o obstáculo passa a ser o atendimento: responder depressa, confirmar sem erros, entregar a horas.</p>
 <p>Em Moçambique, a primeira parte já aconteceu. A segunda está a começar.</p>`,
       },
       {
         heading: 'Índia: comprar sem sair da conversa',
-        body: `<p>A Índia juntou duas coisas: um sistema público de pagamentos instantâneos (o UPI, lançado em 2016) e uma utilização massiva do WhatsApp. O resultado foi a compra feita inteiramente dentro da conversa. Em 2022, a JioMart passou a permitir encomendar mercearia diretamente no WhatsApp, do catálogo ao carrinho e ao pagamento, sem abrir outra aplicação.</p>
+        body: `<p>A Índia juntou duas coisas: um sistema público de pagamentos instantâneos (o UPI, lançado em 2016) e uma utilização massiva do WhatsApp. O resultado foi a compra feita inteiramente dentro da conversa. Em 2022, a JioMart passou a permitir encomendar mercearia directamente no WhatsApp, do catálogo ao carrinho e ao pagamento, sem abrir outra aplicação.</p>
 <p>O que isto ensina:</p>
 <ul>
 <li><strong>Cada aplicação a mais é um cliente a menos.</strong> Pedir ao cliente que saia do WhatsApp para um site, preencha um formulário e volte é perder parte dele pelo caminho.</li>
-<li><strong>O catálogo tem de estar onde está a conversa.</strong> O WhatsApp Business já tem catálogo e carrinho. A maioria das empresas moçambicanas ainda não os usa, ou usa-os desatualizados.</li>
+<li><strong>O catálogo tem de estar onde está a conversa.</strong> O WhatsApp Business já tem catálogo e carrinho. A maioria das empresas moçambicanas ainda não os usa, ou usa-os desactualizados.</li>
 </ul>`,
       },
       {
@@ -43,11 +43,11 @@ export const tendencias: BlogPost = {
       {
         heading: 'Cinco tendências que vão chegar cá',
         body: `<ol>
-<li><strong>Agentes que fazem, não só respondem.</strong> A geração anterior de bots respondia a perguntas. Os agentes atuais consultam stock, marcam na agenda, geram referências de pagamento e atualizam o CRM. A própria Meta tem vindo a testar assistentes de IA para empresas dentro do WhatsApp.</li>
+<li><strong>Agentes que fazem, não só respondem.</strong> A geração anterior de bots respondia a perguntas. Os agentes actuais consultam stock, marcam na agenda, geram referências de pagamento e actualizam o CRM. A própria Meta tem vindo a testar assistentes de IA para empresas dentro do WhatsApp.</li>
 <li><strong>Pagamento dentro da conversa.</strong> Em Moçambique, a forma mais realista é a ligação do agente às carteiras móveis: o cliente recebe o pedido de pagamento no telemóvel e confirma com o PIN, sem capturas de ecrã.</li>
 <li><strong>Mensagens pagas por unidade.</strong> Em 2025 a Meta mudou a forma de cobrar o canal oficial, passando a cobrar por mensagem em várias categorias. Isto vai premiar quem envia pouco e bem, e castigar quem dispara campanhas em massa.</li>
 <li><strong>Notas de voz como texto.</strong> Em mercados onde se grava mais do que se escreve, como o nosso, a transcrição automática de notas de voz vai tornar-se essencial para qualquer agente.</li>
-<li><strong>Confiança e proteção de dados.</strong> Com mais burlas pelo WhatsApp, os clientes vão preferir empresas com número verificado, regras claras ("nunca pedimos o PIN") e dados bem guardados.</li>
+<li><strong>Confiança e protecção de dados.</strong> Com mais burlas pelo WhatsApp, os clientes vão preferir empresas com número verificado, regras claras ("nunca pedimos o PIN") e dados bem guardados.</li>
 </ol>`,
       },
       {
@@ -62,7 +62,7 @@ export const tendencias: BlogPost = {
 </ul>`,
         widget: {
           type: 'pros-cons',
-          question: 'Adotar já, ou esperar que o mercado amadureça?',
+          question: 'Adoptar já, ou esperar que o mercado amadureça?',
           pros: [
             { title: 'Vantagem sobre a concorrência', detail: 'Enquanto poucos respondem a qualquer hora, quem o faz destaca-se mais.' },
             { title: 'Os clientes já lá estão', detail: 'WhatsApp e carteiras móveis já fazem parte do dia a dia dos seus clientes.' },
@@ -85,7 +85,7 @@ export const tendencias: BlogPost = {
           title: 'Maturidade das vendas pelo WhatsApp',
           items: [
             'Usa o WhatsApp Business (não o WhatsApp pessoal) para falar com clientes.',
-            'Tem catálogo de produtos ou serviços atualizado no WhatsApp.',
+            'Tem catálogo de produtos ou serviços actualizado no WhatsApp.',
             'Aceita pagamentos por M-Pesa, e-Mola ou mKesh numa conta da empresa.',
             'Responde a mensagens fora do horário de expediente no próprio dia.',
             'Regista os clientes e as conversas num sistema, e não só no telemóvel.',
@@ -111,7 +111,7 @@ export const tendencias: BlogPost = {
       'Os clientes moçambicanos já pagam pelo telemóvel e já falam com as empresas pelo WhatsApp. Falta que as empresas respondam ao mesmo ritmo.',
     callout: {
       title: 'Para levar daqui',
-      body: 'Não é preciso adotar todas as tendências ao mesmo tempo. Escolha a que resolve o problema que mais lhe custa hoje, seja responder tarde, confirmar pagamentos ou perder clientes antigos, e comece por aí.',
+      body: 'Não é preciso adoptar todas as tendências ao mesmo tempo. Escolha a que resolve o problema que mais lhe custa hoje, seja responder tarde, confirmar pagamentos ou perder clientes antigos, e comece por aí.',
     },
   },
 }

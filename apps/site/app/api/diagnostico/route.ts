@@ -73,7 +73,7 @@ export async function POST(request: Request) {
         `E-mail: ${email}`,
         `WhatsApp: +${whatsapp} — https://wa.me/${whatsapp}`,
         `Empresa: ${company}`,
-        `Setor: ${sector || '(não indicado)'}`,
+        `Sector: ${sector || '(não indicado)'}`,
         `Tamanho da equipa: ${teamSize || '(não indicado)'}`,
         `Horário preferido: ${preferredTime || '(não indicado)'}`,
         `Desafios: ${allChallenges.length ? allChallenges.join(', ') : '(não indicado)'}`,

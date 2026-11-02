@@ -22,8 +22,8 @@ export function ArticleWidgetView({ widget }: { widget: ArticleWidget }) {
 
 function Frame({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="not-prose my-8 rounded-3xl border border-line bg-paper p-5 font-sans sm:p-7">
-      <p className="text-xs font-semibold uppercase tracking-wider text-teal">{label}</p>
+    <div className="not-prose my-8 bg-foreground/[0.05] p-5 font-sans sm:p-7">
+      <p className="text-sm font-semibold text-teal">{label}</p>
       {children}
     </div>
   )
@@ -68,7 +68,7 @@ function ProsCons({ question, pros, cons }: { question: string; pros: WeighItem[
               aria-pressed={on}
               onClick={() => toggle(key)}
               className={cn(
-                'flex w-full items-start gap-3 rounded-2xl border p-4 text-left transition-colors',
+                'flex w-full items-start gap-3 border p-4 text-left transition-colors',
                 on
                   ? prefix === 'p'
                     ? 'border-teal bg-teal/10'
@@ -98,7 +98,7 @@ function ProsCons({ question, pros, cons }: { question: string; pros: WeighItem[
 
   return (
     <Frame label="Pese você mesmo">
-      <p className="mt-2 font-serif text-xl font-semibold text-foreground">{question}</p>
+      <p className="mt-2 text-2xl font-black tracking-normal text-foreground">{question}</p>
       <div className="mt-5 grid gap-6 md:grid-cols-2">
         <div>
           <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-teal">
@@ -113,14 +113,14 @@ function ProsCons({ question, pros, cons }: { question: string; pros: WeighItem[
           {column(cons, 'c')}
         </div>
       </div>
-      <div className="mt-6 rounded-2xl bg-sand p-4" aria-live="polite">
+      <div className="mt-6 bg-sand p-4" aria-live="polite">
         <div className="flex justify-between text-xs font-medium text-ink-soft">
           <span>Vantagens: {proCount}</span>
           <span>Desvantagens: {conCount}</span>
         </div>
         <div className="mt-2 flex h-2.5 overflow-hidden rounded-full bg-line">
-          <div className="bg-teal transition-all duration-500" style={{ width: `${proShare}%` }} />
-          <div className="bg-gold transition-all duration-500" style={{ width: `${100 - proShare}%` }} />
+          <div className="bg-teal transition-colors duration-500" style={{ width: `${proShare}%` }} />
+          <div className="bg-gold transition-colors duration-500" style={{ width: `${100 - proShare}%` }} />
         </div>
         <p className="mt-3 text-sm leading-relaxed text-foreground">{verdict}</p>
       </div>
@@ -150,10 +150,10 @@ function Checklist({
 
   return (
     <Frame label="Teste rápido">
-      <p className="mt-2 font-serif text-xl font-semibold text-foreground">{title}</p>
+      <p className="mt-2 text-2xl font-black tracking-normal text-foreground">{title}</p>
       <ol className="mt-5 space-y-3">
         {items.map((q, i) => (
-          <li key={q} className="flex flex-col gap-3 rounded-2xl border border-line p-4 sm:flex-row sm:items-center sm:justify-between">
+          <li key={q} className="flex flex-col gap-3 bg-foreground/[0.05] p-4 sm:flex-row sm:items-center sm:justify-between">
             <span className="text-sm leading-relaxed text-foreground">
               <span className="mr-2 font-semibold text-teal">{i + 1}.</span>
               {q}
@@ -166,7 +166,7 @@ function Checklist({
                   aria-pressed={answers[i] === v}
                   onClick={() => set(i, v)}
                   className={cn(
-                    'rounded-full border px-4 py-1.5 text-sm font-medium transition-colors',
+                    'border px-4 py-1.5 text-sm font-medium transition-colors',
                     answers[i] === v
                       ? v
                         ? 'border-teal bg-teal text-paper'
@@ -181,7 +181,7 @@ function Checklist({
           </li>
         ))}
       </ol>
-      <div className="mt-6 rounded-2xl bg-sand p-4" aria-live="polite">
+      <div className="mt-6 bg-sand p-4" aria-live="polite">
         {done && result ? (
           <>
             <p className="text-sm font-semibold text-foreground">
@@ -261,7 +261,7 @@ function RoiCalculator() {
 
   return (
     <Frame label="Calculadora">
-      <p className="mt-2 font-serif text-xl font-semibold text-foreground">
+      <p className="mt-2 text-2xl font-black tracking-normal text-foreground">
         Quanto tempo e dinheiro o agente devolve no seu caso?
       </p>
       <div className="mt-5 grid gap-5">
@@ -271,17 +271,17 @@ function RoiCalculator() {
         <Slider label="Custo de uma hora de trabalho da equipa" value={hourCost} min={100} max={1000} step={25} suffix="MZN" onChange={setHourCost} />
       </div>
       <dl className="mt-6 grid gap-3 sm:grid-cols-3" aria-live="polite">
-        <div className="rounded-2xl bg-sand p-4">
+        <div className="bg-sand p-4">
           <dt className="text-xs text-ink-soft">Horas devolvidas por mês</dt>
-          <dd className="mt-1 font-serif text-2xl font-semibold text-foreground">{formatNumber(hours)} h</dd>
+          <dd className="mt-1 text-2xl font-semibold text-foreground">{formatNumber(hours)} h</dd>
         </div>
-        <div className="rounded-2xl bg-sand p-4">
+        <div className="bg-sand p-4">
           <dt className="text-xs text-ink-soft">Valor desse tempo</dt>
-          <dd className="mt-1 font-serif text-2xl font-semibold text-foreground">{formatMZN(value)}</dd>
+          <dd className="mt-1 text-2xl font-semibold text-foreground">{formatMZN(value)}</dd>
         </div>
-        <div className="rounded-2xl bg-sand p-4">
+        <div className="bg-sand p-4">
           <dt className="text-xs text-ink-soft">Plano indicado</dt>
-          <dd className="mt-1 font-serif text-2xl font-semibold text-foreground">{plan.shortName}</dd>
+          <dd className="mt-1 text-2xl font-semibold text-foreground">{plan.shortName}</dd>
           <dd className="text-xs text-ink-soft">{formatMZN(plan.monthly)}/mês</dd>
         </div>
       </dl>
@@ -319,7 +319,7 @@ function Tabs({ title, tabs }: { title: string; tabs: { label: string; body: str
   const base = useId()
   return (
     <Frame label="Explore">
-      <p className="mt-2 font-serif text-xl font-semibold text-foreground">{title}</p>
+      <p className="mt-2 text-2xl font-black tracking-normal text-foreground">{title}</p>
       <div role="tablist" aria-label={title} className="mt-5 flex flex-wrap gap-2">
         {tabs.map((t, i) => (
           <button
@@ -331,7 +331,7 @@ function Tabs({ title, tabs }: { title: string; tabs: { label: string; body: str
             aria-controls={`${base}-panel-${i}`}
             onClick={() => setActive(i)}
             className={cn(
-              'rounded-full border px-4 py-2 text-sm font-medium transition-colors',
+              'border px-4 py-2 text-sm font-medium transition-colors',
               active === i ? 'border-indigo-deep bg-indigo-deep text-sand' : 'border-line text-ink-soft hover:border-ink-soft/50',
             )}
           >
@@ -348,7 +348,7 @@ function Tabs({ title, tabs }: { title: string; tabs: { label: string; body: str
           hidden={active !== i}
           className="prose prose-sm mt-5 max-w-none leading-relaxed text-ink-soft prose-strong:text-foreground prose-li:my-1"
           // HTML escrito no código (lib/blog-articles), não vem do painel.
-          // eslint-disable-next-line react/no-danger
+           
           dangerouslySetInnerHTML={{ __html: t.body }}
         />
       ))}

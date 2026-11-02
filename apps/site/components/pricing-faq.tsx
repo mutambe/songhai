@@ -7,19 +7,15 @@ import { Plus } from 'lucide-react'
 const FAQS = [
   {
     q: 'Posso começar só com um teste de 1 mês?',
-    a: 'Sim. Piloto de 1 mês: setup grátis, primeiro mês com 50% de desconto. Se funcionar para si, continua no preço regular. Se não, cancelamos. E se, no primeiro trimestre, não poupar pelo menos 10 horas/mês, devolvemos a diferença em crédito.',
+    a: 'Sim. Pode começar com um mês e, se funcionar para si, continua. Se não, cancelamos sem custo. E se, no primeiro trimestre, não poupar pelo menos 10 horas/mês, devolvemos a diferença em crédito.',
   },
   {
     q: 'E se quiser cancelar depois?',
     a: 'Zero penalidade. Pode cancelar em qualquer mês, sem custo de cancelamento.',
   },
   {
-    q: 'Vocês fazem desconto?',
-    a: 'Sim, de três formas: 10% de desconto pagando 6 meses antecipados, ou 15% pagando 12 meses; 20% no segundo agente e 30% no terceiro; e condições especiais para equipas com 50+ pessoas, negociadas caso a caso.',
-  },
-  {
     q: 'Como funciona o suporte?',
-    a: 'Varia por plano: Simples é em horário laboral (seg-sex, 9h-17h); Médio tem resposta prioritária em menos de 2 horas em horário laboral; Avançado tem resposta VIP em menos de 1 hora em horário laboral, com cobertura 24/7 para incidentes críticos. Para urgências, WhatsApp +258 84 898 6002.',
+    a: 'Varia por plano: Simples é em horário laboral (seg-sex, 9h-17h); Médio tem resposta prioritária em menos de 2 horas em horário laboral; Avançado e Enterprise têm suporte VIP, com resposta em menos de 1 hora em horário laboral e cobertura 24/7 para incidentes críticos. Para urgências, WhatsApp +258 84 898 6002.',
   },
   {
     q: 'O que são os tokens incluídos no plano?',
@@ -43,7 +39,7 @@ export function PricingFaq() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <div className="divide-y divide-line border-y border-line">
+    <div className="space-y-2">
       {FAQS.map((faq, i) => {
         const isOpen = open === i
         return (
@@ -54,11 +50,11 @@ export function PricingFaq() {
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             >
-              <span className="font-serif text-lg font-medium text-foreground">
+              <span className="text-lg font-medium text-foreground">
                 {faq.q}
               </span>
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-indigo-deep transition-transform duration-300 ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground/10 text-foreground transition-transform duration-300 ${
                   isOpen ? 'rotate-45 bg-gold' : ''
                 }`}
               >

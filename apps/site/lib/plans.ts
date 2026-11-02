@@ -22,7 +22,7 @@ export const PLAN_PRICES: PlanPrice[] = [
     id: 'simples',
     name: 'Agente Simples',
     shortName: 'Simples',
-    monthly: 5000,
+    monthly: 7000,
     setup: 2000,
     setupFrom: false,
     maxHours: 40,
@@ -32,7 +32,7 @@ export const PLAN_PRICES: PlanPrice[] = [
     id: 'medio',
     name: 'Agente Médio',
     shortName: 'Médio',
-    monthly: 8000,
+    monthly: 12000,
     setup: 3000,
     setupFrom: true,
     maxHours: 80,
@@ -42,7 +42,7 @@ export const PLAN_PRICES: PlanPrice[] = [
     id: 'avancado',
     name: 'Agente Avançado',
     shortName: 'Avançado',
-    monthly: 12000,
+    monthly: 18000,
     setup: 4000,
     setupFrom: true,
     maxHours: Infinity,
@@ -58,8 +58,8 @@ export function recommendedPlan(hoursMonth: number): PlanPrice {
   return PLAN_PRICES.find((p) => hoursMonth <= p.maxHours) ?? PLAN_PRICES[PLAN_PRICES.length - 1]
 }
 
-// toLocaleString('pt-PT') não agrupa números de 4 dígitos (5000), por isso
-// formatamos à mão para ficar sempre "5.000".
+// toLocaleString('pt-PT') não agrupa números de 4 dígitos (7000), por isso
+// formatamos à mão para ficar sempre "7.000".
 export function formatNumber(value: number): string {
   return String(Math.round(value)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }

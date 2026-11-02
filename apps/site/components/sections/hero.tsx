@@ -1,104 +1,98 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { ArrowRight, Check } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowRight, Clock, TrendingUp, Users } from 'lucide-react'
 import { PillButton } from '@/components/pill-button'
-import { WhatsAppDemo } from '@/components/motion/whatsapp-demo'
 import { formatMZN, getPlan } from '@/lib/plans'
 
 const STARTING_PRICE = formatMZN(getPlan('simples').monthly)
 
-// Entrada em CSS (.hero-fade, globals.css): visível logo na primeira pintura,
-// sem esperar pelo JavaScript — este texto é o LCP da página.
-const fadeUp = (delay: number) => ({
-  style: { '--d': `${delay}s` } as React.CSSProperties,
-})
+const delay = (s: number) => ({ '--d': `${s}s` }) as React.CSSProperties
 
+const BENEFITS = [
+  { icon: Clock, label: 'Atendimento contínuo' },
+  { icon: TrendingUp, label: 'Mais vendas' },
+  { icon: Users, label: 'Clientes mais satisfeitos' },
+]
+
+const gold = 'var(--field-gold)'
+
+// A ideia da página: a loja fecha, o WhatsApp não.
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* soft atmosphere */}
+    <section className="relative isolate flex flex-col overflow-hidden bg-[#f4f7fc] text-[#1e2158]">
+      {/* Cenário: portátil na mesa com o SonghaiCRM no ecrã. */}
+      <Image
+        src="/hero-cenario.webp"
+        alt="Portátil sobre uma mesa de madeira com o painel Agente de IA do SonghaiCRM no ecrã"
+        width={1672}
+        height={941}
+        priority
+        quality={92}
+        sizes="(min-width: 1024px) 1600px, 100vw"
+        className="hero-fade pointer-events-none relative z-0 order-2 mt-2 w-full lg:absolute lg:bottom-0 lg:right-0 lg:mt-0 lg:h-[118%] lg:w-auto lg:max-w-none"
+        style={delay(0.2)}
+      />
       <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(60% 50% at 30% 0%, rgba(200,155,60,0.10), transparent 70%), radial-gradient(50% 40% at 85% 40%, rgba(47,110,98,0.10), transparent 70%)',
-        }}
+        aria-hidden
+        className="absolute inset-0 -z-0 hidden bg-gradient-to-r from-[#f4f7fc] via-[#f4f7fc]/90 via-35% to-transparent to-62% lg:block"
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-14 sm:pt-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:px-8 lg:pt-24">
-        <div className="text-center lg:text-left">
-          <p
-            {...fadeUp(0)}
-            className="hero-fade mb-5 text-sm font-medium uppercase tracking-wider text-teal"
-          >
-            Agência de IA e automação · Maputo
-          </p>
+      {/* Faixas dos cantos */}
+      <svg aria-hidden viewBox="0 0 300 300" className="pointer-events-none absolute -right-2 -top-2 z-10 h-28 w-28 sm:h-44 sm:w-44">
+        <path d="M120 0 H300 V190 C260 120 200 50 120 0Z" fill={gold} />
+        <path d="M185 0 H300 V120 C270 70 235 30 185 0Z" fill="#f4f7fc" />
+      </svg>
+      <svg aria-hidden viewBox="0 0 400 200" preserveAspectRatio="xMinYMax meet" className="pointer-events-none absolute bottom-0 left-0 z-10 hidden h-36 w-72 lg:block">
+        <path d="M0 40 C90 90 200 150 300 200 H0Z" fill="#1e2158" />
+        <path d="M0 10 C100 60 220 130 330 200 H300 C200 150 90 90 0 40Z" fill={gold} />
+      </svg>
 
-          <h1
-            {...fadeUp(0.05)}
-            className="hero-fade text-balance font-serif text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-          >
-            O seu WhatsApp a responder, qualificar e vender{' '}
-            <span className="relative inline-block">
-              <motion.span
-                aria-hidden="true"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-x-[-4px] bottom-1 -z-10 h-[0.55em] origin-left rounded-sm bg-gold/55"
-              />
-              24h por dia
+      <div className="relative z-20 mx-auto flex w-full max-w-[1400px] flex-col px-5 pb-6 pt-12 sm:pt-16 lg:min-h-[720px] lg:justify-center lg:px-8 lg:pb-24 lg:pt-16">
+        <div className="lg:max-w-[48%]">
+          <h1 className="poster text-[clamp(1.9rem,3.2vw,3.7rem)]">
+            <span className="mask-line">
+              <span style={delay(0.05)} className="whitespace-nowrap">A loja fechou.</span>
+            </span>
+            <span className="mask-line">
+              <span style={delay(0.16)} className="whitespace-nowrap text-[var(--field-gold)]">
+                O WhatsApp não.
+              </span>
             </span>
           </h1>
 
           <p
-            {...fadeUp(0.15)}
-            className="hero-fade mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft lg:mx-0"
+            className="hero-fade mt-8 max-w-[36ch] text-xl font-medium leading-snug sm:text-2xl"
+            style={delay(0.45)}
           >
-            Criamos agentes de IA que atendem os seus clientes mesmo quando a
-            equipa está ocupada ou a loja fechada — e automatizamos o trabalho
-            repetitivo que fica por trás.
+            Criamos agentes de IA que respondem, qualificam e vendem no WhatsApp dos
+            seus clientes, de noite, ao fim-de-semana e no dia em que a equipa não
+            chega a tudo.
           </p>
 
           <ul
-            {...fadeUp(0.22)}
-            className="hero-fade mx-auto mt-6 flex max-w-xl flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-indigo-deep lg:mx-0 lg:justify-start"
+            className="hero-fade mt-8 grid max-w-xl grid-cols-3 divide-x divide-[var(--field-gold)]/60"
+            style={delay(0.55)}
           >
-            {[`A partir de ${STARTING_PRICE}/mês`, 'Pronto em 30 dias', 'Suporte incluído'].map((item) => (
-              <li key={item} className="flex items-center gap-1.5">
-                <Check className="h-4 w-4 text-teal" aria-hidden="true" />
-                {item}
+            {BENEFITS.map(({ icon: Icon, label }) => (
+              <li key={label} className="flex flex-col items-center gap-2 px-2 text-center">
+                <Icon className="h-9 w-9 text-[var(--field-gold)]" aria-hidden />
+                <span className="text-sm font-semibold sm:text-base">{label}</span>
               </li>
             ))}
           </ul>
 
-          <div
-            {...fadeUp(0.3)}
-            className="hero-fade mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
-          >
-            <PillButton href="/diagnostico" variant="gold">
+          <div className="hero-fade mt-8 flex flex-wrap items-center gap-x-6 gap-y-3" style={delay(0.65)}>
+            <PillButton href="/diagnostico" variant="gold" className="rounded-full">
               Diagnóstico grátis de 30 min
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-5 w-5" />
             </PillButton>
-            <PillButton href="/precos" variant="outline">
+            <a href="/precos" className="font-semibold underline underline-offset-4">
               Ver preços
-            </PillButton>
+            </a>
           </div>
-
-          <p {...fadeUp(0.4)} className="hero-fade mt-5 text-sm text-ink-soft/80">
-            Sem compromisso · recebe um relatório em PDF com as oportunidades
+          <p className="hero-fade mt-5 text-base text-[#1e2158]/80" style={delay(0.75)}>
+            A partir de {STARTING_PRICE}/mês. Pronto em 30 dias. Suporte incluído.
           </p>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <WhatsAppDemo />
-        </motion.div>
       </div>
     </section>
   )
